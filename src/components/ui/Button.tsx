@@ -18,7 +18,7 @@ const variantStyles = {
 } as const;
 
 const sizeStyles = {
-  sm: 'h-10 px-4 text-sm gap-1.5',
+  sm: 'h-11 px-4 text-sm gap-1.5',
   md: 'h-12 px-6 text-base gap-2',
   lg: 'h-14 px-8 text-base gap-2',
   xl: 'h-16 px-10 text-lg gap-2.5',
