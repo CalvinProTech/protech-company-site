@@ -42,6 +42,9 @@ yarn-error.log*
 .claude/
 .cursor/
 
+# planning docs
+Protech Roofing/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
