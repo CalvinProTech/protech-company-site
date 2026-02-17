@@ -23,11 +23,11 @@ export function LocationMap({ showCityLinks = true }: LocationMapProps) {
         </div>
 
         {/* Google Maps Embed */}
-        {process.env.GOOGLE_MAPS_API_KEY ? (
+        {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? (
           <div className={`mx-auto max-w-4xl overflow-hidden rounded-xl${showCityLinks ? ' mb-12' : ''}`}>
             <iframe
               title="ProTech Roofing service areas"
-              src={`https://www.google.com/maps/embed/v1/view?key=${process.env.GOOGLE_MAPS_API_KEY}&center=35.5,-82&zoom=5&maptype=roadmap`}
+              src={`https://www.google.com/maps/embed/v1/view?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&center=35.5,-82&zoom=5&maptype=roadmap`}
               className="h-64 w-full md:h-80"
               style={{ border: 0 }}
               allowFullScreen

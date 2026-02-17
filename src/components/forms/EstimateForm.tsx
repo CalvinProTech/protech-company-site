@@ -213,6 +213,7 @@ export default function EstimateForm() {
 
         <Input
           label="ZIP Code"
+          required
           placeholder="33601"
           error={errors.zip?.message}
           disabled={isSubmitting}
@@ -234,6 +235,7 @@ export default function EstimateForm() {
       {/* How Did You Hear */}
       <Input
         label="How Did You Hear About Us?"
+        required
         placeholder="Google, referral, etc."
         error={errors.howDidYouHear?.message}
         disabled={isSubmitting}

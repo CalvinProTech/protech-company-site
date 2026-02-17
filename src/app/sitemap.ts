@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllLocations } from '@/lib/locations';
+import { getAllLocations, getAllStates } from '@/lib/locations';
 import { getAllServices } from '@/lib/services';
 import { getAllProjects } from '@/lib/projects';
 import { getAllPosts } from '@/lib/blog';
@@ -8,6 +8,7 @@ const BASE_URL = 'https://protechroof.net';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locations = getAllLocations();
+  const states = getAllStates();
   const services = getAllServices();
   const projects = getAllProjects();
   const posts = getAllPosts();
@@ -29,13 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/free-estimate`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/financing`,
@@ -65,15 +66,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/locations`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.8,
     },
   ];
+
+  const statePages: MetadataRoute.Sitemap = states.map((state) => ({
+    url: `${BASE_URL}/locations/${state.stateSlug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
 
   const locationPages: MetadataRoute.Sitemap = locations.map((location) => ({
     url: `${BASE_URL}/locations/${location.stateSlug}/${location.citySlug}`,
@@ -105,6 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticPages,
+    ...statePages,
     ...locationPages,
     ...servicePages,
     ...projectPages,

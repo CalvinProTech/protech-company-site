@@ -4,10 +4,13 @@ import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
 import { SITE_CONFIG } from '@/lib/constants';
 import { formatPhoneNumber } from '@/lib/utils';
+import { getFeaturedTestimonials } from '@/lib/testimonials';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import ContactForm from '@/components/forms/ContactForm';
+import { TrustBar } from '@/components/sections/TrustBar';
+import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
 import { CTABanner } from '@/components/sections/CTABanner';
 
 export function generateMetadata(): Metadata {
@@ -38,6 +41,8 @@ const serviceStates = [
 ];
 
 export default function ContactPage() {
+  const testimonials = getFeaturedTestimonials();
+
   return (
     <>
       {/* Structured Data */}
@@ -47,6 +52,9 @@ export default function ContactPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Breadcrumbs items={breadcrumbItems} />
       </div>
+
+      {/* Trust Bar */}
+      <TrustBar />
 
       {/* Page Header */}
       <section className="bg-primary-800 py-12 md:py-16">
@@ -164,6 +172,24 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+              What Our Customers Say
+            </h2>
+            <p className="mt-4 text-lg text-neutral-600">
+              Don&rsquo;t just take our word for it. Hear from homeowners
+              who&rsquo;ve trusted ProTech with their roofing projects.
+            </p>
+          </div>
+          <div className="mt-12">
+            <TestimonialCarousel testimonials={testimonials} />
           </div>
         </div>
       </section>

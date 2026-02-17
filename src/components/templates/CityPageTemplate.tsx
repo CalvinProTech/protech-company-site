@@ -158,11 +158,11 @@ export default function CityPageTemplate({ location }: CityPageTemplateProps) {
               </div>
 
               {/* City Map */}
-              {process.env.GOOGLE_MAPS_API_KEY && (
+              {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
                 <div className="overflow-hidden rounded-xl">
                   <iframe
                     title={`Map of ${location.city}, ${location.stateAbbr}`}
-                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}&q=roofing+${encodeURIComponent(location.city)}+${encodeURIComponent(location.stateAbbr)}&zoom=11`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=roofing+${encodeURIComponent(location.city)}+${encodeURIComponent(location.stateAbbr)}&zoom=11`}
                     className="h-48 w-full"
                     style={{ border: 0 }}
                     allowFullScreen
