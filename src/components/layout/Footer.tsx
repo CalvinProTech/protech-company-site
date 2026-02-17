@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
 import { SITE_CONFIG, SERVICES } from '@/lib/constants';
 
@@ -54,8 +55,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Column 1 — Company */}
           <div>
-            <Link href="/" className="text-xl font-bold text-white">
-              {SITE_CONFIG.name}
+            <Link href="/" className="inline-block">
+              <Image
+                src="/images/logo.png"
+                alt={SITE_CONFIG.name}
+                width={866}
+                height={290}
+                className="h-12 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="mt-3 text-sm text-neutral-300">
               Protecting homes across America

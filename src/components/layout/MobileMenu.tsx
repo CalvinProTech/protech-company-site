@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 import { X, Phone } from 'lucide-react';
@@ -109,9 +110,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="flex h-full flex-col">
             {/* Header with close button */}
             <div className="flex items-center justify-between px-4 py-4">
-              <span className="text-xl font-bold text-primary-700">
-                {SITE_CONFIG.name}
-              </span>
+              <Image
+                src="/images/logo.png"
+                alt={SITE_CONFIG.name}
+                width={866}
+                height={290}
+                className="h-12 w-auto"
+              />
               <button
                 ref={closeButtonRef}
                 onClick={onClose}
