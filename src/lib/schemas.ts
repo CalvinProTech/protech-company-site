@@ -43,11 +43,11 @@ export const estimateFormSchema = z.object({
   state: z.enum(STATE_OPTIONS, 'Please select a state'),
   zip: z
     .string()
-    .optional(),
+    .min(5, 'ZIP code is required'),
   serviceNeeded: z.enum(SERVICE_OPTIONS, 'Please select a service'),
   howDidYouHear: z
     .string()
-    .optional(),
+    .min(1, 'Please let us know how you heard about us'),
   additionalDetails: z
     .string()
     .optional(),

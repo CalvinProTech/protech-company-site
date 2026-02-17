@@ -46,8 +46,8 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               ProTech Roofing provides a complete range of residential and
-              commercial roofing services across Florida, Texas, Kentucky, and
-              Ohio. Every project is backed by our lifetime workmanship warranty,
+              commercial roofing services across 14 states on the East Coast
+              and beyond. Every project is backed by our lifetime workmanship warranty,
               premium materials from manufacturers like GAF, Owens Corning, and
               CertainTeed, and a team of factory-trained installers who treat
               your property like their own. Whether you need a full roof

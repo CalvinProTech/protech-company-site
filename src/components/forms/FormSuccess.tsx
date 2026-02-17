@@ -1,4 +1,5 @@
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 const NEXT_STEPS = [
   'A ProTech specialist will review your request',
@@ -36,16 +37,22 @@ export default function FormSuccess() {
         ))}
       </ol>
 
-      {/* Phone fallback */}
-      <p className="mt-2 text-sm text-green-600">
-        Need immediate help? Call us at{' '}
-        <a
-          href="tel:18663082640"
-          className="font-semibold underline hover:text-green-800"
-        >
-          (866) 308-2640
-        </a>
-      </p>
+      {/* Call Now CTA */}
+      <a
+        href="tel:18663082640"
+        className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-4 text-lg font-bold text-white shadow-sm transition-colors hover:bg-accent-600"
+      >
+        <Phone className="h-5 w-5" aria-hidden="true" />
+        Call Now: (866) 308-2640
+      </a>
+
+      {/* Return Home */}
+      <Link
+        href="/"
+        className="text-sm font-medium text-green-700 underline transition-colors hover:text-green-900"
+      >
+        Return to Home
+      </Link>
     </div>
   );
 }
