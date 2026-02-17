@@ -10,10 +10,11 @@ import { SITE_CONFIG } from '@/lib/constants';
 interface HeroProps {
   heading: string;
   subtitle: string;
-  primaryCTA: { text: string; href: string };
+  primaryCTA?: { text: string; href: string };
   secondaryCTA?: { text: string; href: string };
   backgroundImage?: string;
   showTrustBadges?: boolean;
+  children?: React.ReactNode;
 }
 
 const trustBadges = [
@@ -30,6 +31,7 @@ export function Hero({
   secondaryCTA,
   backgroundImage = '/images/hero/default.jpg',
   showTrustBadges = true,
+  children,
 }: HeroProps) {
   return (
     <section className="relative flex min-h-[500px] items-center md:min-h-[600px]">
@@ -67,21 +69,29 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-8 flex flex-col gap-4 sm:flex-row"
+            className="mt-8"
           >
-            <Link
-              href={primaryCTA.href}
-              className="inline-flex h-14 items-center justify-center rounded-lg bg-accent-500 px-8 text-lg font-semibold text-white transition-colors hover:bg-accent-600"
-            >
-              {primaryCTA.text}
-            </Link>
-            {secondaryCTA && (
-              <Link
-                href={secondaryCTA.href}
-                className="inline-flex h-14 items-center justify-center rounded-lg border-2 border-white px-8 text-lg font-semibold text-white transition-colors hover:bg-white/10"
-              >
-                {secondaryCTA.text}
-              </Link>
+            {children ? (
+              children
+            ) : (
+              <div className="flex flex-col gap-4 sm:flex-row">
+                {primaryCTA && (
+                  <Link
+                    href={primaryCTA.href}
+                    className="inline-flex h-14 items-center justify-center rounded-lg bg-accent-500 px-8 text-lg font-semibold text-white transition-colors hover:bg-accent-600"
+                  >
+                    {primaryCTA.text}
+                  </Link>
+                )}
+                {secondaryCTA && (
+                  <Link
+                    href={secondaryCTA.href}
+                    className="inline-flex h-14 items-center justify-center rounded-lg border-2 border-white px-8 text-lg font-semibold text-white transition-colors hover:bg-white/10"
+                  >
+                    {secondaryCTA.text}
+                  </Link>
+                )}
+              </div>
             )}
           </motion.div>
 

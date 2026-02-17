@@ -5,6 +5,7 @@ import { getFeaturedTestimonials } from '@/lib/testimonials';
 import { getAllProjects } from '@/lib/projects';
 
 import { Hero } from '@/components/sections/Hero';
+import InstantEstimateWidget from '@/components/forms/InstantEstimateWidget';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { ServiceCards } from '@/components/sections/ServiceCards';
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
@@ -67,14 +68,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         heading="Protect Your Home with America's Most Trusted Roofers"
-        subtitle="Licensed roofing contractor serving 14 states across the East Coast and beyond. 20+ years experience, 1,000+ roofs installed, 4.9-star rating."
-        primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{
-          text: 'Call (866) 308-2640',
-          href: 'tel:18663082640',
-        }}
+        subtitle="Get your instant roof estimate in 60 seconds — powered by satellite technology."
         showTrustBadges={true}
-      />
+      >
+        <InstantEstimateWidget />
+      </Hero>
 
       {/* Trust Bar */}
       <TrustBar />

@@ -79,3 +79,24 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
+
+// ---------------------------------------------------------------------------
+// Instant estimate schema
+// ---------------------------------------------------------------------------
+
+export const instantEstimateSchema = z.object({
+  address: z.string().min(5, 'Please enter a valid address'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  phone: z
+    .string()
+    .min(10, 'Phone number must be at least 10 digits')
+    .regex(/[\d]{10,}/, 'Please enter a valid phone number'),
+  email: z
+    .string()
+    .email('Please enter a valid email')
+    .optional()
+    .or(z.literal('')),
+});
+
+export type InstantEstimateFormData = z.infer<typeof instantEstimateSchema>;
