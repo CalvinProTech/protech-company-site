@@ -16,6 +16,15 @@ const LOCATIONS = [
     ],
   },
   {
+    state: 'GA',
+    stateSlug: 'georgia',
+    cities: [
+      { name: 'Atlanta', slug: 'atlanta' },
+      { name: 'Savannah', slug: 'savannah' },
+      { name: 'Augusta', slug: 'augusta' },
+    ],
+  },
+  {
     state: 'TX',
     stateSlug: 'texas',
     cities: [
@@ -24,6 +33,87 @@ const LOCATIONS = [
       { name: 'San Antonio', slug: 'san-antonio' },
       { name: 'Austin', slug: 'austin' },
       { name: 'Fort Worth', slug: 'fort-worth' },
+    ],
+  },
+  {
+    state: 'NC',
+    stateSlug: 'north-carolina',
+    cities: [
+      { name: 'Charlotte', slug: 'charlotte' },
+      { name: 'Raleigh', slug: 'raleigh' },
+      { name: 'Greensboro', slug: 'greensboro' },
+    ],
+  },
+  {
+    state: 'SC',
+    stateSlug: 'south-carolina',
+    cities: [
+      { name: 'Charleston', slug: 'charleston' },
+      { name: 'Columbia', slug: 'columbia' },
+      { name: 'Greenville', slug: 'greenville' },
+    ],
+  },
+  {
+    state: 'VA',
+    stateSlug: 'virginia',
+    cities: [
+      { name: 'Virginia Beach', slug: 'virginia-beach' },
+      { name: 'Richmond', slug: 'richmond' },
+      { name: 'Norfolk', slug: 'norfolk' },
+    ],
+  },
+  {
+    state: 'MD',
+    stateSlug: 'maryland',
+    cities: [
+      { name: 'Baltimore', slug: 'baltimore' },
+      { name: 'Frederick', slug: 'frederick' },
+      { name: 'Annapolis', slug: 'annapolis' },
+    ],
+  },
+  {
+    state: 'PA',
+    stateSlug: 'pennsylvania',
+    cities: [
+      { name: 'Philadelphia', slug: 'philadelphia' },
+      { name: 'Pittsburgh', slug: 'pittsburgh' },
+      { name: 'Allentown', slug: 'allentown' },
+    ],
+  },
+  {
+    state: 'CT',
+    stateSlug: 'connecticut',
+    cities: [
+      { name: 'Hartford', slug: 'hartford' },
+      { name: 'New Haven', slug: 'new-haven' },
+      { name: 'Stamford', slug: 'stamford' },
+    ],
+  },
+  {
+    state: 'DE',
+    stateSlug: 'delaware',
+    cities: [
+      { name: 'Wilmington', slug: 'wilmington' },
+      { name: 'Dover', slug: 'dover' },
+    ],
+  },
+  {
+    state: 'WV',
+    stateSlug: 'west-virginia',
+    cities: [
+      { name: 'Charleston', slug: 'charleston' },
+      { name: 'Huntington', slug: 'huntington' },
+      { name: 'Morgantown', slug: 'morgantown' },
+    ],
+  },
+  {
+    state: 'TN',
+    stateSlug: 'tennessee',
+    cities: [
+      { name: 'Nashville', slug: 'nashville' },
+      { name: 'Memphis', slug: 'memphis' },
+      { name: 'Knoxville', slug: 'knoxville' },
+      { name: 'Chattanooga', slug: 'chattanooga' },
     ],
   },
   {

@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'ProTech Roofing | Licensed Roofing Contractor',
     description:
-      'Expert roofing services across Florida, Texas, Kentucky, and Ohio. Licensed, insured, and rated 4.9 stars. Roof replacement, repair, storm damage, and more. Get your free estimate today.',
+      'Expert roofing services across 14 states including FL, GA, TX, TN, WV, VA, PA, NC, SC, and more. Licensed, insured, and rated 4.9 stars. Roof replacement, repair, storm damage, and more. Get your free estimate today.',
     path: '/',
   });
 }
@@ -67,11 +67,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <Hero
         heading="Protect Your Home with America's Most Trusted Roofers"
-        subtitle="Licensed roofing contractor serving FL, TX, KY & OH. 20+ years experience, 1,000+ roofs installed, 4.9-star rating."
+        subtitle="Licensed roofing contractor serving 14 states across the East Coast and beyond. 20+ years experience, 1,000+ roofs installed, 4.9-star rating."
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
-          text: 'Call (800) 555-ROOF',
-          href: 'tel:18005557663',
+          text: 'Call (866) 308-2640',
+          href: 'tel:18663082640',
         }}
         showTrustBadges={true}
       />

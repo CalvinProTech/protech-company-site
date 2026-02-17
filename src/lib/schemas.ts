@@ -21,9 +21,12 @@ export const STATE_OPTIONS = ['FL', 'TX', 'KY', 'OH'] as const;
 // ---------------------------------------------------------------------------
 
 export const estimateFormSchema = z.object({
-  fullName: z
+  firstName: z
     .string()
-    .min(2, 'Full name must be at least 2 characters'),
+    .min(1, 'First name is required'),
+  lastName: z
+    .string()
+    .min(1, 'Last name is required'),
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
@@ -38,6 +41,9 @@ export const estimateFormSchema = z.object({
     .string()
     .min(2, 'City must be at least 2 characters'),
   state: z.enum(STATE_OPTIONS, 'Please select a state'),
+  zip: z
+    .string()
+    .optional(),
   serviceNeeded: z.enum(SERVICE_OPTIONS, 'Please select a service'),
   howDidYouHear: z
     .string()
@@ -54,9 +60,12 @@ export type EstimateFormData = z.infer<typeof estimateFormSchema>;
 // ---------------------------------------------------------------------------
 
 export const contactFormSchema = z.object({
-  name: z
+  firstName: z
     .string()
-    .min(2, 'Name must be at least 2 characters'),
+    .min(1, 'First name is required'),
+  lastName: z
+    .string()
+    .min(1, 'Last name is required'),
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')

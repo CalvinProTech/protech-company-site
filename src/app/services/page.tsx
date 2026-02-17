@@ -29,7 +29,7 @@ export default function ServicesPage() {
         heading="Professional Roofing Services"
         subtitle="From roof replacement and repair to storm damage restoration and commercial roofing, ProTech Roofing delivers expert solutions backed by a lifetime workmanship warranty."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{ text: 'Call Now', href: 'tel:18005557663' }}
+        secondaryCTA={{ text: 'Call Now', href: 'tel:18663082640' }}
         backgroundImage="/images/hero/services.jpg"
       />
 

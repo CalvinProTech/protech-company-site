@@ -175,6 +175,138 @@ const testimonials: Testimonial[] = [
     serviceType: "roof-inspection",
     date: "2025-11-15",
   },
+  {
+    id: 16,
+    name: "Rachel Morrison",
+    city: "Atlanta",
+    state: "GA",
+    rating: 5.0,
+    quote:
+      "A massive thunderstorm ripped off a section of our roof in Marietta and water was pouring into the master bedroom. ProTech had an emergency crew at our house within two hours to tarp the damage. They handled the entire insurance claim and replaced our roof with impact-resistant shingles in just 3 days. Before their help, we were overwhelmed and had no idea where to start. They made a stressful situation completely manageable and the new roof looks incredible.",
+    serviceType: "storm-damage",
+    date: "2025-10-05",
+  },
+  {
+    id: 17,
+    name: "William Tran",
+    city: "Charlotte",
+    state: "NC",
+    rating: 5.0,
+    quote:
+      "We had been putting off our roof replacement for two years because the quotes we received were all over the place. ProTech came out, did a thorough inspection, and gave us a clear, itemized estimate that made sense. They replaced our 25-year-old roof in two days with beautiful architectural shingles. Before ProTech, we had three different leaks every time it rained. Now our home is completely dry and we have peace of mind with their lifetime warranty.",
+    serviceType: "roof-replacement",
+    date: "2025-08-18",
+  },
+  {
+    id: 18,
+    name: "Samantha Blake",
+    city: "Virginia Beach",
+    state: "VA",
+    rating: 4.5,
+    quote:
+      "Living near the coast means our roof takes a beating from salt air and hurricane season. Our old shingles were curling and we had a persistent leak around the chimney. ProTech installed a new high-wind-rated roof system and rebuilt all the flashing. Before the replacement, every nor'easter had us worried about water damage. Now we feel completely protected. The crew was courteous, cleaned up everything, and finished ahead of schedule.",
+    serviceType: "roof-replacement",
+    date: "2025-09-22",
+  },
+  {
+    id: 19,
+    name: "Daniel Garrett",
+    city: "Philadelphia",
+    state: "PA",
+    rating: 5.0,
+    quote:
+      "Our South Philly row home had a flat roof that was leaking into our kitchen for months. Two other companies patched it but the leaks kept coming back. ProTech tore off the old roof, found rotted decking underneath, and installed a new TPO membrane system. Before ProTech, we had buckets on the kitchen floor every time it rained. After their work, we went through an entire winter with zero leaks. Finally a contractor who actually fixed the problem.",
+    serviceType: "roof-repair",
+    date: "2025-07-14",
+  },
+  {
+    id: 20,
+    name: "Lisa Caldwell",
+    city: "Baltimore",
+    state: "MD",
+    rating: 5.0,
+    quote:
+      "Our 30-year-old roof was well past its lifespan and we knew it was time. ProTech provided a detailed 42-point inspection and showed us exactly where the problems were with thermal imaging. They replaced the entire roof in two days, including eight sheets of damaged decking we did not know about. Before the project, our attic was showing signs of moisture damage. The new roof has already weathered two major storms without a single issue.",
+    serviceType: "roof-replacement",
+    date: "2025-11-08",
+  },
+  {
+    id: 21,
+    name: "Mark Espinoza",
+    city: "Charleston",
+    state: "SC",
+    rating: 5.0,
+    quote:
+      "Hurricane season left our Mount Pleasant home with significant wind damage and missing shingles across the entire front face. ProTech documented everything with their drone, met with our insurance adjuster, and got the full claim approved within two weeks. Before they stepped in, the insurance company was offering less than half of what the repair actually cost. ProTech advocated for us and we ended up with a beautiful new roof at just the cost of our deductible.",
+    serviceType: "storm-damage",
+    date: "2025-10-28",
+  },
+  {
+    id: 22,
+    name: "Christine Novak",
+    city: "Hartford",
+    state: "CT",
+    rating: 4.5,
+    quote:
+      "Connecticut winters had caused severe ice dams along our eaves for the past three years, with water seeping into our walls and causing paint bubbles and mold. ProTech replaced our roof with proper ice-and-water shield on all eaves, added ridge ventilation, and installed snow guards. Before their work, we dreaded every snowfall. This past winter was the first without a single ice dam. The difference is remarkable and we wish we had called them sooner.",
+    serviceType: "roof-repair",
+    date: "2025-12-10",
+  },
+  {
+    id: 23,
+    name: "Andrew Kemp",
+    city: "Wilmington",
+    state: "DE",
+    rating: 5.0,
+    quote:
+      "We needed a complete roof and gutter replacement on our colonial home in Hockessin. ProTech bundled both projects and saved us about 12 percent compared to doing them separately. The crew replaced the roof in two days and installed seamless gutters with leaf guards on the third day. Before the project, our gutters were overflowing and staining the siding. Now everything works perfectly and our home looks brand new from the street.",
+    serviceType: "gutters-and-siding",
+    date: "2025-06-30",
+  },
+  {
+    id: 24,
+    name: "Jason Whitfield",
+    city: "Nashville",
+    state: "TN",
+    rating: 5.0,
+    quote:
+      "After a severe hailstorm hit our neighborhood in Franklin, we called ProTech Roofing for an assessment. They had a team at our house within 24 hours, documented every bit of damage with their drone, and handled our entire insurance claim. Before they got involved, the adjuster was only going to cover partial replacement. ProTech got us full approval and installed a beautiful new impact-resistant roof in just two days. The crew was professional, cleaned up perfectly, and the new roof looks incredible.",
+    serviceType: "storm-damage",
+    date: "2025-09-18",
+  },
+  {
+    id: 25,
+    name: "Ashley Caldwell",
+    city: "Memphis",
+    state: "TN",
+    rating: 5.0,
+    quote:
+      "Our Germantown home had a 20-year-old roof that was showing its age, with missing shingles and a persistent leak around the skylight. ProTech replaced the entire roof in two days, rebuilt the skylight flashing, and installed new ridge vents. Before the replacement, we had water stains on our vaulted ceiling every time it rained. After their work, we went through an entire storm season with zero leaks. The quality of their craftsmanship is outstanding and their pricing was fair.",
+    serviceType: "roof-replacement",
+    date: "2025-08-05",
+  },
+  {
+    id: 26,
+    name: "Derek Mullins",
+    city: "Charleston",
+    state: "WV",
+    rating: 5.0,
+    quote:
+      "Living in the Kanawha Valley means dealing with heavy rain and harsh winters that take a toll on your roof. Our 18-year-old shingle roof had ice dam damage along the entire front eave and water was seeping into the walls. ProTech replaced the roof, added proper ice-and-water shield, and improved our attic ventilation. Before their work, we had paint peeling off interior walls every spring. This past winter was the first without any ice dam issues. Excellent company.",
+    serviceType: "roof-replacement",
+    date: "2025-11-20",
+  },
+  {
+    id: 27,
+    name: "Laura Jennings",
+    city: "Knoxville",
+    state: "TN",
+    rating: 4.5,
+    quote:
+      "We needed a complete roof replacement on our ranch home in Farragut after a spring storm damaged a large section. ProTech handled the insurance claim from start to finish and had the new roof installed within three weeks of approval. Before they stepped in, we were overwhelmed by the claims process and had tarps on the roof for a month. Their project manager kept us informed every step of the way. The new architectural shingles look great and we have peace of mind heading into storm season.",
+    serviceType: "storm-damage",
+    date: "2025-06-12",
+  },
 ];
 
 export function getTestimonialsByCity(city: string): Testimonial[] {

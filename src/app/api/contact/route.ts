@@ -1,5 +1,6 @@
 import { NextResponse, after } from 'next/server';
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas';
+import { sendContactConfirmation } from '@/lib/email';
 
 // ---------------------------------------------------------------------------
 // POST /api/contact
@@ -28,33 +29,41 @@ export async function POST(request: Request) {
     const data: ContactFormData = result.data;
 
     // ------------------------------------------------------------------
-    // Forward to Salesforce Web-to-Lead (placeholder)
+    // Forward to PTR Lead API
     // ------------------------------------------------------------------
 
-    const salesforceEndpoint = process.env.SALESFORCE_ENDPOINT;
-    const salesforceOid = process.env.SALESFORCE_OID;
+    const apiUrl = process.env.PTR_LEAD_API_URL;
+    const apiKey = process.env.PTR_LEAD_API_KEY;
 
-    if (salesforceEndpoint && salesforceOid) {
+    if (apiUrl && apiKey) {
       try {
-        await fetch(salesforceEndpoint, {
+        const apiResponse = await fetch(apiUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({
-            oid: salesforceOid,
-            first_name: data.name.split(' ')[0] ?? '',
-            last_name: data.name.split(' ').slice(1).join(' ') || data.name,
+          headers: {
+            'Content-Type': 'application/json',
+            'X-API-Key': apiKey,
+          },
+          body: JSON.stringify({
+            firstName: data.firstName,
+            lastName: data.lastName,
             phone: data.phone,
             email: data.email,
-            description: data.message,
           }),
         });
-      } catch (sfError) {
-        // Log but do not fail the user request if Salesforce is unreachable
-        console.error('[contact] Salesforce forwarding failed:', sfError);
+
+        if (!apiResponse.ok) {
+          console.error(
+            '[contact] PTR Lead API error:',
+            apiResponse.status,
+            await apiResponse.text()
+          );
+        }
+      } catch (apiError) {
+        console.error('[contact] PTR Lead API forwarding failed:', apiError);
       }
     } else {
       console.log(
-        '[contact] Salesforce env vars not configured. Skipping CRM forwarding.'
+        '[contact] PTR Lead API env vars not configured. Skipping lead forwarding.'
       );
     }
 
@@ -62,12 +71,23 @@ export async function POST(request: Request) {
     // Non-blocking analytics logging via after()
     // ------------------------------------------------------------------
 
-    after(() => {
+    after(async () => {
       console.log('[contact] Submission received:', {
-        name: data.name,
+        firstName: data.firstName,
+        lastName: data.lastName,
         email: data.email,
         timestamp: new Date().toISOString(),
       });
+
+      try {
+        await sendContactConfirmation({
+          firstName: data.firstName,
+          email: data.email,
+        });
+        console.log('[contact] Confirmation email sent to:', data.email);
+      } catch (emailError) {
+        console.error('[contact] Failed to send confirmation email:', emailError);
+      }
     });
 
     // ------------------------------------------------------------------

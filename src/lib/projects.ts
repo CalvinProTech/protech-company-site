@@ -200,6 +200,144 @@ const projects: Project[] = [
     metaDescription:
       "ProTech replaced deteriorated siding and gutters on a Cleveland home with James Hardie fiber cement and seamless gutters. Full exterior transformation.",
   },
+  {
+    id: 9,
+    slug: "atlanta-storm-damage-restoration",
+    title: "Storm Damage Roof Restoration in Atlanta's Buckhead",
+    city: "Atlanta",
+    state: "GA",
+    serviceType: "storm-damage",
+    description:
+      "A severe spring thunderstorm with golf-ball-sized hail swept through this Buckhead neighborhood, leaving over 150 documented impact marks across the 2,800-square-foot roof surface. Multiple shingles were cracked or displaced and the ridge cap was damaged in several locations. ProTech Roofing responded within hours with emergency tarping, then conducted a comprehensive drone inspection that documented every impact point for the insurance claim. The homeowner's claim was approved for a full replacement. ProTech installed Owens Corning Duration STORM Class 4 impact-resistant shingles, new aluminum drip edge, and upgraded ridge ventilation. The impact-resistant upgrade qualified the homeowner for a 20 percent insurance premium discount going forward.",
+    beforeImage: "/images/projects/project-9-before.jpg",
+    afterImage: "/images/projects/project-9-after.jpg",
+    images: [
+      "/images/projects/project-9-before.jpg",
+      "/images/projects/project-9-drone-1.jpg",
+      "/images/projects/project-9-progress-1.jpg",
+      "/images/projects/project-9-after.jpg",
+    ],
+    materials: "Owens Corning Duration STORM Impact-Resistant Shingles, ProArmor Synthetic Underlayment, Aluminum Drip Edge",
+    timeline: "2 days",
+    metaTitle: "Atlanta Storm Damage Roof Restoration | ProTech Roofing",
+    metaDescription:
+      "ProTech restored a hail-damaged Buckhead home with Class 4 impact-resistant shingles. Full insurance claim handling. See before and after photos.",
+  },
+  {
+    id: 10,
+    slug: "charlotte-roof-replacement",
+    title: "Full Roof Replacement with Architectural Shingles in Charlotte",
+    city: "Charlotte",
+    state: "NC",
+    serviceType: "roof-replacement",
+    description:
+      "This Charlotte homeowner in the Myers Park neighborhood had a 28-year-old three-tab shingle roof that was well past its useful life. Multiple areas showed granule loss, curling, and the beginning of moss growth along the north-facing slope. ProTech Roofing performed a complete tear-off, replaced six sheets of moisture-damaged OSB decking, and installed a new GAF Timberline HDZ architectural shingle system with StormGuard leak barrier at all eaves and valleys. The project included new aluminum step flashing at two chimneys, a rebuilt cricket behind the main chimney, and upgraded soffit ventilation to improve airflow and reduce attic temperatures. The homeowner received a GAF Golden Pledge warranty.",
+    beforeImage: "/images/projects/project-10-before.jpg",
+    afterImage: "/images/projects/project-10-after.jpg",
+    images: [
+      "/images/projects/project-10-before.jpg",
+      "/images/projects/project-10-progress-1.jpg",
+      "/images/projects/project-10-progress-2.jpg",
+      "/images/projects/project-10-after.jpg",
+    ],
+    materials: "GAF Timberline HDZ Architectural Shingles, StormGuard Leak Barrier, Aluminum Step Flashing, Cobra Ridge Vent",
+    timeline: "3 days",
+    metaTitle: "Charlotte Roof Replacement Project | ProTech Roofing",
+    metaDescription:
+      "See how ProTech replaced a 28-year-old roof in Charlotte's Myers Park with GAF architectural shingles. Before and after photos and project details.",
+  },
+  {
+    id: 11,
+    slug: "charleston-hurricane-rated-install",
+    title: "Hurricane-Rated Roof Installation in Charleston's Mount Pleasant",
+    city: "Charleston",
+    state: "SC",
+    serviceType: "roof-replacement",
+    description:
+      "After sustaining significant wind damage during hurricane season, this Mount Pleasant homeowner decided to upgrade from standard shingles to a high-wind-rated system that would better protect their coastal property. ProTech Roofing removed the damaged roof, repaired structural decking at multiple locations, and installed a CertainTeed Landmark PRO shingle system with enhanced nailing patterns rated for 130 mph winds. The project included new ice-and-water shield along all eaves, stainless steel hip and ridge fasteners, and reinforced drip edge. The installation met South Carolina's coastal building code requirements and the homeowner received manufacturer and workmanship warranties.",
+    beforeImage: "/images/projects/project-11-before.jpg",
+    afterImage: "/images/projects/project-11-after.jpg",
+    images: [
+      "/images/projects/project-11-before.jpg",
+      "/images/projects/project-11-progress-1.jpg",
+      "/images/projects/project-11-detail-1.jpg",
+      "/images/projects/project-11-after.jpg",
+    ],
+    materials: "CertainTeed Landmark PRO Shingles, Grace Ice & Water Shield, Stainless Steel Ridge Fasteners, Reinforced Drip Edge",
+    timeline: "3 days",
+    metaTitle: "Charleston Hurricane-Rated Roof Installation | ProTech Roofing",
+    metaDescription:
+      "ProTech installed a hurricane-rated roof in Mount Pleasant, SC with 130 mph wind rating. Coastal code compliant. See the project details.",
+  },
+  {
+    id: 12,
+    slug: "philadelphia-flat-roof-tpo",
+    title: "Row Home Flat Roof TPO Replacement in South Philadelphia",
+    city: "Philadelphia",
+    state: "PA",
+    serviceType: "commercial-roofing",
+    description:
+      "This South Philadelphia row home had a failing modified bitumen flat roof that had been patched repeatedly over 20 years. The homeowner was dealing with persistent leaks in the kitchen and bathroom that worsened with every rainstorm. ProTech Roofing removed the old multi-layer roof system, replaced damaged plywood decking, and installed a new 60-mil TPO single-ply membrane with tapered insulation for proper drainage. The crew navigated the tight city street access and completed the project in two days with minimal disruption to neighbors. The new white TPO membrane improved energy efficiency and the homeowner received a 20-year manufacturer warranty.",
+    beforeImage: "/images/projects/project-12-before.jpg",
+    afterImage: "/images/projects/project-12-after.jpg",
+    images: [
+      "/images/projects/project-12-before.jpg",
+      "/images/projects/project-12-progress-1.jpg",
+      "/images/projects/project-12-progress-2.jpg",
+      "/images/projects/project-12-after.jpg",
+    ],
+    materials: "60-mil TPO Single-Ply Membrane, Tapered Polyiso Insulation, CDX Plywood Decking, TPO-Coated Drip Edge",
+    timeline: "2 days",
+    metaTitle: "Philadelphia Flat Roof TPO Replacement | ProTech Roofing",
+    metaDescription:
+      "ProTech replaced a leaking flat roof on a South Philly row home with TPO membrane. Zero leaks and improved energy efficiency. See the results.",
+  },
+  {
+    id: 13,
+    slug: "nashville-storm-damage-restoration",
+    title: "Hail Damage Roof Restoration in Franklin, TN",
+    city: "Nashville",
+    state: "TN",
+    serviceType: "storm-damage",
+    description:
+      "A severe spring hailstorm caused extensive damage to this Franklin home's 15-year-old architectural shingle roof, with hundreds of impact marks across the entire surface and cracked ridge cap shingles. The homeowner's insurance company initially undervalued the claim by $7,000. ProTech Roofing documented every impact point with high-resolution drone photography and thermal imaging, then met with the adjuster on-site to advocate for full replacement. The claim was approved for the full amount within two weeks. Our crew removed the old roof, replaced six sheets of damaged decking, and installed new Class 4 impact-resistant shingles rated for 130 mph winds. The project was completed in two days with full yard cleanup and magnetic nail sweeping.",
+    beforeImage: "/images/projects/project-13-before.jpg",
+    afterImage: "/images/projects/project-13-after.jpg",
+    images: [
+      "/images/projects/project-13-before.jpg",
+      "/images/projects/project-13-progress-1.jpg",
+      "/images/projects/project-13-progress-2.jpg",
+      "/images/projects/project-13-after.jpg",
+    ],
+    materials: "Owens Corning Duration STORM Impact-Resistant Shingles, GAF WeatherWatch Ice & Water Shield, Replacement OSB Decking, Cobra Ridge Vent",
+    timeline: "2 days",
+    metaTitle: "Nashville Hail Damage Roof Restoration | ProTech Roofing",
+    metaDescription:
+      "ProTech restored a hail-damaged roof in Franklin, TN with impact-resistant shingles. Full insurance claim handled. See the project details.",
+  },
+  {
+    id: 14,
+    slug: "charleston-wv-metal-roof-install",
+    title: "Standing Seam Metal Roof Installation in Charleston, WV",
+    city: "Charleston",
+    state: "WV",
+    serviceType: "roof-replacement",
+    description:
+      "This Kanawha Valley homeowner was tired of dealing with recurring ice dams and shingle damage every winter. Their 22-year-old three-tab shingle roof had been patched multiple times and was past its useful life. ProTech Roofing installed a new 24-gauge standing seam metal roof system with concealed fasteners, proper ice-and-water shield on all eaves and valleys, and improved ridge ventilation to eliminate moisture buildup. The metal roof's slick surface prevents snow and ice accumulation, solving the ice dam problem permanently. The crew completed the entire project in three days despite the steep roof pitch. The homeowner now enjoys reduced heating costs, zero maintenance, and a roof that will last 50-plus years.",
+    beforeImage: "/images/projects/project-14-before.jpg",
+    afterImage: "/images/projects/project-14-after.jpg",
+    images: [
+      "/images/projects/project-14-before.jpg",
+      "/images/projects/project-14-progress-1.jpg",
+      "/images/projects/project-14-progress-2.jpg",
+      "/images/projects/project-14-after.jpg",
+    ],
+    materials: "24-Gauge Standing Seam Metal Panels, Grace Ice & Water Shield HT, Balanced Ridge Ventilation System, Drip Edge and Snow Guards",
+    timeline: "3 days",
+    metaTitle: "Charleston WV Metal Roof Installation | ProTech Roofing",
+    metaDescription:
+      "ProTech installed a standing seam metal roof in Charleston, WV to eliminate ice dams. 50-year lifespan. See the transformation.",
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
