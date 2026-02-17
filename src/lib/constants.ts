@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://protechroof.net',
   description:
-    'Expert roofing services across Florida, Texas, Kentucky, and Ohio. Licensed, insured, and rated 4.9 stars.',
+    'Expert roofing services across 14 states on the East Coast and beyond. Licensed, insured, and rated 4.9 stars.',
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   reviewCount: 500,
   yearsExperience: '20+',
   roofsInstalled: '1,000+',
-  statesLicensed: '7+',
+  statesLicensed: '14',
 } as const;
 
 export const NAV_ITEMS = [

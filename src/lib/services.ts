@@ -85,7 +85,7 @@ const services: Service[] = [
       },
       {
         question:
-          "What is the best roofing material for hot climates like Florida and Texas?",
+          "What is the best roofing material for hot climates like Florida and Georgia?",
         answer:
           "For hot climates, reflective metal roofing and cool-roof-rated architectural shingles perform best by reflecting solar heat and reducing attic temperatures. Concrete tile is another excellent option for heat resistance. These materials can lower cooling costs by 10 to 25 percent compared to standard dark shingles.",
       },
