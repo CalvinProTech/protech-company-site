@@ -28,7 +28,8 @@ export default function ContactForm() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      lastName: '',
       phone: '',
       email: '',
       message: '',
@@ -99,15 +100,26 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* Name */}
-      <Input
-        label="Your Name"
-        required
-        placeholder="John Smith"
-        error={errors.name?.message}
-        disabled={isSubmitting}
-        {...register('name')}
-      />
+      {/* First & Last Name */}
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Input
+          label="First Name"
+          required
+          placeholder="John"
+          error={errors.firstName?.message}
+          disabled={isSubmitting}
+          {...register('firstName')}
+        />
+
+        <Input
+          label="Last Name"
+          required
+          placeholder="Smith"
+          error={errors.lastName?.message}
+          disabled={isSubmitting}
+          {...register('lastName')}
+        />
+      </div>
 
       {/* Phone & Email */}
       <div className="grid gap-5 sm:grid-cols-2">

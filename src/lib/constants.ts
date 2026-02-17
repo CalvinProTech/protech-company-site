@@ -3,9 +3,9 @@ export const SITE_CONFIG = {
   url: 'https://protechroof.net',
   description:
     'Expert roofing services across Florida, Texas, Kentucky, and Ohio. Licensed, insured, and rated 4.9 stars.',
-  defaultPhone: '1-800-555-ROOF',
-  defaultPhoneRaw: '18005557663',
-  email: 'info@protechroof.net',
+  defaultPhone: '1-866-308-2640',
+  defaultPhoneRaw: '18663082640',
+  email: 'sales@protechroof.net',
   googleRating: 4.9,
   reviewCount: 500,
   yearsExperience: '20+',

@@ -58,12 +58,14 @@ export default function EstimateForm() {
   } = useForm<EstimateFormData>({
     resolver: zodResolver(estimateFormSchema),
     defaultValues: {
-      fullName: '',
+      firstName: '',
+      lastName: '',
       phone: '',
       email: '',
       streetAddress: '',
       city: '',
       state: undefined,
+      zip: '',
       serviceNeeded: undefined,
       howDidYouHear: '',
       additionalDetails: '',
@@ -134,15 +136,26 @@ export default function EstimateForm() {
         </div>
       )}
 
-      {/* Full Name */}
-      <Input
-        label="Full Name"
-        required
-        placeholder="John Smith"
-        error={errors.fullName?.message}
-        disabled={isSubmitting}
-        {...register('fullName')}
-      />
+      {/* First & Last Name */}
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Input
+          label="First Name"
+          required
+          placeholder="John"
+          error={errors.firstName?.message}
+          disabled={isSubmitting}
+          {...register('firstName')}
+        />
+
+        <Input
+          label="Last Name"
+          required
+          placeholder="Smith"
+          error={errors.lastName?.message}
+          disabled={isSubmitting}
+          {...register('lastName')}
+        />
+      </div>
 
       {/* Phone & Email */}
       <div className="grid gap-5 sm:grid-cols-2">
@@ -177,8 +190,8 @@ export default function EstimateForm() {
         {...register('streetAddress')}
       />
 
-      {/* City & State */}
-      <div className="grid gap-5 sm:grid-cols-2">
+      {/* City, State & ZIP */}
+      <div className="grid gap-5 sm:grid-cols-3">
         <Input
           label="City"
           required
@@ -196,6 +209,14 @@ export default function EstimateForm() {
           error={errors.state?.message}
           disabled={isSubmitting}
           {...register('state')}
+        />
+
+        <Input
+          label="ZIP Code"
+          placeholder="33601"
+          error={errors.zip?.message}
+          disabled={isSubmitting}
+          {...register('zip')}
         />
       </div>
 

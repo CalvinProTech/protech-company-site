@@ -57,15 +57,29 @@ export function LocationMap() {
           </p>
         </div>
 
-        {/* Map placeholder */}
-        <div className="mx-auto mb-12 flex h-64 max-w-4xl items-center justify-center rounded-xl bg-primary-100 md:h-80">
-          <div className="text-center">
-            <MapPin className="mx-auto h-12 w-12 text-primary-400" />
-            <p className="mt-2 text-primary-600">
-              Interactive map coming soon
-            </p>
+        {/* Google Maps Embed */}
+        {process.env.GOOGLE_MAPS_API_KEY ? (
+          <div className="mx-auto mb-12 max-w-4xl overflow-hidden rounded-xl">
+            <iframe
+              title="ProTech Roofing service areas"
+              src={`https://www.google.com/maps/embed/v1/view?key=${process.env.GOOGLE_MAPS_API_KEY}&center=33,-87&zoom=5&maptype=roadmap`}
+              className="h-64 w-full md:h-80"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
-        </div>
+        ) : (
+          <div className="mx-auto mb-12 flex h-64 max-w-4xl items-center justify-center rounded-xl bg-primary-100 md:h-80">
+            <div className="text-center">
+              <MapPin className="mx-auto h-12 w-12 text-primary-400" />
+              <p className="mt-2 text-primary-600">
+                Interactive map coming soon
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* City links grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

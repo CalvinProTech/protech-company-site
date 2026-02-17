@@ -70,8 +70,8 @@ export default function HomePage() {
         subtitle="Licensed roofing contractor serving FL, TX, KY & OH. 20+ years experience, 1,000+ roofs installed, 4.9-star rating."
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
-          text: 'Call (800) 555-ROOF',
-          href: 'tel:18005557663',
+          text: 'Call (866) 308-2640',
+          href: 'tel:18663082640',
         }}
         showTrustBadges={true}
       />

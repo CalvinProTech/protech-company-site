@@ -34,7 +34,7 @@ export default function LocationsPage() {
         heading="Find Your Local ProTech Roofers"
         subtitle="Licensed and insured roofing professionals serving communities across Florida, Texas, Kentucky, and Ohio. Select your area to get started."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{ text: 'Call Now', href: 'tel:18005557663' }}
+        secondaryCTA={{ text: 'Call Now', href: 'tel:18663082640' }}
         backgroundImage="/images/hero/locations.jpg"
       />
 

@@ -52,7 +52,7 @@ Analytics (Google Analytics + CallRail) are loaded via dynamic import in a `'use
 ### Forms & API
 
 - Forms use react-hook-form with zod v4 validation (schemas in `src/lib/schemas.ts`)
-- API routes: `POST /api/contact`, `POST /api/estimate` — submit to Salesforce Web-to-Lead
+- API routes: `POST /api/contact`, `POST /api/estimate` — submit to PTR Lead API
 - Non-blocking analytics logging via Next.js `after()` hook
 
 ## Conventions
@@ -95,10 +95,11 @@ Copy `.env.local.example` to `.env.local`. Required for full functionality:
 | `NEXT_PUBLIC_GA_ID` | Google Analytics |
 | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager |
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
-| `SALESFORCE_ENDPOINT` | Web-to-Lead endpoint |
-| `SALESFORCE_OID` | Salesforce org ID |
+| `PTR_LEAD_API_URL` | PTR Lead API endpoint |
+| `PTR_LEAD_API_KEY` | PTR Lead API key |
 | `CALLRAIL_ACCOUNT_ID` | CallRail tracking |
 | `GOOGLE_MAPS_API_KEY` | Google Maps embeds |
+| `RESEND_API_KEY` | Resend email service |
 
 ## Known Gotchas
 

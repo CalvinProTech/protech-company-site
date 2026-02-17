@@ -27,7 +27,7 @@ const locations: Location[] = [
     citySlug: "tampa",
     lat: 27.9506,
     lng: -82.4572,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "St. Petersburg",
@@ -53,7 +53,7 @@ const locations: Location[] = [
     citySlug: "orlando",
     lat: 28.5383,
     lng: -81.3792,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Kissimmee",
@@ -79,7 +79,7 @@ const locations: Location[] = [
     citySlug: "miami",
     lat: 25.7617,
     lng: -80.1918,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Coral Gables",
@@ -105,7 +105,7 @@ const locations: Location[] = [
     citySlug: "jacksonville",
     lat: 30.3322,
     lng: -81.6557,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "St. Augustine",
@@ -131,7 +131,7 @@ const locations: Location[] = [
     citySlug: "fort-lauderdale",
     lat: 26.1224,
     lng: -80.1373,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Pompano Beach",
@@ -160,7 +160,7 @@ const locations: Location[] = [
     citySlug: "dallas",
     lat: 32.7767,
     lng: -96.797,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Plano",
@@ -186,7 +186,7 @@ const locations: Location[] = [
     citySlug: "houston",
     lat: 29.7604,
     lng: -95.3698,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Sugar Land",
@@ -212,7 +212,7 @@ const locations: Location[] = [
     citySlug: "san-antonio",
     lat: 29.4241,
     lng: -98.4936,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "New Braunfels",
@@ -239,7 +239,7 @@ const locations: Location[] = [
     citySlug: "austin",
     lat: 30.2672,
     lng: -97.7431,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Round Rock",
@@ -265,7 +265,7 @@ const locations: Location[] = [
     citySlug: "fort-worth",
     lat: 32.7555,
     lng: -97.3308,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Weatherford",
@@ -294,7 +294,7 @@ const locations: Location[] = [
     citySlug: "louisville",
     lat: 38.2527,
     lng: -85.7585,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Jeffersontown",
@@ -321,7 +321,7 @@ const locations: Location[] = [
     citySlug: "lexington",
     lat: 38.0406,
     lng: -84.5037,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Georgetown",
@@ -350,7 +350,7 @@ const locations: Location[] = [
     citySlug: "columbus",
     lat: 39.9612,
     lng: -82.9988,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Dublin",
@@ -377,7 +377,7 @@ const locations: Location[] = [
     citySlug: "cincinnati",
     lat: 39.1031,
     lng: -84.512,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Mason",
@@ -404,7 +404,7 @@ const locations: Location[] = [
     citySlug: "cleveland",
     lat: 41.4993,
     lng: -81.6944,
-    phone: "1-800-555-ROOF",
+    phone: "1-866-308-2640",
     serviceRadius: "50 miles",
     surroundingCities: [
       "Lakewood",

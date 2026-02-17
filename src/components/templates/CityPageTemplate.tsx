@@ -122,38 +122,55 @@ export default function CityPageTemplate({ location }: CityPageTemplateProps) {
             </div>
 
             {/* Contact Sidebar */}
-            <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6 lg:self-start">
-              <h3 className="text-lg font-semibold text-primary-900">
-                {location.city} Office
-              </h3>
-              <div className="mt-4 space-y-3">
-                <a
-                  href={`tel:${phoneDigits}`}
-                  className="flex items-center gap-2 text-neutral-700 transition-colors hover:text-accent-500"
+            <div className="space-y-6 lg:self-start">
+              <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
+                <h3 className="text-lg font-semibold text-primary-900">
+                  {location.city} Office
+                </h3>
+                <div className="mt-4 space-y-3">
+                  <a
+                    href={`tel:${phoneDigits}`}
+                    className="flex items-center gap-2 text-neutral-700 transition-colors hover:text-accent-500"
+                  >
+                    <Phone className="h-5 w-5 shrink-0 text-primary-700" />
+                    <span>{formatPhoneNumber(phoneDigits)}</span>
+                  </a>
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <MapPin className="h-5 w-5 shrink-0 text-primary-700" />
+                    <span>
+                      {location.city}, {location.stateAbbr}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-neutral-700">
+                    <Shield className="h-5 w-5 shrink-0 text-primary-700" />
+                    <span>License: {location.licenseNumber}</span>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-neutral-500">
+                  Service radius: {location.serviceRadius}
+                </p>
+                <Link
+                  href="/free-estimate"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
                 >
-                  <Phone className="h-5 w-5 shrink-0 text-primary-700" />
-                  <span>{formatPhoneNumber(phoneDigits)}</span>
-                </a>
-                <div className="flex items-center gap-2 text-neutral-700">
-                  <MapPin className="h-5 w-5 shrink-0 text-primary-700" />
-                  <span>
-                    {location.city}, {location.stateAbbr}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-neutral-700">
-                  <Shield className="h-5 w-5 shrink-0 text-primary-700" />
-                  <span>License: {location.licenseNumber}</span>
-                </div>
+                  Get a Free Estimate
+                </Link>
               </div>
-              <p className="mt-4 text-sm text-neutral-500">
-                Service radius: {location.serviceRadius}
-              </p>
-              <Link
-                href="/free-estimate"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
-              >
-                Get a Free Estimate
-              </Link>
+
+              {/* City Map */}
+              {process.env.GOOGLE_MAPS_API_KEY && (
+                <div className="overflow-hidden rounded-xl">
+                  <iframe
+                    title={`Map of ${location.city}, ${location.stateAbbr}`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}&q=roofing+${encodeURIComponent(location.city)}+${encodeURIComponent(location.stateAbbr)}&zoom=11`}
+                    className="h-48 w-full"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
