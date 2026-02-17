@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Phone, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -54,10 +55,17 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="shrink-0 text-xl font-bold text-primary-700"
+            className="shrink-0"
             aria-label={`${SITE_CONFIG.name} — Home`}
           >
-            {SITE_CONFIG.name}
+            <Image
+              src="/images/logo.png"
+              alt={SITE_CONFIG.name}
+              width={866}
+              height={290}
+              className="h-12 w-auto lg:h-14"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
