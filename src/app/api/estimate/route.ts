@@ -1,6 +1,7 @@
 import { NextResponse, after } from 'next/server';
 import { estimateFormSchema, type EstimateFormData } from '@/lib/schemas';
 import { sendEstimateConfirmation } from '@/lib/email';
+import { rateLimit } from '@/lib/rate-limit';
 
 // ---------------------------------------------------------------------------
 // POST /api/estimate
@@ -8,6 +9,22 @@ import { sendEstimateConfirmation } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
+    // ------------------------------------------------------------------
+    // Rate limiting
+    // ------------------------------------------------------------------
+
+    const ip =
+      request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+      'unknown';
+    const { allowed } = rateLimit(ip, { limit: 10, windowMs: 60_000 });
+
+    if (!allowed) {
+      return NextResponse.json(
+        { success: false, message: 'Too many requests. Please try again later.' },
+        { status: 429 },
+      );
+    }
+
     const body: unknown = await request.json();
 
     // ------------------------------------------------------------------
@@ -57,10 +74,14 @@ export async function POST(request: Request) {
         });
 
         if (!apiResponse.ok) {
+          const detail =
+            process.env.NODE_ENV === 'development'
+              ? await apiResponse.text()
+              : '';
           console.error(
             '[estimate] PTR Lead API error:',
             apiResponse.status,
-            await apiResponse.text()
+            detail,
           );
         }
       } catch (apiError) {

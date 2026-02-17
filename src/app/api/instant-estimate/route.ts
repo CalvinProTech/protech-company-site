@@ -3,6 +3,7 @@ import { instantEstimateSchema } from '@/lib/schemas';
 import { geocodeAddress, getBuildingInsights } from '@/lib/roof-estimate/google-apis';
 import { calculateCustomerEstimate } from '@/lib/roof-estimate/pricing';
 import { sendEstimateConfirmation } from '@/lib/email';
+import { rateLimit } from '@/lib/rate-limit';
 
 // ---------------------------------------------------------------------------
 // POST /api/instant-estimate
@@ -10,6 +11,22 @@ import { sendEstimateConfirmation } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
+    // ------------------------------------------------------------------
+    // Rate limiting (stricter — Google API costs)
+    // ------------------------------------------------------------------
+
+    const ip =
+      request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+      'unknown';
+    const { allowed } = rateLimit(ip, { limit: 5, windowMs: 60_000 });
+
+    if (!allowed) {
+      return NextResponse.json(
+        { success: false, message: 'Too many requests. Please try again later.' },
+        { status: 429 },
+      );
+    }
+
     const body: unknown = await request.json();
 
     // ------------------------------------------------------------------
@@ -47,51 +64,58 @@ export async function POST(request: Request) {
     }
 
     // ------------------------------------------------------------------
-    // Step 2: Get roof measurements from Solar API
-    // ------------------------------------------------------------------
-
-    const roofData = await getBuildingInsights(geocode.latitude, geocode.longitude);
-
-    // ------------------------------------------------------------------
-    // Step 3: Forward lead to PTR Lead API (before returning result)
+    // Step 2 & 3: Get roof measurements + forward lead in parallel
     // ------------------------------------------------------------------
 
     const apiUrl = process.env.PTR_LEAD_API_URL;
     const apiKey = process.env.PTR_LEAD_API_KEY;
 
-    if (apiUrl && apiKey) {
-      try {
-        const apiResponse = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': apiKey,
-          },
-          body: JSON.stringify({
-            firstName: data.firstName,
-            lastName: data.lastName,
-            phone: data.phone,
-            email: data.email || '',
-            streetAddress: data.address,
-            city: geocode.city,
-            state: geocode.state,
-            zip: geocode.zipCode,
-            serviceType: 'roof-replacement',
-            source: 'instant-estimate',
-          }),
-        });
+    const roofPromise = getBuildingInsights(geocode.latitude, geocode.longitude);
 
-        if (!apiResponse.ok) {
-          console.error(
-            '[instant-estimate] PTR Lead API error:',
-            apiResponse.status,
-            await apiResponse.text(),
-          );
-        }
-      } catch (apiError) {
-        console.error('[instant-estimate] PTR Lead API forwarding failed:', apiError);
-      }
+    const leadPromise =
+      apiUrl && apiKey
+        ? fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-API-Key': apiKey,
+            },
+            body: JSON.stringify({
+              firstName: data.firstName,
+              lastName: data.lastName,
+              phone: data.phone,
+              email: data.email || '',
+              streetAddress: data.address,
+              city: geocode.city,
+              state: geocode.state,
+              zip: geocode.zipCode,
+              serviceType: 'roof-replacement',
+              source: 'instant-estimate',
+            }),
+          })
+        : Promise.resolve(null);
+
+    const [roofResult, leadResult] = await Promise.allSettled([
+      roofPromise,
+      leadPromise,
+    ]);
+
+    // Log PTR Lead API errors
+    if (leadResult.status === 'rejected') {
+      console.error('[instant-estimate] PTR Lead API forwarding failed:', leadResult.reason);
+    } else if (leadResult.value && !leadResult.value.ok) {
+      const detail =
+        process.env.NODE_ENV === 'development'
+          ? await leadResult.value.text()
+          : '';
+      console.error(
+        '[instant-estimate] PTR Lead API error:',
+        leadResult.value.status,
+        detail,
+      );
     }
+
+    const roofData = roofResult.status === 'fulfilled' ? roofResult.value : null;
 
     // ------------------------------------------------------------------
     // If Solar API has no coverage, return error (lead is already captured)

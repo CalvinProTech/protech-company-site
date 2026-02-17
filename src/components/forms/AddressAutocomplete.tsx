@@ -15,52 +15,38 @@ declare global {
   }
 }
 
-let googleMapsLoaded = false;
-let googleMapsLoading = false;
+let loadPromise: Promise<void> | null = null;
 
 function loadGoogleMaps(): Promise<void> {
-  if (googleMapsLoaded) return Promise.resolve();
+  if (loadPromise) return loadPromise;
 
-  return new Promise((resolve, reject) => {
-    if (googleMapsLoading) {
-      // Another instance is already loading — wait for it
-      const check = setInterval(() => {
-        if (googleMapsLoaded) {
-          clearInterval(check);
-          resolve();
-        }
-      }, 100);
-      return;
-    }
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  if (!apiKey) {
+    // No key configured — silently fall back to plain text input
+    loadPromise = Promise.resolve();
+    return loadPromise;
+  }
 
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-    if (!apiKey) {
-      // No key configured — silently fall back to plain text input
-      resolve();
-      return;
-    }
-
-    googleMapsLoading = true;
-
+  loadPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=__googleMapsCallback`;
     script.async = true;
     script.defer = true;
 
     window.__googleMapsCallback = () => {
-      googleMapsLoaded = true;
-      googleMapsLoading = false;
       delete window.__googleMapsCallback;
       resolve();
     };
 
     script.onerror = () => {
-      googleMapsLoading = false;
+      loadPromise = null; // Allow retry on failure
       reject(new Error('Failed to load Google Maps'));
     };
 
     document.head.appendChild(script);
   });
+
+  return loadPromise;
 }
 
 export default function AddressAutocomplete({
@@ -103,6 +89,13 @@ export default function AddressAutocomplete({
 
   useEffect(() => {
     initAutocomplete();
+
+    return () => {
+      if (autocompleteRef.current) {
+        google.maps.event.clearInstanceListeners(autocompleteRef.current);
+        autocompleteRef.current = null;
+      }
+    };
   }, [initAutocomplete]);
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {

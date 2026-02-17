@@ -3,6 +3,15 @@ import { SITE_CONFIG } from '@/lib/constants';
 
 const FROM_EMAIL = 'ProTech Roofing <sales@protechroof.net>';
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 let resendClient: Resend | null = null;
 
 function getResend(): Resend {
@@ -33,7 +42,7 @@ export async function sendContactConfirmation({
     subject: 'We received your message — ProTech Roofing',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-        <h2 style="color: #1e3a5f;">Hi ${firstName},</h2>
+        <h2 style="color: #1e3a5f;">Hi ${escapeHtml(firstName)},</h2>
         <p>Thank you for reaching out to ProTech Roofing! We've received your message and a member of our sales team will be in touch with you shortly.</p>
         <p>If you need immediate assistance, feel free to call us at <strong>${SITE_CONFIG.defaultPhone}</strong>.</p>
         <p>We look forward to helping you with your roofing needs.</p>
@@ -65,7 +74,7 @@ export async function sendEstimateConfirmation({
     subject: 'Your estimate request has been received — ProTech Roofing',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-        <h2 style="color: #1e3a5f;">Hi ${firstName},</h2>
+        <h2 style="color: #1e3a5f;">Hi ${escapeHtml(firstName)},</h2>
         <p>Thank you for requesting a free estimate from ProTech Roofing! We've received your information and a member of our sales team will reach out to schedule your estimate.</p>
         <p>If you need immediate assistance, feel free to call us at <strong>${SITE_CONFIG.defaultPhone}</strong>.</p>
         <p>We look forward to helping you with your roofing project.</p>
