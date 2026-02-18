@@ -369,7 +369,7 @@ const services: Service[] = [
   },
   {
     name: "Gutters & Siding",
-    slug: "gutters-and-siding",
+    slug: "gutters-siding",
     icon: "Layers",
     shortDescription:
       "Complete exterior protection for your home with seamless gutters, gutter guards, and premium siding installation.",

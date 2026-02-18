@@ -84,7 +84,7 @@ const testimonials: Testimonial[] = [
     rating: 4.5,
     quote:
       "Our gutters were overflowing during every rain, causing foundation erosion along the back of our house. ProTech installed seamless 6-inch gutters with gutter guards and regraded the downspout drainage. Before the project, we had standing water within two feet of our foundation after every storm. Now the water channels away properly and we no longer worry about basement flooding. The crew was neat, efficient, and completed the job in one day.",
-    serviceType: "gutters-and-siding",
+    serviceType: "gutters-siding",
     date: "2025-05-30",
   },
   {
@@ -161,7 +161,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     quote:
       "ProTech replaced the aging vinyl siding and gutters on our riverside home at the same time as our roof replacement. Before the project, the old siding was warped and faded, and the gutters were pulling away from the fascia. The transformation was remarkable. They installed James Hardie fiber cement siding and 6-inch seamless gutters with leaf guards. Our home looks brand new and we saved about 12 percent by bundling everything together. The whole project took 5 days and the crew was courteous and thorough.",
-    serviceType: "gutters-and-siding",
+    serviceType: "gutters-siding",
     date: "2025-10-30",
   },
   {
@@ -260,7 +260,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     quote:
       "We needed a complete roof and gutter replacement on our colonial home in Hockessin. ProTech bundled both projects and saved us about 12 percent compared to doing them separately. The crew replaced the roof in two days and installed seamless gutters with leaf guards on the third day. Before the project, our gutters were overflowing and staining the siding. Now everything works perfectly and our home looks brand new from the street.",
-    serviceType: "gutters-and-siding",
+    serviceType: "gutters-siding",
     date: "2025-06-30",
   },
   {

@@ -8,7 +8,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Project Gallery | Before & After Roofing Photos | ProTech Roofing',
     description:
-      'Browse before and after photos of completed roofing projects across Florida, Texas, Kentucky, and Ohio. See the quality of ProTech Roofing workmanship.',
+      'Browse before and after photos of completed roofing projects across 14 states. See the quality of ProTech Roofing workmanship firsthand.',
     path: '/gallery',
   });
 }
