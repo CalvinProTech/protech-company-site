@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import {
   Phone,
-  Shield,
-  Clock,
-  ClipboardCheck,
+  MapPin,
+  UserCheck,
+  Satellite,
   Star,
   CheckCircle,
 } from 'lucide-react';
@@ -15,7 +15,7 @@ import { formatPhoneNumber } from '@/lib/utils';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
-import EstimateForm from '@/components/forms/EstimateForm';
+import InstantEstimateWidget from '@/components/forms/InstantEstimateWidget';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
@@ -33,28 +33,28 @@ const breadcrumbItems = [
 
 const whatToExpectSteps = [
   {
-    icon: ClipboardCheck,
-    title: 'Submit Your Request',
+    icon: MapPin,
+    title: 'Enter Your Address',
     description:
-      'Fill out the form with your contact info and project details. It takes less than 2 minutes.',
+      'Type your home address and select it from the dropdown. We use it to locate your roof via satellite.',
+  },
+  {
+    icon: UserCheck,
+    title: 'Add Your Contact Info',
+    description:
+      'Enter your name, phone, and optional email so we can follow up with a detailed proposal.',
+  },
+  {
+    icon: Satellite,
+    title: 'Instant Satellite Measurement',
+    description:
+      'Our technology measures your roof area from satellite imagery in seconds — no ladder, no appointment needed.',
   },
   {
     icon: Phone,
-    title: 'We Call Within 24 Hours',
+    title: 'Get Your Estimate & Next Steps',
     description:
-      'A project manager contacts you to discuss your needs and schedule a convenient inspection time.',
-  },
-  {
-    icon: Shield,
-    title: 'Free On-Site Inspection',
-    description:
-      'We inspect your roof, document its condition with photos, and answer your questions on the spot.',
-  },
-  {
-    icon: Clock,
-    title: 'Receive Your Detailed Estimate',
-    description:
-      'You get a transparent, itemized estimate with material options, pricing tiers, and timeline. No pressure, no obligation.',
+      'See your estimated cost instantly. Call us to lock in up to 70% in discounts and rebates or schedule a free in-person inspection.',
   },
 ];
 
@@ -71,67 +71,73 @@ export default function FreeEstimatePage() {
         <Breadcrumbs items={breadcrumbItems} />
       </div>
 
-      {/* Page Header */}
+      {/* Hero + Instant Estimate Widget */}
       <section className="bg-primary-800 py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto flex max-w-xl flex-col items-center text-center">
             <h1 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
               Get Your Free Roofing Estimate
             </h1>
             <p className="mt-4 text-lg text-primary-200">
-              No obligation, no pressure. Just honest answers and transparent
-              pricing from a licensed roofing contractor.
+              Enter your address below for an instant satellite-powered
+              estimate. No obligation, no pressure.
             </p>
+            <div className="mt-8 w-full">
+              <InstantEstimateWidget />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content: Two-Column Layout */}
+      {/* Trust Signals */}
       <section className="bg-white py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-5">
-            {/* Left Column: Form (takes 3 of 5 columns on desktop) */}
-            <div className="lg:col-span-3">
-              <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm md:p-8">
-                <h2 className="text-2xl font-bold text-primary-900">
-                  Request Your Free Estimate
-                </h2>
-                <p className="mt-2 text-neutral-600">
-                  Fill out the form below and a project manager will contact you
-                  within 24 hours to schedule your free inspection.
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Left Column: How It Works */}
+            <div>
+              <h2 className="text-2xl font-bold text-primary-900">
+                How It Works
+              </h2>
+              <div className="mt-6 space-y-5">
+                {whatToExpectSteps.map((step, index) => (
+                  <div key={index} className="flex gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100">
+                      <step.icon className="h-5 w-5 text-primary-700" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-primary-900">
+                        {index + 1}. {step.title}
+                      </p>
+                      <p className="mt-0.5 text-sm text-neutral-600">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Phone CTA */}
+              <div className="mt-8 rounded-xl border border-accent-200 bg-accent-50 p-6 text-center">
+                <h3 className="text-lg font-semibold text-primary-900">
+                  Prefer to Talk?
+                </h3>
+                <p className="mt-2 text-sm text-neutral-600">
+                  Call us directly and speak with a roofing expert. We are
+                  available Monday through Friday 7am to 6pm and Saturday 8am
+                  to 2pm.
                 </p>
-                <div className="mt-6">
-                  <EstimateForm />
-                </div>
+                <a
+                  href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
+                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
+                >
+                  <Phone className="h-5 w-5" />
+                  {formatPhoneNumber(SITE_CONFIG.defaultPhoneRaw)}
+                </a>
               </div>
             </div>
 
-            {/* Right Column: Trust Signals (takes 2 of 5 columns on desktop) */}
-            <div className="space-y-8 lg:col-span-2">
-              {/* What to Expect */}
-              <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
-                <h3 className="text-lg font-semibold text-primary-900">
-                  What to Expect
-                </h3>
-                <div className="mt-4 space-y-5">
-                  {whatToExpectSteps.map((step, index) => (
-                    <div key={index} className="flex gap-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100">
-                        <step.icon className="h-5 w-5 text-primary-700" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-primary-900">
-                          {step.title}
-                        </p>
-                        <p className="mt-0.5 text-sm text-neutral-600">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
+            {/* Right Column: Testimonials + Trust Badges */}
+            <div className="space-y-8">
               {/* Compact Testimonials */}
               <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
                 <h3 className="text-lg font-semibold text-primary-900">
@@ -169,25 +175,6 @@ export default function FreeEstimatePage() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Phone CTA */}
-              <div className="rounded-xl border border-accent-200 bg-accent-50 p-6 text-center">
-                <h3 className="text-lg font-semibold text-primary-900">
-                  Prefer to Talk?
-                </h3>
-                <p className="mt-2 text-sm text-neutral-600">
-                  Call us directly and speak with a roofing expert. We are
-                  available Monday through Friday 7am to 6pm and Saturday 8am to
-                  2pm.
-                </p>
-                <a
-                  href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
-                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
-                >
-                  <Phone className="h-5 w-5" />
-                  {formatPhoneNumber(SITE_CONFIG.defaultPhoneRaw)}
-                </a>
               </div>
 
               {/* Trust Badges */}
