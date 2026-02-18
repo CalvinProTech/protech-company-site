@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, Phone } from 'lucide-react';
 
 import type { Location } from '@/lib/locations';
+import { PILOT_CITY_STATE_SLUGS } from '@/lib/locations';
 import { SITE_CONFIG, SERVICES } from '@/lib/constants';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -65,10 +66,16 @@ export default function StatePageTemplate({
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {cities.map((city) => (
+            {cities.map((city) => {
+              const cityStateSlug = `${city.citySlug}-${city.stateAbbr.toLowerCase()}`;
+              const isPilot = (PILOT_CITY_STATE_SLUGS as readonly string[]).includes(cityStateSlug);
+              const cityHref = isPilot
+                ? `/locations/${cityStateSlug}`
+                : `/locations/${stateSlug}/${city.citySlug}`;
+              return (
               <Link
                 key={city.citySlug}
-                href={`/locations/${stateSlug}/${city.citySlug}`}
+                href={cityHref}
                 className="group rounded-xl border border-neutral-200 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <div className="flex items-start justify-between">
@@ -102,7 +109,8 @@ export default function StatePageTemplate({
                   License: {city.licenseNumber}
                 </p>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

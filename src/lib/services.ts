@@ -438,6 +438,81 @@ const services: Service[] = [
     metaDescription:
       "Seamless gutters, gutter guards, and premium siding installation. Custom on-site fabrication. Bundle with your roof project and save. Free exterior assessment.",
   },
+  {
+    name: 'Insurance Claims',
+    slug: 'insurance-claims',
+    icon: 'FileCheck',
+    shortDescription:
+      'Navigate the roofing insurance claims process with confidence. We handle documentation, adjuster meetings, and supplement negotiation so you pay only your deductible.',
+    longDescription:
+      'Filing a roofing insurance claim can be overwhelming, especially after storm damage has already disrupted your life. ProTech Roofing takes the burden off your shoulders with a dedicated claims team that manages every step of the process. We document damage with drone photography and detailed Xactimate estimates that speak the language adjusters understand. Our specialists attend the adjuster inspection on your behalf, identify damage that is commonly overlooked, and file supplements when the initial payout falls short. The result is a fair settlement that covers the full scope of restoration, often at zero cost beyond your deductible. We have recovered millions of dollars in underpaid claims for homeowners across 14 states.',
+    benefits: [
+      'Dedicated insurance specialists who manage your claim from filing to final payment',
+      'Xactimate-certified damage estimates that match industry-standard pricing',
+      'On-site adjuster meetings to ensure all damage is properly documented',
+      'Supplement negotiation to recover funds when initial payouts are insufficient',
+      'Zero out-of-pocket cost beyond your deductible on approved claims',
+    ],
+    processSteps: [
+      {
+        title: 'Free Damage Inspection',
+        description:
+          'A certified project manager inspects your roof using drone photography and thermal imaging to identify every area of storm damage, even damage invisible from the ground.',
+      },
+      {
+        title: 'Claim Filing & Documentation',
+        description:
+          'We prepare a comprehensive damage report with photos, measurements, and an Xactimate estimate, then assist you in filing your claim with your insurance carrier.',
+      },
+      {
+        title: 'Adjuster Meeting & Negotiation',
+        description:
+          'Our claims specialist meets the insurance adjuster on-site to walk through every line item of damage. If the initial settlement is insufficient, we file detailed supplements to recover the full amount.',
+      },
+      {
+        title: 'Restoration & Closeout',
+        description:
+          'Once the claim is approved, we schedule and complete the restoration using materials that meet or exceed pre-storm specifications. Final documentation is provided for your insurance file.',
+      },
+    ],
+    materials: [
+      'Impact-resistant Class 4 shingles (GAF Armor Shield, Owens Corning WeatherGuard)',
+      'High-wind-rated synthetic underlayment',
+      'Reinforced drip edge and ridge vent components',
+      'Matching flashing and sealant materials',
+      'Replacement decking (CDX plywood and OSB) when required',
+    ],
+    faqs: [
+      {
+        question: 'Does ProTech Roofing charge a fee to help with my insurance claim?',
+        answer:
+          'No. Our insurance claims assistance is included at no additional cost when you choose ProTech Roofing for your restoration. We earn your business by delivering quality workmanship, not by charging consulting fees. You pay only your insurance deductible.',
+      },
+      {
+        question: 'What if my insurance company denies my claim?',
+        answer:
+          'Claim denials are more common than they should be, but they are not the final word. Our team reviews the denial reason, gathers additional evidence such as engineering reports or supplemental photography, and files a formal appeal. We have a strong track record of overturning initial denials.',
+      },
+      {
+        question: 'How long does the insurance claims process take?',
+        answer:
+          'Most claims are settled within 2 to 6 weeks from the date of filing, though complex cases or supplement negotiations can extend the timeline. We keep you updated at every stage and push for the fastest resolution possible without sacrificing the value of your claim.',
+      },
+      {
+        question: 'Can I choose my own contractor or does my insurance company assign one?',
+        answer:
+          'You have the right to choose your own contractor regardless of what your insurance company suggests. Preferred vendor programs benefit the insurer, not the homeowner. By choosing ProTech Roofing, you get an advocate who works for you, not the insurance company.',
+      },
+      {
+        question: 'What is a supplement and why might I need one?',
+        answer:
+          'A supplement is an additional claim filed when the initial insurance payout does not cover the full cost of restoration. Common reasons include hidden damage discovered during tear-off, code-upgrade requirements, or line items the adjuster missed. Our team files supplements with detailed documentation to recover every dollar you are owed.',
+      },
+    ],
+    metaTitle: 'Roofing Insurance Claims Assistance | ProTech Roofing',
+    metaDescription:
+      'Expert insurance claims support for storm-damaged roofs. We handle documentation, adjuster meetings, and supplement negotiation. Zero cost beyond your deductible.',
+  },
 ];
 
 export function getServiceBySlug(slug: string): Service | undefined {

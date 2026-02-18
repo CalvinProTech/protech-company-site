@@ -75,6 +75,40 @@ export function createLocationMetadata(location: LocationForMetadata): Metadata 
   });
 }
 
+interface CityLandingForMetadata {
+  city: string;
+  stateAbbr: string;
+  citySlug: string;
+}
+
+export function createCityLandingMetadata(location: CityLandingForMetadata): Metadata {
+  const cityStateSlug = `${location.citySlug}-${location.stateAbbr.toLowerCase()}`;
+  const title = `Roofing Services in ${location.city}, ${location.stateAbbr} | ProTech Roofing`;
+  const description = `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair, storm damage & insurance claims. Licensed & insured. Get your free estimate today!`;
+
+  return createPageMetadata({
+    title,
+    description,
+    path: `/locations/${cityStateSlug}`,
+    image: `/images/locations/${location.citySlug}-og.jpg`,
+  });
+}
+
+interface CityServiceForMetadata {
+  cityStateSlug: string;
+  serviceSlug: string;
+  metaTitle: string;
+  metaDescription: string;
+}
+
+export function createCityServiceMetadata(data: CityServiceForMetadata): Metadata {
+  return createPageMetadata({
+    title: data.metaTitle,
+    description: data.metaDescription,
+    path: `/locations/${data.cityStateSlug}/${data.serviceSlug}`,
+  });
+}
+
 interface ServiceForMetadata {
   name: string;
   slug: string;

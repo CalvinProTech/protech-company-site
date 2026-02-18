@@ -6,8 +6,8 @@ export const SITE_CONFIG = {
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
-  googleRating: 4.9,
-  reviewCount: 500,
+  googleRating: 5.0,
+  reviewCount: 100,
   yearsExperience: '20+',
   roofsInstalled: '1,000+',
   statesLicensed: '14',
@@ -33,4 +33,5 @@ export const SERVICES = [
   },
   { name: 'Roof Inspection', slug: 'roof-inspection', icon: 'Search' },
   { name: 'Gutters & Siding', slug: 'gutters-siding', icon: 'Droplets' },
+  { name: 'Insurance Claims', slug: 'insurance-claims', icon: 'FileCheck' },
 ] as const;
