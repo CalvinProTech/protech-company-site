@@ -78,7 +78,7 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
         </div>
 
         <div className="relative">
-          <div className="min-h-[250px] overflow-hidden">
+          <div className="min-h-[250px] overflow-hidden px-12 md:px-16">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={current}
@@ -109,14 +109,14 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
           {/* Prev/Next buttons */}
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-x-2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-colors hover:bg-neutral-100"
+            className="absolute left-0 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition-colors hover:bg-neutral-100 md:h-12 md:w-12"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-5 w-5 text-primary-700" />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-colors hover:bg-neutral-100"
+            className="absolute right-0 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition-colors hover:bg-neutral-100 md:h-12 md:w-12"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-5 w-5 text-primary-700" />
