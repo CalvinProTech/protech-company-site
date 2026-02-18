@@ -30,6 +30,7 @@ function AnimatedPrice({ target }: { target: number }) {
   useEffect(() => {
     const duration = 1500;
     const startTime = performance.now();
+    let frameId: number;
 
     function tick(now: number) {
       const elapsed = now - startTime;
@@ -39,11 +40,13 @@ function AnimatedPrice({ target }: { target: number }) {
       setCurrent(Math.round(target * eased));
 
       if (progress < 1) {
-        requestAnimationFrame(tick);
+        frameId = requestAnimationFrame(tick);
       }
     }
 
-    requestAnimationFrame(tick);
+    frameId = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(frameId);
   }, [target]);
 
   return (
@@ -71,6 +74,16 @@ function LoadingDots() {
     </span>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Transition config
+// ---------------------------------------------------------------------------
+
+const slideVariants = {
+  enter: { opacity: 0, y: 16 },
+  center: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -16 },
+};
 
 // ---------------------------------------------------------------------------
 // Widget
@@ -150,16 +163,6 @@ export default function InstantEstimateWidget() {
       setStep('error');
     }
   }
-
-  // -----------------------------------------------------------------------
-  // Transition config
-  // -----------------------------------------------------------------------
-
-  const slideVariants = {
-    enter: { opacity: 0, y: 16 },
-    center: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -16 },
-  };
 
   // -----------------------------------------------------------------------
   // Render

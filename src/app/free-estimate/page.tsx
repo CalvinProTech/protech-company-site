@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Free Roofing Estimate | ProTech Roofing',
     description:
-      'Get a free, no-obligation roofing estimate from ProTech Roofing. Licensed in FL, TX, KY, and OH. We respond within 24 hours. Fill out our form or call today.',
+      'Get a free, no-obligation roofing estimate from ProTech Roofing. Licensed across 14 states. We respond within 24 hours. Fill out our form or call today.',
     path: '/free-estimate',
   });
 }

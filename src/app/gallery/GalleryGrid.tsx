@@ -16,7 +16,7 @@ const serviceTypeLabels: Record<string, string> = {
   'storm-damage': 'Storm Damage',
   'commercial-roofing': 'Commercial Roofing',
   'roof-repair': 'Roof Repair',
-  'gutters-and-siding': 'Gutters & Siding',
+  'gutters-siding': 'Gutters & Siding',
 };
 
 function getServiceLabel(serviceType: string): string {

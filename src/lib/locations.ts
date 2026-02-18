@@ -43,7 +43,7 @@ const locations: Location[] = [
       "Tampa's top-rated roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Get your free estimate today.",
     headline: "Protect Your Home with Tampa's Most Trusted Roofers",
     intro:
-      "Tampa homeowners face unique roofing challenges, from intense summer storms to year-round UV exposure that degrades shingles faster than the national average. ProTech Roofing has served the Tampa Bay area for over a decade, completing more than 2,000 residential and commercial projects. Our crews understand the local building codes, HOA requirements, and insurance processes that keep your project on track. Whether you need a full replacement or emergency leak repair, we deliver lasting results backed by our lifetime workmanship warranty.",
+      "Tampa homeowners face unique roofing challenges, from intense summer storms to year-round UV exposure that degrades shingles faster than the national average. ProTech Roofing has served the Tampa Bay area for over a decade, completing more than 1,000 residential and commercial projects. Our crews understand the local building codes, HOA requirements, and insurance processes that keep your project on track. Whether you need a full replacement or emergency leak repair, we deliver lasting results backed by our lifetime workmanship warranty.",
   },
   {
     state: "Florida",

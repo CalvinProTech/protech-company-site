@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Contact Us | ProTech Roofing',
     description:
-      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving FL, TX, KY, and OH. We respond within 24 hours.',
+      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving 14 states. We respond within 24 hours.',
     path: '/contact',
   });
 }

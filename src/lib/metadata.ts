@@ -59,6 +59,7 @@ interface LocationForMetadata {
   city: string;
   state: string;
   stateAbbr: string;
+  stateSlug: string;
   citySlug: string;
 }
 
@@ -69,7 +70,7 @@ export function createLocationMetadata(location: LocationForMetadata): Metadata 
   return createPageMetadata({
     title,
     description,
-    path: `/locations/${location.citySlug}`,
+    path: `/locations/${location.stateSlug}/${location.citySlug}`,
     image: `/images/locations/${location.citySlug}-og.jpg`,
   });
 }

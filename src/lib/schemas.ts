@@ -30,13 +30,17 @@ export const estimateFormSchema = z.object({
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
-    .regex(/[\d]{10,}/, 'Please enter a valid phone number'),
+    .regex(
+      /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+      'Please enter a valid US phone number',
+    ),
   email: z
     .string()
     .email('Please enter a valid email address'),
   streetAddress: z
     .string()
-    .min(5, 'Street address must be at least 5 characters'),
+    .min(5, 'Street address must be at least 5 characters')
+    .max(200, 'Street address is too long'),
   city: z
     .string()
     .min(2, 'City must be at least 2 characters'),
@@ -69,7 +73,10 @@ export const contactFormSchema = z.object({
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
-    .regex(/[\d]{10,}/, 'Please enter a valid phone number'),
+    .regex(
+      /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+      'Please enter a valid US phone number',
+    ),
   email: z
     .string()
     .email('Please enter a valid email address'),
@@ -85,13 +92,16 @@ export type ContactFormData = z.infer<typeof contactFormSchema>;
 // ---------------------------------------------------------------------------
 
 export const instantEstimateSchema = z.object({
-  address: z.string().min(5, 'Please enter a valid address'),
+  address: z.string().min(5, 'Please enter a valid address').max(200, 'Address is too long'),
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
-    .regex(/[\d]{10,}/, 'Please enter a valid phone number'),
+    .regex(
+      /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+      'Please enter a valid US phone number',
+    ),
   email: z
     .string()
     .email('Please enter a valid email')

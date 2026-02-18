@@ -183,7 +183,7 @@ const projects: Project[] = [
     title: "Complete Siding and Gutter Replacement in Cleveland",
     city: "Cleveland",
     state: "OH",
-    serviceType: "gutters-and-siding",
+    serviceType: "gutters-siding",
     description:
       "A Cleveland homeowner in the Lakewood area needed a full exterior overhaul after years of lake-effect weather had deteriorated the original vinyl siding and corroded the sectional aluminum gutters. The existing siding was warped, faded, and allowing moisture behind the wall sheathing, while the gutters leaked at every seam and had pulled away from the fascia in multiple locations. ProTech Roofing removed all existing siding and gutters, repaired areas of damaged wall sheathing and fascia board, and installed James Hardie HardiePlank fiber cement siding with a factory-applied ColorPlus finish. New 6-inch seamless aluminum gutters were custom-fabricated on-site with LeafFilter gutter guards to handle the heavy debris from surrounding mature oak trees. The project transformed the home's appearance and eliminated all water intrusion issues that had plagued the owner for years.",
     beforeImage: "/images/projects/project-8-before.jpg",

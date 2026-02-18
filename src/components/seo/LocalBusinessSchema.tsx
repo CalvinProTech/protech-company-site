@@ -5,6 +5,7 @@ interface LocationData {
   city: string;
   state: string;
   stateAbbr: string;
+  stateSlug: string;
   lat: number;
   lng: number;
   phone: string;
@@ -90,9 +91,9 @@ export default function LocalBusinessSchema({
     const locationSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      '@id': `${SITE_CONFIG.url}/locations/${location.citySlug}`,
+      '@id': `${SITE_CONFIG.url}/locations/${location.stateSlug}/${location.citySlug}`,
       name: 'ProTech Roofing',
-      url: `${SITE_CONFIG.url}/locations/${location.citySlug}`,
+      url: `${SITE_CONFIG.url}/locations/${location.stateSlug}/${location.citySlug}`,
       logo: `${SITE_CONFIG.url}/images/logo.png`,
       image: `${SITE_CONFIG.url}/images/locations/${location.citySlug}.jpg`,
       description: `ProTech Roofing provides expert roofing services in ${location.city}, ${location.stateAbbr}. Licensed, insured, and rated 4.9 stars.`,

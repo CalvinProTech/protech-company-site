@@ -3,7 +3,7 @@ import { createServiceMetadata } from '@/lib/metadata';
 import ServicePageTemplate from '@/components/templates/ServicePageTemplate';
 import { notFound } from 'next/navigation';
 
-const service = getServiceBySlug('gutters-and-siding');
+const service = getServiceBySlug('gutters-siding');
 
 export function generateMetadata() {
   if (!service) return {};
