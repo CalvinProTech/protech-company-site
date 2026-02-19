@@ -36,4 +36,5 @@ export interface InstantEstimateResponse {
   success: boolean;
   data?: InstantEstimateResult;
   message?: string;
+  emailSent?: boolean;
 }

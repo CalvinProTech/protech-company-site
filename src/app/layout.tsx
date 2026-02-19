@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MobileBottomBar from '@/components/layout/MobileBottomBar';
 import AnalyticsProvider from '@/components/analytics/AnalyticsProvider';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,6 +47,7 @@ export default function RootLayout({
         <Footer />
         <MobileBottomBar />
         <AnalyticsProvider />
+        <Analytics />
       </body>
     </html>
   );

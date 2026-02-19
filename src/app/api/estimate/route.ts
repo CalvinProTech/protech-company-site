@@ -1,6 +1,6 @@
 import { NextResponse, after } from 'next/server';
 import { estimateFormSchema, type EstimateFormData } from '@/lib/schemas';
-import { sendEstimateConfirmation } from '@/lib/email';
+import { sendEstimateConfirmation, isEmailConfigured } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
 
 // ---------------------------------------------------------------------------
@@ -94,35 +94,45 @@ export async function POST(request: Request) {
     }
 
     // ------------------------------------------------------------------
+    // Send confirmation email (before response so it completes on Vercel)
+    // ------------------------------------------------------------------
+
+    let emailSent = false;
+
+    if (isEmailConfigured()) {
+      try {
+        await sendEstimateConfirmation({
+          firstName: data.firstName,
+          email: data.email,
+        });
+        emailSent = true;
+        console.log('[estimate] Confirmation email sent to:', data.email);
+      } catch (emailError) {
+        console.error('[estimate] Failed to send confirmation email:', emailError);
+      }
+    }
+
+    // ------------------------------------------------------------------
     // Non-blocking analytics logging via after()
     // ------------------------------------------------------------------
 
-    after(async () => {
+    after(() => {
       console.log('[estimate] Submission received:', {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
         state: data.state,
         serviceNeeded: data.serviceNeeded,
+        emailSent,
         timestamp: new Date().toISOString(),
       });
-
-      try {
-        await sendEstimateConfirmation({
-          firstName: data.firstName,
-          email: data.email,
-        });
-        console.log('[estimate] Confirmation email sent to:', data.email);
-      } catch (emailError) {
-        console.error('[estimate] Failed to send confirmation email:', emailError);
-      }
     });
 
     // ------------------------------------------------------------------
     // Return success
     // ------------------------------------------------------------------
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true, emailSent }, { status: 200 });
   } catch (error) {
     console.error('[estimate] Unexpected error:', error);
 

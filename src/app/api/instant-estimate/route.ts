@@ -2,7 +2,7 @@ import { NextResponse, after } from 'next/server';
 import { instantEstimateSchema } from '@/lib/schemas';
 import { geocodeAddress, getBuildingInsights } from '@/lib/roof-estimate/google-apis';
 import { calculateCustomerEstimate } from '@/lib/roof-estimate/pricing';
-import { sendEstimateConfirmation } from '@/lib/email';
+import { sendEstimateConfirmation, isEmailConfigured } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
 
 // ---------------------------------------------------------------------------
@@ -139,10 +139,32 @@ export async function POST(request: Request) {
     const estimatePrice = calculateCustomerEstimate(roofData.roofAreaSqFt);
 
     // ------------------------------------------------------------------
-    // Non-blocking: log + send confirmation email
+    // Send confirmation email (before response so it completes on Vercel)
     // ------------------------------------------------------------------
 
-    after(async () => {
+    let emailSent = false;
+
+    if (data.email && isEmailConfigured()) {
+      try {
+        await sendEstimateConfirmation({
+          firstName: data.firstName,
+          email: data.email,
+        });
+        emailSent = true;
+        console.log('[instant-estimate] Confirmation email sent to:', data.email);
+      } catch (emailError) {
+        console.error(
+          '[instant-estimate] Failed to send confirmation email:',
+          emailError,
+        );
+      }
+    }
+
+    // ------------------------------------------------------------------
+    // Non-blocking analytics logging via after()
+    // ------------------------------------------------------------------
+
+    after(() => {
       console.log('[instant-estimate] Submission received:', {
         firstName: data.firstName,
         lastName: data.lastName,
@@ -150,23 +172,9 @@ export async function POST(request: Request) {
         address: data.address,
         roofAreaSqFt: roofData.roofAreaSqFt,
         estimatePrice,
+        emailSent,
         timestamp: new Date().toISOString(),
       });
-
-      if (data.email) {
-        try {
-          await sendEstimateConfirmation({
-            firstName: data.firstName,
-            email: data.email,
-          });
-          console.log('[instant-estimate] Confirmation email sent to:', data.email);
-        } catch (emailError) {
-          console.error(
-            '[instant-estimate] Failed to send confirmation email:',
-            emailError,
-          );
-        }
-      }
     });
 
     // ------------------------------------------------------------------
@@ -175,6 +183,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
+      emailSent,
       data: {
         roofAreaSqFt: roofData.roofAreaSqFt,
         estimatePrice,
