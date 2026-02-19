@@ -1,6 +1,6 @@
 import { NextResponse, after } from 'next/server';
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas';
-import { sendContactConfirmation } from '@/lib/email';
+import { sendContactConfirmation, isEmailConfigured } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
 
 // ---------------------------------------------------------------------------
@@ -89,33 +89,43 @@ export async function POST(request: Request) {
     }
 
     // ------------------------------------------------------------------
-    // Non-blocking analytics logging via after()
+    // Send confirmation email (before response so it completes on Vercel)
     // ------------------------------------------------------------------
 
-    after(async () => {
-      console.log('[contact] Submission received:', {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        timestamp: new Date().toISOString(),
-      });
+    let emailSent = false;
 
+    if (isEmailConfigured()) {
       try {
         await sendContactConfirmation({
           firstName: data.firstName,
           email: data.email,
         });
+        emailSent = true;
         console.log('[contact] Confirmation email sent to:', data.email);
       } catch (emailError) {
         console.error('[contact] Failed to send confirmation email:', emailError);
       }
+    }
+
+    // ------------------------------------------------------------------
+    // Non-blocking analytics logging via after()
+    // ------------------------------------------------------------------
+
+    after(() => {
+      console.log('[contact] Submission received:', {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        emailSent,
+        timestamp: new Date().toISOString(),
+      });
     });
 
     // ------------------------------------------------------------------
     // Return success
     // ------------------------------------------------------------------
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true, emailSent }, { status: 200 });
   } catch (error) {
     console.error('[contact] Unexpected error:', error);
 

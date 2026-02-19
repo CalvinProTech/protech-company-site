@@ -16,11 +16,13 @@ interface LocationData {
 interface LocalBusinessSchemaProps {
   type: 'homepage' | 'location';
   location?: LocationData;
+  canonicalPath?: string;
 }
 
 export default function LocalBusinessSchema({
   type,
   location,
+  canonicalPath,
 }: LocalBusinessSchemaProps) {
   if (type === 'homepage') {
     const homepageSchema: Record<string, unknown> = {
@@ -35,8 +37,8 @@ export default function LocalBusinessSchema({
       email: SITE_CONFIG.email,
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '500',
+        ratingValue: String(SITE_CONFIG.googleRating),
+        reviewCount: String(SITE_CONFIG.reviewCount),
         bestRating: '5',
         worstRating: '1',
       },
@@ -88,15 +90,18 @@ export default function LocalBusinessSchema({
   }
 
   if (type === 'location' && location) {
+    const locationUrl = canonicalPath
+      ? `${SITE_CONFIG.url}${canonicalPath}`
+      : `${SITE_CONFIG.url}/locations/${location.stateSlug}/${location.citySlug}`;
     const locationSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      '@id': `${SITE_CONFIG.url}/locations/${location.stateSlug}/${location.citySlug}`,
+      '@id': locationUrl,
       name: 'ProTech Roofing',
-      url: `${SITE_CONFIG.url}/locations/${location.stateSlug}/${location.citySlug}`,
+      url: locationUrl,
       logo: `${SITE_CONFIG.url}/images/logo.png`,
       image: `${SITE_CONFIG.url}/images/locations/${location.citySlug}.jpg`,
-      description: `ProTech Roofing provides expert roofing services in ${location.city}, ${location.stateAbbr}. Licensed, insured, and rated 4.9 stars.`,
+      description: `ProTech Roofing provides expert roofing services in ${location.city}, ${location.stateAbbr}. Licensed, insured, and rated ${SITE_CONFIG.googleRating} stars.`,
       telephone: location.phone,
       email: SITE_CONFIG.email,
       address: {
@@ -121,8 +126,8 @@ export default function LocalBusinessSchema({
       },
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '500',
+        ratingValue: String(SITE_CONFIG.googleRating),
+        reviewCount: String(SITE_CONFIG.reviewCount),
         bestRating: '5',
         worstRating: '1',
       },
@@ -191,6 +196,13 @@ export default function LocalBusinessSchema({
             itemOffered: {
               '@type': 'Service',
               name: 'Gutters & Siding',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Insurance Claims',
             },
           },
         ],

@@ -235,6 +235,32 @@ export default function FinancingPage() {
         </div>
       </section>
 
+      {/* Who Qualifies */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl font-bold text-primary-900 md:text-4xl">
+            Who Qualifies for Financing?
+          </h2>
+          <p className="mt-4 text-center text-lg text-neutral-600">
+            Most homeowners qualify. Here is what you need to get started.
+          </p>
+          <ul className="mt-10 space-y-4">
+            {[
+              'You are the homeowner or authorized property owner',
+              'Valid government-issued photo ID',
+              'Proof of income (pay stubs, tax returns, or bank statements)',
+              'Credit score of 580 or higher (options available for most credit profiles)',
+              `Property located in one of our ${SITE_CONFIG.statesLicensed} service states`,
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <CheckCircle className="mt-0.5 h-6 w-6 shrink-0 text-success" />
+                <span className="text-lg text-neutral-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Financing FAQ */}
       <FAQSection
         heading="Financing Questions"

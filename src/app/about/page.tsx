@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Shield, Award, CheckCircle, Users } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
+import { SITE_CONFIG } from '@/lib/constants';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { CTABanner } from '@/components/sections/CTABanner';
@@ -23,7 +24,7 @@ const stats = [
   { value: '20+', label: 'Years of Experience' },
   { value: '1,000+', label: 'Roofs Completed' },
   { value: '14', label: 'States Served' },
-  { value: '4.9', label: 'Google Rating' },
+  { value: String(SITE_CONFIG.googleRating), label: 'Google Rating' },
 ];
 
 const certifications = [

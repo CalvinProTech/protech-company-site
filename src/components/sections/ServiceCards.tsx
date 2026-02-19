@@ -6,6 +6,7 @@ import {
   Building2,
   Search,
   Droplets,
+  FileCheck,
   ArrowRight,
 } from 'lucide-react';
 import { SERVICES } from '@/lib/constants';
@@ -18,6 +19,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Building2,
   Search,
   Droplets,
+  FileCheck,
 };
 
 const serviceDescriptions: Record<string, string> = {
@@ -33,6 +35,8 @@ const serviceDescriptions: Record<string, string> = {
     'Know your roof\'s condition before problems start. Comprehensive inspections with detailed written reports.',
   'gutters-siding':
     'Complete exterior protection for your home with seamless gutters and durable siding installation.',
+  'insurance-claims':
+    'Navigate the insurance claims process with confidence. We handle documentation, adjuster meetings, and negotiation.',
 };
 
 interface ServiceCardsProps {

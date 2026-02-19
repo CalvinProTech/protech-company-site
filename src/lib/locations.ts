@@ -1016,3 +1016,20 @@ export function getAllStates(): {
 export function getAllLocations(): Location[] {
   return locations;
 }
+
+export function getCityStateSlug(location: Location): string {
+  return `${location.citySlug}-${location.stateAbbr.toLowerCase()}`;
+}
+
+export function getLocationByCityStateSlug(slug: string): Location | undefined {
+  return locations.find(
+    (loc) => `${loc.citySlug}-${loc.stateAbbr.toLowerCase()}` === slug
+  );
+}
+
+export const PILOT_CITY_STATE_SLUGS = [
+  'tampa-fl',
+  'houston-tx',
+  'louisville-ky',
+  'columbus-oh',
+] as const;

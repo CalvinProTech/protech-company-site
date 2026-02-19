@@ -12,6 +12,7 @@ import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { ProjectGalleryPreview } from '@/components/sections/ProjectGalleryPreview';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
+import { PrimaryMarkets } from '@/components/sections/PrimaryMarkets';
 import { LocationMap } from '@/components/sections/LocationMap';
 import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABanner } from '@/components/sections/CTABanner';
@@ -21,7 +22,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'ProTech Roofing | Licensed Roofing Contractor',
     description:
-      'Expert roofing services across 14 states including FL, GA, TX, TN, WV, VA, PA, NC, SC, and more. Licensed, insured, and rated 4.9 stars. Roof replacement, repair, storm damage, and more. Get your free estimate today.',
+      'Expert roofing services across 14 states including FL, GA, TX, TN, WV, VA, PA, NC, SC, and more. Licensed, insured, and rated 5.0 stars. Roof replacement, repair, storm damage, and more. Get your free estimate today.',
     path: '/',
   });
 }
@@ -91,6 +92,9 @@ export default function HomePage() {
 
       {/* Testimonial Carousel */}
       <TestimonialCarousel testimonials={featuredTestimonials} />
+
+      {/* Primary Markets */}
+      <PrimaryMarkets />
 
       {/* Location Map */}
       <LocationMap />

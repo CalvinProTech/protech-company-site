@@ -20,6 +20,10 @@ export interface Service {
   faqs: FAQ[];
   metaTitle: string;
   metaDescription: string;
+  problemStatement?: string;
+  qualificationChecklist?: string[];
+  callTriggers?: string[];
+  warrantyInfo?: string;
 }
 
 const services: Service[] = [
@@ -95,6 +99,23 @@ const services: Service[] = [
           "No, you do not need to be home. We simply ask that all vehicles are moved from the driveway and that pets are kept indoors or away from the work area. Your project manager will keep you updated with progress photos throughout the day and contact you for the final walkthrough once the job is complete.",
       },
     ],
+    problemStatement:
+      'An aging roof does not just look bad — it drains your wallet through rising energy bills, recurring repairs, and declining home value. Every year you delay replacement, the underlying damage spreads.',
+    qualificationChecklist: [
+      'Your roof is 15 or more years old',
+      'Shingles are curling, cracking, or buckling',
+      'You find granules building up in your gutters',
+      'You have had multiple repairs in the last few years',
+      'Your energy bills keep climbing despite no usage changes',
+    ],
+    callTriggers: [
+      'Visible sagging or dipping in the roofline',
+      'Daylight visible through the attic roof boards',
+      'Storm damage with missing or torn shingles',
+      'Active water leak during or after rain',
+    ],
+    warrantyInfo:
+      'Every ProTech roof replacement includes a lifetime workmanship warranty and manufacturer material warranties ranging from 25 to 50 years depending on the product selected. We stand behind our work for as long as you own your home.',
     metaTitle: "Roof Replacement Services | ProTech Roofing",
     metaDescription:
       "Premium roof replacement with lifetime warranty. GAF, Owens Corning, and metal options. Free inspection, financing available. Get your estimate today.",
@@ -160,6 +181,23 @@ const services: Service[] = [
           "Minor repairs such as replacing a few shingles or resealing flashing typically cost between $300 and $1,000. More extensive repairs involving decking replacement or large sections can range from $1,000 to $4,000. We provide exact pricing before starting work so there are no surprises.",
       },
     ],
+    problemStatement:
+      'A small roof leak may seem minor, but left unaddressed it can escalate into thousands of dollars in water damage, mold remediation, and structural repair within weeks.',
+    qualificationChecklist: [
+      'You have an active leak or water stain on your ceiling',
+      'Shingles are missing, cracked, or blown off',
+      'Water stains are appearing on interior walls or ceilings',
+      'Your roof was recently hit by a storm',
+      'You notice dark streaks or moss growth on the roof surface',
+    ],
+    callTriggers: [
+      'Active water intrusion during rainfall',
+      'Musty or mold smell in the attic or upper floors',
+      'Ceiling paint bubbling or peeling',
+      'Sagging or soft spots on the roof surface',
+    ],
+    warrantyInfo:
+      'All ProTech roof repairs include a written workmanship warranty. The duration depends on the scope of repair, and we use manufacturer-approved materials to ensure lasting results.',
     metaTitle: "Roof Repair Services - Fast Leak Fixes | ProTech Roofing",
     metaDescription:
       "Fast, reliable roof repair to stop leaks and prevent water damage. 24-hour emergency service, thermal imaging diagnostics. Schedule your free assessment now.",
@@ -229,6 +267,22 @@ const services: Service[] = [
           "In most states, insurers cannot raise your premium solely for filing a weather-related claim since the damage was beyond your control. However, a pattern of multiple claims may affect your rates. ProTech Roofing helps ensure your claim is filed correctly the first time to minimize complications.",
       },
     ],
+    problemStatement:
+      'Severe weather can compromise your roof in seconds, but without the right restoration partner the process can drag on for months — leaving your home exposed and your insurance claim underpaid.',
+    qualificationChecklist: [
+      'Your area was recently hit by hail, high winds, or a tornado',
+      'You see visible debris, dents, or missing shingles after a storm',
+      'Your insurance filing deadline is approaching',
+      'You received a claim denial or underpayment from your insurer',
+    ],
+    callTriggers: [
+      'An insurance adjuster visit is scheduled and you need representation',
+      'Your initial claim was denied or underpaid',
+      'You need emergency tarping to prevent further water damage',
+      'You notice interior water damage after a recent storm',
+    ],
+    warrantyInfo:
+      'Storm damage restorations are backed by our lifetime workmanship warranty and manufacturer material warranties. We restore your roof to pre-storm condition or better using upgraded, impact-resistant materials.',
     metaTitle: "Storm Damage Roof Repair & Insurance Claims | ProTech",
     metaDescription:
       "Storm damage specialists handling insurance claims from start to finish. Emergency tarping, drone inspections, and full restoration. Call for immediate help.",
@@ -294,6 +348,23 @@ const services: Service[] = [
           "In many cases, yes. If the existing roof has only one layer and the decking is structurally sound, an overlay can save 25 to 40 percent compared to a full tear-off. However, local codes typically limit the number of layers, and moisture trapped beneath the old roof must be addressed. Our core sampling process determines whether an overlay is viable.",
       },
     ],
+    problemStatement:
+      'A failing commercial roof does not just leak — it disrupts your business operations, damages inventory, creates liability risks, and drives up energy costs. Every day of delay compounds the problem.',
+    qualificationChecklist: [
+      'Your flat roof is 15 or more years old',
+      'You notice ponding water that does not drain within 48 hours',
+      'Energy costs are rising without explanation',
+      'You see bubbling, blistering, or membrane separation',
+      'Your building has a history of recurring leaks',
+    ],
+    callTriggers: [
+      'Active leak during business hours threatening equipment or inventory',
+      'Code violation notice requiring roof upgrades',
+      'Lease renewal requiring a roof condition report',
+      'Planning a building sale or refinance that requires inspection',
+    ],
+    warrantyInfo:
+      'Commercial roof systems include manufacturer warranties up to 30 years on qualifying installations, plus our own workmanship guarantee. Preventive maintenance programs are available to maximize system life.',
     metaTitle: "Commercial Roofing Services - Flat Roof Experts | ProTech",
     metaDescription:
       "Expert commercial roofing for flat roofs, metal systems, and multi-unit properties. TPO, EPDM, and maintenance plans. Minimize downtime. Get a free assessment.",
@@ -363,6 +434,23 @@ const services: Service[] = [
           "Absolutely. A pre-purchase roof inspection can reveal hidden damage that a general home inspector may miss. Knowing the roof's true condition gives you leverage in negotiations and protects you from inheriting expensive problems. Many buyers have saved thousands by negotiating roof repairs or price reductions based on our inspection reports.",
       },
     ],
+    problemStatement:
+      'Hidden roof damage costs homeowners thousands of dollars every year. By the time you notice a leak inside your home, the underlying damage has often been spreading for months.',
+    qualificationChecklist: [
+      'You are buying or selling a home and need a roof condition report',
+      'Your roof is 10 or more years old and has never been inspected',
+      'Your area was recently hit by a storm',
+      'You are preparing for an insurance renewal or policy review',
+      'You see signs of wear visible from the ground',
+    ],
+    callTriggers: [
+      'You notice visible damage from the ground such as missing or lifted shingles',
+      'Your insurance company is requiring a roof inspection',
+      'You are closing on a home purchase and need a fast turnaround',
+      'You want a baseline assessment before storm season',
+    ],
+    warrantyInfo:
+      'Our inspection service includes a detailed written report with condition ratings and repair estimates. If you proceed with recommended repairs through ProTech, the inspection fee is credited toward the project cost.',
     metaTitle: "Roof Inspection Services - Thermal & Drone | ProTech Roofing",
     metaDescription:
       "Comprehensive roof inspections with thermal imaging and drone technology. 42-point evaluation with detailed report. Book your inspection today.",
@@ -434,9 +522,117 @@ const services: Service[] = [
           "Yes, and we strongly recommend it. Bundling these projects saves on setup costs, ensures all exterior components are integrated properly, and means your home is fully protected in one project timeline. Customers who bundle typically save 10 to 15 percent compared to scheduling each project separately.",
       },
     ],
+    problemStatement:
+      'Failed gutters and damaged siding do more than hurt curb appeal — overflowing gutters erode your foundation, and compromised siding lets moisture, pests, and energy loss into your walls.',
+    qualificationChecklist: [
+      'Your gutters overflow during rain or pull away from the fascia',
+      'Exterior paint is peeling, bubbling, or fading unevenly',
+      'You notice wood rot on fascia boards, window frames, or trim',
+      'Ice dams form along your roofline in winter',
+      'Your siding shows cracks, warping, or holes',
+    ],
+    callTriggers: [
+      'Water pooling near your foundation after rain',
+      'Siding panels falling off or hanging loose',
+      'Storm damage to gutters or exterior cladding',
+      'Planning a roof replacement and want to bundle exterior work',
+    ],
+    warrantyInfo:
+      'Gutter installations include a workmanship warranty, and siding projects carry both our workmanship guarantee and manufacturer material warranties up to 50 years depending on the product selected.',
     metaTitle: "Gutters & Siding Installation | ProTech Roofing",
     metaDescription:
       "Seamless gutters, gutter guards, and premium siding installation. Custom on-site fabrication. Bundle with your roof project and save. Free exterior assessment.",
+  },
+  {
+    name: 'Insurance Claims',
+    slug: 'insurance-claims',
+    icon: 'FileCheck',
+    shortDescription:
+      'Navigate the roofing insurance claims process with confidence. We handle documentation, adjuster meetings, and supplement negotiation so you pay only your deductible.',
+    longDescription:
+      'Filing a roofing insurance claim can be overwhelming, especially after storm damage has already disrupted your life. ProTech Roofing takes the burden off your shoulders with a dedicated claims team that manages every step of the process. We document damage with drone photography and detailed Xactimate estimates that speak the language adjusters understand. Our specialists attend the adjuster inspection on your behalf, identify damage that is commonly overlooked, and file supplements when the initial payout falls short. The result is a fair settlement that covers the full scope of restoration, often at zero cost beyond your deductible. We have recovered millions of dollars in underpaid claims for homeowners across 14 states.',
+    benefits: [
+      'Dedicated insurance specialists who manage your claim from filing to final payment',
+      'Xactimate-certified damage estimates that match industry-standard pricing',
+      'On-site adjuster meetings to ensure all damage is properly documented',
+      'Supplement negotiation to recover funds when initial payouts are insufficient',
+      'Zero out-of-pocket cost beyond your deductible on approved claims',
+    ],
+    processSteps: [
+      {
+        title: 'Free Damage Inspection',
+        description:
+          'A certified project manager inspects your roof using drone photography and thermal imaging to identify every area of storm damage, even damage invisible from the ground.',
+      },
+      {
+        title: 'Claim Filing & Documentation',
+        description:
+          'We prepare a comprehensive damage report with photos, measurements, and an Xactimate estimate, then assist you in filing your claim with your insurance carrier.',
+      },
+      {
+        title: 'Adjuster Meeting & Negotiation',
+        description:
+          'Our claims specialist meets the insurance adjuster on-site to walk through every line item of damage. If the initial settlement is insufficient, we file detailed supplements to recover the full amount.',
+      },
+      {
+        title: 'Restoration & Closeout',
+        description:
+          'Once the claim is approved, we schedule and complete the restoration using materials that meet or exceed pre-storm specifications. Final documentation is provided for your insurance file.',
+      },
+    ],
+    materials: [
+      'Impact-resistant Class 4 shingles (GAF Armor Shield, Owens Corning WeatherGuard)',
+      'High-wind-rated synthetic underlayment',
+      'Reinforced drip edge and ridge vent components',
+      'Matching flashing and sealant materials',
+      'Replacement decking (CDX plywood and OSB) when required',
+    ],
+    faqs: [
+      {
+        question: 'Does ProTech Roofing charge a fee to help with my insurance claim?',
+        answer:
+          'No. Our insurance claims assistance is included at no additional cost when you choose ProTech Roofing for your restoration. We earn your business by delivering quality workmanship, not by charging consulting fees. You pay only your insurance deductible.',
+      },
+      {
+        question: 'What if my insurance company denies my claim?',
+        answer:
+          'Claim denials are more common than they should be, but they are not the final word. Our team reviews the denial reason, gathers additional evidence such as engineering reports or supplemental photography, and files a formal appeal. We have a strong track record of overturning initial denials.',
+      },
+      {
+        question: 'How long does the insurance claims process take?',
+        answer:
+          'Most claims are settled within 2 to 6 weeks from the date of filing, though complex cases or supplement negotiations can extend the timeline. We keep you updated at every stage and push for the fastest resolution possible without sacrificing the value of your claim.',
+      },
+      {
+        question: 'Can I choose my own contractor or does my insurance company assign one?',
+        answer:
+          'You have the right to choose your own contractor regardless of what your insurance company suggests. Preferred vendor programs benefit the insurer, not the homeowner. By choosing ProTech Roofing, you get an advocate who works for you, not the insurance company.',
+      },
+      {
+        question: 'What is a supplement and why might I need one?',
+        answer:
+          'A supplement is an additional claim filed when the initial insurance payout does not cover the full cost of restoration. Common reasons include hidden damage discovered during tear-off, code-upgrade requirements, or line items the adjuster missed. Our team files supplements with detailed documentation to recover every dollar you are owed.',
+      },
+    ],
+    problemStatement:
+      'Filing a roofing insurance claim is overwhelming, especially when adjusters undervalue damage and paperwork piles up. Without expert representation, homeowners leave thousands of dollars on the table.',
+    qualificationChecklist: [
+      'Your roof has documented storm damage from hail, wind, or debris',
+      'You filed a claim but received an underpayment or lowball estimate',
+      'Your insurance company denied your claim and you believe the decision was wrong',
+      'You are unsure whether your damage qualifies for a claim',
+    ],
+    callTriggers: [
+      'An insurance adjuster visit is scheduled and you want someone on your side',
+      'You need a supplement filed because the initial payout is insufficient',
+      'Your appeal deadline is approaching after a claim denial',
+      'You received storm damage and do not know where to start',
+    ],
+    warrantyInfo:
+      'Insurance claim restorations include our lifetime workmanship warranty. Materials are restored to pre-storm condition or better, and all work meets manufacturer and local code specifications.',
+    metaTitle: 'Roofing Insurance Claims Assistance | ProTech Roofing',
+    metaDescription:
+      'Expert insurance claims support for storm-damaged roofs. We handle documentation, adjuster meetings, and supplement negotiation. Zero cost beyond your deductible.',
   },
 ];
 

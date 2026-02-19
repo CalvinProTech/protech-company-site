@@ -30,6 +30,26 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      {
+        source: '/locations/florida/tampa',
+        destination: '/locations/tampa-fl',
+        permanent: true,
+      },
+      {
+        source: '/locations/texas/houston',
+        destination: '/locations/houston-tx',
+        permanent: true,
+      },
+      {
+        source: '/locations/kentucky/louisville',
+        destination: '/locations/louisville-ky',
+        permanent: true,
+      },
+      {
+        source: '/locations/ohio/columbus',
+        destination: '/locations/columbus-oh',
+        permanent: true,
+      },
     ];
   },
   async headers() {

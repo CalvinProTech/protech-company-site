@@ -12,6 +12,10 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#39;');
 }
 
+export function isEmailConfigured(): boolean {
+  return Boolean(process.env.RESEND_API_KEY);
+}
+
 let resendClient: Resend | null = null;
 
 function getResend(): Resend {

@@ -1,4 +1,5 @@
 import { Shield, Clock, Award } from 'lucide-react';
+import { SITE_CONFIG } from '@/lib/constants';
 
 const reasons = [
   {
@@ -30,7 +31,7 @@ export function WhyChooseUs() {
             Why Homeowners Choose ProTech
           </h2>
           <p className="mt-4 text-lg text-neutral-600">
-            Trusted by over 1,000 homeowners across America
+            Trusted by over {SITE_CONFIG.roofsInstalled} homeowners across America
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
