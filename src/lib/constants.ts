@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://protechroof.net',
   description:
-    'Expert roofing services across 14 states on the East Coast and beyond. Licensed, insured, and rated 4.9 stars.',
+    'Expert roofing services across 14 states on the East Coast and beyond. Licensed, insured, and rated 5.0 stars.',
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
@@ -11,6 +11,8 @@ export const SITE_CONFIG = {
   yearsExperience: '20+',
   roofsInstalled: '1,000+',
   statesLicensed: '14',
+  cityCount: '45',
+  serviceAreaCount: '45+',
 } as const;
 
 export const NAV_ITEMS = [

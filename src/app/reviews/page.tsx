@@ -8,9 +8,9 @@ import ReviewsContent from './ReviewsContent';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Customer Reviews | 4.9 Star Rating | ProTech Roofing',
+    title: 'Customer Reviews | 5.0 Star Rating | ProTech Roofing',
     description:
-      'Read verified customer reviews for ProTech Roofing. Rated 4.9 stars with 500+ reviews. See what homeowners say about our roofing services across 14 states.',
+      'Read verified customer reviews for ProTech Roofing. Rated 5.0 stars with 100+ reviews. See what homeowners say about our roofing services across 14 states.',
     path: '/reviews',
   });
 }

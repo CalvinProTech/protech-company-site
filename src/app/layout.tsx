@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | ProTech Roofing',
   },
   description:
-    'Expert roof replacement, repair, and storm damage restoration across 14 states. Licensed, insured, and rated 4.9 stars. Get your free estimate today.',
+    'Expert roof replacement, repair, and storm damage restoration across 14 states. Licensed, insured, and rated 5.0 stars. Get your free estimate today.',
   openGraph: {
     type: 'website',
     locale: 'en_US',

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { getAllStates, getLocationsByState } from '@/lib/locations';
+import { SITE_CONFIG } from '@/lib/constants';
 
 interface LocationMapProps {
   showCityLinks?: boolean;
@@ -17,8 +18,8 @@ export function LocationMap({ showCityLinks = true }: LocationMapProps) {
             Service Areas Across America
           </h2>
           <p className="mt-4 text-lg text-neutral-600">
-            Licensed and insured in {states.length} states with 30+ local
-            service areas
+            Licensed and insured in {states.length} states with{' '}
+            {SITE_CONFIG.serviceAreaCount} local service areas
           </p>
         </div>
 

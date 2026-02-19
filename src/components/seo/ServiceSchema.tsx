@@ -25,8 +25,8 @@ export default function ServiceSchema({ service }: ServiceSchemaProps) {
       email: SITE_CONFIG.email,
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '500',
+        ratingValue: String(SITE_CONFIG.googleRating),
+        reviewCount: String(SITE_CONFIG.reviewCount),
         bestRating: '5',
         worstRating: '1',
       },
