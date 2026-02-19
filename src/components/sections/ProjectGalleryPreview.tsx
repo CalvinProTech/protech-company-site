@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { trackProjectView } from '@/lib/analytics';
 
 interface Project {
   slug: string;
@@ -36,6 +39,7 @@ export function ProjectGalleryPreview({ projects }: ProjectGalleryPreviewProps) 
               key={project.slug}
               href={`/gallery/${project.slug}`}
               className="group min-w-[280px] shrink-0 overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg sm:min-w-0"
+              onClick={() => trackProjectView(project.slug, project.city)}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image

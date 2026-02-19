@@ -1,7 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Phone } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
 import { formatPhoneNumber } from '@/lib/utils';
+import { trackCTAClick, trackPhoneClick } from '@/lib/analytics';
 
 interface CTABannerProps {
   heading?: string;
@@ -18,6 +22,8 @@ export function CTABanner({
   ctaText = 'Get Your Free Estimate',
   ctaHref = '/free-estimate',
 }: CTABannerProps) {
+  const pathname = usePathname();
+
   return (
     <section className="bg-primary-800 py-16 md:py-20">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
@@ -29,12 +35,14 @@ export function CTABanner({
           <Link
             href={ctaHref}
             className="inline-flex h-14 items-center justify-center rounded-lg bg-accent-500 px-8 text-lg font-semibold text-white transition-colors hover:bg-accent-600"
+            onClick={() => trackCTAClick(ctaText, pathname, 'cta-banner')}
           >
             {ctaText}
           </Link>
           <a
             href={`tel:${phone}`}
             className="inline-flex items-center gap-2 text-lg font-medium text-white transition-colors hover:text-accent-300"
+            onClick={() => trackPhoneClick('cta-banner', pathname)}
           >
             <Phone className="h-5 w-5" />
             {formatPhoneNumber(phone)}

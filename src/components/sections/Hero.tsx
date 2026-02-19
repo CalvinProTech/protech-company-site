@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { Shield, Star, Award, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SITE_CONFIG } from '@/lib/constants';
+import { trackCTAClick } from '@/lib/analytics';
 
 interface HeroProps {
   heading: string;
@@ -79,6 +80,9 @@ export function Hero({
                   <Link
                     href={primaryCTA.href}
                     className="inline-flex h-14 items-center justify-center rounded-lg bg-accent-500 px-8 text-lg font-semibold text-white transition-colors hover:bg-accent-600"
+                    onClick={() =>
+                      trackCTAClick(primaryCTA.text, window.location.pathname, 'hero')
+                    }
                   >
                     {primaryCTA.text}
                   </Link>
@@ -87,6 +91,9 @@ export function Hero({
                   <Link
                     href={secondaryCTA.href}
                     className="inline-flex h-14 items-center justify-center rounded-lg border-2 border-white px-8 text-lg font-semibold text-white transition-colors hover:bg-white/10"
+                    onClick={() =>
+                      trackCTAClick(secondaryCTA.text, window.location.pathname, 'hero')
+                    }
                   >
                     {secondaryCTA.text}
                   </Link>
@@ -107,7 +114,7 @@ export function Hero({
                   key={badge.label}
                   className="flex items-center gap-2 text-white/90"
                 >
-                  <badge.icon className="h-5 w-5" />
+                  <badge.icon className="h-5 w-5" aria-hidden="true" />
                   <span className="text-sm font-medium">{badge.label}</span>
                 </div>
               ))}

@@ -17,6 +17,7 @@ import { LocationMap } from '@/components/sections/LocationMap';
 import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABanner } from '@/components/sections/CTABanner';
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema';
+import OrganizationSchema from '@/components/seo/OrganizationSchema';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
@@ -65,6 +66,7 @@ export default function HomePage() {
     <>
       {/* Structured Data */}
       <LocalBusinessSchema type="homepage" />
+      <OrganizationSchema />
 
       {/* Hero Section */}
       <Hero

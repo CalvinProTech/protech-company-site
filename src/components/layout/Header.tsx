@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Phone, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants';
+import { trackPhoneClick, trackCTAClick } from '@/lib/analytics';
 import MobileMenu from './MobileMenu';
 
 export default function Header() {
@@ -101,6 +102,7 @@ export default function Header() {
             <a
               href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
               className="text-sm font-semibold text-accent-500 transition-colors hover:text-accent-600"
+              onClick={() => trackPhoneClick('header', pathname)}
             >
               {SITE_CONFIG.defaultPhone}
             </a>
@@ -108,6 +110,9 @@ export default function Header() {
               href="/free-estimate"
               className="inline-flex items-center justify-center rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
               onMouseEnter={() => router.prefetch('/free-estimate')}
+              onClick={() =>
+                trackCTAClick('Get Free Estimate', pathname, 'header')
+              }
             >
               Get Free Estimate
             </Link>
@@ -119,6 +124,7 @@ export default function Header() {
               href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
               className="flex h-11 w-11 items-center justify-center rounded-lg text-primary-700 transition-colors hover:bg-neutral-100"
               aria-label="Call us"
+              onClick={() => trackPhoneClick('header-mobile', pathname)}
             >
               <Phone className="h-5 w-5" />
             </a>

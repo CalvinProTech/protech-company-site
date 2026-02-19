@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer';
 import MobileBottomBar from '@/components/layout/MobileBottomBar';
 import AnalyticsProvider from '@/components/analytics/AnalyticsProvider';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,6 +32,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'ProTech Roofing',
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
@@ -48,6 +52,7 @@ export default function RootLayout({
         <MobileBottomBar />
         <AnalyticsProvider />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
