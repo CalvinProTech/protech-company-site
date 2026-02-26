@@ -9,6 +9,7 @@ interface CreatePageMetadataOptions {
   description: string;
   path: string;
   image?: string;
+  type?: 'website' | 'article';
 }
 
 export function createPageMetadata({
@@ -16,6 +17,7 @@ export function createPageMetadata({
   description,
   path,
   image,
+  type = 'website',
 }: CreatePageMetadataOptions): Metadata {
   const canonicalUrl = `${BASE_URL}${path}`;
   const ogImage = image
@@ -36,7 +38,7 @@ export function createPageMetadata({
       url: canonicalUrl,
       siteName: 'ProTech Roofing',
       locale: 'en_US',
-      type: 'website',
+      type,
       images: [
         {
           url: ogImage,

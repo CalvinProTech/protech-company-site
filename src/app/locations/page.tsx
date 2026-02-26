@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
 import { getAllStates, getLocationsByState } from '@/lib/locations';
+import { SITE_CONFIG } from '@/lib/constants';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { Hero } from '@/components/sections/Hero';
@@ -34,7 +35,7 @@ export default function LocationsPage() {
         heading="Find Your Local ProTech Roofers"
         subtitle="Licensed and insured roofing professionals serving communities across 14 states. Select your area to get started."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{ text: 'Call Now', href: 'tel:18663082640' }}
+        secondaryCTA={{ text: 'Call Now', href: `tel:${SITE_CONFIG.defaultPhoneRaw}` }}
         backgroundImage="/images/hero/locations.jpg"
       />
 

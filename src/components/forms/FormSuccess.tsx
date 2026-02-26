@@ -1,5 +1,6 @@
 import { CheckCircle, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/constants';
 
 const NEXT_STEPS = [
   'A ProTech specialist will review your request',
@@ -39,11 +40,11 @@ export default function FormSuccess() {
 
       {/* Call Now CTA */}
       <a
-        href="tel:18663082640"
+        href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
         className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-4 text-lg font-bold text-white shadow-sm transition-colors hover:bg-accent-600"
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
-        Call Now: (866) 308-2640
+        Call Now: {SITE_CONFIG.defaultPhone}
       </a>
 
       {/* Return Home */}

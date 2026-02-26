@@ -10,7 +10,6 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { SERVICES } from '@/lib/constants';
-import { cn } from '@/lib/utils';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Home,

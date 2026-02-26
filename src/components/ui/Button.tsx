@@ -129,6 +129,7 @@ export default function Button({
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { disabled, type = 'button', ...buttonProps } = props as ButtonAsButton;
 
   return (

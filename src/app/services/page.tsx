@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/metadata';
+import { SITE_CONFIG } from '@/lib/constants';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { Hero } from '@/components/sections/Hero';
@@ -29,7 +30,7 @@ export default function ServicesPage() {
         heading="Professional Roofing Services"
         subtitle="From roof replacement and repair to storm damage restoration and commercial roofing, ProTech Roofing delivers expert solutions backed by a lifetime workmanship warranty."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{ text: 'Call Now', href: 'tel:18663082640' }}
+        secondaryCTA={{ text: 'Call Now', href: `tel:${SITE_CONFIG.defaultPhoneRaw}` }}
         backgroundImage="/images/hero/services.jpg"
       />
 
