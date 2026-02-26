@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Shield, Award, CheckCircle, Users } from 'lucide-react';
+import { Shield, Award, CheckCircle } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
 import { SITE_CONFIG } from '@/lib/constants';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -36,9 +36,9 @@ const certifications = [
   },
   {
     icon: Award,
-    title: 'BBB A+ Rating',
+    title: 'Owens Corning Preferred',
     description:
-      'Accredited by the Better Business Bureau with an A+ rating for trust and transparency.',
+      'Preferred contractor for Owens Corning, offering premium roofing products with enhanced warranties.',
   },
   {
     icon: CheckCircle,
@@ -54,23 +54,6 @@ const certifications = [
   },
 ];
 
-const teamMembers = [
-  {
-    name: 'Marcus Chen',
-    title: 'Founder & CEO',
-    bio: 'Marcus founded ProTech Roofing after 10 years as a project manager at one of the nation\u2019s largest roofing firms. His hands-on approach and commitment to transparency set the company\u2019s culture from day one.',
-  },
-  {
-    name: 'Sarah Dominguez',
-    title: 'VP of Operations',
-    bio: 'Sarah oversees every project from scheduling through final inspection. With 15 years in construction management, she ensures every roof is delivered on time and on budget.',
-  },
-  {
-    name: 'David Brooks',
-    title: 'Lead Estimator & Inspector',
-    bio: 'David has inspected over 4,000 roofs during his career. His detailed, honest assessments help homeowners make informed decisions without pressure or upselling.',
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -187,43 +170,6 @@ export default function AboutPage() {
                 <p className="mt-2 text-sm text-neutral-600">
                   {cert.description}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="bg-neutral-50 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
-              Meet Our Leadership
-            </h2>
-            <p className="mt-4 text-lg text-neutral-600">
-              The experienced professionals behind every ProTech project.
-            </p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="overflow-hidden rounded-lg bg-white shadow-md"
-              >
-                <div className="flex h-56 items-center justify-center bg-primary-100">
-                  <Users className="h-20 w-20 text-primary-300" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-primary-900">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm font-medium text-accent-600">
-                    {member.title}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-                    {member.bio}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
