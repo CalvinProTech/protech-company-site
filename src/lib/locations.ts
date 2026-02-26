@@ -931,7 +931,7 @@ const locations: Location[] = [
     heroImage: '/images/hero/columbus.jpg',
     metaTitle: 'Columbus, OH Roof Replacement & Repair | ProTech Roofing',
     metaDescription:
-      'Columbus roofing contractor for replacement, storm damage, and commercial roofs. Licensed, insured, and BBB accredited. Get a free estimate today.',
+      'Columbus roofing contractor for replacement, storm damage, and commercial roofs. Licensed, insured, and certified. Get a free estimate today.',
     headline: "Protect Your Home with Columbus's Most Trusted Roofers",
     intro:
       "Columbus is Ohio's fastest-growing city, and its expanding housing market means thousands of roofs need professional attention every year. ProTech Roofing serves Franklin County homeowners with roofing systems rated for heavy snow loads, ice damming, and the severe thunderstorms that roll through Central Ohio each spring. We use infrared scanning to detect moisture trapped beneath shingles before it causes structural damage. From German Village restorations to new builds in New Albany, we deliver results that last.",
