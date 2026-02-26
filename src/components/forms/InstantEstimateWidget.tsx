@@ -10,6 +10,7 @@ import { instantEstimateSchema, type InstantEstimateFormData } from '@/lib/schem
 import type { InstantEstimateResponse } from '@/lib/roof-estimate/types';
 import { SITE_CONFIG } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { trackFormSubmit } from '@/lib/analytics';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import AddressAutocomplete from './AddressAutocomplete';
@@ -155,6 +156,10 @@ export default function InstantEstimateWidget() {
           roofAreaSqFt: result.data.roofAreaSqFt,
           estimatePrice: result.data.estimatePrice,
           formattedAddress: result.data.formattedAddress,
+        });
+        trackFormSubmit('instant-estimate', {
+          roof_area: result.data.roofAreaSqFt,
+          estimate_price: result.data.estimatePrice,
         });
       }
       setStep('result');

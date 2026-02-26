@@ -8,7 +8,7 @@ import { getAllCityServiceData } from '@/lib/city-services';
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://protechroof.net';
 
-const LAST_BUILD = new Date('2025-02-19');
+const LAST_BUILD = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locations = getAllLocations();

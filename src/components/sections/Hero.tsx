@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Shield, Star, Award, MapPin } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { SITE_CONFIG } from '@/lib/constants';
 import { trackCTAClick } from '@/lib/analytics';
 

@@ -14,7 +14,9 @@ export const SERVICE_OPTIONS = [
   'other',
 ] as const;
 
-export const STATE_OPTIONS = ['FL', 'TX', 'KY', 'OH'] as const;
+export const STATE_OPTIONS = [
+  'FL', 'GA', 'TX', 'KY', 'OH', 'DE', 'MD', 'VA', 'CT', 'PA', 'NC', 'SC', 'WV', 'TN',
+] as const;
 
 // ---------------------------------------------------------------------------
 // Estimate form schema

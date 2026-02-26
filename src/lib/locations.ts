@@ -164,7 +164,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Marietta', 'Decatur', 'Roswell', 'Sandy Springs', 'Alpharetta'],
     licenseNumber: 'GRCO-014521',
-    heroImage: '/images/hero/atlanta.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Atlanta Roofing Contractor - Roof Replacement | ProTech',
     metaDescription:
       "Atlanta's top-rated roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Get your free estimate today.",
@@ -184,7 +184,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Pooler', 'Richmond Hill', 'Hinesville', 'Tybee Island'],
     licenseNumber: 'GRCO-014522',
-    heroImage: '/images/hero/savannah.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Savannah Roofing Services & Repair | ProTech Roofing',
     metaDescription:
       "Savannah's trusted roofing company for historic and modern homes. Storm damage specialists with insurance claim support. Get a free quote.",
@@ -204,7 +204,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Evans', 'Martinez', 'Grovetown', 'North Augusta'],
     licenseNumber: 'GRCO-014523',
-    heroImage: '/images/hero/augusta.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Augusta, GA Roofing Contractor | ProTech Roofing',
     metaDescription:
       'Augusta roofing experts for shingle replacement, metal roofing, and storm repair. Locally trusted, fully insured. Get your free roofing estimate today.',
@@ -226,7 +226,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Newark', 'New Castle', 'Hockessin', 'Middletown'],
     licenseNumber: 'DE-RC-20451',
-    heroImage: '/images/hero/wilmington.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Wilmington, DE Roofing Contractor | ProTech Roofing',
     metaDescription:
       "Wilmington's trusted roofing company for replacement, repair, and storm damage. Licensed and insured in Delaware. Free estimates available.",
@@ -246,7 +246,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Smyrna', 'Camden', 'Milford', 'Harrington'],
     licenseNumber: 'DE-RC-20452',
-    heroImage: '/images/hero/dover.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Dover, DE Roofing Services & Repair | ProTech Roofing',
     metaDescription:
       'Dover roofing experts for shingle replacement, metal roofing, and storm repair. Fully insured. Get your free roofing estimate today.',
@@ -268,7 +268,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Towson', 'Columbia', 'Ellicott City', 'Dundalk', 'Catonsville'],
     licenseNumber: 'MHIC-140231',
-    heroImage: '/images/hero/baltimore.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Baltimore Roofing Contractor - Expert Service | ProTech',
     metaDescription:
       "Baltimore's trusted roofing contractor for residential and commercial projects. Storm damage specialists. Financing and insurance support. Free inspections.",
@@ -288,7 +288,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Hagerstown', 'Middletown', 'Thurmont', 'Brunswick'],
     licenseNumber: 'MHIC-140232',
-    heroImage: '/images/hero/frederick.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Frederick, MD Roofing & Roof Repair | ProTech Roofing',
     metaDescription:
       'Frederick roofing experts for shingle replacement, metal roofing, and storm repair. Locally trusted, fully insured. Get your free roofing estimate today.',
@@ -308,7 +308,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Severna Park', 'Edgewater', 'Arnold', 'Crofton'],
     licenseNumber: 'MHIC-140233',
-    heroImage: '/images/hero/annapolis.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Annapolis Roofing Contractor | ProTech Roofing',
     metaDescription:
       "Annapolis roofing company for replacement, repair, and coastal storm damage. Anne Arundel County's trusted roofer. Free estimates.",
@@ -330,7 +330,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Chesapeake', 'Suffolk', 'Hampton', 'Newport News'],
     licenseNumber: 'VA-2701-068451',
-    heroImage: '/images/hero/virginia-beach.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Virginia Beach Roofing Contractor | ProTech Roofing',
     metaDescription:
       "Virginia Beach's trusted roofer for hurricane-rated installations, storm damage, and coastal roofing. Free estimates and financing available.",
@@ -350,7 +350,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Henrico', 'Midlothian', 'Glen Allen', 'Mechanicsville', 'Short Pump'],
     licenseNumber: 'VA-2701-068452',
-    heroImage: '/images/hero/richmond.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Richmond, VA Roof Replacement & Repair | ProTech Roofing',
     metaDescription:
       "Richmond's top-rated roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Free estimates.",
@@ -370,7 +370,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Portsmouth', 'Chesapeake', 'Hampton', 'Virginia Beach'],
     licenseNumber: 'VA-2701-068453',
-    heroImage: '/images/hero/norfolk.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Norfolk Roofing Services & Storm Repair | ProTech Roofing',
     metaDescription:
       'Norfolk roofing experts for coastal storm damage, roof replacement, and commercial roofing. Insurance claim specialists. Free inspections.',
@@ -392,7 +392,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['West Hartford', 'Manchester', 'Glastonbury', 'Newington', 'Wethersfield'],
     licenseNumber: 'HIC-0657891',
-    heroImage: '/images/hero/hartford.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Hartford Roofing Contractor - Expert Install | ProTech',
     metaDescription:
       "Hartford's trusted roofing contractor for replacement, repair, and snow damage. Licensed and insured in Connecticut. Free estimates.",
@@ -412,7 +412,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Hamden', 'West Haven', 'East Haven', 'Milford', 'Branford'],
     licenseNumber: 'HIC-0657892',
-    heroImage: '/images/hero/new-haven.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'New Haven Roofing Services & Repair | ProTech Roofing',
     metaDescription:
       'New Haven roofing experts for shingle replacement, metal roofing, and storm repair. Fully insured. Get your free roofing estimate today.',
@@ -432,7 +432,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Greenwich', 'Norwalk', 'Darien', 'New Canaan'],
     licenseNumber: 'HIC-0657893',
-    heroImage: '/images/hero/stamford.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Stamford, CT Roofing Contractor | ProTech Roofing',
     metaDescription:
       "Stamford roofing company for premium replacement, repair, and storm damage. Fairfield County's trusted roofer. Free estimates.",
@@ -454,7 +454,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['King of Prussia', 'Cherry Hill', 'Norristown', 'Media', 'Conshohocken'],
     licenseNumber: 'PA-HC-089231',
-    heroImage: '/images/hero/philadelphia.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Philadelphia Roofing Contractor | ProTech Roofing',
     metaDescription:
       "Philadelphia's trusted roofing contractor for row homes, residential, and commercial projects. Storm damage specialists. Free inspections.",
@@ -474,7 +474,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Cranberry Township', 'Bethel Park', 'Mount Lebanon', 'Monroeville'],
     licenseNumber: 'PA-HC-089232',
-    heroImage: '/images/hero/pittsburgh.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Pittsburgh Roof Replacement & Repair | ProTech Roofing',
     metaDescription:
       "Pittsburgh's top-rated roofing contractor for steep-slope homes, storm damage, and commercial roofing. Licensed and insured. Free estimates.",
@@ -494,7 +494,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Bethlehem', 'Easton', 'Emmaus', 'Whitehall Township'],
     licenseNumber: 'PA-HC-089233',
-    heroImage: '/images/hero/allentown.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Allentown, PA Roofing Contractor | ProTech Roofing',
     metaDescription:
       'Allentown roofing experts for shingle replacement, metal roofing, and storm repair. Lehigh Valley trusted. Free estimates.',
@@ -516,7 +516,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Huntersville', 'Concord', 'Matthews', 'Gastonia', 'Indian Trail'],
     licenseNumber: 'NC-GC-78231',
-    heroImage: '/images/hero/charlotte.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Charlotte Roofing Contractor - Expert Install | ProTech',
     metaDescription:
       "Charlotte's trusted roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Free estimates.",
@@ -536,7 +536,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Durham', 'Cary', 'Apex', 'Wake Forest', 'Garner'],
     licenseNumber: 'NC-GC-78232',
-    heroImage: '/images/hero/raleigh.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Raleigh, NC Roof Replacement & Repair | ProTech Roofing',
     metaDescription:
       "Raleigh roofing experts for replacement, storm damage, and commercial roofing. Triangle area's trusted contractor. Free inspections.",
@@ -556,7 +556,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['High Point', 'Burlington', 'Winston-Salem', 'Kernersville'],
     licenseNumber: 'NC-GC-78233',
-    heroImage: '/images/hero/greensboro.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Greensboro Roofing Services & Repair | ProTech Roofing',
     metaDescription:
       'Greensboro roofing experts for shingle replacement, metal roofing, and storm repair. Fully insured. Get your free roofing estimate today.',
@@ -578,7 +578,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Mount Pleasant', 'Summerville', 'North Charleston', 'Goose Creek'],
     licenseNumber: 'SC-RBC-42871',
-    heroImage: '/images/hero/charleston.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Charleston Roofing Contractor - Coastal Expert | ProTech',
     metaDescription:
       "Charleston's trusted roofing contractor for hurricane-rated installations, historic homes, and storm damage. Free estimates.",
@@ -598,7 +598,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Lexington', 'Irmo', 'Blythewood', 'Cayce', 'West Columbia'],
     licenseNumber: 'SC-RBC-42872',
-    heroImage: '/images/hero/columbia.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Columbia, SC Roof Replacement & Repair | ProTech Roofing',
     metaDescription:
       "Columbia's top-rated roofing contractor for replacement, storm damage, and commercial roofing. Licensed and insured. Free estimates.",
@@ -618,7 +618,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Spartanburg', 'Simpsonville', 'Mauldin', 'Greer', 'Easley'],
     licenseNumber: 'SC-RBC-42873',
-    heroImage: '/images/hero/greenville.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Greenville, SC Roofing Contractor | ProTech Roofing',
     metaDescription:
       'Greenville roofing experts for replacement, repair, and storm damage. Upstate SC trusted. Free estimates and financing.',
@@ -640,7 +640,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['South Charleston', 'St. Albans', 'Nitro', 'Cross Lanes', 'Hurricane'],
     licenseNumber: 'WV-RC-04521',
-    heroImage: '/images/hero/charleston-wv.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Charleston, WV Roofing Contractor | ProTech Roofing',
     metaDescription:
       "Charleston's trusted roofing contractor for replacement, repair, and storm damage. Licensed and insured in West Virginia. Free estimates.",
@@ -660,7 +660,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Barboursville', 'Milton', 'Ashland', 'Kenova'],
     licenseNumber: 'WV-RC-04522',
-    heroImage: '/images/hero/huntington.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Huntington, WV Roofing Services & Repair | ProTech Roofing',
     metaDescription:
       'Huntington roofing experts for shingle replacement, metal roofing, and storm repair. Fully insured. Get your free roofing estimate today.',
@@ -680,7 +680,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Westover', 'Star City', 'Cheat Lake', 'Fairmont'],
     licenseNumber: 'WV-RC-04523',
-    heroImage: '/images/hero/morgantown.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Morgantown, WV Roofing Contractor | ProTech Roofing',
     metaDescription:
       'Morgantown roofing contractor for replacement, storm damage, and metal roofing. Licensed in West Virginia. Free estimates available.',
@@ -702,7 +702,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Franklin', 'Murfreesboro', 'Hendersonville', 'Brentwood', 'Gallatin'],
     licenseNumber: 'TN-RC-78451',
-    heroImage: '/images/hero/nashville.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Nashville Roofing Contractor - Expert Install | ProTech',
     metaDescription:
       "Nashville's trusted roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Free estimates.",
@@ -722,7 +722,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Germantown', 'Collierville', 'Bartlett', 'Southaven', 'Olive Branch'],
     licenseNumber: 'TN-RC-78452',
-    heroImage: '/images/hero/memphis.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Memphis Roofing Services & Storm Repair | ProTech Roofing',
     metaDescription:
       'Memphis roofing experts for storm damage, roof replacement, and commercial roofing. Insurance claim specialists. Free inspections.',
@@ -742,7 +742,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['Maryville', 'Farragut', 'Oak Ridge', 'Sevierville', 'Clinton'],
     licenseNumber: 'TN-RC-78453',
-    heroImage: '/images/hero/knoxville.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Knoxville, TN Roof Replacement & Repair | ProTech Roofing',
     metaDescription:
       "Knoxville's top-rated roofing contractor for replacement, storm damage, and metal roofing. Licensed and insured. Free estimates.",
@@ -762,7 +762,7 @@ const locations: Location[] = [
     serviceRadius: '50 miles',
     surroundingCities: ['East Ridge', 'Red Bank', 'Signal Mountain', 'Hixson', 'Ooltewah'],
     licenseNumber: 'TN-RC-78454',
-    heroImage: '/images/hero/chattanooga.jpg',
+    heroImage: '/images/hero/default.jpg',
     metaTitle: 'Chattanooga Roofing Contractor | ProTech Roofing',
     metaDescription:
       'Chattanooga roofing experts for replacement, repair, and storm damage. Fully insured with lifetime warranty. Free estimates.',
