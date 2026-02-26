@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useScrollDepth } from '@/hooks/useScrollDepth';
 
 const GoogleAnalytics = dynamic(
   () =>
@@ -17,6 +18,8 @@ const CallRail = dynamic(
 );
 
 export default function AnalyticsProvider() {
+  useScrollDepth();
+
   return (
     <>
       <GoogleAnalytics />

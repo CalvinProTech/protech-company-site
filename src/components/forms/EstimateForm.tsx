@@ -11,6 +11,7 @@ import {
   STATE_OPTIONS,
   SERVICE_OPTIONS,
 } from '@/lib/schemas';
+import { trackFormSubmit } from '@/lib/analytics';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import Select from '@/components/ui/Select';
@@ -98,6 +99,7 @@ export default function EstimateForm() {
       }
 
       setSubmitStatus('success');
+      trackFormSubmit('estimate', { service: data.serviceNeeded });
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');

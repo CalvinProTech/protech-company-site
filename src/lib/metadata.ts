@@ -71,7 +71,6 @@ export function createLocationMetadata(location: LocationForMetadata): Metadata 
     title,
     description,
     path: `/locations/${location.stateSlug}/${location.citySlug}`,
-    image: `/images/locations/${location.citySlug}-og.jpg`,
   });
 }
 
@@ -90,7 +89,6 @@ export function createCityLandingMetadata(location: CityLandingForMetadata): Met
     title,
     description,
     path: `/locations/${cityStateSlug}`,
-    image: `/images/locations/${location.citySlug}-og.jpg`,
   });
 }
 
@@ -126,6 +124,5 @@ export function createServiceMetadata(service: ServiceForMetadata): Metadata {
     title,
     description,
     path: `/services/${service.slug}`,
-    image: `/images/services/${service.slug}-og.jpg`,
   });
 }

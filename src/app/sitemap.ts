@@ -5,7 +5,10 @@ import { getAllProjects } from '@/lib/projects';
 import { getAllPosts } from '@/lib/blog';
 import { getAllCityServiceData } from '@/lib/city-services';
 
-const BASE_URL = 'https://protechroof.net';
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://protechroof.net';
+
+const LAST_BUILD = new Date('2025-02-19');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locations = getAllLocations();
@@ -17,61 +20,61 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/about`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/free-estimate`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/financing`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/reviews`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/gallery`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/locations`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/services`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -79,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const statePages: MetadataRoute.Sitemap = states.map((state) => ({
     url: `${BASE_URL}/locations/${state.stateSlug}`,
-    lastModified: new Date(),
+    lastModified: LAST_BUILD,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -93,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
     .map((location) => ({
       url: `${BASE_URL}/locations/${location.stateSlug}/${location.citySlug}`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     }));
@@ -101,7 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pilotCityPages: MetadataRoute.Sitemap = Array.from(pilotSlugs).map(
     (slug) => ({
       url: `${BASE_URL}/locations/${slug}`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     })
@@ -110,7 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const cityServicePages: MetadataRoute.Sitemap = getAllCityServiceData().map(
     (cs) => ({
       url: `${BASE_URL}/locations/${cs.cityStateSlug}/${cs.serviceSlug}`,
-      lastModified: new Date(),
+      lastModified: LAST_BUILD,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })
@@ -118,14 +121,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${BASE_URL}/services/${service.slug}`,
-    lastModified: new Date(),
+    lastModified: LAST_BUILD,
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }));
 
   const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${BASE_URL}/gallery/${project.slug}`,
-    lastModified: new Date(),
+    lastModified: LAST_BUILD,
     changeFrequency: 'monthly' as const,
     priority: 0.5,
   }));

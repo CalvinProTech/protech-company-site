@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AlertCircle } from 'lucide-react';
 
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas';
+import { trackFormSubmit } from '@/lib/analytics';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import Button from '@/components/ui/Button';
@@ -62,6 +63,7 @@ export default function ContactForm() {
       }
 
       setSubmitStatus('success');
+      trackFormSubmit('contact', { name: data.firstName });
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');
