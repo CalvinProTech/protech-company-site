@@ -112,3 +112,37 @@ export const instantEstimateSchema = z.object({
 });
 
 export type InstantEstimateFormData = z.infer<typeof instantEstimateSchema>;
+
+// ---------------------------------------------------------------------------
+// Callback request schema (lightweight lead capture)
+// ---------------------------------------------------------------------------
+
+export const CALLBACK_SOURCES = [
+  'exit-intent',
+  'floating-widget',
+  'quick-quote-service',
+  'quick-quote-city',
+  'quick-quote-city-service',
+  'quick-quote-blog',
+] as const;
+
+export const callbackRequestSchema = z.object({
+  name: z
+    .string()
+    .min(1, 'Name is required'),
+  phone: z
+    .string()
+    .min(10, 'Phone number must be at least 10 digits')
+    .regex(
+      /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+      'Please enter a valid US phone number',
+    ),
+  zip: z
+    .string()
+    .regex(/^\d{5}$/, 'Please enter a valid 5-digit ZIP code')
+    .optional()
+    .or(z.literal('')),
+  source: z.enum(CALLBACK_SOURCES, 'Invalid source'),
+});
+
+export type CallbackRequestData = z.infer<typeof callbackRequestSchema>;

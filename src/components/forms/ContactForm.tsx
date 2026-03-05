@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AlertCircle } from 'lucide-react';
 
 import { contactFormSchema, type ContactFormData } from '@/lib/schemas';
 import { trackFormSubmit } from '@/lib/analytics';
+import { getUtmParams } from '@/lib/utm';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import Button from '@/components/ui/Button';
@@ -21,6 +22,12 @@ export default function ContactForm() {
     'idle' | 'success' | 'error'
   >('idle');
   const [serverError, setServerError] = useState<string>('');
+  const [honeypot, setHoneypot] = useState('');
+  const formLoadedAt = useRef(0);
+
+  useEffect(() => {
+    formLoadedAt.current = Date.now();
+  }, []);
 
   const {
     register,
@@ -49,7 +56,12 @@ export default function ContactForm() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          _hp: honeypot,
+          _t: formLoadedAt.current,
+          _utm: getUtmParams(),
+        }),
       });
 
       const result = await response.json();
@@ -101,6 +113,20 @@ export default function ContactForm() {
           <p>{serverError}</p>
         </div>
       )}
+
+      {/* Honeypot — hidden from real users, bots fill it */}
+      <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px]">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
 
       {/* First & Last Name */}
       <div className="grid gap-5 sm:grid-cols-2">

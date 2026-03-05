@@ -23,6 +23,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import ArticleSchema from '@/components/seo/ArticleSchema';
 import { CTABanner } from '@/components/sections/CTABanner';
 import Badge from '@/components/ui/Badge';
+import QuickQuoteForm from '@/components/forms/QuickQuoteForm';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -179,6 +180,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </article>
+
+      {/* Quick Quote Form */}
+      <section className="bg-primary-50 py-12 md:py-16">
+        <div className="mx-auto max-w-lg px-4 sm:px-6 lg:px-8">
+          <QuickQuoteForm
+            source="quick-quote-blog"
+            heading="Need Roofing Help?"
+            subtext="Get a free callback from a roofing specialist."
+          />
+        </div>
+      </section>
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (

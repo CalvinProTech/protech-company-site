@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'motion/react';
@@ -11,6 +11,7 @@ import type { InstantEstimateResponse } from '@/lib/roof-estimate/types';
 import { SITE_CONFIG } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { trackFormSubmit } from '@/lib/analytics';
+import { getUtmParams } from '@/lib/utm';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import AddressAutocomplete from './AddressAutocomplete';
@@ -93,6 +94,8 @@ const slideVariants = {
 export default function InstantEstimateWidget() {
   const [step, setStep] = useState<Step>('address');
   const [address, setAddress] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const formLoadedAt = useRef(0);
   const [estimateData, setEstimateData] = useState<{
     roofAreaSqFt: number;
     estimatePrice: number;
@@ -120,6 +123,10 @@ export default function InstantEstimateWidget() {
   // Step 1: Address selected
   // -----------------------------------------------------------------------
 
+  useEffect(() => {
+    formLoadedAt.current = Date.now();
+  }, []);
+
   const handleAddressSelect = useCallback((selected: string) => {
     setAddress(selected);
     setValue('address', selected);
@@ -138,7 +145,13 @@ export default function InstantEstimateWidget() {
       const response = await fetch('/api/instant-estimate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, address }),
+        body: JSON.stringify({
+          ...data,
+          address,
+          _hp: honeypot,
+          _t: formLoadedAt.current,
+          _utm: getUtmParams(),
+        }),
       });
 
       const result: InstantEstimateResponse = await response.json();
@@ -213,6 +226,20 @@ export default function InstantEstimateWidget() {
                 noValidate
                 className="flex flex-col gap-4"
               >
+                {/* Honeypot */}
+                <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px]">
+                  <label htmlFor="ie-website">Website</label>
+                  <input
+                    id="ie-website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Input
                     label="First Name"

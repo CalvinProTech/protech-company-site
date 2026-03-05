@@ -17,6 +17,7 @@ import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
 import { FAQSection } from '@/components/sections/FAQSection';
 import { CTABanner } from '@/components/sections/CTABanner';
 import { LocationMap } from '@/components/sections/LocationMap';
+import QuickQuoteForm from '@/components/forms/QuickQuoteForm';
 
 interface CityPageTemplateProps {
   location: Location;
@@ -156,6 +157,13 @@ export default function CityPageTemplate({ location }: CityPageTemplateProps) {
                   Get a Free Estimate
                 </Link>
               </div>
+
+              {/* Quick Quote Form */}
+              <QuickQuoteForm
+                source="quick-quote-city"
+                heading={`Get a Free Quote in ${location.city}`}
+                subtext="Enter your info and a local specialist will call you back."
+              />
 
               {/* City Map */}
               {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (

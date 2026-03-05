@@ -24,6 +24,7 @@ import FAQSchema from '@/components/seo/FAQSchema';
 import { Hero } from '@/components/sections/Hero';
 import { FAQSection } from '@/components/sections/FAQSection';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
+import QuickQuoteForm from '@/components/forms/QuickQuoteForm';
 
 interface ServicePageTemplateProps {
   service: Service;
@@ -171,8 +172,19 @@ export default function ServicePageTemplate({
         </div>
       </section>
 
-      {/* Process Steps Section */}
+      {/* Quick Quote Form */}
       <section className="bg-white py-16 md:py-24">
+        <div className="mx-auto max-w-lg px-4 sm:px-6 lg:px-8">
+          <QuickQuoteForm
+            source="quick-quote-service"
+            heading={`Get a Free ${service.name} Quote`}
+            subtext="Enter your info and a specialist will call you back within the hour."
+          />
+        </div>
+      </section>
+
+      {/* Process Steps Section */}
+      <section className="bg-neutral-50 py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
