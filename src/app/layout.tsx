@@ -7,6 +7,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MobileBottomBar from '@/components/layout/MobileBottomBar';
 import AnalyticsProvider from '@/components/analytics/AnalyticsProvider';
+import ExitIntentPopup from '@/components/forms/ExitIntentPopup';
+import FloatingCallbackWidget from '@/components/forms/FloatingCallbackWidget';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -50,6 +52,8 @@ export default function RootLayout({
         <main id="main-content" className="pb-16 lg:pb-0">{children}</main>
         <Footer />
         <MobileBottomBar />
+        <ExitIntentPopup />
+        <FloatingCallbackWidget />
         <AnalyticsProvider />
         <Analytics />
         <SpeedInsights />

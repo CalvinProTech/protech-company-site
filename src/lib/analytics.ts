@@ -23,7 +23,7 @@ function fireGoogleAdsConversion(conversionLabel?: string) {
 }
 
 export function trackFormSubmit(
-  formType: 'estimate' | 'contact' | 'instant-estimate',
+  formType: 'estimate' | 'contact' | 'instant-estimate' | 'callback',
   data: Record<string, unknown>
 ) {
   pushEvent(`form_submit_${formType}`, {
@@ -33,12 +33,25 @@ export function trackFormSubmit(
 
   // Fire Google Ads conversion
   const label =
-    formType === 'estimate'
-      ? process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL
-      : formType === 'contact'
-        ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL
-        : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL;
+    formType === 'callback'
+      ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CALLBACK_LABEL
+      : formType === 'estimate'
+        ? process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL
+        : formType === 'contact'
+          ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL
+          : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL;
   fireGoogleAdsConversion(label);
+}
+
+export function trackLeadWidgetEvent(
+  action:
+    | 'popup_shown'
+    | 'popup_dismissed'
+    | 'widget_opened'
+    | 'widget_closed',
+  page: string
+) {
+  pushEvent('lead_widget', { action, page });
 }
 
 export function trackPhoneClick(location: string, page: string) {

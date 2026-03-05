@@ -184,6 +184,14 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/certifications"
+                  className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                >
+                  Certifications
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -304,6 +312,14 @@ export default function Footer() {
                     className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
                   >
                     Sitemap
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy-choices"
+                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                  >
+                    Do Not Sell My Information
                   </Link>
                 </li>
               </ul>

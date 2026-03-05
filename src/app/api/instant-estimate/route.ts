@@ -4,6 +4,7 @@ import { geocodeAddress, getBuildingInsights } from '@/lib/roof-estimate/google-
 import { calculateCustomerEstimate } from '@/lib/roof-estimate/pricing';
 import { sendEstimateConfirmation, isEmailConfigured } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
+import { isSpam } from '@/lib/spam-detection';
 
 // ---------------------------------------------------------------------------
 // POST /api/instant-estimate
@@ -27,7 +28,23 @@ export async function POST(request: Request) {
       );
     }
 
-    const body: unknown = await request.json();
+    const body = await request.json() as Record<string, unknown>;
+
+    // ------------------------------------------------------------------
+    // Spam detection (check before validation — return fake 200 for bots)
+    // ------------------------------------------------------------------
+
+    if (
+      isSpam({
+        honeypot: (body._hp as string) || '',
+        formLoadedAt: (body._t as number) || 0,
+        firstName: body.firstName as string,
+        lastName: body.lastName as string,
+      })
+    ) {
+      console.log('[instant-estimate] Spam blocked:', body.email);
+      return NextResponse.json({ success: true, emailSent: false, data: null }, { status: 200 });
+    }
 
     // ------------------------------------------------------------------
     // Validate input

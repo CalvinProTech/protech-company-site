@@ -15,6 +15,7 @@ import { Hero } from '@/components/sections/Hero';
 import { ServiceTrustStrip } from '@/components/sections/ServiceTrustStrip';
 import { FAQSection } from '@/components/sections/FAQSection';
 import { CTABanner } from '@/components/sections/CTABanner';
+import QuickQuoteForm from '@/components/forms/QuickQuoteForm';
 
 interface CityServicePageTemplateProps {
   location: Location;
@@ -82,15 +83,26 @@ export default function CityServicePageTemplate({
       {/* Service Trust Strip */}
       <ServiceTrustStrip />
 
-      {/* Intro Section */}
+      {/* Intro + Quick Quote Sidebar */}
       <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
-            Expert {service.name} in {location.city}, {location.stateAbbr}
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-neutral-700">
-            {cityServiceData.intro}
-          </p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+                Expert {service.name} in {location.city}, {location.stateAbbr}
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-neutral-700">
+                {cityServiceData.intro}
+              </p>
+            </div>
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <QuickQuoteForm
+                source="quick-quote-city-service"
+                heading={`Get a Free ${service.name} Quote`}
+                subtext={`Serving ${location.city} & surrounding areas. We'll call within the hour.`}
+              />
+            </div>
+          </div>
         </div>
       </section>
 

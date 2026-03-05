@@ -1032,4 +1032,8 @@ export const PILOT_CITY_STATE_SLUGS = [
   'houston-tx',
   'louisville-ky',
   'columbus-oh',
+  'atlanta-ga',
+  'charlotte-nc',
+  'jacksonville-fl',
+  'nashville-tn',
 ] as const;
