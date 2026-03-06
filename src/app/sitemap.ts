@@ -78,6 +78,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/certifications`,
+      lastModified: LAST_BUILD,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/privacy-choices`,
+      lastModified: LAST_BUILD,
+      changeFrequency: 'yearly',
+      priority: 0.2,
+    },
   ];
 
   const statePages: MetadataRoute.Sitemap = states.map((state) => ({
