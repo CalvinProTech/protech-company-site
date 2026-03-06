@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/metadata';
 import { getFeaturedTestimonials } from '@/lib/testimonials';
 import { getAllProjects } from '@/lib/projects';
+import { getAllPosts } from '@/lib/blog';
 
 import { Hero } from '@/components/sections/Hero';
 import InstantEstimateWidget from '@/components/forms/InstantEstimateWidget';
@@ -28,39 +29,19 @@ export function generateMetadata(): Metadata {
   });
 }
 
-const placeholderBlogPosts = [
-  {
-    slug: '5-signs-you-need-a-new-roof',
-    title: '5 Warning Signs You Need a New Roof Before It Is Too Late',
-    excerpt:
-      'Missing shingles, granule buildup in your gutters, and sagging spots can all indicate your roof is past its prime. Learn the five critical signs that mean it is time to call a professional.',
-    date: '2025-11-15',
-    category: 'Roof Maintenance',
-    featuredImage: '/images/blog/5-signs-new-roof.jpg',
-  },
-  {
-    slug: 'how-to-file-roof-insurance-claim',
-    title: 'How to File a Roof Insurance Claim: A Step-by-Step Guide',
-    excerpt:
-      'Navigating the insurance claims process after storm damage can feel overwhelming. This guide walks you through every step from documentation to final payment.',
-    date: '2025-10-28',
-    category: 'Insurance',
-    featuredImage: '/images/blog/insurance-claim-guide.jpg',
-  },
-  {
-    slug: 'metal-vs-shingle-roof-comparison',
-    title: 'Metal Roof vs. Shingles: Which Is Right for Your Home?',
-    excerpt:
-      'Comparing lifespan, cost, energy efficiency, and curb appeal between metal roofing and architectural shingles to help you make the best investment for your home.',
-    date: '2025-10-10',
-    category: 'Roofing Materials',
-    featuredImage: '/images/blog/metal-vs-shingles.jpg',
-  },
-];
-
 export default function HomePage() {
   const featuredTestimonials = getFeaturedTestimonials(5);
   const allProjects = getAllProjects();
+  const recentPosts = getAllPosts()
+    .slice(0, 3)
+    .map((post) => ({
+      slug: post.frontmatter.slug,
+      title: post.frontmatter.title,
+      excerpt: post.frontmatter.excerpt,
+      date: post.frontmatter.date,
+      category: post.frontmatter.category,
+      featuredImage: post.frontmatter.featuredImage,
+    }));
 
   return (
     <>
@@ -102,7 +83,7 @@ export default function HomePage() {
       <LocationMap />
 
       {/* Blog Preview */}
-      <BlogPreview posts={placeholderBlogPosts} />
+      <BlogPreview posts={recentPosts} />
 
       {/* CTA Banner */}
       <CTABanner />
