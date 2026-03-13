@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { isFakePhoneNumber } from '@/lib/spam-detection';
 
 // ---------------------------------------------------------------------------
 // Shared enums
@@ -35,7 +36,8 @@ export const estimateFormSchema = z.object({
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
       'Please enter a valid US phone number',
-    ),
+    )
+    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
   email: z
     .string()
     .email('Please enter a valid email address'),
@@ -78,7 +80,8 @@ export const contactFormSchema = z.object({
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
       'Please enter a valid US phone number',
-    ),
+    )
+    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
   email: z
     .string()
     .email('Please enter a valid email address'),
@@ -103,7 +106,8 @@ export const instantEstimateSchema = z.object({
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
       'Please enter a valid US phone number',
-    ),
+    )
+    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
   email: z
     .string()
     .email('Please enter a valid email')
@@ -136,7 +140,8 @@ export const callbackRequestSchema = z.object({
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
       'Please enter a valid US phone number',
-    ),
+    )
+    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
   zip: z
     .string()
     .regex(/^\d{5}$/, 'Please enter a valid 5-digit ZIP code')
