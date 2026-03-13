@@ -263,7 +263,7 @@ export default function InstantEstimateWidget() {
                   label="Phone Number"
                   type="tel"
                   required
-                  placeholder="(555) 123-4567"
+                  placeholder="(234) 567-8901"
                   error={errors.phone?.message}
                   disabled={isSubmitting}
                   {...register('phone')}

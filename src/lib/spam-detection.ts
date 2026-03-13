@@ -13,6 +13,47 @@ interface SpamCheckInput {
   lastName?: string;
   /** Full name (for callback forms) */
   name?: string;
+  /** Phone number from the form */
+  phone?: string;
+}
+
+/**
+ * Returns true if the phone number is structurally invalid or obviously fake
+ * per NANP (North American Numbering Plan) rules.
+ */
+export function isFakePhoneNumber(phone: string): boolean {
+  const digits = phone.replace(/\D/g, '');
+  const local =
+    digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits;
+  if (local.length !== 10) return false; // let Zod regex handle format errors
+
+  const areaCode = local.slice(0, 3);
+  const exchange = local.slice(3, 6);
+
+  // NANP: area code and exchange must start with 2-9
+  if (areaCode[0] < '2' || exchange[0] < '2') return true;
+
+  // NANP: exchange cannot be N11 (service codes like 911, 411)
+  if (exchange[1] === '1' && exchange[2] === '1') return true;
+
+  // Area code 555 is not assigned
+  if (areaCode === '555') return true;
+
+  // 555 exchange has no active subscribers (returned to inventory 2016)
+  if (exchange === '555') return true;
+
+  // All same digit (0000000000 through 9999999999)
+  if (/^(\d)\1{9}$/.test(local)) return true;
+
+  // Sequential ascending/descending
+  if (
+    local === '1234567890' ||
+    local === '0987654321' ||
+    local === '9876543210'
+  )
+    return true;
+
+  return false;
 }
 
 /**
@@ -36,7 +77,13 @@ export function isSpam(input: SpamCheckInput): boolean {
     }
   }
 
-  // 3. Name gibberish detection
+  // 3. Fake phone number
+  if (input.phone && isFakePhoneNumber(input.phone)) {
+    console.log('[spam] Fake phone number:', input.phone);
+    return true;
+  }
+
+  // 4. Name gibberish detection
   const names = [input.firstName, input.lastName, input.name].filter(
     Boolean,
   ) as string[];
