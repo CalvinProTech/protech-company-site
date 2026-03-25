@@ -30,7 +30,7 @@ export default function TermsOfServicePage() {
             Terms of Service
           </h1>
           <p className="mt-2 text-primary-200">
-            Last updated: January 1, 2025
+            Last updated: March 25, 2026
           </p>
         </div>
       </section>
@@ -115,6 +115,60 @@ export default function TermsOfServicePage() {
               these Terms. {SITE_CONFIG.name} is not a lender and does not set
               or control financing terms.
             </p>
+
+            <h2>SMS/Text Messaging Terms</h2>
+            <p>
+              By providing your phone number and consenting to receive text
+              messages from {SITE_CONFIG.name}, you agree to the following
+              terms:
+            </p>
+            <ul>
+              <li>
+                <strong>Types of Messages:</strong> You may receive SMS/text
+                messages related to your roofing project, including appointment
+                confirmations and reminders, estimate and project status
+                updates, service-related notifications, and follow-up
+                communications regarding your inquiry.
+              </li>
+              <li>
+                <strong>Messaging Frequency:</strong> Messaging frequency is
+                variable and depends on your project status and interactions
+                with us.
+              </li>
+              <li>
+                <strong>Message and Data Rates:</strong> Standard message and
+                data rates may apply depending on your mobile carrier and plan.
+                {SITE_CONFIG.name} is not responsible for any charges incurred
+                from your carrier.
+              </li>
+              <li>
+                <strong>Opt-Out:</strong> You may opt out of receiving SMS
+                messages at any time by replying <strong>STOP</strong> to any
+                message. After opting out, you will receive a one-time
+                confirmation message and no further SMS messages will be sent
+                unless you re-opt in.
+              </li>
+              <li>
+                <strong>Help:</strong> For assistance, reply{' '}
+                <strong>HELP</strong> to any message or contact us at{' '}
+                <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a>{' '}
+                or{' '}
+                <a href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}>
+                  {SITE_CONFIG.defaultPhone}
+                </a>
+                .
+              </li>
+              <li>
+                <strong>No Purchase Required:</strong> Consent to receive SMS
+                messages is not a condition of purchasing any goods or services
+                from {SITE_CONFIG.name}.
+              </li>
+              <li>
+                <strong>No Third-Party Sharing:</strong> Your phone number and
+                SMS consent data will not be shared with or sold to third
+                parties or affiliates for marketing or promotional purposes.
+              </li>
+            </ul>
 
             <h2>Warranties</h2>
             <p>

@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="mt-2 text-primary-200">
-            Last updated: January 1, 2025
+            Last updated: March 25, 2026
           </p>
         </div>
       </section>
@@ -119,6 +119,49 @@ export default function PrivacyPolicyPage() {
               text files stored on your device that help us improve your
               experience on our website. You can control cookie settings through
               your browser preferences.
+            </p>
+
+            <h2>SMS/Text Messaging</h2>
+            <p>
+              When you provide your phone number through our website forms or
+              otherwise consent to receive text messages, {SITE_CONFIG.name} may
+              send you SMS/text messages related to your roofing project. These
+              messages may include:
+            </p>
+            <ul>
+              <li>Appointment confirmations and reminders</li>
+              <li>Estimate and project status updates</li>
+              <li>Service-related notifications</li>
+              <li>Follow-up communications regarding your inquiry</li>
+            </ul>
+            <p>
+              Messaging frequency is variable and depends on your project status
+              and interactions with us. Standard message and data rates may
+              apply depending on your mobile carrier and plan.
+            </p>
+            <p>
+              <strong>Opt-Out:</strong> You may opt out of receiving SMS
+              messages at any time by replying <strong>STOP</strong> to any
+              message you receive from us. After opting out, you will receive a
+              one-time confirmation message and no further SMS messages will be
+              sent unless you re-opt in.
+            </p>
+            <p>
+              <strong>Help:</strong> For assistance with our SMS messaging
+              program, reply <strong>HELP</strong> to any message or contact us
+              at{' '}
+              <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a>{' '}
+              or{' '}
+              <a href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}>
+                {SITE_CONFIG.defaultPhone}
+              </a>
+              .
+            </p>
+            <p>
+              Consent to receive SMS messages is not a condition of purchasing
+              any goods or services from {SITE_CONFIG.name}. Your phone number
+              and SMS consent data will not be shared with or sold to third
+              parties or affiliates for marketing or promotional purposes.
             </p>
 
             <h2>How We Use Your Information</h2>
