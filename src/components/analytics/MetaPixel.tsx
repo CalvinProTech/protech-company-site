@@ -2,10 +2,10 @@
 
 import Script from 'next/script';
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '939004151480063';
 
 export function MetaPixel() {
-  if (!PIXEL_ID || PIXEL_ID === 'PLACEHOLDER') return null;
+  if (!PIXEL_ID) return null;
 
   return (
     <>
