@@ -66,7 +66,7 @@ interface LocationForMetadata {
 }
 
 export function createLocationMetadata(location: LocationForMetadata): Metadata {
-  const title = `Roofing Services ${location.city}, ${location.stateAbbr} | ProTech Roofing`;
+  const title = `Roofing Services ${location.city}, ${location.stateAbbr}`;
   const description = `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair & storm damage restoration. Licensed & insured. Get your free estimate today!`;
 
   return createPageMetadata({
@@ -84,7 +84,7 @@ interface CityLandingForMetadata {
 
 export function createCityLandingMetadata(location: CityLandingForMetadata): Metadata {
   const cityStateSlug = `${location.citySlug}-${location.stateAbbr.toLowerCase()}`;
-  const title = `Roofing Services in ${location.city}, ${location.stateAbbr} | ProTech Roofing`;
+  const title = `Roofing Services in ${location.city}, ${location.stateAbbr}`;
   const description = `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair, storm damage & insurance claims. Licensed & insured. Get your free estimate today!`;
 
   return createPageMetadata({
