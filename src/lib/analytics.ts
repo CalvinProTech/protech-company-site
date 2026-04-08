@@ -2,6 +2,7 @@ declare global {
   interface Window {
     dataLayer: Record<string, unknown>[];
     gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -41,6 +42,14 @@ export function trackFormSubmit(
           ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL
           : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL;
   fireGoogleAdsConversion(label);
+
+  // Fire Meta Pixel Lead event
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'Lead', {
+      content_name: formType,
+      ...data,
+    });
+  }
 }
 
 export function trackLeadWidgetEvent(

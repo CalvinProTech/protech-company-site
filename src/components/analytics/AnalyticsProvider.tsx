@@ -27,6 +27,14 @@ const CustomersAI = dynamic(
   { ssr: false }
 );
 
+const MetaPixel = dynamic(
+  () =>
+    import('@/components/analytics/MetaPixel').then(
+      (mod) => mod.MetaPixel
+    ),
+  { ssr: false }
+);
+
 export default function AnalyticsProvider() {
   useScrollDepth();
 
@@ -37,6 +45,7 @@ export default function AnalyticsProvider() {
   return (
     <>
       <GoogleAnalytics />
+      <MetaPixel />
       <CallRail />
       <CustomersAI />
     </>
