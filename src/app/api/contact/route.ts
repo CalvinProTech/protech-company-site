@@ -82,6 +82,10 @@ export async function POST(request: Request) {
             lastName: data.lastName,
             phone: data.phone,
             email: data.email,
+            utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
+            utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,
+            utm_campaign: (body._utm as Record<string, string>)?.utm_campaign || undefined,
+            gclid: (body._utm as Record<string, string>)?.gclid || undefined,
           }),
         });
 

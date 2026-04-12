@@ -108,6 +108,10 @@ export async function POST(request: Request) {
               zip: geocode.zipCode,
               serviceType: 'roof-replacement',
               source: 'instant-estimate',
+              utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
+              utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,
+              utm_campaign: (body._utm as Record<string, string>)?.utm_campaign || undefined,
+              gclid: (body._utm as Record<string, string>)?.gclid || undefined,
             }),
           })
         : Promise.resolve(null);
