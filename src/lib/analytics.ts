@@ -66,10 +66,9 @@ export function trackLeadWidgetEvent(
 export function trackPhoneClick(location: string, page: string) {
   pushEvent('click_phone', { location, page });
 
-  // Fire Google Ads phone conversion
-  fireGoogleAdsConversion(
-    process.env.NEXT_PUBLIC_GOOGLE_ADS_PHONE_LABEL,
-  );
+  // Don't fire Google Ads conversion on phone clicks — phone calls to 866
+  // don't create Salesforce leads, so counting them inflates conversion numbers.
+  // Only form submissions should count as conversions.
 }
 
 export function trackCTAClick(
