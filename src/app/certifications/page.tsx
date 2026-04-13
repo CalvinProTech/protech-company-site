@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'GAF Master Elite Certified Roofing Contractor | ProTech Roofing',
     description:
-      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed in 14 states with lifetime warranties.',
+      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed in 9 states & D.C. with lifetime warranties.',
     path: '/certifications',
   });
 }
@@ -104,7 +104,7 @@ const faqs = [
   {
     question: 'Is ProTech Roofing licensed in my state?',
     answer:
-      'ProTech Roofing is licensed and insured in 14 states: Florida, Georgia, Texas, Kentucky, Ohio, Delaware, Maryland, Virginia, Connecticut, Pennsylvania, North Carolina, South Carolina, West Virginia, and Tennessee. Each state license is current and verifiable through the respective state licensing board. If you are located in one of these states, we are ready to serve you.',
+      'ProTech Roofing is licensed and insured in 9 states plus D.C.: Florida, Delaware, Maryland, Virginia, Connecticut, Pennsylvania, North Carolina, South Carolina, and West Virginia. Each state license is current and verifiable through the respective state licensing board. If you are located in one of these states, we are ready to serve you.',
   },
   {
     question: 'How do I verify ProTech\'s certifications?',
@@ -165,7 +165,7 @@ export default function CertificationsPage() {
       {/* Hero */}
       <Hero
         heading="GAF Master Elite Certified Roofing Contractor"
-        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed in 14 states and backed by industry-leading certifications."
+        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed in 9 states and backed by industry-leading certifications."
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{ text: 'Call 1-866-308-2640', href: 'tel:18663082640' }}
         showTrustBadges

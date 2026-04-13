@@ -32,7 +32,7 @@ export const generalFaqs: FAQItem[] = [
   {
     question: "What areas does ProTech Roofing serve?",
     answer:
-      "ProTech Roofing serves over 40 major metropolitan areas across 14 states. Our service areas include Florida (Tampa, Orlando, Miami, Jacksonville, Fort Lauderdale), Georgia (Atlanta, Savannah, Augusta), Delaware (Wilmington, Dover), Maryland (Baltimore, Frederick, Annapolis), Virginia (Virginia Beach, Richmond, Norfolk), Connecticut (Hartford, New Haven, Stamford), Pennsylvania (Philadelphia, Pittsburgh, Allentown), North Carolina (Charlotte, Raleigh, Greensboro), South Carolina (Charleston, Columbia, Greenville), West Virginia (Charleston, Huntington, Morgantown), Tennessee (Nashville, Memphis, Knoxville, Chattanooga), Texas (Dallas, Houston, San Antonio, Austin, Fort Worth), Kentucky (Louisville, Lexington), and Ohio (Columbus, Cincinnati, Cleveland). Each location covers a 50-mile service radius.",
+      "ProTech Roofing serves major metropolitan areas across 9 states and Washington D.C. on the East Coast. Our service areas include Florida (Tampa, Orlando, Miami, Jacksonville, Fort Lauderdale), Pennsylvania (Philadelphia, Pittsburgh, Allentown), North Carolina (Charlotte, Raleigh, Greensboro), South Carolina (Charleston, Columbia, Greenville), Virginia (Virginia Beach, Richmond, Norfolk), Maryland (Baltimore, Frederick, Annapolis), Delaware (Wilmington, Dover), Connecticut (Hartford, New Haven, Stamford), and West Virginia (Charleston, Huntington, Morgantown). Each location covers a 50-mile service radius.",
   },
   {
     question: "What warranty does ProTech Roofing provide?",

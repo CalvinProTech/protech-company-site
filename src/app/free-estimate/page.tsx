@@ -19,9 +19,9 @@ import InstantEstimateWidget from '@/components/forms/InstantEstimateWidget';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Free Roofing Estimate | ProTech Roofing',
+    title: 'Free Roof Estimate — No Obligation | ProTech Roofing',
     description:
-      'Get a free, no-obligation roofing estimate from ProTech Roofing. Licensed across 14 states. We respond within 24 hours. Fill out our form or call today.',
+      'Get a free satellite-powered roof estimate in minutes. No obligation, no pressure. Serving FL, PA, NC, SC, VA, MD, DE, CT & D.C. $0 down financing available. Call (866) 308-2640 or fill out our form.',
     path: '/free-estimate',
   });
 }

@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Contact Us | ProTech Roofing',
     description:
-      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving 14 states. We respond within 24 hours.',
+      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving FL, PA, NC, SC, VA, MD, DE, CT & D.C. We respond within 24 hours.',
     path: '/contact',
   });
 }
@@ -35,9 +35,14 @@ const officeHours = [
 
 const serviceStates = [
   { name: 'Florida', cities: 'Tampa, Orlando, Miami, Jacksonville, Fort Lauderdale' },
-  { name: 'Texas', cities: 'Dallas, Houston, San Antonio, Austin, Fort Worth' },
-  { name: 'Kentucky', cities: 'Louisville, Lexington' },
-  { name: 'Ohio', cities: 'Columbus, Cincinnati, Cleveland' },
+  { name: 'Pennsylvania', cities: 'Philadelphia, Pittsburgh, Allentown' },
+  { name: 'North Carolina', cities: 'Charlotte, Raleigh, Greensboro' },
+  { name: 'South Carolina', cities: 'Charleston, Columbia, Greenville' },
+  { name: 'Virginia', cities: 'Virginia Beach, Richmond, Norfolk' },
+  { name: 'Maryland', cities: 'Baltimore, Frederick, Annapolis' },
+  { name: 'Delaware', cities: 'Wilmington, Dover' },
+  { name: 'Connecticut', cities: 'Hartford, New Haven, Stamford' },
+  { name: 'West Virginia', cities: 'Charleston, Huntington, Morgantown' },
 ];
 
 export default function ContactPage() {

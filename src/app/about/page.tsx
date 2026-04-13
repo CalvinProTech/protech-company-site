@@ -10,7 +10,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'About ProTech Roofing | Our Story, Team & Values',
     description:
-      'Learn about ProTech Roofing — 20+ years of quality roofing across 14 states. Meet our team, certifications, and why 1,000+ homeowners trust us.',
+      'Learn about ProTech Roofing — 20+ years of quality roofing across 9 states on the East Coast. Meet our team, certifications, and why 1,000+ homeowners trust us.',
     path: '/about',
   });
 }
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 Over the past two decades, that founding principle has guided
                 every decision we make. We started as a small crew in a single
                 city and grew through word of mouth, one satisfied homeowner at a
-                time. Today, ProTech Roofing operates across 14 states with a
+                time. Today, ProTech Roofing operates across the East Coast with a
                 team of certified professionals who share the same commitment to
                 doing things right. We never cut corners on materials, we never
                 skip steps in installation, and we never walk away from a project

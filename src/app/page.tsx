@@ -22,9 +22,9 @@ import OrganizationSchema from '@/components/seo/OrganizationSchema';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'ProTech Roofing | Licensed Roofing Contractor',
+    title: 'Roof Replacement & Repair — Free Estimate | ProTech Roofing',
     description:
-      'Expert roofing services across 14 states including FL, GA, TX, TN, WV, VA, PA, NC, SC, and more. Licensed, insured, and rated 5.0 stars. Roof replacement, repair, storm damage, and more. Get your free estimate today.',
+      'Licensed roofing contractor serving FL, PA, NC, SC, VA, MD, DE, CT & D.C. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
     path: '/',
   });
 }
