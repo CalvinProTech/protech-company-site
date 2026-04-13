@@ -120,7 +120,7 @@ export default function StateServicePageTemplate({
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-lg px-4 sm:px-6 lg:px-8">
           <QuickQuoteForm
-            source={`state-service-${stateSlug}-${service.slug}`}
+            source="quick-quote-state-service"
             heading={`Get a Free ${service.name} Quote in ${state}`}
             subtext="Enter your info and a specialist will call you within the hour."
           />

@@ -127,6 +127,7 @@ export const CALLBACK_SOURCES = [
   'quick-quote-service',
   'quick-quote-city',
   'quick-quote-city-service',
+  'quick-quote-state-service',
   'quick-quote-blog',
 ] as const;
 
