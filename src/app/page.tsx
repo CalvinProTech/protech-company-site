@@ -19,6 +19,9 @@ import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABanner } from '@/components/sections/CTABanner';
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema';
 import OrganizationSchema from '@/components/seo/OrganizationSchema';
+import FAQSchema from '@/components/seo/FAQSchema';
+import { FAQSection } from '@/components/sections/FAQSection';
+import { generalFaqs } from '@/lib/faqs';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
@@ -48,6 +51,7 @@ export default function HomePage() {
       {/* Structured Data */}
       <LocalBusinessSchema type="homepage" />
       <OrganizationSchema />
+      <FAQSchema faqs={generalFaqs} />
 
       {/* Hero Section */}
       <Hero
@@ -84,6 +88,13 @@ export default function HomePage() {
 
       {/* Blog Preview */}
       <BlogPreview posts={recentPosts} />
+
+      {/* FAQ Section */}
+      <FAQSection
+        heading="Frequently Asked Questions"
+        subtitle="Common questions about our roofing services"
+        faqs={generalFaqs}
+      />
 
       {/* CTA Banner */}
       <CTABanner />

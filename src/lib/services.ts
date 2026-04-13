@@ -613,6 +613,16 @@ const services: Service[] = [
         answer:
           'A supplement is an additional claim filed when the initial insurance payout does not cover the full cost of restoration. Common reasons include hidden damage discovered during tear-off, code-upgrade requirements, or line items the adjuster missed. Our team files supplements with detailed documentation to recover every dollar you are owed.',
       },
+      {
+        question: 'Will filing a roof insurance claim raise my premiums?',
+        answer:
+          'Weather-related claims are typically classified differently from at-fault claims and may not increase your premiums. Most homeowner policies separate storm damage from preventable losses. However, policies vary by state and carrier, so we recommend reviewing your specific policy terms. Our team can help you understand your coverage before you decide whether to file.',
+      },
+      {
+        question: 'Does ProTech Roofing charge anything for the insurance claim inspection?',
+        answer:
+          'No. ProTech Roofing provides a completely free roof inspection and damage assessment for insurance claim purposes. If we identify covered damage, we handle the entire claims process at no upfront cost to you. If your claim is approved, the work is typically covered by your insurance minus your deductible.',
+      },
     ],
     problemStatement:
       'Filing a roofing insurance claim is overwhelming, especially when adjusters undervalue damage and paperwork piles up. Without expert representation, homeowners leave thousands of dollars on the table.',
