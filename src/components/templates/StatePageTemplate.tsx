@@ -132,15 +132,15 @@ export default function StatePageTemplate({
             {SERVICES.map((service) => (
               <Link
                 key={service.slug}
-                href={`/services/${service.slug}`}
+                href={`/locations/${stateSlug}/${service.slug}`}
                 className="group flex items-center justify-between rounded-xl border border-primary-100 bg-white p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-primary-900 group-hover:text-accent-500">
-                    {service.name}
+                    {service.name} in {state}
                   </h3>
                   <p className="mt-1 text-sm text-neutral-500">
-                    Available in all {state} locations
+                    Licensed & insured across {state}
                   </p>
                 </div>
                 <ArrowRight className="h-5 w-5 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-1 group-hover:text-accent-500" />
