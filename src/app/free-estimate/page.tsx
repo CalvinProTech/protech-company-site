@@ -15,7 +15,7 @@ import { formatPhoneNumber } from '@/lib/utils';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
-import InstantEstimateWidget from '@/components/forms/InstantEstimateWidget';
+import InstantPriceEstimate from '@/components/forms/InstantPriceEstimate';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
@@ -36,25 +36,19 @@ const whatToExpectSteps = [
     icon: MapPin,
     title: 'Enter Your Address',
     description:
-      'Type your home address and select it from the dropdown. We use it to locate your roof via satellite.',
-  },
-  {
-    icon: UserCheck,
-    title: 'Add Your Contact Info',
-    description:
-      'Enter your name, phone, and optional email so we can follow up with a detailed proposal.',
+      'Type your full home address. Our satellite technology measures your roof in seconds.',
   },
   {
     icon: Satellite,
-    title: 'Instant Satellite Measurement',
+    title: 'See Your Price Range',
     description:
-      'Our technology measures your roof area from satellite imagery in seconds — no ladder, no appointment needed.',
+      'Get an instant estimated cost range based on your roof size and pitch — no appointment needed.',
   },
   {
     icon: Phone,
-    title: 'Get Your Estimate & Next Steps',
+    title: 'Call for Your Exact Quote',
     description:
-      'See your estimated cost instantly. Call us to lock in up to 70% in discounts and rebates or schedule a free in-person inspection.',
+      'Speak with a roofing specialist to get your precise quote, discuss materials, and ask about $0 down financing.',
   },
 ];
 
@@ -79,11 +73,11 @@ export default function FreeEstimatePage() {
               Get Your Free Roofing Estimate
             </h1>
             <p className="mt-4 text-lg text-primary-200">
-              Enter your address below for an instant satellite-powered
-              estimate. No obligation, no pressure.
+              Enter your address for an instant price range — powered by
+              satellite roof measurement. No obligation, no pressure.
             </p>
             <div className="mt-8 w-full">
-              <InstantEstimateWidget />
+              <InstantPriceEstimate />
             </div>
           </div>
         </div>
