@@ -79,19 +79,25 @@ export async function POST(request: Request) {
     );
     const pitchDeg = largest.pitchDegrees ?? 0;
 
-    // 4. Price range
-    const priceLow = Math.round(roofAreaSqFt * LOW_PRICE_PER_SQFT / 100) * 100;
-    const priceHigh = Math.round(roofAreaSqFt * HIGH_PRICE_PER_SQFT / 100) * 100;
+    // Check if pitch is too low for shingles (below 3/12 ≈ 14°)
+    const pitchRatio = pitchDegreesToRatio(pitchDeg);
+    const pitchRise = parseInt(pitchRatio.split('/')[0]) || 0;
+    const lowPitch = pitchRise < 3;
+
+    // 4. Price range (only for standard pitch roofs)
+    const priceLow = lowPitch ? 0 : Math.round(roofAreaSqFt * LOW_PRICE_PER_SQFT / 100) * 100;
+    const priceHigh = lowPitch ? 0 : Math.round(roofAreaSqFt * HIGH_PRICE_PER_SQFT / 100) * 100;
 
     return NextResponse.json({
       success: true,
       data: {
         roofAreaSqFt,
-        predominantPitch: pitchDegreesToRatio(pitchDeg),
+        predominantPitch: pitchRatio,
         roofFacets: segments.length,
         dataQuality,
         priceLow,
         priceHigh,
+        lowPitch,
       },
     });
   } catch (error) {

@@ -13,6 +13,7 @@ interface RoofEstimate {
   dataQuality: string;
   priceLow: number;
   priceHigh: number;
+  lowPitch?: boolean;
 }
 
 export default function InstantPriceEstimate() {
@@ -135,27 +136,48 @@ export default function InstantPriceEstimate() {
         // Step 2: Results
         <div className="space-y-6">
           {/* Price Range Hero */}
-          <div className="rounded-2xl bg-gradient-to-br from-primary-800 to-primary-900 p-6 text-center text-white shadow-xl">
-            <p className="text-sm font-medium text-primary-300">
-              Estimated Roof Replacement Cost
-            </p>
-            <p className="mt-2 text-4xl font-bold md:text-5xl">
-              {formatCurrency(estimate.priceLow)} – {formatCurrency(estimate.priceHigh)}
-            </p>
-            <div className="mt-4 flex items-center justify-center gap-4 text-sm text-primary-300">
-              <span className="flex items-center gap-1">
-                <Home className="h-4 w-4" />
-                {formatNumber(estimate.roofAreaSqFt)} sq ft
-              </span>
-              <span>•</span>
-              <span>{estimate.predominantPitch} pitch</span>
-              <span>•</span>
-              <span>{estimate.roofFacets} facets</span>
+          {estimate.lowPitch ? (
+            <div className="rounded-2xl bg-gradient-to-br from-amber-700 to-amber-900 p-6 text-center text-white shadow-xl">
+              <p className="text-sm font-medium text-amber-200">
+                Low-Slope Roof Detected
+              </p>
+              <p className="mt-2 text-2xl font-bold">
+                Your roof pitch is {estimate.predominantPitch}
+              </p>
+              <div className="mt-3 flex items-center justify-center gap-4 text-sm text-amber-200">
+                <span>{formatNumber(estimate.roofAreaSqFt)} sq ft</span>
+                <span>•</span>
+                <span>{estimate.roofFacets} facets</span>
+              </div>
+              <p className="mt-3 text-sm text-amber-200">
+                Roofs below 3/12 pitch require flat roof materials (TPO, EPDM,
+                or modified bitumen) and need a custom quote. Call us for a free
+                assessment.
+              </p>
             </div>
-            <p className="mt-3 text-xs text-primary-400">
-              Based on satellite measurement · Final price depends on materials and roof condition
-            </p>
-          </div>
+          ) : (
+            <div className="rounded-2xl bg-gradient-to-br from-primary-800 to-primary-900 p-6 text-center text-white shadow-xl">
+              <p className="text-sm font-medium text-primary-300">
+                Estimated Roof Replacement Cost
+              </p>
+              <p className="mt-2 text-4xl font-bold md:text-5xl">
+                {formatCurrency(estimate.priceLow)} – {formatCurrency(estimate.priceHigh)}
+              </p>
+              <div className="mt-4 flex items-center justify-center gap-4 text-sm text-primary-300">
+                <span className="flex items-center gap-1">
+                  <Home className="h-4 w-4" />
+                  {formatNumber(estimate.roofAreaSqFt)} sq ft
+                </span>
+                <span>•</span>
+                <span>{estimate.predominantPitch} pitch</span>
+                <span>•</span>
+                <span>{estimate.roofFacets} facets</span>
+              </div>
+              <p className="mt-3 text-xs text-primary-400">
+                Based on satellite measurement · Final price depends on materials and roof condition
+              </p>
+            </div>
+          )}
 
           {/* Call CTA */}
           <div className="rounded-xl border-2 border-accent-500 bg-accent-50 p-6 text-center">

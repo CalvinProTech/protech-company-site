@@ -73,9 +73,12 @@ export async function POST(request: Request) {
     let text = '';
     try {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const pdfParse = require('pdf-parse');
-      const pdfData = await pdfParse(buffer);
-      text = pdfData.text;
+      const { PDFParse } = require('pdf-parse');
+      const uint8 = new Uint8Array(bytes);
+      const parser = new PDFParse(uint8);
+      const result = await parser.getText();
+      // result.pages is an array of { text, num }
+      text = result.pages.map((p: { text: string }) => p.text).join('\n');
     } catch {
       return NextResponse.json(
         { success: false, error: 'Could not read the PDF. Please make sure it is a valid GAF QuickMeasure report.' },
