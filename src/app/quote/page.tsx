@@ -63,26 +63,88 @@ export default function QuotePage() {
     setStep('processing');
     setError(null);
 
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
-      const res = await fetch('/api/parse-quickmeasure', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
+      // Client-side PDF parsing with pdfjs-dist
+      const pdfjsLib = await import('pdfjs-dist');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
 
-      if (data.success && data.data) {
-        setQuote(data.data);
-        setStep('quote');
-        trackFormSubmit('estimate', { source: 'quickmeasure-upload' });
-      } else {
-        setError(data.error || 'Could not process the report.');
-        setStep('upload');
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+      // Extract text from all pages
+      let fullText = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const pageText = content.items
+          .map((item: any) => item.str || '')
+          .join(' ');
+        fullText += pageText + '\n';
       }
-    } catch {
-      setError('Something went wrong. Please try again.');
+
+      // Validate it's a QuickMeasure report
+      if (!fullText.includes('Roof Area') || !fullText.includes('sq ft')) {
+        setError("This doesn't appear to be a GAF QuickMeasure report.");
+        setStep('upload');
+        return;
+      }
+
+      // Parse measurements
+      const parseNum = (label: string): number => {
+        const regex = new RegExp(label + '[\\s:]*([\\d,]+)', 'i');
+        const match = fullText.match(regex);
+        return match ? parseInt(match[1].replace(/,/g, '')) : 0;
+      };
+
+      const parsePitch = (): string => {
+        const match = fullText.match(/Predominant\s*Pitch\s*(\d+)\s*\/\s*12/i);
+        return match ? `${match[1]} / 12` : 'Unknown';
+      };
+
+      const parseAddress = (): string => {
+        const match = fullText.match(/(\d+[^,]+,\s*[^,]+,\s*[A-Z]{2}\s+\d{5})/);
+        return match ? match[1].replace(/\s*\(\d+\)\s*/, '').trim() : 'Unknown Address';
+      };
+
+      const roofArea = parseNum('Roof Area');
+      if (roofArea < 100) {
+        setError('Could not extract roof measurements. Please upload a GAF QuickMeasure Full Report.');
+        setStep('upload');
+        return;
+      }
+
+      const predominantPitch = parsePitch();
+      const pitchRise = parseInt(predominantPitch) || 0;
+      const isLowPitch = pitchRise < 3;
+
+      const PRICE_LOW = 3.5;
+      const PRICE_MID = 5.25;
+      const PRICE_HIGH = 7.0;
+
+      const quoteData: QuoteData = {
+        address: parseAddress(),
+        roofArea,
+        roofFacets: parseNum('Roof Facets'),
+        predominantPitch,
+        ridgesHips: parseNum('Ridges/Hips') || parseNum('Ridges'),
+        rakes: parseNum('Rakes'),
+        eaves: parseNum('Eaves'),
+        valleys: parseNum('Valleys'),
+        bends: parseNum('Bends'),
+        date: '',
+        priceLow: isLowPitch ? 0 : Math.round(roofArea * PRICE_LOW / 100) * 100,
+        priceMid: isLowPitch ? 0 : Math.round(roofArea * PRICE_MID / 100) * 100,
+        priceHigh: isLowPitch ? 0 : Math.round(roofArea * PRICE_HIGH / 100) * 100,
+        lowPitch: isLowPitch,
+      };
+
+      setQuote(quoteData);
+      setStep('quote');
+      trackFormSubmit('estimate', { source: 'quickmeasure-upload' });
+    } catch (e) {
+      console.error('PDF parse error:', e);
+      setError('Something went wrong processing the report. Please try again.');
       setStep('upload');
     }
   }, []);
