@@ -1,41 +1,59 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function HearthWidget() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    // Remove any existing script to allow re-init
+    // Remove any previous Hearth script
     const existing = document.getElementById('hearth-script');
     if (existing) existing.remove();
 
-    // Create the iframe element Hearth expects
-    const iframe = document.createElement('iframe');
-    iframe.id = 'hearth-widget_calculator_v1';
-    iframe.title = 'Hearth Financing Calculator';
-    iframe.style.width = '100%';
-    iframe.style.minHeight = '500px';
-    iframe.style.border = 'none';
-    iframe.style.borderRadius = '12px';
-    containerRef.current.innerHTML = '';
-    containerRef.current.appendChild(iframe);
-
-    // Load the Hearth script which populates the iframe
+    // Add the script — it looks for iframes with id starting with "hearth-widget_"
+    // and writes content into them when DOMContentLoaded fires (or immediately if already loaded)
     const script = document.createElement('script');
     script.id = 'hearth-script';
     script.src = 'https://widget.gethearth.com/script.js';
     script.setAttribute('data-orgid', '58594');
     script.setAttribute('data-partner', 'protech-roofing-llc');
-    script.async = true;
-    document.body.appendChild(script);
+    script.onload = () => {
+      // Hearth script checks for iframes on load. Since our iframe exists
+      // in the DOM already (rendered below), it should find it.
+      // But it may have already run its init. Force re-run by dispatching DOMContentLoaded.
+      setTimeout(() => {
+        // Re-query and populate — Hearth's init function looks for hearth-widget_ iframes
+        const iframes = document.querySelectorAll('[id^=hearth-widget_]');
+        if (iframes.length > 0 && !(iframes[0] as HTMLIFrameElement).contentDocument?.body?.innerHTML) {
+          // Script loaded but didn't populate — reload
+          window.dispatchEvent(new Event('DOMContentLoaded'));
+        }
+        setLoaded(true);
+      }, 500);
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      const s = document.getElementById('hearth-script');
+      if (s) s.remove();
+    };
   }, []);
 
   return (
-    <div className="mx-auto max-w-3xl overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-neutral-200">
-      <div ref={containerRef} />
+    <div className="mx-auto flex max-w-md justify-center">
+      <iframe
+        id="hearth-widget_calculator_v1"
+        title="Hearth Financing Calculator"
+        width="320"
+        height="771"
+        scrolling="no"
+        style={{
+          border: 'none',
+          borderRadius: 12,
+          opacity: loaded ? 1 : 0.5,
+          transition: 'opacity 0.3s',
+        }}
+      />
     </div>
   );
 }
