@@ -67,9 +67,8 @@ Get Financing Options
 </a>
 </div>
 </div>
-<div class="hrth-footer">
-<small>The estimated monthly payment is provided for information purposes only. It is based on the user's selected loan amount and the credit score range; and calculated using a 5 year loan term with 60 monthly payments and an APR of <span id="terms-apr">10.49</span>%.</small>
-<br/><a href="https://www.gethearth.com" target="_blank"><img src="https://hearth.imgix.net/logos/hearth-2022.svg"/></a>
+<div style="background:white;padding:12px 22px;position:absolute;bottom:0;left:0;right:0">
+<small style="font-size:8px;line-height:14px;color:#B6BCC2">The estimated monthly payment is for information purposes only. Based on a 5 year loan term with 60 monthly payments at <span id="terms-apr">10.49</span>% APR. Powered by Hearth.</small>
 </div>
 </div>
 <script>
