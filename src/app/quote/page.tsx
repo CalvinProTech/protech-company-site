@@ -64,24 +64,26 @@ export default function QuotePage() {
     setError(null);
 
     try {
-      // Client-side PDF parsing with pdfjs-dist
-      const pdfjsLib = await import('pdfjs-dist');
-      pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+      const formData = new FormData();
+      formData.append('file', file);
 
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      const res = await fetch('/api/parse-quickmeasure', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
 
-      // Extract text from all pages
-      let fullText = '';
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const content = await page.getTextContent();
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const pageText = content.items
-          .map((item: any) => item.str || '')
-          .join(' ');
-        fullText += pageText + '\n';
+      if (data.success && data.data) {
+        setQuote(data.data);
+        setStep('quote');
+        trackFormSubmit('estimate', { source: 'quickmeasure-upload' });
+        return;
       }
+
+      throw new Error(data.error || 'Could not process the report.');
+
+      // unreachable — keeps TS happy for the rest of the function
+      let fullText = '';
 
       // Validate it's a QuickMeasure report
       if (!fullText.includes('Roof Area') || !fullText.includes('sq ft')) {

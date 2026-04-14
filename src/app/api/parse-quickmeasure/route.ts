@@ -77,10 +77,8 @@ export async function POST(request: Request) {
     // Since we're server-side Next.js, we can use dynamic import
     let text = '';
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const pdfParse = require('pdf-parse');
-      const pdfData = await pdfParse(buffer);
-      text = pdfData.text;
+      const { parsePdf } = await import('@/lib/pdf-parse');
+      text = await parsePdf(buffer);
     } catch (e) {
       console.error('[parse-quickmeasure] PDF parse error:', e);
       return NextResponse.json(
