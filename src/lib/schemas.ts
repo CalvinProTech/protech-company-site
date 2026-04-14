@@ -16,7 +16,7 @@ export const SERVICE_OPTIONS = [
 ] as const;
 
 export const STATE_OPTIONS = [
-  'FL', 'GA', 'TX', 'KY', 'OH', 'DE', 'MD', 'VA', 'CT', 'PA', 'NC', 'SC', 'WV', 'TN',
+  'CT', 'DC', 'DE', 'FL', 'MD', 'NC', 'PA', 'SC', 'VA', 'WV',
 ] as const;
 
 // ---------------------------------------------------------------------------
