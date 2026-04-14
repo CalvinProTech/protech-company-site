@@ -113,12 +113,17 @@ export async function POST(request: Request) {
       );
     }
 
+    // Check if pitch is too low for shingles (less than 2/12)
+    const pitchMatch = predominantPitch.match(/(\d+)\s*\/\s*12/);
+    const pitchRise = pitchMatch ? parseInt(pitchMatch[1]) : 99;
+    const lowPitch = pitchRise < 3;
+
     // Calculate pricing
     const priceLow = Math.round(roofArea * PRICE_LOW_PER_SQFT / 100) * 100;
     const priceMid = Math.round(roofArea * PRICE_MID_PER_SQFT / 100) * 100;
     const priceHigh = Math.round(roofArea * PRICE_HIGH_PER_SQFT / 100) * 100;
 
-    const data: QuickMeasureData = {
+    const data: QuickMeasureData & { lowPitch: boolean } = {
       address,
       roofArea,
       roofFacets,
@@ -129,9 +134,10 @@ export async function POST(request: Request) {
       valleys,
       bends,
       date,
-      priceLow,
-      priceHigh,
-      priceMid,
+      priceLow: lowPitch ? 0 : priceLow,
+      priceHigh: lowPitch ? 0 : priceHigh,
+      priceMid: lowPitch ? 0 : priceMid,
+      lowPitch,
     };
 
     return NextResponse.json({ success: true, data });

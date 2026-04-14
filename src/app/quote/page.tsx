@@ -32,6 +32,7 @@ interface QuoteData {
   priceLow: number;
   priceHigh: number;
   priceMid: number;
+  lowPitch: boolean;
 }
 
 const formatCurrency = (n: number) =>
@@ -259,20 +260,41 @@ export default function QuotePage() {
           {step === 'quote' && quote && (
             <div className="space-y-6">
               {/* Price Hero */}
-              <div className="rounded-2xl bg-gradient-to-br from-primary-800 to-primary-900 p-8 text-center text-white shadow-xl">
-                <p className="text-sm font-medium text-primary-300">
-                  Your Roof Replacement Quote
-                </p>
-                <p className="mt-3 text-5xl font-bold md:text-6xl">
-                  {formatCurrency(quote.priceMid)}
-                </p>
-                <p className="mt-2 text-sm text-primary-300">
-                  Range: {formatCurrency(quote.priceLow)} – {formatCurrency(quote.priceHigh)}
-                </p>
-                <p className="mt-4 text-xs text-primary-400">
-                  Based on GAF QuickMeasure professional satellite measurement
-                </p>
-              </div>
+              {quote.lowPitch ? (
+                <div className="rounded-2xl bg-gradient-to-br from-amber-700 to-amber-900 p-8 text-center text-white shadow-xl">
+                  <p className="text-sm font-medium text-amber-200">
+                    Low-Slope Roof Detected
+                  </p>
+                  <p className="mt-3 text-2xl font-bold md:text-3xl">
+                    Your roof pitch is {quote.predominantPitch}
+                  </p>
+                  <p className="mt-3 text-sm text-amber-200">
+                    Roofs with a pitch below 3/12 require flat roof materials
+                    (TPO, EPDM, or modified bitumen) instead of standard
+                    shingles. These projects need a custom quote based on your
+                    specific roof configuration.
+                  </p>
+                  <p className="mt-4 text-sm font-semibold text-white">
+                    Please call us for a custom flat roof estimate.
+                  </p>
+                </div>
+              ) : (
+                <div className="rounded-2xl bg-gradient-to-br from-primary-800 to-primary-900 p-8 text-center text-white shadow-xl">
+                  <p className="text-sm font-medium text-primary-300">
+                    Your Roof Replacement Quote
+                  </p>
+                  <p className="mt-3 text-5xl font-bold md:text-6xl">
+                    {formatCurrency(quote.priceMid)}
+                  </p>
+                  <p className="mt-2 text-sm text-primary-300">
+                    Range: {formatCurrency(quote.priceLow)} –{' '}
+                    {formatCurrency(quote.priceHigh)}
+                  </p>
+                  <p className="mt-4 text-xs text-primary-400">
+                    Based on GAF QuickMeasure professional satellite measurement
+                  </p>
+                </div>
+              )}
 
               {/* Measurement Details */}
               <div className="rounded-xl border border-neutral-200 bg-white p-6">
@@ -299,8 +321,8 @@ export default function QuotePage() {
                 </div>
               </div>
 
-              {/* What's Included */}
-              <div className="rounded-xl border border-neutral-200 bg-white p-6">
+              {/* What's Included — only for standard pitch */}
+              {!quote.lowPitch && <div className="rounded-xl border border-neutral-200 bg-white p-6">
                 <h3 className="font-semibold text-primary-900">
                   What&apos;s Included
                 </h3>
@@ -323,8 +345,10 @@ export default function QuotePage() {
                 </ul>
               </div>
 
-              {/* Financing */}
-              <div className="rounded-xl border border-neutral-200 bg-white p-6">
+              }
+
+              {/* Financing — only for standard pitch */}
+              {!quote.lowPitch && <div className="rounded-xl border border-neutral-200 bg-white p-6">
                 <div className="flex items-start gap-3">
                   <DollarSign className="mt-0.5 h-5 w-5 text-accent-500" />
                   <div>
@@ -341,6 +365,8 @@ export default function QuotePage() {
                   </div>
                 </div>
               </div>
+
+              }
 
               {/* Call CTA */}
               <div className="rounded-xl border-2 border-accent-500 bg-accent-50 p-6 text-center">
