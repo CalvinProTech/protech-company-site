@@ -16,6 +16,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { FAQSection } from '@/components/sections/FAQSection';
 import FAQSchema from '@/components/seo/FAQSchema';
 import { CTABanner } from '@/components/sections/CTABanner';
+import HearthWidget from '@/components/financing/HearthWidget';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
@@ -188,8 +189,10 @@ export default function FinancingPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/free-estimate"
+                <a
+                  href="https://app.gethearth.com/partners/protech-roofing-llc/calvin/apply"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`mt-8 block w-full rounded-lg py-3 text-center text-base font-semibold transition-colors ${
                     plan.popular
                       ? 'bg-accent-500 text-white hover:bg-accent-600'
@@ -197,10 +200,36 @@ export default function FinancingPage() {
                   }`}
                 >
                   Check Your Rate
-                </Link>
+                </a>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Hearth Financing Calculator */}
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+              Check Your Rate in Minutes
+            </h2>
+            <p className="mt-4 text-lg text-neutral-600">
+              See what you qualify for — checking your rate does not affect your
+              credit score.
+            </p>
+          </div>
+          <HearthWidget />
+          <p className="mt-6 text-center">
+            <a
+              href="https://app.gethearth.com/partners/protech-roofing-llc/calvin/apply"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-8 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
+            >
+              Apply for Financing Now →
+            </a>
+          </p>
         </div>
       </section>
 
