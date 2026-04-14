@@ -4,9 +4,9 @@ import { useState, useCallback } from 'react';
 
 const APR_BY_CREDIT: Record<string, { label: string; apr: number }> = {
   excellent: { label: 'Excellent (741–850)', apr: 0.1049 },
-  good: { label: 'Good (681–740)', apr: 0.1937 },
-  average: { label: 'Average (661–680)', apr: 0.2359 },
-  poor: { label: 'Poor (500–660)', apr: 0.2582 },
+  good: { label: 'Good (681–740)', apr: 0.1437 },
+  average: { label: 'Average (661–680)', apr: 0.1859 },
+  poor: { label: 'Poor (500–660)', apr: 0.2082 },
 };
 
 const TERM_OPTIONS = [
