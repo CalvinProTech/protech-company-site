@@ -19,6 +19,7 @@ export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
+  { label: 'Financing', href: '/financing' },
   { label: 'Locations', href: '/locations' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },
