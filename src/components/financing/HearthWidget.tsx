@@ -11,10 +11,17 @@ const APR_BY_CREDIT: Record<string, { label: string; apr: number }> = {
 
 const TERM_OPTIONS = [
   { months: 36, label: '36 mo' },
+  { months: 48, label: '48 mo' },
   { months: 60, label: '60 mo' },
+  { months: 72, label: '72 mo' },
   { months: 84, label: '84 mo' },
+  { months: 96, label: '96 mo' },
+  { months: 108, label: '108 mo' },
   { months: 120, label: '120 mo' },
+  { months: 132, label: '132 mo' },
   { months: 144, label: '144 mo' },
+  { months: 156, label: '156 mo' },
+  { months: 168, label: '168 mo' },
   { months: 180, label: '180 mo' },
 ];
 
@@ -125,7 +132,7 @@ export default function HearthWidget() {
           <label className="mb-1 block text-sm font-medium text-neutral-700">
             Loan Term
           </label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-4 gap-2">
             {TERM_OPTIONS.map((opt) => (
               <button
                 key={opt.months}
