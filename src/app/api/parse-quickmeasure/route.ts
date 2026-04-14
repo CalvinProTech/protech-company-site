@@ -27,11 +27,16 @@ function parseNumber(text: string): number {
 }
 
 function extractField(text: string, label: string): string {
-  // Look for "Label\nValue" pattern in the extracted text
+  // Try regex match first: "Label<whitespace or nothing>Value"
+  // Handles both "Roof Area\n1,589 sq ft" and "Roof Area1,589 sq ft"
+  const regex = new RegExp(label + '[\\s:]*([\\d,./]+(?:\\s*(?:sq ft|ft|/\\s*12))?)', 'i');
+  const match = text.match(regex);
+  if (match) return match[1].trim();
+
+  // Fallback: line-by-line search
   const lines = text.split('\n').map((l) => l.trim());
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].toLowerCase().includes(label.toLowerCase())) {
-      // Value is on the same line after the label, or the next line
       const sameLine = lines[i].replace(new RegExp(label, 'i'), '').trim();
       if (sameLine && sameLine.match(/[\d/]/)) return sameLine;
       if (i + 1 < lines.length) return lines[i + 1].trim();
@@ -73,13 +78,11 @@ export async function POST(request: Request) {
     let text = '';
     try {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { PDFParse } = require('pdf-parse');
-      const uint8 = new Uint8Array(bytes);
-      const parser = new PDFParse(uint8);
-      const result = await parser.getText();
-      // result.pages is an array of { text, num }
-      text = result.pages.map((p: { text: string }) => p.text).join('\n');
-    } catch {
+      const pdfParse = require('pdf-parse');
+      const pdfData = await pdfParse(buffer);
+      text = pdfData.text;
+    } catch (e) {
+      console.error('[parse-quickmeasure] PDF parse error:', e);
       return NextResponse.json(
         { success: false, error: 'Could not read the PDF. Please make sure it is a valid GAF QuickMeasure report.' },
         { status: 400 }
