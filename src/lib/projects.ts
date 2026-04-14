@@ -84,6 +84,72 @@ const projects: Project[] = [
     metaDescription:
       'ProTech replaced a hail-damaged roof in Dallas with impact-resistant shingles. Drone before and after photos show the complete transformation.',
   },
+  {
+    id: 4,
+    slug: 'maria-ontiveros-tile-replacement',
+    title: 'Tile Roof Replacement with Solar Integration',
+    city: 'El Paso',
+    state: 'TX',
+    serviceType: 'roof-replacement',
+    description:
+      'This homeowner had a severely damaged clay tile roof with missing and broken tiles exposing the underlayment. ProTech Roofing removed the old tile system and installed new architectural shingles with proper flashing around existing solar panel mounts. The completed project restored full weather protection while maintaining the solar installation.',
+    beforeImage: '/images/projects/project-4-before.webp',
+    afterImage: '/images/projects/project-4-after.webp',
+    images: [
+      '/images/projects/project-4-before.webp',
+      '/images/projects/project-4-after.webp',
+    ],
+    materials:
+      'Architectural Shingles, Synthetic Underlayment, Solar Panel Re-mount Hardware',
+    timeline: '3 days',
+    metaTitle: 'Tile Roof Replacement | ProTech Roofing',
+    metaDescription:
+      'ProTech replaced a damaged clay tile roof and preserved the solar panel installation. See the before and after photos.',
+  },
+  {
+    id: 5,
+    slug: 'georgia-wilson-roof-replacement',
+    title: 'Complete Roof Replacement in Ohio',
+    city: 'Greenville',
+    state: 'OH',
+    serviceType: 'roof-replacement',
+    description:
+      'This older home needed a complete roof tear-off and replacement. The existing roof had significant wear with missing shingles and exposed decking. ProTech Roofing stripped the entire roof, inspected and repaired the decking, and installed new architectural shingles with proper ridge ventilation and chimney flashing.',
+    beforeImage: '/images/projects/project-5-before.webp',
+    afterImage: '/images/projects/project-5-after.webp',
+    images: [
+      '/images/projects/project-5-before.webp',
+      '/images/projects/project-5-after.webp',
+    ],
+    materials:
+      'Architectural Shingles, Synthetic Underlayment, Aluminum Drip Edge, Chimney Flashing',
+    timeline: '2 days',
+    metaTitle: 'Complete Roof Replacement in Ohio | ProTech Roofing',
+    metaDescription:
+      'ProTech completed a full roof replacement on an older home in Ohio with new architectural shingles and chimney flashing. Before and after photos.',
+  },
+  {
+    id: 6,
+    slug: 'raymundo-carrera-architectural-shingles',
+    title: 'Architectural Shingle Installation in Arizona',
+    city: 'Phoenix',
+    state: 'AZ',
+    serviceType: 'roof-replacement',
+    description:
+      'A complete roof replacement with premium architectural shingles. The new roof features a multi-toned color profile that adds dimension and curb appeal. ProTech installed proper ridge caps and valley flashing throughout the complex hip-and-valley roof system.',
+    beforeImage: '/images/projects/project-6-before.webp',
+    afterImage: '/images/projects/project-6-after.webp',
+    images: [
+      '/images/projects/project-6-before.webp',
+      '/images/projects/project-6-after.webp',
+    ],
+    materials:
+      'Premium Architectural Shingles, Ridge Cap Shingles, Valley Flashing',
+    timeline: '2 days',
+    metaTitle: 'Architectural Shingle Installation | ProTech Roofing',
+    metaDescription:
+      'ProTech installed premium architectural shingles on a complex hip-and-valley roof. See the completed project photos.',
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
