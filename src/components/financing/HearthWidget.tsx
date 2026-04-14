@@ -10,12 +10,12 @@ const APR_BY_CREDIT: Record<string, { label: string; apr: number }> = {
 };
 
 const TERM_OPTIONS = [
-  { months: 36, label: '3 years' },
-  { months: 60, label: '5 years' },
-  { months: 84, label: '7 years' },
-  { months: 120, label: '10 years' },
-  { months: 144, label: '12 years' },
-  { months: 180, label: '15 years' },
+  { months: 36, label: '36 mo' },
+  { months: 60, label: '60 mo' },
+  { months: 84, label: '84 mo' },
+  { months: 120, label: '120 mo' },
+  { months: 144, label: '144 mo' },
+  { months: 180, label: '180 mo' },
 ];
 
 const APPLY_URL =
