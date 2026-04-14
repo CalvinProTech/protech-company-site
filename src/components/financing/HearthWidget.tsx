@@ -1,118 +1,221 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState, useCallback } from 'react';
 
-const HEARTH_HTML = `<!DOCTYPE html>
-<html><head>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:white}
-h2,h3,h4{margin:0}
-h2{font-size:24px;line-height:24px;color:#1B4774;font-weight:bold}
-h3{font-size:28px;line-height:40px}
-h4{font-size:12px;line-height:20px;font-weight:600}
-p{font-size:12px;line-height:16px}
-select::-ms-expand{display:none}
-select{-webkit-appearance:none;-moz-appearance:none}
-.hrth-container{background-color:#F5F6FA;width:318px;height:769px;border:1px solid #E5E5E5;overflow:hidden;position:relative}
-.hrth-header{padding:24px 24px 22px;text-align:center}
-.hrth-hr{width:136px;height:0;border:1px solid #1B4774;margin:0 auto}
-.hrth-body{padding:24px;position:relative}
-label{font-size:12px;line-height:16px;margin-bottom:4px;display:block}
-input,select{display:block;background:white;border:1px solid #C4C4C4;border-radius:4px;margin-bottom:16px;font-weight:600;font-size:12px;line-height:24px;padding:5px 12px;width:100%;font-family:Poppins;box-sizing:border-box}
-.error{color:#FF5345;position:absolute;margin-top:-15px}
-.hrth-result{text-align:center;display:block;margin:36px 0;font-size:12px;line-height:16px;color:#43B774}
-.per-month{font-size:12px;line-height:16px;font-weight:normal;margin:0 6px}
-small{font-size:8px;line-height:14px;color:#B6BCC2}
-table{width:100%;border-spacing:0;margin:20px 0;background:rgba(90,112,138,0.12);border-radius:4px;font-size:12px;line-height:16px;padding:12px}
-table tr td{padding-bottom:8px}
-table tr:last-child td{border-top:1px solid #000;padding-top:12px;padding-bottom:0}
-.cta-container{text-align:center;margin-top:16px}
-.cta{background:#0154A4;border-radius:4px;font-weight:500;font-size:16px;line-height:24px;text-align:center;padding:10px 0;display:inline-block;width:100%}
-.hrth-footer{background:white;padding:16px 22px;position:absolute;bottom:0;left:0;right:0}
-.hrth-footer img{height:20px;margin-top:12px}
-</style>
-</head><body>
-<div class="hrth-container">
-<div class="hrth-header"><h2>Financing Calculator</h2></div>
-<div class="hrth-hr"></div>
-<div class="hrth-body">
-<div class="hrth-inputs">
-<label>Project cost</label>
-<input type="text" id="amount" placeholder="$12,000" oninput="recalculate()"/>
-<small class="error" id="error" style="display:none">Please choose an amount between $1,000 and $100,000.</small>
-<label>Your credit score</label>
-<select id="credit" onchange="recalculate()">
-<option value="0.10489999999999999">Excellent (741 - 850)</option>
-<option value="0.19370000000000001">Good (681 - 740)</option>
-<option value="0.2359">Average (661 - 680)</option>
-<option value="0.25819999999999999">Poor (500 - 660)</option>
-</select>
-</div>
-<a class="hrth-result" href="https://api.gethearth.com/partners/protech-roofing-llc?utm_campaign=58594&utm_content=calculator&utm_medium=widget-calculator&utm_source=contractor&utm_term=widget" target="_blank">
-Estimated<h3 id="monthly">$257.87<span class="per-month">/ mo.</span></h3>
-</a>
-<table>
-<tr><td>Principal</td><td style="text-align:right" id="principal">$12,000.00</td></tr>
-<tr><td>Interest</td><td style="text-align:right" id="interest">$3,472.04</td></tr>
-<tr><td style="font-weight:600">Total Loan Cost Estimate</td><td style="text-align:right;font-weight:600" id="total">$15,472.04</td></tr>
-</table>
-<h4>Get your personalized rates.</h4>
-<p>This takes two minutes and does not affect your credit score.</p>
-<div class="cta-container">
-<a class="cta" href="https://api.gethearth.com/partners/protech-roofing-llc?utm_campaign=58594&utm_content=calculator&utm_medium=widget-calculator&utm_source=contractor&utm_term=widget" target="_blank">
-Get Financing Options
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 0.667L5.06 1.607L8.78 5.333H0.667V6.667H8.78L5.06 10.393L6 11.333L11.334 6L6 0.667Z" fill="white"/></svg>
-</a>
-</div>
-</div>
-<div style="background:white;padding:12px 22px;position:absolute;bottom:0;left:0;right:0">
-<small style="font-size:8px;line-height:14px;color:#B6BCC2">The estimated monthly payment is for information purposes only. Based on a 5 year loan term with 60 monthly payments at <span id="terms-apr">10.49</span>% APR. Powered by Hearth.</small>
-</div>
-</div>
-<script>
-function recalculate(){
-var f=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'});
-var e=document.getElementById("credit");
-var apr=parseFloat(e.options[e.selectedIndex].value);
-var raw=document.getElementById("amount").value.replace(/[^0-9.]/g,'')||12000;
-var principal=parseFloat(raw);
-var term=60;var mApr=apr/12;var mPow=Math.pow(1+mApr,term);
-var monthly=mPow===1?(principal/term):(principal*mApr*mPow)/(mPow-1);
-var total=term*monthly;var interest=total-principal;
-document.getElementById("monthly").innerHTML=f.format(monthly)+"<span class='per-month'>/ mo.</span>";
-document.getElementById("terms-apr").innerHTML=(apr*100).toFixed(2);
-document.getElementById("principal").innerHTML=f.format(principal);
-document.getElementById("interest").innerHTML=f.format(interest);
-document.getElementById("total").innerHTML=f.format(total);
+const APR_BY_CREDIT: Record<string, { label: string; apr: number }> = {
+  excellent: { label: 'Excellent (741–850)', apr: 0.1049 },
+  good: { label: 'Good (681–740)', apr: 0.1937 },
+  average: { label: 'Average (661–680)', apr: 0.2359 },
+  poor: { label: 'Poor (500–660)', apr: 0.2582 },
+};
+
+const TERM_OPTIONS = [
+  { months: 36, label: '3 years' },
+  { months: 60, label: '5 years' },
+  { months: 84, label: '7 years' },
+  { months: 120, label: '10 years' },
+  { months: 144, label: '12 years' },
+  { months: 180, label: '15 years' },
+];
+
+const APPLY_URL =
+  'https://app.gethearth.com/partners/protech-roofing-llc/calvin/apply';
+
+function formatCurrency(n: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(n);
 }
-</script>
-</body></html>`;
+
+function formatCurrencyFull(n: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(n);
+}
 
 export default function HearthWidget() {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [projectCost, setProjectCost] = useState(12000);
+  const [downPayment, setDownPayment] = useState(0);
+  const [creditTier, setCreditTier] = useState('excellent');
+  const [termMonths, setTermMonths] = useState(60);
 
-  useEffect(() => {
-    if (!iframeRef.current) return;
-    const doc = iframeRef.current.contentDocument;
-    if (doc) {
-      doc.open();
-      doc.write(HEARTH_HTML);
-      doc.close();
-    }
-  }, []);
+  const calculate = useCallback(() => {
+    const principal = Math.max(projectCost - downPayment, 0);
+    const apr = APR_BY_CREDIT[creditTier]?.apr || 0.1049;
+    const monthlyApr = apr / 12;
+    const mPow = Math.pow(1 + monthlyApr, termMonths);
+    const monthly =
+      mPow === 1
+        ? principal / termMonths
+        : (principal * monthlyApr * mPow) / (mPow - 1);
+    const totalCost = termMonths * monthly;
+    const interest = totalCost - principal;
+
+    return { principal, monthly, interest, totalCost, apr };
+  }, [projectCost, downPayment, creditTier, termMonths]);
+
+  const result = calculate();
 
   return (
-    <div className="mx-auto flex max-w-md justify-center">
-      <iframe
-        ref={iframeRef}
-        title="Hearth Financing Calculator"
-        width="320"
-        height="771"
-        scrolling="no"
-        style={{ border: 'none', borderRadius: 12 }}
-      />
+    <div className="mx-auto w-full max-w-md rounded-2xl border border-neutral-200 bg-white shadow-xl">
+      {/* Header */}
+      <div className="border-b border-neutral-100 px-6 py-5 text-center">
+        <h3 className="text-xl font-bold text-primary-900">
+          Financing Calculator
+        </h3>
+        <p className="mt-1 text-sm text-neutral-500">
+          Estimate your monthly payment
+        </p>
+      </div>
+
+      {/* Inputs */}
+      <div className="space-y-4 px-6 pt-5">
+        {/* Project Cost */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-neutral-700">
+            Project Cost
+          </label>
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-neutral-400">
+              $
+            </span>
+            <input
+              type="number"
+              value={projectCost || ''}
+              onChange={(e) => setProjectCost(Number(e.target.value))}
+              placeholder="12000"
+              min={1000}
+              max={100000}
+              className="h-11 w-full rounded-lg border border-neutral-300 pl-7 pr-3 text-sm font-semibold focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+            />
+          </div>
+        </div>
+
+        {/* Down Payment */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-neutral-700">
+            Down Payment
+          </label>
+          <div className="relative">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-neutral-400">
+              $
+            </span>
+            <input
+              type="number"
+              value={downPayment || ''}
+              onChange={(e) => setDownPayment(Number(e.target.value))}
+              placeholder="0"
+              min={0}
+              max={projectCost}
+              className="h-11 w-full rounded-lg border border-neutral-300 pl-7 pr-3 text-sm font-semibold focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+            />
+          </div>
+          {downPayment > 0 && (
+            <p className="mt-1 text-xs text-neutral-400">
+              Financing {formatCurrency(Math.max(projectCost - downPayment, 0))}
+            </p>
+          )}
+        </div>
+
+        {/* Loan Term */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-neutral-700">
+            Loan Term
+          </label>
+          <div className="grid grid-cols-3 gap-2">
+            {TERM_OPTIONS.map((opt) => (
+              <button
+                key={opt.months}
+                onClick={() => setTermMonths(opt.months)}
+                className={`rounded-lg border px-2 py-2 text-xs font-semibold transition-all ${
+                  termMonths === opt.months
+                    ? 'border-accent-500 bg-accent-50 text-accent-700'
+                    : 'border-neutral-200 bg-white text-neutral-600 hover:border-neutral-300'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Credit Score */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-neutral-700">
+            Credit Score
+          </label>
+          <select
+            value={creditTier}
+            onChange={(e) => setCreditTier(e.target.value)}
+            className="h-11 w-full rounded-lg border border-neutral-300 px-3 text-sm font-semibold focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+          >
+            {Object.entries(APR_BY_CREDIT).map(([key, val]) => (
+              <option key={key} value={key}>
+                {val.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Result */}
+      <div className="mx-6 mt-6 rounded-xl bg-gradient-to-br from-primary-800 to-primary-900 p-5 text-center text-white">
+        <p className="text-xs font-medium text-primary-300">
+          Estimated Monthly Payment
+        </p>
+        <p className="mt-1 text-4xl font-bold">
+          {formatCurrency(result.monthly)}
+          <span className="text-lg font-normal text-primary-300">/mo</span>
+        </p>
+      </div>
+
+      {/* Breakdown */}
+      <div className="mx-6 mt-4 rounded-lg bg-neutral-50 p-4 text-sm">
+        <div className="flex justify-between py-1">
+          <span className="text-neutral-600">Financed Amount</span>
+          <span className="font-semibold">
+            {formatCurrencyFull(result.principal)}
+          </span>
+        </div>
+        <div className="flex justify-between py-1">
+          <span className="text-neutral-600">Total Interest</span>
+          <span className="font-semibold">
+            {formatCurrencyFull(result.interest)}
+          </span>
+        </div>
+        <div className="flex justify-between border-t border-neutral-200 py-1 pt-2">
+          <span className="font-semibold text-neutral-800">Total Cost</span>
+          <span className="font-bold text-primary-900">
+            {formatCurrencyFull(result.totalCost)}
+          </span>
+        </div>
+        <p className="mt-2 text-xs text-neutral-400">
+          APR: {(result.apr * 100).toFixed(2)}% · {termMonths} monthly payments
+        </p>
+      </div>
+
+      {/* CTA */}
+      <div className="px-6 pb-5 pt-4">
+        <p className="mb-3 text-center text-xs font-medium text-neutral-700">
+          Get your personalized rates — takes 2 minutes, won&apos;t affect your
+          credit score.
+        </p>
+        <a
+          href={APPLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex h-12 w-full items-center justify-center rounded-lg bg-accent-500 text-base font-semibold text-white transition-colors hover:bg-accent-600"
+        >
+          Get Financing Options →
+        </a>
+        <p className="mt-3 text-center text-[10px] text-neutral-400">
+          Estimated payment for information purposes only. Actual rates may vary.
+          Powered by Hearth.
+        </p>
+      </div>
     </div>
   );
 }
