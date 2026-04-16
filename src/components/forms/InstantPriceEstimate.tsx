@@ -47,7 +47,8 @@ export default function InstantPriceEstimate() {
       }
 
       setEstimate(data.data);
-      trackFormSubmit('estimate', { address });
+      // Don't fire Google Ads conversion here — user only entered an address,
+      // no contact info captured yet. Conversion fires on callback request.
     } catch {
       setError('Something went wrong. Please try again.');
     } finally {

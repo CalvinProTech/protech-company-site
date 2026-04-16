@@ -15,7 +15,7 @@ import {
   DollarSign,
 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
-import { trackFormSubmit } from '@/lib/analytics';
+// trackFormSubmit removed — conversions should only fire when contact info is submitted
 import { getUtmParams } from '@/lib/utm';
 
 interface QuoteData {
@@ -76,7 +76,8 @@ export default function QuotePage() {
       if (data.success && data.data) {
         setQuote(data.data);
         setStep('quote');
-        trackFormSubmit('estimate', { source: 'quickmeasure-upload' });
+        // Don't fire Google Ads conversion here — user only uploaded a PDF,
+        // no contact info captured yet. Conversion fires on callback request.
         return;
       }
 
@@ -143,7 +144,7 @@ export default function QuotePage() {
 
       setQuote(quoteData);
       setStep('quote');
-      trackFormSubmit('estimate', { source: 'quickmeasure-upload' });
+      // Don't fire conversion here — no contact info yet
     } catch (e) {
       console.error('PDF parse error:', e);
       setError('Something went wrong processing the report. Please try again.');
