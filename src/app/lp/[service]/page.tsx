@@ -56,6 +56,28 @@ const SERVICES: Record<
     ],
     defaultService: '',
   },
+  financing: {
+    headline: '$0 Down Roof Financing — Fast Approval',
+    subheadline:
+      'New roof today, easy monthly payments. Licensed in 9 states. 5-star rated on Google.',
+    bullets: [
+      '$0 down, flexible monthly payments',
+      'Quick pre-qualification — no hard credit pull',
+      '25-year manufacturer warranty included',
+    ],
+    defaultService: 'roof-replacement',
+  },
+  'emergency-repair': {
+    headline: 'Emergency Roof Repair — Same-Day Service',
+    subheadline:
+      'Leaks, storm damage, missing shingles — we respond fast. Licensed & insured.',
+    bullets: [
+      'Same-day emergency response',
+      'Free damage assessment',
+      'Storm & insurance claim specialists',
+    ],
+    defaultService: 'roof-repair',
+  },
 };
 
 export function generateStaticParams() {
