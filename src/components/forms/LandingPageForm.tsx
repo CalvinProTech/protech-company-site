@@ -110,7 +110,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
       const utm = getUtmParams();
       const apiUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
 
-      await fetch(`${apiUrl}/api/callback`, {
+      const res = await fetch(`${apiUrl}/api/callback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -122,6 +122,10 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
           _utm: utm,
         }),
       });
+
+      if (!res.ok) {
+        throw new Error(`Submission failed with status ${res.status}`);
+      }
 
       setSubmitted(true);
       trackFormSubmit('callback', {

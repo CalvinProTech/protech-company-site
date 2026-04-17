@@ -129,6 +129,13 @@ export const CALLBACK_SOURCES = [
   'quick-quote-city-service',
   'quick-quote-state-service',
   'quick-quote-blog',
+  'lp-roof-replacement',
+  'lp-roof-repair',
+  'lp-storm-damage',
+  'lp-free-estimate',
+  'lp-financing',
+  'lp-emergency-repair',
+  'lp-general',
 ] as const;
 
 export const callbackRequestSchema = z.object({

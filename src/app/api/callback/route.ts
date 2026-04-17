@@ -73,47 +73,56 @@ export async function POST(request: Request) {
     const apiUrl = process.env.PTR_LEAD_API_URL;
     const apiKey = process.env.PTR_LEAD_API_KEY;
 
-    if (apiUrl && apiKey) {
-      try {
-        const apiResponse = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': apiKey,
-          },
-          body: JSON.stringify({
-            firstName: data.name,
-            lastName: '',
-            phone: data.phone,
-            zip: data.zip || undefined,
-            source: data.source,
-            utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
-            utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,
-            utm_campaign: (body._utm as Record<string, string>)?.utm_campaign || undefined,
-            gclid: (body._utm as Record<string, string>)?.gclid || undefined,
-          }),
-        });
+    if (!apiUrl || !apiKey) {
+      console.error('[callback] PTR Lead API env vars not configured.');
+      return NextResponse.json(
+        { success: false, message: 'Service temporarily unavailable.' },
+        { status: 503 },
+      );
+    }
 
-        if (!apiResponse.ok) {
-          const detail =
-            process.env.NODE_ENV === 'development'
-              ? await apiResponse.text()
-              : '';
-          console.error(
-            '[callback] PTR Lead API error:',
-            apiResponse.status,
-            detail,
-          );
-        }
-      } catch (apiError) {
+    // Lead API requires non-empty firstName + lastName. Split the single name field.
+    const nameParts = data.name.trim().split(/\s+/);
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ') || '—';
+
+    try {
+      const apiResponse = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': apiKey,
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          phone: data.phone,
+          zip: data.zip || undefined,
+          source: data.source,
+          utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
+          utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,
+          utm_campaign: (body._utm as Record<string, string>)?.utm_campaign || undefined,
+          gclid: (body._utm as Record<string, string>)?.gclid || undefined,
+        }),
+      });
+
+      if (!apiResponse.ok) {
+        const detail = await apiResponse.text().catch(() => '');
         console.error(
-          '[callback] PTR Lead API forwarding failed:',
-          apiError,
+          '[callback] PTR Lead API error:',
+          apiResponse.status,
+          detail,
+        );
+        return NextResponse.json(
+          { success: false, message: 'Unable to process request. Please try again.' },
+          { status: 502 },
         );
       }
-    } else {
-      console.log(
-        '[callback] PTR Lead API env vars not configured. Skipping lead forwarding.',
+    } catch (apiError) {
+      console.error('[callback] PTR Lead API forwarding failed:', apiError);
+      return NextResponse.json(
+        { success: false, message: 'Unable to process request. Please try again.' },
+        { status: 502 },
       );
     }
 
