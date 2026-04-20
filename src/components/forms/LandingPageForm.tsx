@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { Loader2, CheckCircle } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
+import AddressAutocomplete, { type ParsedAddress } from './AddressAutocomplete';
 
 const IS_STATES = [
   'FL', 'PA', 'NC', 'SC', 'VA', 'MD', 'DE', 'CT', 'DC',
@@ -40,11 +41,16 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
 
   // Form data
   const [zip, setZip] = useState('');
+  const [zipState, setZipState] = useState(''); // derived from zip geocode in step 1
   const [service, setService] = useState(defaultService || '');
   const [timeframe, setTimeframe] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [streetAddress, setStreetAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [stateCode, setStateCode] = useState('');
+  const [addressPicked, setAddressPicked] = useState(false);
 
   // Step 1: Zip code validation
   const handleZipSubmit = useCallback(async () => {
@@ -71,9 +77,15 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
         const stateAbbr = stateComp?.short_name;
 
         if (stateAbbr && IS_STATES.includes(stateAbbr)) {
+          setZipState(stateAbbr);
+          // Prefill city/state from zip geocode — user can overwrite via autocomplete on step 3
+          const cityComp = components.find((c: { types: string[] }) =>
+            c.types.includes('locality') || c.types.includes('postal_town')
+          );
+          if (cityComp) setCity(cityComp.long_name || '');
+          setStateCode(stateAbbr);
           setStep(2);
           if (defaultService) {
-            // If service is pre-selected (from URL), skip to step 3
             setService(defaultService);
           }
         } else {
@@ -97,9 +109,16 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
       setError('Please enter your name and phone number.');
       return;
     }
-
     if (!/^\d{10}$/.test(phone.replace(/\D/g, ''))) {
       setError('Please enter a valid 10-digit phone number.');
+      return;
+    }
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    if (!streetAddress.trim()) {
+      setError('Please enter your home address.');
       return;
     }
 
@@ -116,8 +135,13 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
         body: JSON.stringify({
           name,
           phone: phone.replace(/\D/g, ''),
-          email: email || undefined,
+          email,
+          streetAddress,
+          city,
+          state: stateCode || zipState,
           zip,
+          serviceType: service,
+          timeframe,
           source: `lp-${service || 'general'}`,
           _utm: utm,
         }),
@@ -140,7 +164,20 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
     } finally {
       setIsLoading(false);
     }
-  }, [name, phone, email, zip, service, timeframe]);
+  }, [name, phone, email, streetAddress, city, stateCode, zipState, zip, service, timeframe]);
+
+  const handleAddressPicked = useCallback((formatted: string, parsed?: ParsedAddress) => {
+    if (parsed) {
+      setStreetAddress(parsed.street || formatted);
+      if (parsed.city) setCity(parsed.city);
+      if (parsed.state) setStateCode(parsed.state);
+      if (parsed.zip && !zip) setZip(parsed.zip);
+    } else {
+      // Enter pressed without picking from dropdown — save raw typed text
+      setStreetAddress(formatted);
+    }
+    setAddressPicked(true);
+  }, [zip]);
 
   if (submitted) {
     return (
@@ -305,12 +342,27 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email (optional)"
+            placeholder="Email"
             className="h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
           />
+          <AddressAutocomplete
+            onAddressSelect={handleAddressPicked}
+            placeholder="Home address"
+          />
+          {addressPicked && city && stateCode && (
+            <p className="text-xs text-neutral-500">
+              📍 {city}, {stateCode} {zip}
+            </p>
+          )}
           <button
             onClick={handleSubmit}
-            disabled={isLoading || !name.trim() || !phone.trim()}
+            disabled={
+              isLoading ||
+              !name.trim() ||
+              !phone.trim() ||
+              !email.trim() ||
+              !streetAddress.trim()
+            }
             className="flex h-14 w-full items-center justify-center rounded-xl bg-accent-500 text-lg font-bold text-white shadow-md transition-all hover:bg-accent-600 disabled:opacity-50"
           >
             {isLoading ? (
@@ -320,7 +372,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
             )}
           </button>
           <p className="text-center text-xs text-neutral-400">
-            No spam. We&apos;ll only call about your roofing project.
+            No spam. We&apos;ll only contact you about your roofing project.
           </p>
         </div>
       )}

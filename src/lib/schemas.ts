@@ -150,11 +150,24 @@ export const callbackRequestSchema = z.object({
       'Please enter a valid US phone number',
     )
     .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
+  email: z
+    .string()
+    .email('Please enter a valid email address')
+    .min(1, 'Email is required'),
   zip: z
     .string()
     .regex(/^\d{5}$/, 'Please enter a valid 5-digit ZIP code')
     .optional()
     .or(z.literal('')),
+  streetAddress: z.string().optional().or(z.literal('')),
+  city: z.string().optional().or(z.literal('')),
+  state: z
+    .string()
+    .length(2, 'State must be a 2-letter code')
+    .optional()
+    .or(z.literal('')),
+  serviceType: z.string().optional().or(z.literal('')),
+  timeframe: z.string().optional().or(z.literal('')),
   source: z.enum(CALLBACK_SOURCES, 'Invalid source'),
 });
 

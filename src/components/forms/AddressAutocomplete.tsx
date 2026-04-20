@@ -4,9 +4,18 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+export interface ParsedAddress {
+  formatted: string;
+  street: string;
+  city: string;
+  state: string; // 2-letter short_name
+  zip: string;
+}
+
 interface AddressAutocompleteProps {
-  onAddressSelect: (address: string) => void;
+  onAddressSelect: (address: string, parsed?: ParsedAddress) => void;
   disabled?: boolean;
+  placeholder?: string;
 }
 
 declare global {
@@ -49,9 +58,34 @@ function loadGoogleMaps(): Promise<void> {
   return loadPromise;
 }
 
+function parseAddressComponents(
+  place: google.maps.places.PlaceResult,
+): ParsedAddress {
+  const comps = place.address_components || [];
+  const get = (type: string, useShort = false) => {
+    const c = comps.find((x) => x.types.includes(type));
+    return c ? (useShort ? c.short_name : c.long_name) : '';
+  };
+  const streetNumber = get('street_number');
+  const route = get('route');
+  const street = [streetNumber, route].filter(Boolean).join(' ');
+  const city =
+    get('locality') || get('sublocality') || get('postal_town') || get('neighborhood');
+  const state = get('administrative_area_level_1', true);
+  const zip = get('postal_code');
+  return {
+    formatted: place.formatted_address || '',
+    street,
+    city,
+    state,
+    zip,
+  };
+}
+
 export default function AddressAutocomplete({
   onAddressSelect,
   disabled = false,
+  placeholder = 'Enter your home address for a free instant estimate',
 }: AddressAutocompleteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
@@ -73,14 +107,15 @@ export default function AddressAutocomplete({
     const ac = new google.maps.places.Autocomplete(inputRef.current, {
       componentRestrictions: { country: 'us' },
       types: ['address'],
-      fields: ['formatted_address'],
+      fields: ['formatted_address', 'address_components'],
     });
 
     ac.addListener('place_changed', () => {
       const place = ac.getPlace();
       if (place?.formatted_address) {
-        setValue(place.formatted_address);
-        onAddressSelect(place.formatted_address);
+        const parsed = parseAddressComponents(place);
+        setValue(parsed.formatted);
+        onAddressSelect(parsed.formatted, parsed);
       }
     });
 
@@ -120,7 +155,7 @@ export default function AddressAutocomplete({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Enter your home address for a free instant estimate"
+        placeholder={placeholder}
         disabled={disabled}
         autoComplete="off"
         className={cn(
