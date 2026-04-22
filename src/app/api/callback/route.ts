@@ -104,6 +104,7 @@ export async function POST(request: Request) {
           zip: data.zip || undefined,
           serviceType: data.serviceType || undefined,
           timeframe: data.timeframe || undefined,
+          smsConsent: data.smsConsent,
           source: data.source,
           utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
           utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,

@@ -5,6 +5,7 @@ import { Phone, MapPin, Loader2, ArrowRight, Home } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
 import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
+import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 interface RoofEstimate {
   roofAreaSqFt: number;
@@ -24,6 +25,7 @@ export default function InstantPriceEstimate() {
   const [showCallbackForm, setShowCallbackForm] = useState(false);
   const [callbackName, setCallbackName] = useState('');
   const [callbackPhone, setCallbackPhone] = useState('');
+  const [callbackSmsConsent, setCallbackSmsConsent] = useState(false);
   const [callbackSent, setCallbackSent] = useState(false);
 
   const handleEstimate = useCallback(async () => {
@@ -57,7 +59,7 @@ export default function InstantPriceEstimate() {
   }, [address]);
 
   const handleCallback = useCallback(async () => {
-    if (!callbackName.trim() || !callbackPhone.trim()) return;
+    if (!callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent) return;
 
     try {
       const utm = getUtmParams();
@@ -75,6 +77,7 @@ export default function InstantPriceEstimate() {
             phone: callbackPhone,
             streetAddress: address,
             serviceType: 'Roof Replacement',
+            smsConsent: callbackSmsConsent,
             utm_source: utm.utm_source,
             utm_medium: utm.utm_medium,
             utm_campaign: utm.utm_campaign,
@@ -86,7 +89,7 @@ export default function InstantPriceEstimate() {
     } catch {
       // Non-blocking
     }
-  }, [callbackName, callbackPhone, address]);
+  }, [callbackName, callbackPhone, callbackSmsConsent, address]);
 
   const formatNumber = (n: number) =>
     new Intl.NumberFormat('en-US').format(Math.round(n));
@@ -230,9 +233,14 @@ export default function InstantPriceEstimate() {
                   placeholder="Your phone number"
                   className="h-12 w-full rounded-lg border border-neutral-300 px-4 text-base focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
                 />
+                <SMSConsentCheckbox
+                  id="callback-sms-consent"
+                  checked={callbackSmsConsent}
+                  onChange={setCallbackSmsConsent}
+                />
                 <button
                   onClick={handleCallback}
-                  disabled={!callbackName.trim() || !callbackPhone.trim()}
+                  disabled={!callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent}
                   className="h-12 w-full rounded-lg bg-primary-700 font-semibold text-white transition-all hover:bg-primary-800 disabled:opacity-50"
                 >
                   Request Callback
@@ -256,6 +264,7 @@ export default function InstantPriceEstimate() {
               setAddress('');
               setShowCallbackForm(false);
               setCallbackSent(false);
+              setCallbackSmsConsent(false);
             }}
             className="w-full text-center text-sm text-neutral-500 hover:text-primary-700"
           >

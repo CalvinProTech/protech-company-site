@@ -5,6 +5,7 @@ import { Loader2, CheckCircle } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
 import AddressAutocomplete, { type ParsedAddress } from './AddressAutocomplete';
+import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 const IS_STATES = [
   'FL', 'PA', 'NC', 'SC', 'VA', 'MD', 'DE', 'CT', 'DC',
@@ -51,6 +52,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
   const [city, setCity] = useState('');
   const [stateCode, setStateCode] = useState('');
   const [addressPicked, setAddressPicked] = useState(false);
+  const [smsConsent, setSmsConsent] = useState(false);
 
   // Step 1: Zip code validation
   const handleZipSubmit = useCallback(async () => {
@@ -121,6 +123,10 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
       setError('Please enter your home address.');
       return;
     }
+    if (!smsConsent) {
+      setError('Please agree to receive text messages to continue.');
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
@@ -142,6 +148,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
           zip,
           serviceType: service,
           timeframe,
+          smsConsent,
           source: `lp-${service || 'general'}`,
           _utm: utm,
         }),
@@ -164,7 +171,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
     } finally {
       setIsLoading(false);
     }
-  }, [name, phone, email, streetAddress, city, stateCode, zipState, zip, service, timeframe]);
+  }, [name, phone, email, streetAddress, city, stateCode, zipState, zip, service, timeframe, smsConsent]);
 
   const handleAddressPicked = useCallback((formatted: string, parsed?: ParsedAddress) => {
     if (parsed) {
@@ -354,6 +361,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
               📍 {city}, {stateCode} {zip}
             </p>
           )}
+          <SMSConsentCheckbox checked={smsConsent} onChange={setSmsConsent} />
           <button
             onClick={handleSubmit}
             disabled={
@@ -361,7 +369,8 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
               !name.trim() ||
               !phone.trim() ||
               !email.trim() ||
-              !streetAddress.trim()
+              !streetAddress.trim() ||
+              !smsConsent
             }
             className="flex h-14 w-full items-center justify-center rounded-xl bg-accent-500 text-lg font-bold text-white shadow-md transition-all hover:bg-accent-600 disabled:opacity-50"
           >
@@ -372,7 +381,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
             )}
           </button>
           <p className="text-center text-xs text-neutral-400">
-            No spam. We&apos;ll only contact you about your roofing project.
+            No spam. We only contact you about your roofing project.
           </p>
         </div>
       )}
