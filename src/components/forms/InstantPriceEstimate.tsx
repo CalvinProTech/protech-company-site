@@ -27,6 +27,8 @@ export default function InstantPriceEstimate() {
   const [callbackPhone, setCallbackPhone] = useState('');
   const [callbackSmsConsent, setCallbackSmsConsent] = useState(false);
   const [callbackSent, setCallbackSent] = useState(false);
+  const [callbackError, setCallbackError] = useState<string | null>(null);
+  const [callbackSubmitting, setCallbackSubmitting] = useState(false);
 
   const handleEstimate = useCallback(async () => {
     if (!address.trim()) return;
@@ -61,9 +63,12 @@ export default function InstantPriceEstimate() {
   const handleCallback = useCallback(async () => {
     if (!callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent) return;
 
+    setCallbackSubmitting(true);
+    setCallbackError(null);
+
     try {
       const utm = getUtmParams();
-      await fetch(
+      const res = await fetch(
         process.env.NEXT_PUBLIC_LEAD_API_URL || 'https://ptr-lead-api.onrender.com/api/leads',
         {
           method: 'POST',
@@ -81,13 +86,22 @@ export default function InstantPriceEstimate() {
             utm_source: utm.utm_source,
             utm_medium: utm.utm_medium,
             utm_campaign: utm.utm_campaign,
+            gclid: utm.gclid,
           }),
         }
       );
+
+      if (!res.ok) {
+        setCallbackError('Something went wrong. Please try again or call us directly.');
+        return;
+      }
+
       setCallbackSent(true);
       trackFormSubmit('callback', { name: callbackName });
     } catch {
-      // Non-blocking
+      setCallbackError('Something went wrong. Please try again or call us directly.');
+    } finally {
+      setCallbackSubmitting(false);
     }
   }, [callbackName, callbackPhone, callbackSmsConsent, address]);
 
@@ -238,12 +252,21 @@ export default function InstantPriceEstimate() {
                   checked={callbackSmsConsent}
                   onChange={setCallbackSmsConsent}
                 />
+                {callbackError && (
+                  <p className="rounded-lg bg-red-50 px-4 py-2 text-sm text-red-700">
+                    {callbackError}
+                  </p>
+                )}
                 <button
                   onClick={handleCallback}
-                  disabled={!callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent}
-                  className="h-12 w-full rounded-lg bg-primary-700 font-semibold text-white transition-all hover:bg-primary-800 disabled:opacity-50"
+                  disabled={callbackSubmitting || !callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent}
+                  className="flex h-12 w-full items-center justify-center rounded-lg bg-primary-700 font-semibold text-white transition-all hover:bg-primary-800 disabled:opacity-50"
                 >
-                  Request Callback
+                  {callbackSubmitting ? (
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                  ) : (
+                    'Request Callback'
+                  )}
                 </button>
               </div>
             </div>
@@ -265,6 +288,7 @@ export default function InstantPriceEstimate() {
               setShowCallbackForm(false);
               setCallbackSent(false);
               setCallbackSmsConsent(false);
+              setCallbackError(null);
             }}
             className="w-full text-center text-sm text-neutral-500 hover:text-primary-700"
           >
