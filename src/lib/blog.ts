@@ -5,15 +5,32 @@ import readingTime from "reading-time";
 
 const BLOG_DIR = path.join(process.cwd(), "src", "content", "blog");
 
+export interface HowToStepFrontmatter {
+  name: string;
+  text: string;
+  url?: string;
+  image?: string;
+}
+
 export interface BlogPostFrontmatter {
   title: string;
   slug: string;
   date: string;
+  updated?: string;
   author: string;
+  authorTitle?: string;
+  authorUrl?: string;
   category: string;
   excerpt: string;
   featuredImage: string;
   readingTime: string;
+  howTo?: {
+    name: string;
+    description: string;
+    totalTime?: string;
+    estimatedCost?: { currency: string; value: number | string };
+    steps: HowToStepFrontmatter[];
+  };
 }
 
 export interface BlogPost {
@@ -32,11 +49,15 @@ function parseMdxFile(filePath: string): BlogPost {
       title: data.title,
       slug: data.slug,
       date: data.date,
+      updated: data.updated,
       author: data.author,
+      authorTitle: data.authorTitle,
+      authorUrl: data.authorUrl,
       category: data.category,
       excerpt: data.excerpt,
       featuredImage: data.featuredImage,
       readingTime: data.readingTime || stats.text,
+      howTo: data.howTo,
     },
     content,
     readingTime: stats.text,

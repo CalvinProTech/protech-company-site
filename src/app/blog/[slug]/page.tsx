@@ -21,6 +21,7 @@ import { createPageMetadata } from '@/lib/metadata';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import ArticleSchema from '@/components/seo/ArticleSchema';
+import HowToSchema from '@/components/seo/HowToSchema';
 import { CTABanner } from '@/components/sections/CTABanner';
 import Badge from '@/components/ui/Badge';
 import QuickQuoteForm from '@/components/forms/QuickQuoteForm';
@@ -114,11 +115,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         title={post.frontmatter.title}
         description={post.frontmatter.excerpt}
         datePublished={post.frontmatter.date}
-        dateModified={post.frontmatter.date}
+        dateModified={post.frontmatter.updated || post.frontmatter.date}
         author={post.frontmatter.author}
         image={post.frontmatter.featuredImage || '/images/og-default.jpg'}
         slug={post.frontmatter.slug}
       />
+      {post.frontmatter.howTo && (
+        <HowToSchema
+          name={post.frontmatter.howTo.name}
+          description={post.frontmatter.howTo.description}
+          totalTime={post.frontmatter.howTo.totalTime}
+          estimatedCost={post.frontmatter.howTo.estimatedCost}
+          steps={post.frontmatter.howTo.steps}
+          image={post.frontmatter.featuredImage}
+        />
+      )}
 
       {/* Article Header */}
       <section className="bg-primary-900 py-12 md:py-16">
@@ -143,6 +154,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <Calendar className="h-4 w-4" />
               {formatDate(post.frontmatter.date)}
             </span>
+            {post.frontmatter.updated &&
+              post.frontmatter.updated !== post.frontmatter.date && (
+                <span className="flex items-center gap-1.5 text-primary-300">
+                  <span className="text-xs uppercase tracking-wide">
+                    Updated
+                  </span>
+                  {formatDate(post.frontmatter.updated)}
+                </span>
+              )}
             <span className="flex items-center gap-1.5">
               <Clock className="h-4 w-4" />
               {post.readingTime}
