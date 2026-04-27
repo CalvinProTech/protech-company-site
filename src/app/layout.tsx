@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: '%s | ProTech Roofing',
   },
   description:
-    'Expert roof replacement, repair, and storm damage restoration across the East Coast. Licensed, insured, and rated 5.0 stars. Get your free estimate today.',
+    'Expert roof replacement, repair, and storm damage restoration across 14 states nationwide. Licensed, insured, and rated 5.0 stars. Get your free estimate today.',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -50,7 +50,9 @@ export default function RootLayout({
       <body className="antialiased">
         <SkipToContent />
         <Header />
-        <main id="main-content" className="pb-16 lg:pb-0">{children}</main>
+        <main id="main-content" className="pb-16 lg:pb-0">
+          {children}
+        </main>
         <Footer />
         <MobileBottomBar />
         <SmsConsentBanner />

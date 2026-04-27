@@ -9,7 +9,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Get a Free Roofing Quote | ProTech Roofing',
     description:
-      'Request your free roofing quote from ProTech Roofing. Licensed in 9 states + D.C. Roof replacement, repair, storm damage, and insurance claims. $0 down financing. Call (866) 308-2640.',
+      'Request your free roofing quote from ProTech Roofing. Licensed in 14 states. Roof replacement, repair, storm damage, and insurance claims. $0 down financing. Call (866) 308-2640.',
     path: '/get-quote',
   });
 }
@@ -30,7 +30,7 @@ export default function GetQuotePage() {
           <h1 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
             Get Your Free Roofing Quote
           </h1>
-          <p className="mt-4 text-lg text-primary-200">
+          <p className="text-primary-200 mt-4 text-lg">
             Tell us about your project and a roofing specialist will call you
             within minutes. No obligation, no pressure.
           </p>
@@ -38,9 +38,9 @@ export default function GetQuotePage() {
             {trustPoints.map((point, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 text-sm text-primary-300"
+                className="text-primary-300 flex items-center gap-2 text-sm"
               >
-                <point.icon className="h-4 w-4 text-accent-400" />
+                <point.icon className="text-accent-400 h-4 w-4" />
                 <span>{point.text}</span>
               </div>
             ))}
@@ -62,48 +62,48 @@ export default function GetQuotePage() {
             {/* Sidebar — trust builders */}
             <div className="space-y-6 lg:col-span-2">
               {/* Phone CTA */}
-              <div className="rounded-xl bg-primary-800 p-6 text-center text-white">
-                <p className="text-sm font-medium text-primary-300">
+              <div className="bg-primary-800 rounded-xl p-6 text-center text-white">
+                <p className="text-primary-300 text-sm font-medium">
                   Prefer to talk?
                 </p>
                 <a
                   href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
-                  className="mt-2 inline-flex items-center gap-2 text-2xl font-bold text-white transition-colors hover:text-accent-400"
+                  className="hover:text-accent-400 mt-2 inline-flex items-center gap-2 text-2xl font-bold text-white transition-colors"
                 >
                   <Phone className="h-6 w-6" />
                   {SITE_CONFIG.defaultPhone}
                 </a>
-                <p className="mt-2 text-xs text-primary-400">
+                <p className="text-primary-400 mt-2 text-xs">
                   Mon–Fri 9AM–5PM ET · Sat 9AM–2PM
                 </p>
               </div>
 
               {/* What Happens Next */}
               <div className="rounded-xl border border-neutral-200 bg-white p-6">
-                <h3 className="font-semibold text-primary-900">
+                <h3 className="text-primary-900 font-semibold">
                   What Happens Next?
                 </h3>
                 <ol className="mt-4 space-y-3">
                   <li className="flex gap-3 text-sm text-neutral-700">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
+                    <span className="bg-accent-500 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                       1
                     </span>
                     A roofing specialist calls you within 5 minutes
                   </li>
                   <li className="flex gap-3 text-sm text-neutral-700">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
+                    <span className="bg-accent-500 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                       2
                     </span>
                     We schedule a free roof inspection at your convenience
                   </li>
                   <li className="flex gap-3 text-sm text-neutral-700">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
+                    <span className="bg-accent-500 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                       3
                     </span>
                     You receive a detailed written estimate — no obligation
                   </li>
                   <li className="flex gap-3 text-sm text-neutral-700">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
+                    <span className="bg-accent-500 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                       4
                     </span>
                     If you proceed, we handle everything from permits to install
@@ -118,7 +118,7 @@ export default function GetQuotePage() {
                     <Star key={s} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <blockquote className="mt-3 text-sm italic text-neutral-600">
+                <blockquote className="mt-3 text-sm text-neutral-600 italic">
                   &quot;They found damage I didn&apos;t even know about.
                   Insurance covered the whole thing. ProTech handled everything
                   from the inspection to the install.&quot;
@@ -130,13 +130,13 @@ export default function GetQuotePage() {
 
               {/* Certifications */}
               <div className="rounded-xl border border-neutral-200 bg-white p-6">
-                <h3 className="text-sm font-semibold text-primary-900">
+                <h3 className="text-primary-900 text-sm font-semibold">
                   Why ProTech?
                 </h3>
                 <ul className="mt-3 space-y-2">
                   {[
                     'GAF Master Elite Certified (top 2%)',
-                    'Licensed & insured in 9 states + D.C.',
+                    'Licensed & insured in 14 states',
                     '1,000+ roofs completed',
                     'Lifetime workmanship warranty',
                     '$0 down financing options',
@@ -146,7 +146,7 @@ export default function GetQuotePage() {
                       key={i}
                       className="flex items-start gap-2 text-sm text-neutral-600"
                     >
-                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" />
+                      <CheckCircle className="text-accent-500 mt-0.5 h-4 w-4 shrink-0" />
                       {item}
                     </li>
                   ))}

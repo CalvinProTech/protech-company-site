@@ -10,7 +10,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'About ProTech Roofing | Our Story, Team & Values',
     description:
-      'Learn about ProTech Roofing — 20+ years of quality roofing across 9 states on the East Coast. Meet our team, certifications, and why 1,000+ homeowners trust us.',
+      'Learn about ProTech Roofing — 20+ years of quality roofing across 14 states nationwide. Meet our team, certifications, and why 1,000+ homeowners trust us.',
     path: '/about',
   });
 }
@@ -54,21 +54,20 @@ const certifications = [
   },
 ];
 
-
 export default function AboutPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[400px] items-center bg-primary-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
+      <section className="bg-primary-900 relative flex min-h-[400px] items-center">
+        <div className="from-primary-900 via-primary-800 to-primary-700 absolute inset-0 bg-gradient-to-br" />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl leading-tight font-bold text-white sm:text-4xl md:text-5xl">
               About ProTech Roofing
             </h1>
-            <p className="mt-4 text-lg text-primary-200 sm:text-xl md:mt-6 md:text-2xl">
+            <p className="text-primary-200 mt-4 text-lg sm:text-xl md:mt-6 md:text-2xl">
               Protecting homes and families since day one. Honest work, fair
               prices, and craftsmanship you can count on.
             </p>
@@ -85,7 +84,7 @@ export default function AboutPage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+            <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
               Our Story
             </h2>
             <div className="mt-8 space-y-6 text-left text-lg leading-relaxed text-neutral-700">
@@ -102,12 +101,12 @@ export default function AboutPage() {
               <p>
                 Over the past two decades, that founding principle has guided
                 every decision we make. We started as a small crew in a single
-                city and grew through word of mouth, one satisfied homeowner at a
-                time. Today, ProTech Roofing operates across the East Coast with a
+                city and grew through word of mouth, one satisfied homeowner at
+                a time. Today, ProTech Roofing operates across 14 states with a
                 team of certified professionals who share the same commitment to
                 doing things right. We never cut corners on materials, we never
-                skip steps in installation, and we never walk away from a project
-                until the homeowner is completely satisfied.
+                skip steps in installation, and we never walk away from a
+                project until the homeowner is completely satisfied.
               </p>
               <p>
                 What sets us apart is not just our technical skill, but our
@@ -131,7 +130,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-4xl font-bold text-primary-900 md:text-5xl">
+                <p className="text-primary-900 text-4xl font-bold md:text-5xl">
                   {stat.value}
                 </p>
                 <p className="mt-2 text-sm font-medium text-neutral-600 md:text-base">
@@ -147,7 +146,7 @@ export default function AboutPage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+            <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
               Certifications & Credentials
             </h2>
             <p className="mt-4 text-lg text-neutral-600">
@@ -161,10 +160,10 @@ export default function AboutPage() {
                 key={cert.title}
                 className="rounded-lg border border-neutral-200 bg-neutral-50 p-6 text-center"
               >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary-100">
-                  <cert.icon className="h-7 w-7 text-primary-700" />
+                <div className="bg-primary-100 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+                  <cert.icon className="text-primary-700 h-7 w-7" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary-900">
+                <h3 className="text-primary-900 text-lg font-semibold">
                   {cert.title}
                 </h3>
                 <p className="mt-2 text-sm text-neutral-600">

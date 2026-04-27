@@ -8,7 +8,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Project Gallery | Before & After Roofing Photos | ProTech Roofing',
     description:
-      'Browse before and after photos of completed roofing projects across 9 states & D.C. See the quality of ProTech Roofing workmanship firsthand.',
+      'Browse before and after photos of completed roofing projects across 14 states. See the quality of ProTech Roofing workmanship firsthand.',
     path: '/gallery',
   });
 }
@@ -29,9 +29,9 @@ export default function GalleryPage() {
           <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             Project Gallery
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-primary-200">
-            Browse our completed roofing projects across the East Coast.
-            Every project includes before and after photos.
+          <p className="text-primary-200 mt-4 max-w-2xl text-lg">
+            Browse our completed roofing projects across 14 states. Every
+            project includes before and after photos.
           </p>
         </div>
       </section>

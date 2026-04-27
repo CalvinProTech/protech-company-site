@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Service Areas & Locations | ProTech Roofing',
     description:
-      'ProTech Roofing serves homeowners and businesses across FL, PA, NC, SC, VA, MD, DE, CT & D.C. Find your local roofing experts. Find your local roofing experts and schedule a free inspection today.',
+      'ProTech Roofing serves homeowners and businesses across FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. Find your local roofing experts and schedule a free inspection today.',
     path: '/locations',
   });
 }
@@ -33,9 +33,12 @@ export default function LocationsPage() {
 
       <Hero
         heading="Find Your Local ProTech Roofers"
-        subtitle="Licensed and insured roofing professionals serving communities across the East Coast. Select your area to get started."
+        subtitle="Licensed and insured roofing professionals serving communities across 14 states. Select your area to get started."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{ text: 'Call Now', href: `tel:${SITE_CONFIG.defaultPhoneRaw}` }}
+        secondaryCTA={{
+          text: 'Call Now',
+          href: `tel:${SITE_CONFIG.defaultPhoneRaw}`,
+        }}
         backgroundImage="/images/hero/locations.jpg"
       />
 
@@ -49,7 +52,7 @@ export default function LocationsPage() {
       {/* All States & Cities Listing */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+          <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
             All Service Areas
           </h2>
           <p className="mt-4 text-lg text-neutral-600">
@@ -62,10 +65,10 @@ export default function LocationsPage() {
               const cities = getLocationsByState(stateInfo.stateSlug);
               return (
                 <div key={stateInfo.stateSlug}>
-                  <h3 className="text-xl font-bold text-primary-900">
+                  <h3 className="text-primary-900 text-xl font-bold">
                     <Link
                       href={`/locations/${stateInfo.stateSlug}`}
-                      className="transition-colors hover:text-accent-500"
+                      className="hover:text-accent-500 transition-colors"
                     >
                       {stateInfo.state}
                     </Link>
@@ -75,9 +78,9 @@ export default function LocationsPage() {
                       <li key={city.citySlug}>
                         <Link
                           href={`/locations/${stateInfo.stateSlug}/${city.citySlug}`}
-                          className="inline-flex items-center gap-2 text-neutral-700 transition-colors hover:text-accent-500"
+                          className="hover:text-accent-500 inline-flex items-center gap-2 text-neutral-700 transition-colors"
                         >
-                          <MapPin className="h-4 w-4 shrink-0 text-primary-600" />
+                          <MapPin className="text-primary-600 h-4 w-4 shrink-0" />
                           {city.city}, {city.stateAbbr}
                         </Link>
                       </li>
@@ -85,7 +88,7 @@ export default function LocationsPage() {
                   </ul>
                   <Link
                     href={`/locations/${stateInfo.stateSlug}`}
-                    className="mt-4 inline-block text-sm font-medium text-accent-500 transition-colors hover:text-accent-600"
+                    className="text-accent-500 hover:text-accent-600 mt-4 inline-block text-sm font-medium transition-colors"
                   >
                     View all {stateInfo.state} locations
                   </Link>

@@ -29,9 +29,7 @@ export default function TermsOfServicePage() {
           <h1 className="text-3xl font-bold text-white md:text-4xl">
             Terms of Service
           </h1>
-          <p className="mt-2 text-primary-200">
-            Last updated: March 25, 2026
-          </p>
+          <p className="text-primary-200 mt-2">Last updated: March 25, 2026</p>
         </div>
       </section>
 
@@ -43,17 +41,18 @@ export default function TermsOfServicePage() {
       {/* Content */}
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none prose-headings:text-primary-900 prose-p:text-neutral-700 prose-li:text-neutral-700">
+          <div className="prose prose-lg prose-headings:text-primary-900 prose-p:text-neutral-700 prose-li:text-neutral-700 max-w-none">
             <h2>Agreement to Terms</h2>
             <p>
               These Terms of Service (&ldquo;Terms&rdquo;) constitute a legally
-              binding agreement between you and {SITE_CONFIG.name} (&ldquo;we,&rdquo;
-              &ldquo;us,&rdquo; or &ldquo;our&rdquo;) governing your access to
-              and use of our website at <strong>{SITE_CONFIG.url}</strong> and
-              any related services we provide. By accessing or using our website
-              and services, you acknowledge that you have read, understood, and
-              agree to be bound by these Terms. If you do not agree with any
-              part of these Terms, you must not use our website or services.
+              binding agreement between you and {SITE_CONFIG.name}{' '}
+              (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;)
+              governing your access to and use of our website at{' '}
+              <strong>{SITE_CONFIG.url}</strong> and any related services we
+              provide. By accessing or using our website and services, you
+              acknowledge that you have read, understood, and agree to be bound
+              by these Terms. If you do not agree with any part of these Terms,
+              you must not use our website or services.
             </p>
 
             <h2>Services Description</h2>
@@ -62,7 +61,9 @@ export default function TermsOfServicePage() {
               services, including but not limited to roof replacement, roof
               repair, storm damage restoration, roof inspections, commercial
               roofing, and gutter and siding installation. Our service area
-              includes metropolitan areas across Florida, Texas, Kentucky, and
+              includes metropolitan areas across Florida, Georgia, Texas, North
+              Carolina, South Carolina, Virginia, Maryland, Pennsylvania,
+              Connecticut, Delaware, West Virginia, Tennessee, Kentucky, and
               Ohio. Specific service availability may vary by location.
             </p>
             <p>
@@ -82,9 +83,9 @@ export default function TermsOfServicePage() {
               issuance unless otherwise stated. Actual project costs may vary
               from the estimate if unforeseen conditions are discovered during
               the course of work, such as hidden water damage, structural
-              deficiencies, or code compliance requirements. Any changes to
-              the scope of work or cost will be communicated to you and
-              require your written approval before proceeding.
+              deficiencies, or code compliance requirements. Any changes to the
+              scope of work or cost will be communicated to you and require your
+              written approval before proceeding.
             </p>
 
             <h2>Service Agreements and Contracts</h2>
@@ -194,9 +195,9 @@ export default function TermsOfServicePage() {
             <p>
               {SITE_CONFIG.name} offers assistance with insurance claims related
               to roof damage. We provide documentation, meet with insurance
-              adjusters, and help facilitate the claims process. However, we
-              do not guarantee the outcome of any insurance claim. Insurance
-              claim decisions are made solely by your insurance company. Our
+              adjusters, and help facilitate the claims process. However, we do
+              not guarantee the outcome of any insurance claim. Insurance claim
+              decisions are made solely by your insurance company. Our
               assistance with insurance claims does not create an
               attorney-client relationship and should not be considered legal or
               insurance advice.
@@ -214,14 +215,11 @@ export default function TermsOfServicePage() {
             </p>
 
             <h2>User Conduct</h2>
-            <p>
-              When using our website and services, you agree not to:
-            </p>
+            <p>When using our website and services, you agree not to:</p>
             <ul>
               <li>
-                Provide false, inaccurate, or misleading information in
-                estimate requests, contact forms, or any other communication
-                with us.
+                Provide false, inaccurate, or misleading information in estimate
+                requests, contact forms, or any other communication with us.
               </li>
               <li>
                 Use our website for any unlawful purpose or in violation of any
@@ -238,8 +236,8 @@ export default function TermsOfServicePage() {
                 written permission.
               </li>
               <li>
-                Transmit any viruses, malware, or other harmful code through
-                our website.
+                Transmit any viruses, malware, or other harmful code through our
+                website.
               </li>
             </ul>
 
@@ -255,12 +253,12 @@ export default function TermsOfServicePage() {
               possibility of such damages.
             </p>
             <p>
-              Our total liability to you for any claim arising out of or
-              related to these Terms or your use of our website shall not
-              exceed the amount you paid to us for services in the twelve months
-              preceding the claim. This limitation of liability applies to the
-              fullest extent permitted by law and survives the termination of
-              these Terms.
+              Our total liability to you for any claim arising out of or related
+              to these Terms or your use of our website shall not exceed the
+              amount you paid to us for services in the twelve months preceding
+              the claim. This limitation of liability applies to the fullest
+              extent permitted by law and survives the termination of these
+              Terms.
             </p>
 
             <h2>Indemnification</h2>
@@ -268,9 +266,9 @@ export default function TermsOfServicePage() {
               You agree to indemnify, defend, and hold harmless{' '}
               {SITE_CONFIG.name}, its officers, directors, employees, and agents
               from and against any claims, liabilities, damages, losses, costs,
-              or expenses (including reasonable attorneys&apos; fees) arising out
-              of or related to your violation of these Terms, your use of our
-              website, or your violation of any rights of a third party.
+              or expenses (including reasonable attorneys&apos; fees) arising
+              out of or related to your violation of these Terms, your use of
+              our website, or your violation of any rights of a third party.
             </p>
 
             <h2>Dispute Resolution</h2>

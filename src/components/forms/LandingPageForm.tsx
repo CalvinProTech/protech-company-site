@@ -7,14 +7,38 @@ import { getUtmParams } from '@/lib/utm';
 import AddressAutocomplete, { type ParsedAddress } from './AddressAutocomplete';
 import SMSConsentCheckbox from './SMSConsentCheckbox';
 
-const IS_STATES = [
-  'FL', 'PA', 'NC', 'SC', 'VA', 'MD', 'DE', 'CT', 'DC',
+const SERVICE_STATES = [
+  'FL',
+  'GA',
+  'TX',
+  'NC',
+  'SC',
+  'VA',
+  'MD',
+  'PA',
+  'CT',
+  'DE',
+  'WV',
+  'TN',
+  'KY',
+  'OH',
 ];
 
-const IS_ZIPS: Record<string, string> = {
-  FL: 'Florida', PA: 'Pennsylvania', NC: 'North Carolina',
-  SC: 'South Carolina', VA: 'Virginia', MD: 'Maryland',
-  DE: 'Delaware', CT: 'Connecticut', DC: 'Washington D.C.',
+const SERVICE_AREAS: Record<string, string> = {
+  FL: 'Florida',
+  GA: 'Georgia',
+  TX: 'Texas',
+  NC: 'North Carolina',
+  SC: 'South Carolina',
+  VA: 'Virginia',
+  MD: 'Maryland',
+  PA: 'Pennsylvania',
+  CT: 'Connecticut',
+  DE: 'Delaware',
+  WV: 'West Virginia',
+  TN: 'Tennessee',
+  KY: 'Kentucky',
+  OH: 'Ohio',
 };
 
 const SERVICE_OPTIONS = [
@@ -34,7 +58,9 @@ interface LandingPageFormProps {
   defaultService?: string;
 }
 
-export default function LandingPageForm({ defaultService }: LandingPageFormProps) {
+export default function LandingPageForm({
+  defaultService,
+}: LandingPageFormProps) {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -78,11 +104,12 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
         );
         const stateAbbr = stateComp?.short_name;
 
-        if (stateAbbr && IS_STATES.includes(stateAbbr)) {
+        if (stateAbbr && SERVICE_STATES.includes(stateAbbr)) {
           setZipState(stateAbbr);
           // Prefill city/state from zip geocode — user can overwrite via autocomplete on step 3
-          const cityComp = components.find((c: { types: string[] }) =>
-            c.types.includes('locality') || c.types.includes('postal_town')
+          const cityComp = components.find(
+            (c: { types: string[] }) =>
+              c.types.includes('locality') || c.types.includes('postal_town')
           );
           if (cityComp) setCity(cityComp.long_name || '');
           setStateCode(stateAbbr);
@@ -92,7 +119,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
           }
         } else {
           setError(
-            `We currently serve ${Object.values(IS_ZIPS).join(', ')}. We don't cover your area yet.`
+            `We currently serve ${Object.values(SERVICE_AREAS).join(', ')}. We don't cover your area yet.`
           );
         }
       } else {
@@ -171,20 +198,35 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
     } finally {
       setIsLoading(false);
     }
-  }, [name, phone, email, streetAddress, city, stateCode, zipState, zip, service, timeframe, smsConsent]);
+  }, [
+    name,
+    phone,
+    email,
+    streetAddress,
+    city,
+    stateCode,
+    zipState,
+    zip,
+    service,
+    timeframe,
+    smsConsent,
+  ]);
 
-  const handleAddressPicked = useCallback((formatted: string, parsed?: ParsedAddress) => {
-    if (parsed) {
-      setStreetAddress(parsed.street || formatted);
-      if (parsed.city) setCity(parsed.city);
-      if (parsed.state) setStateCode(parsed.state);
-      if (parsed.zip && !zip) setZip(parsed.zip);
-    } else {
-      // Enter pressed without picking from dropdown — save raw typed text
-      setStreetAddress(formatted);
-    }
-    setAddressPicked(true);
-  }, [zip]);
+  const handleAddressPicked = useCallback(
+    (formatted: string, parsed?: ParsedAddress) => {
+      if (parsed) {
+        setStreetAddress(parsed.street || formatted);
+        if (parsed.city) setCity(parsed.city);
+        if (parsed.state) setStateCode(parsed.state);
+        if (parsed.zip && !zip) setZip(parsed.zip);
+      } else {
+        // Enter pressed without picking from dropdown — save raw typed text
+        setStreetAddress(formatted);
+      }
+      setAddressPicked(true);
+    },
+    [zip]
+  );
 
   if (submitted) {
     return (
@@ -212,7 +254,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-neutral-200">
             <div
-              className="h-full rounded-full bg-accent-500 transition-all duration-300"
+              className="bg-accent-500 h-full rounded-full transition-all duration-300"
               style={{ width: step === 2 ? '66%' : '100%' }}
             />
           </div>
@@ -229,7 +271,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
       {step === 1 && (
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-bold text-primary-900">
+            <h3 className="text-primary-900 text-lg font-bold">
               Check if we serve your area
             </h3>
             <p className="mt-1 text-sm text-neutral-600">
@@ -244,13 +286,13 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
             onChange={(e) => setZip(e.target.value.replace(/\D/g, ''))}
             onKeyDown={(e) => e.key === 'Enter' && handleZipSubmit()}
             placeholder="Enter zip code"
-            className="h-14 w-full rounded-xl border border-neutral-300 px-4 text-center text-2xl font-semibold tracking-widest focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+            className="focus:border-accent-500 focus:ring-accent-500/20 h-14 w-full rounded-xl border border-neutral-300 px-4 text-center text-2xl font-semibold tracking-widest focus:ring-2 focus:outline-none"
             autoFocus
           />
           <button
             onClick={handleZipSubmit}
             disabled={isLoading || zip.length < 5}
-            className="flex h-14 w-full items-center justify-center rounded-xl bg-accent-500 text-lg font-bold text-white shadow-md transition-all hover:bg-accent-600 disabled:opacity-50"
+            className="bg-accent-500 hover:bg-accent-600 flex h-14 w-full items-center justify-center rounded-xl text-lg font-bold text-white shadow-md transition-all disabled:opacity-50"
           >
             {isLoading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
@@ -265,7 +307,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
       {step === 2 && (
         <div className="space-y-5">
           <div>
-            <h3 className="text-lg font-bold text-primary-900">
+            <h3 className="text-primary-900 text-lg font-bold">
               What do you need?
             </h3>
           </div>
@@ -276,12 +318,12 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
                 onClick={() => setService(opt.value)}
                 className={`rounded-xl border-2 p-4 text-left transition-all ${
                   service === opt.value
-                    ? 'border-accent-500 bg-accent-50 ring-2 ring-accent-500/20'
+                    ? 'border-accent-500 bg-accent-50 ring-accent-500/20 ring-2'
                     : 'border-neutral-200 hover:border-neutral-300'
                 }`}
               >
                 <span className="text-2xl">{opt.icon}</span>
-                <p className="mt-1 text-sm font-semibold text-primary-900">
+                <p className="text-primary-900 mt-1 text-sm font-semibold">
                   {opt.label}
                 </p>
               </button>
@@ -312,7 +354,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
           <button
             onClick={() => setStep(3)}
             disabled={!service || !timeframe}
-            className="flex h-14 w-full items-center justify-center rounded-xl bg-accent-500 text-lg font-bold text-white shadow-md transition-all hover:bg-accent-600 disabled:opacity-50"
+            className="bg-accent-500 hover:bg-accent-600 flex h-14 w-full items-center justify-center rounded-xl text-lg font-bold text-white shadow-md transition-all disabled:opacity-50"
           >
             Next Step
           </button>
@@ -323,7 +365,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
       {step === 3 && (
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-bold text-primary-900">
+            <h3 className="text-primary-900 text-lg font-bold">
               Get your free quote
             </h3>
             <p className="mt-1 text-sm text-neutral-600">
@@ -335,7 +377,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Full name"
-            className="h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+            className="focus:border-accent-500 focus:ring-accent-500/20 h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:ring-2 focus:outline-none"
             autoFocus
           />
           <input
@@ -343,14 +385,14 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Phone number"
-            className="h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+            className="focus:border-accent-500 focus:ring-accent-500/20 h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:ring-2 focus:outline-none"
           />
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            className="h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+            className="focus:border-accent-500 focus:ring-accent-500/20 h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:ring-2 focus:outline-none"
           />
           <AddressAutocomplete
             onAddressSelect={handleAddressPicked}
@@ -372,7 +414,7 @@ export default function LandingPageForm({ defaultService }: LandingPageFormProps
               !streetAddress.trim() ||
               !smsConsent
             }
-            className="flex h-14 w-full items-center justify-center rounded-xl bg-accent-500 text-lg font-bold text-white shadow-md transition-all hover:bg-accent-600 disabled:opacity-50"
+            className="bg-accent-500 hover:bg-accent-600 flex h-14 w-full items-center justify-center rounded-xl text-lg font-bold text-white shadow-md transition-all disabled:opacity-50"
           >
             {isLoading ? (
               <Loader2 className="h-5 w-5 animate-spin" />

@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'GAF Master Elite Certified Roofing Contractor | ProTech Roofing',
     description:
-      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed in 9 states & D.C. with lifetime warranties.',
+      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed in 14 states with lifetime warranties.',
     path: '/certifications',
   });
 }
@@ -35,7 +35,7 @@ const certifications = [
     icon: Shield,
     title: 'GAF Master Elite Contractor',
     description:
-      'GAF Master Elite is the highest certification awarded by North America\'s largest roofing manufacturer. Only 2% of roofing contractors nationwide qualify for this distinction. Earning it requires a proven track record of quality installations, proper licensing, adequate insurance coverage, and a commitment to ongoing professional training. GAF Master Elite status unlocks the Golden Pledge warranty — a 50-year non-prorated material warranty plus 25 years of workmanship coverage — giving homeowners the strongest protection available in the roofing industry.',
+      "GAF Master Elite is the highest certification awarded by North America's largest roofing manufacturer. Only 2% of roofing contractors nationwide qualify for this distinction. Earning it requires a proven track record of quality installations, proper licensing, adequate insurance coverage, and a commitment to ongoing professional training. GAF Master Elite status unlocks the Golden Pledge warranty — a 50-year non-prorated material warranty plus 25 years of workmanship coverage — giving homeowners the strongest protection available in the roofing industry.",
     benefits: [
       '50-Year Golden Pledge warranty',
       'Factory-certified installation crews',
@@ -48,7 +48,7 @@ const certifications = [
     icon: Award,
     title: 'Owens Corning Preferred Contractor',
     description:
-      'As an Owens Corning Preferred Contractor, ProTech Roofing is authorized to offer the Owens Corning Platinum Protection limited warranty. This designation is awarded only to contractors who have been verified for installation quality, sound business practices, and consistently high customer satisfaction scores. It ensures that every Owens Corning roof we install meets the manufacturer\'s exacting standards.',
+      "As an Owens Corning Preferred Contractor, ProTech Roofing is authorized to offer the Owens Corning Platinum Protection limited warranty. This designation is awarded only to contractors who have been verified for installation quality, sound business practices, and consistently high customer satisfaction scores. It ensures that every Owens Corning roof we install meets the manufacturer's exacting standards.",
     benefits: [
       'Platinum Protection warranty available',
       'Duration series shingle specialist',
@@ -89,7 +89,7 @@ const faqs = [
   {
     question: 'What is a GAF Master Elite contractor?',
     answer:
-      'A GAF Master Elite contractor is a roofing professional who has earned the highest certification from GAF, North America\'s largest roofing manufacturer. Only 2% of all roofing contractors in the country qualify. To earn the designation, a contractor must demonstrate a proven installation track record, maintain proper state licensing and insurance, and commit to ongoing factory training. GAF Master Elite contractors are the only ones authorized to offer GAF\'s Golden Pledge warranty, which provides 50 years of non-prorated material coverage and 25 years of workmanship protection.',
+      "A GAF Master Elite contractor is a roofing professional who has earned the highest certification from GAF, North America's largest roofing manufacturer. Only 2% of all roofing contractors in the country qualify. To earn the designation, a contractor must demonstrate a proven installation track record, maintain proper state licensing and insurance, and commit to ongoing factory training. GAF Master Elite contractors are the only ones authorized to offer GAF's Golden Pledge warranty, which provides 50 years of non-prorated material coverage and 25 years of workmanship protection.",
   },
   {
     question: 'Why do certifications matter when choosing a roofer?',
@@ -104,12 +104,12 @@ const faqs = [
   {
     question: 'Is ProTech Roofing licensed in my state?',
     answer:
-      'ProTech Roofing is licensed and insured in 9 states plus D.C.: Florida, Delaware, Maryland, Virginia, Connecticut, Pennsylvania, North Carolina, South Carolina, and West Virginia. Each state license is current and verifiable through the respective state licensing board. If you are located in one of these states, we are ready to serve you.',
+      'ProTech Roofing is licensed and insured in 14 states: Florida, Georgia, Texas, North Carolina, South Carolina, Virginia, Maryland, Pennsylvania, Connecticut, Delaware, West Virginia, Tennessee, Kentucky, and Ohio. Each state license is current and verifiable through the respective state licensing board. If you are located in one of these states, we are ready to serve you.',
   },
   {
-    question: 'How do I verify ProTech\'s certifications?',
+    question: "How do I verify ProTech's certifications?",
     answer:
-      'You can verify our certifications through several independent sources. Our GAF Master Elite status can be confirmed on the GAF website\'s contractor locator. Our BBB accreditation and A+ rating are listed on bbb.org. Our NRCA membership can be checked through the NRCA member directory. For state licensing, you can contact the relevant state licensing board using the license numbers listed on our website. We encourage homeowners to verify any contractor\'s credentials before signing a contract.',
+      "You can verify our certifications through several independent sources. Our GAF Master Elite status can be confirmed on the GAF website's contractor locator. Our BBB accreditation and A+ rating are listed on bbb.org. Our NRCA membership can be checked through the NRCA member directory. For state licensing, you can contact the relevant state licensing board using the license numbers listed on our website. We encourage homeowners to verify any contractor's credentials before signing a contract.",
   },
 ];
 
@@ -165,7 +165,7 @@ export default function CertificationsPage() {
       {/* Hero */}
       <Hero
         heading="GAF Master Elite Certified Roofing Contractor"
-        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed in 9 states and backed by industry-leading certifications."
+        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed in 14 states and backed by industry-leading certifications."
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{ text: 'Call 1-866-308-2640', href: 'tel:18663082640' }}
         showTrustBadges
@@ -182,10 +182,10 @@ export default function CertificationsPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-start gap-12 lg:grid-cols-2">
               <div>
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-100">
-                  <cert.icon className="h-8 w-8 text-accent-500" />
+                <div className="bg-primary-100 mb-6 flex h-16 w-16 items-center justify-center rounded-full">
+                  <cert.icon className="text-accent-500 h-8 w-8" />
                 </div>
-                <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+                <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
                   {cert.title}
                 </h2>
                 <p className="mt-4 text-lg leading-relaxed text-neutral-700">
@@ -193,13 +193,13 @@ export default function CertificationsPage() {
                 </p>
               </div>
               <div className="rounded-lg border border-neutral-200 bg-white p-8">
-                <h3 className="mb-6 text-lg font-semibold text-primary-900">
+                <h3 className="text-primary-900 mb-6 text-lg font-semibold">
                   Key Benefits
                 </h3>
                 <ul className="space-y-4">
                   {cert.benefits.map((benefit) => (
                     <li key={benefit} className="flex items-start gap-3">
-                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent-500" />
+                      <CheckCircle className="text-accent-500 mt-0.5 h-5 w-5 shrink-0" />
                       <span className="text-neutral-700">{benefit}</span>
                     </li>
                   ))}
@@ -214,7 +214,7 @@ export default function CertificationsPage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+            <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
               Licensed &amp; Insured in 14 States
             </h2>
             <p className="mt-4 text-lg text-neutral-600">
@@ -228,11 +228,11 @@ export default function CertificationsPage() {
                 key={entry.stateAbbr}
                 className="flex items-center gap-4 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100">
-                  <MapPin className="h-5 w-5 text-accent-500" />
+                <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                  <MapPin className="text-accent-500 h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-semibold text-primary-900">
+                  <p className="text-primary-900 font-semibold">
                     {entry.state}
                   </p>
                   <p className="text-sm text-neutral-600">
@@ -249,7 +249,7 @@ export default function CertificationsPage() {
       <section className="bg-primary-50 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+            <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
               What Our Certifications Mean for You
             </h2>
           </div>
@@ -259,10 +259,10 @@ export default function CertificationsPage() {
                 key={card.title}
                 className="rounded-lg border border-neutral-200 bg-white p-8 text-center"
               >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary-100">
-                  <card.icon className="h-7 w-7 text-accent-500" />
+                <div className="bg-primary-100 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full">
+                  <card.icon className="text-accent-500 h-7 w-7" />
                 </div>
-                <h3 className="text-lg font-semibold text-primary-900">
+                <h3 className="text-primary-900 text-lg font-semibold">
                   {card.title}
                 </h3>
                 <p className="mt-3 text-neutral-600">{card.description}</p>

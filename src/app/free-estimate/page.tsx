@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Free Roof Estimate — No Obligation | ProTech Roofing',
     description:
-      'Get a free satellite-powered roof estimate in minutes. No obligation, no pressure. Serving FL, PA, NC, SC, VA, MD, DE, CT & D.C. $0 down financing available. Call (866) 308-2640 or fill out our form.',
+      'Get a free satellite-powered roof estimate in minutes. No obligation, no pressure. Serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. $0 down financing available. Call (866) 308-2640 or fill out our form.',
     path: '/free-estimate',
   });
 }
@@ -72,7 +72,7 @@ export default function FreeEstimatePage() {
             <h1 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
               Get Your Free Roofing Estimate
             </h1>
-            <p className="mt-4 text-lg text-primary-200">
+            <p className="text-primary-200 mt-4 text-lg">
               Enter your address for an instant price range — powered by
               satellite roof measurement. No obligation, no pressure.
             </p>
@@ -89,17 +89,17 @@ export default function FreeEstimatePage() {
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Left Column: How It Works */}
             <div>
-              <h2 className="text-2xl font-bold text-primary-900">
+              <h2 className="text-primary-900 text-2xl font-bold">
                 How It Works
               </h2>
               <div className="mt-6 space-y-5">
                 {whatToExpectSteps.map((step, index) => (
                   <div key={index} className="flex gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100">
-                      <step.icon className="h-5 w-5 text-primary-700" />
+                    <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                      <step.icon className="text-primary-700 h-5 w-5" />
                     </div>
                     <div>
-                      <p className="font-medium text-primary-900">
+                      <p className="text-primary-900 font-medium">
                         {index + 1}. {step.title}
                       </p>
                       <p className="mt-0.5 text-sm text-neutral-600">
@@ -111,18 +111,18 @@ export default function FreeEstimatePage() {
               </div>
 
               {/* Phone CTA */}
-              <div className="mt-8 rounded-xl border border-accent-200 bg-accent-50 p-6 text-center">
-                <h3 className="text-lg font-semibold text-primary-900">
+              <div className="border-accent-200 bg-accent-50 mt-8 rounded-xl border p-6 text-center">
+                <h3 className="text-primary-900 text-lg font-semibold">
                   Prefer to Talk?
                 </h3>
                 <p className="mt-2 text-sm text-neutral-600">
                   Call us directly and speak with a roofing expert. We are
-                  available Monday through Friday 7am to 6pm and Saturday 8am
-                  to 2pm.
+                  available Monday through Friday 7am to 6pm and Saturday 8am to
+                  2pm.
                 </p>
                 <a
                   href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
-                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
+                  className="bg-accent-500 hover:bg-accent-600 mt-4 inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white transition-colors"
                 >
                   <Phone className="h-5 w-5" />
                   {formatPhoneNumber(SITE_CONFIG.defaultPhoneRaw)}
@@ -134,7 +134,7 @@ export default function FreeEstimatePage() {
             <div className="space-y-8">
               {/* Compact Testimonials */}
               <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
-                <h3 className="text-lg font-semibold text-primary-900">
+                <h3 className="text-primary-900 text-lg font-semibold">
                   What Our Customers Say
                 </h3>
                 <div className="mt-4 space-y-4">
@@ -173,33 +173,33 @@ export default function FreeEstimatePage() {
 
               {/* Trust Badges */}
               <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
-                <h3 className="text-lg font-semibold text-primary-900">
+                <h3 className="text-primary-900 text-lg font-semibold">
                   Why Choose ProTech
                 </h3>
                 <ul className="mt-4 space-y-3">
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-accent-500" />
+                    <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
                     {SITE_CONFIG.yearsExperience} years of experience
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-accent-500" />
+                    <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
                     {SITE_CONFIG.roofsInstalled} roofs installed
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-accent-500" />
+                    <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
                     {SITE_CONFIG.googleRating}-star Google rating (
                     {SITE_CONFIG.reviewCount}+ reviews)
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-accent-500" />
+                    <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
                     Licensed in {SITE_CONFIG.statesLicensed} states
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-accent-500" />
+                    <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
                     Lifetime workmanship warranty
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-accent-500" />
+                    <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
                     Flexible financing available
                   </li>
                 </ul>

@@ -16,7 +16,20 @@ export const SERVICE_OPTIONS = [
 ] as const;
 
 export const STATE_OPTIONS = [
-  'CT', 'DC', 'DE', 'FL', 'MD', 'NC', 'PA', 'SC', 'VA', 'WV',
+  'CT',
+  'DE',
+  'FL',
+  'GA',
+  'KY',
+  'MD',
+  'NC',
+  'OH',
+  'PA',
+  'SC',
+  'TN',
+  'TX',
+  'VA',
+  'WV',
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -24,41 +37,30 @@ export const STATE_OPTIONS = [
 // ---------------------------------------------------------------------------
 
 export const estimateFormSchema = z.object({
-  firstName: z
-    .string()
-    .min(1, 'First name is required'),
-  lastName: z
-    .string()
-    .min(1, 'Last name is required'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-      'Please enter a valid US phone number',
+      'Please enter a valid US phone number'
     )
-    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
-  email: z
-    .string()
-    .email('Please enter a valid email address'),
+    .refine(
+      (val) => !isFakePhoneNumber(val),
+      'Please enter a real phone number'
+    ),
+  email: z.string().email('Please enter a valid email address'),
   streetAddress: z
     .string()
     .min(5, 'Street address must be at least 5 characters')
     .max(200, 'Street address is too long'),
-  city: z
-    .string()
-    .min(2, 'City must be at least 2 characters'),
+  city: z.string().min(2, 'City must be at least 2 characters'),
   state: z.enum(STATE_OPTIONS, 'Please select a state'),
-  zip: z
-    .string()
-    .min(5, 'ZIP code is required'),
+  zip: z.string().min(5, 'ZIP code is required'),
   serviceNeeded: z.enum(SERVICE_OPTIONS, 'Please select a service'),
-  howDidYouHear: z
-    .string()
-    .min(1, 'Please let us know how you heard about us'),
-  additionalDetails: z
-    .string()
-    .optional(),
+  howDidYouHear: z.string().min(1, 'Please let us know how you heard about us'),
+  additionalDetails: z.string().optional(),
 });
 
 export type EstimateFormData = z.infer<typeof estimateFormSchema>;
@@ -68,26 +70,21 @@ export type EstimateFormData = z.infer<typeof estimateFormSchema>;
 // ---------------------------------------------------------------------------
 
 export const contactFormSchema = z.object({
-  firstName: z
-    .string()
-    .min(1, 'First name is required'),
-  lastName: z
-    .string()
-    .min(1, 'Last name is required'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-      'Please enter a valid US phone number',
+      'Please enter a valid US phone number'
     )
-    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
-  email: z
-    .string()
-    .email('Please enter a valid email address'),
-  message: z
-    .string()
-    .min(10, 'Message must be at least 10 characters'),
+    .refine(
+      (val) => !isFakePhoneNumber(val),
+      'Please enter a real phone number'
+    ),
+  email: z.string().email('Please enter a valid email address'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -97,7 +94,10 @@ export type ContactFormData = z.infer<typeof contactFormSchema>;
 // ---------------------------------------------------------------------------
 
 export const instantEstimateSchema = z.object({
-  address: z.string().min(5, 'Please enter a valid address').max(200, 'Address is too long'),
+  address: z
+    .string()
+    .min(5, 'Please enter a valid address')
+    .max(200, 'Address is too long'),
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
   phone: z
@@ -105,9 +105,12 @@ export const instantEstimateSchema = z.object({
     .min(10, 'Phone number must be at least 10 digits')
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-      'Please enter a valid US phone number',
+      'Please enter a valid US phone number'
     )
-    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
+    .refine(
+      (val) => !isFakePhoneNumber(val),
+      'Please enter a real phone number'
+    ),
   email: z
     .string()
     .email('Please enter a valid email')
@@ -139,17 +142,18 @@ export const CALLBACK_SOURCES = [
 ] as const;
 
 export const callbackRequestSchema = z.object({
-  name: z
-    .string()
-    .min(1, 'Name is required'),
+  name: z.string().min(1, 'Name is required'),
   phone: z
     .string()
     .min(10, 'Phone number must be at least 10 digits')
     .regex(
       /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
-      'Please enter a valid US phone number',
+      'Please enter a valid US phone number'
     )
-    .refine((val) => !isFakePhoneNumber(val), 'Please enter a real phone number'),
+    .refine(
+      (val) => !isFakePhoneNumber(val),
+      'Please enter a real phone number'
+    ),
   email: z
     .string()
     .email('Please enter a valid email address')
@@ -170,7 +174,10 @@ export const callbackRequestSchema = z.object({
   timeframe: z.string().optional().or(z.literal('')),
   smsConsent: z
     .boolean()
-    .refine((v) => v === true, 'You must agree to receive SMS messages to continue'),
+    .refine(
+      (v) => v === true,
+      'You must agree to receive SMS messages to continue'
+    ),
   source: z.enum(CALLBACK_SOURCES, 'Invalid source'),
 });
 

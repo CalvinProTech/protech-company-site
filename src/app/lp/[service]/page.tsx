@@ -15,7 +15,7 @@ const SERVICES: Record<
   'roof-replacement': {
     headline: 'Roof Replacement — Free Quote in 60 Seconds',
     subheadline:
-      'Master Elite Certified. Licensed in 9 states. 5-star rated on Google.',
+      'Master Elite Certified. Licensed in 14 states. 5-star rated on Google.',
     bullets: [
       '25-year manufacturer warranty included',
       '$0 down financing available',
@@ -37,7 +37,7 @@ const SERVICES: Record<
   'storm-damage': {
     headline: 'Storm Damage? We Handle Everything',
     subheadline:
-      'Insurance claim experts. Free damage assessment. Licensed in 9 states.',
+      'Insurance claim experts. Free damage assessment. Licensed in 14 states.',
     bullets: [
       'We work directly with your insurance',
       'Free storm damage inspection',
@@ -51,7 +51,7 @@ const SERVICES: Record<
       'Master Elite Certified. 500+ roofs completed. Financing available.',
     bullets: [
       'Satellite-powered instant measurement',
-      'Licensed & insured in 9 states',
+      'Licensed & insured in 14 states',
       'Call back within 5 minutes',
     ],
     defaultService: '',
@@ -59,7 +59,7 @@ const SERVICES: Record<
   financing: {
     headline: '$0 Down Roof Financing — Fast Approval',
     subheadline:
-      'New roof today, easy monthly payments. Licensed in 9 states. 5-star rated on Google.',
+      'New roof today, easy monthly payments. Licensed in 14 states. 5-star rated on Google.',
     bullets: [
       '$0 down, flexible monthly payments',
       'Quick pre-qualification — no hard credit pull',
@@ -93,7 +93,7 @@ export function generateMetadata({
   return {
     title: 'Free Roof Estimate | ProTech Roofing',
     description:
-      'Get a free roofing estimate in 60 seconds. Licensed, insured, 5-star rated. Serving FL, PA, NC, SC, VA, MD, DE, CT & D.C.',
+      'Get a free roofing estimate in 60 seconds. Licensed, insured, 5-star rated. Serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH.',
     robots: { index: false, follow: false },
   };
 }
@@ -110,21 +110,21 @@ export default async function LandingPage({
   return (
     <div className="pb-20 lg:pb-0">
       {/* Hero + Form Section */}
-      <section className="bg-gradient-to-br from-primary-900 to-primary-800 px-4 py-12 lg:py-16">
+      <section className="from-primary-900 to-primary-800 bg-gradient-to-br px-4 py-12 lg:py-16">
         <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left: Headline + Bullets */}
           <div className="flex flex-col justify-center text-white">
-            <h1 className="text-3xl font-bold leading-tight lg:text-4xl xl:text-5xl">
+            <h1 className="text-3xl leading-tight font-bold lg:text-4xl xl:text-5xl">
               {config.headline}
             </h1>
-            <p className="mt-4 text-lg text-primary-200">
+            <p className="text-primary-200 mt-4 text-lg">
               {config.subheadline}
             </p>
             <ul className="mt-6 space-y-3">
               {config.bullets.map((bullet) => (
                 <li key={bullet} className="flex items-start gap-3">
                   <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-400"
+                    className="text-accent-400 mt-0.5 h-5 w-5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={2.5}
@@ -166,7 +166,7 @@ export default async function LandingPage({
       {/* Social Proof Section */}
       <section className="bg-white px-4 py-12">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-primary-900">
+          <h2 className="text-primary-900 text-center text-2xl font-bold">
             What Our Customers Say
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
@@ -199,7 +199,7 @@ export default async function LandingPage({
                 <p className="mt-3 text-sm text-neutral-700">
                   &ldquo;{review.text}&rdquo;
                 </p>
-                <p className="mt-3 text-sm font-semibold text-primary-900">
+                <p className="text-primary-900 mt-3 text-sm font-semibold">
                   {review.name}
                 </p>
                 <p className="text-xs text-neutral-500">{review.location}</p>
@@ -212,21 +212,33 @@ export default async function LandingPage({
       {/* What's Included */}
       <section className="bg-neutral-50 px-4 py-12">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-primary-900">
+          <h2 className="text-primary-900 text-center text-2xl font-bold">
             What&apos;s Included With Every Project
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { title: 'Free Inspection', desc: 'Complete roof assessment at no cost' },
-              { title: 'Written Estimate', desc: 'Transparent pricing, no hidden fees' },
-              { title: 'Manufacturer Warranty', desc: 'Up to 25 years of coverage' },
-              { title: 'Full Cleanup', desc: 'Property left cleaner than we found it' },
+              {
+                title: 'Free Inspection',
+                desc: 'Complete roof assessment at no cost',
+              },
+              {
+                title: 'Written Estimate',
+                desc: 'Transparent pricing, no hidden fees',
+              },
+              {
+                title: 'Manufacturer Warranty',
+                desc: 'Up to 25 years of coverage',
+              },
+              {
+                title: 'Full Cleanup',
+                desc: 'Property left cleaner than we found it',
+              },
             ].map((item) => (
               <div
                 key={item.title}
                 className="rounded-xl bg-white p-5 shadow-sm"
               >
-                <h3 className="font-bold text-primary-900">{item.title}</h3>
+                <h3 className="text-primary-900 font-bold">{item.title}</h3>
                 <p className="mt-1 text-sm text-neutral-600">{item.desc}</p>
               </div>
             ))}
@@ -237,16 +249,14 @@ export default async function LandingPage({
       {/* Final CTA */}
       <section className="bg-primary-900 px-4 py-12 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="text-2xl font-bold">
-            Ready to Get Your Free Quote?
-          </h2>
-          <p className="mt-3 text-primary-300">
+          <h2 className="text-2xl font-bold">Ready to Get Your Free Quote?</h2>
+          <p className="text-primary-300 mt-3">
             Call now and speak with a roofing specialist, or scroll up to fill
             out the form.
           </p>
           <a
             href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
-            className="mt-6 inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-accent-500 px-10 text-lg font-bold text-white shadow-md transition-all hover:bg-accent-600"
+            className="bg-accent-500 hover:bg-accent-600 mt-6 inline-flex h-14 items-center justify-center gap-2 rounded-xl px-10 text-lg font-bold text-white shadow-md transition-all"
           >
             <svg
               className="h-5 w-5"
@@ -263,7 +273,7 @@ export default async function LandingPage({
             </svg>
             Call {SITE_CONFIG.defaultPhone}
           </a>
-          <p className="mt-3 text-sm text-primary-400">
+          <p className="text-primary-400 mt-3 text-sm">
             Mon–Fri 9AM–5PM ET &middot; Sat 9AM–2PM
           </p>
         </div>

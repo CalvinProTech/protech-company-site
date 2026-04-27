@@ -44,14 +44,19 @@ export default function LocalBusinessSchema({
       },
       areaServed: [
         { '@type': 'State', name: 'Florida', abbreviation: 'FL' },
-        { '@type': 'State', name: 'Pennsylvania', abbreviation: 'PA' },
+        { '@type': 'State', name: 'Georgia', abbreviation: 'GA' },
+        { '@type': 'State', name: 'Texas', abbreviation: 'TX' },
         { '@type': 'State', name: 'North Carolina', abbreviation: 'NC' },
         { '@type': 'State', name: 'South Carolina', abbreviation: 'SC' },
         { '@type': 'State', name: 'Virginia', abbreviation: 'VA' },
         { '@type': 'State', name: 'Maryland', abbreviation: 'MD' },
-        { '@type': 'State', name: 'Delaware', abbreviation: 'DE' },
+        { '@type': 'State', name: 'Pennsylvania', abbreviation: 'PA' },
         { '@type': 'State', name: 'Connecticut', abbreviation: 'CT' },
-        { '@type': 'AdministrativeArea', name: 'Washington, D.C.', abbreviation: 'DC' },
+        { '@type': 'State', name: 'Delaware', abbreviation: 'DE' },
+        { '@type': 'State', name: 'West Virginia', abbreviation: 'WV' },
+        { '@type': 'State', name: 'Tennessee', abbreviation: 'TN' },
+        { '@type': 'State', name: 'Kentucky', abbreviation: 'KY' },
+        { '@type': 'State', name: 'Ohio', abbreviation: 'OH' },
       ],
       sameAs: [
         'https://www.facebook.com/protechroofing',
@@ -62,13 +67,7 @@ export default function LocalBusinessSchema({
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-          ],
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
           opens: '07:00',
           closes: '18:00',
         },
@@ -130,13 +129,7 @@ export default function LocalBusinessSchema({
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-          ],
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
           opens: '07:00',
           closes: '18:00',
         },

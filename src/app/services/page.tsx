@@ -30,7 +30,10 @@ export default function ServicesPage() {
         heading="Professional Roofing Services"
         subtitle="From roof replacement and repair to storm damage restoration and commercial roofing, ProTech Roofing delivers expert solutions backed by a lifetime workmanship warranty."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
-        secondaryCTA={{ text: 'Call Now', href: `tel:${SITE_CONFIG.defaultPhoneRaw}` }}
+        secondaryCTA={{
+          text: 'Call Now',
+          href: `tel:${SITE_CONFIG.defaultPhoneRaw}`,
+        }}
         backgroundImage="/images/hero/services.jpg"
       />
 
@@ -42,14 +45,14 @@ export default function ServicesPage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+            <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
               Comprehensive Roofing Solutions
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               ProTech Roofing provides a complete range of residential and
-              commercial roofing services across the East Coast
-              and beyond. Every project is backed by our lifetime workmanship warranty,
-              premium materials from manufacturers like GAF, Owens Corning, and
+              commercial roofing services across 14 states nationwide. Every
+              project is backed by our lifetime workmanship warranty, premium
+              materials from manufacturers like GAF, Owens Corning, and
               CertainTeed, and a team of factory-trained installers who treat
               your property like their own. Whether you need a full roof
               replacement, emergency leak repair, or a proactive inspection, we

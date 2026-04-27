@@ -10,7 +10,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Customer Reviews | 5.0 Star Rating | ProTech Roofing',
     description:
-      'Read verified customer reviews for ProTech Roofing. Rated 5.0 stars with 100+ reviews. See what homeowners say about our roofing services across 9 states & D.C.',
+      'Read verified customer reviews for ProTech Roofing. Rated 5.0 stars with 100+ reviews. See what homeowners say about our roofing services across 14 states.',
     path: '/reviews',
   });
 }
@@ -33,7 +33,7 @@ export default function ReviewsPage() {
           <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             Customer Reviews
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-primary-200">
+          <p className="text-primary-200 mt-4 max-w-2xl text-lg">
             Read what our customers say about their experience with ProTech
             Roofing. Real reviews from real homeowners.
           </p>
