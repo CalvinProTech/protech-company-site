@@ -78,7 +78,11 @@ export default function QuickQuoteForm({
       }
 
       setSubmitStatus('success');
-      trackFormSubmit('callback', { name: data.name, source });
+      // Suppress Google Ads conv pixel when server flagged the submission as spam
+      // (returned success-shaped 200 to fool bots). See /api/callback route.
+      if (!result.blocked) {
+        trackFormSubmit('callback', { name: data.name, source });
+      }
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');
