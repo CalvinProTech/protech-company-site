@@ -57,14 +57,13 @@ export default function TermsOfServicePage() {
 
             <h2>Services Description</h2>
             <p>
-              {SITE_CONFIG.name} provides residential and commercial roofing
-              services, including but not limited to roof replacement, roof
-              repair, storm damage restoration, roof inspections, commercial
-              roofing, and gutter and siding installation. Our service area
-              includes metropolitan areas across Florida, Georgia, Texas, North
-              Carolina, South Carolina, Virginia, Maryland, Pennsylvania,
-              Connecticut, Delaware, West Virginia, Tennessee, Kentucky, and
-              Ohio. Specific service availability may vary by location.
+              {SITE_CONFIG.name} provides residential roofing services
+              including roof replacement, storm-damage restoration,
+              insurance-claim assistance, gutter and siding installation, and
+              in-house financing. Our service area includes metropolitan areas
+              across Florida, South Carolina, North Carolina, Virginia,
+              Maryland, Washington D.C., Delaware, Pennsylvania, and
+              Connecticut. Specific service availability may vary by location.
             </p>
             <p>
               Our website provides information about our services, allows you to

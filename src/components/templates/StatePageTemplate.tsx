@@ -129,7 +129,9 @@ export default function StatePageTemplate({
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => (
+            {SERVICES.filter((s) =>
+              ['roof-replacement', 'roof-repair', 'storm-damage', 'gutters-siding'].includes(s.slug),
+            ).map((service) => (
               <Link
                 key={service.slug}
                 href={`/locations/${stateSlug}/${service.slug}`}

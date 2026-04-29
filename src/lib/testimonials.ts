@@ -1,3 +1,23 @@
+// Testimonials data source.
+//
+// PRIMARY: real Google reviews fetched at build time by
+// `scripts/fetch-google-reviews.mjs` and written to
+// `src/data/google-reviews.json`. Run `npm run fetch-reviews` to refresh.
+//
+// FALLBACK: 12 placeholder entries below — used only when the JSON file
+// doesn't exist (e.g. fresh checkout, CI without API access). All 12 are
+// in our actual 9-state service area (FL/SC/NC/VA/MD/PA/CT/DE), but names
+// and quotes are placeholder. They should never ship to production once
+// the Places API fetch is wired and running.
+//
+// What changed 2026-04-29: removed 15 entries that referenced states
+// ProTech doesn't service (TX/OH/KY/GA/TN/WV — including the "Cleveland"
+// and "Kanawha Valley" reviews flagged by the external audit). Added the
+// Google-Reviews JSON fallback path so real reviews take over once the
+// Places API key has the right scope enabled.
+
+import googleReviewsData from '@/data/google-reviews.json' with { type: 'json' };
+
 export interface Testimonial {
   id: number;
   name: string;
@@ -9,7 +29,10 @@ export interface Testimonial {
   date: string;
 }
 
-const testimonials: Testimonial[] = [
+// Placeholder list used only when Google reviews JSON is empty. Once the
+// Places API fetch script has been run with an enabled API key, the
+// `googleReviewsData.reviews` array takes over below.
+const placeholderTestimonials: Testimonial[] = [
   {
     id: 1,
     name: "Michael Torres",
@@ -34,39 +57,6 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    name: "James Richardson",
-    city: "Dallas",
-    state: "TX",
-    rating: 5.0,
-    quote:
-      "We had significant hail damage after the spring storms and ProTech was the only company that did not try to upsell us on unnecessary work. They documented every dent with their drone, met our adjuster on-site, and handled the entire claim. Before their inspection, we thought we only needed a few shingles replaced. Turns out the entire north-facing slope was compromised. They replaced it all with Class 4 impact-resistant shingles and our insurance covered the full cost minus the deductible. Great experience from start to finish.",
-    serviceType: "storm-damage",
-    date: "2025-06-22",
-  },
-  {
-    id: 4,
-    name: "Linda Park",
-    city: "Houston",
-    state: "TX",
-    rating: 4.5,
-    quote:
-      "Our flat commercial roof on our retail building had been leaking for months, causing ceiling tile damage and disrupting our tenants. ProTech installed a new TPO membrane system over a long weekend to minimize business disruption. Before the new roof, we were spending $500 a month on temporary patches. Now the building is watertight, energy costs dropped by 18 percent, and we have a 25-year manufacturer warranty. The project manager kept us informed every step of the way.",
-    serviceType: "commercial-roofing",
-    date: "2025-08-10",
-  },
-  {
-    id: 5,
-    name: "David Kowalski",
-    city: "Louisville",
-    state: "KY",
-    rating: 5.0,
-    quote:
-      "We bought a 1920s craftsman home in the Highlands and knew the roof was old but had no idea how bad it was until ProTech did their thermal scan. They found moisture trapped in the decking that would have caused major structural damage within another year. Before the replacement, we were quoted $15,000 by another company for just a shingle overlay. ProTech tore it all off, replaced 12 sheets of rotted decking, and installed a beautiful new roof for a fair price. The attention to detail on our historic home was impressive.",
-    serviceType: "roof-replacement",
-    date: "2025-10-18",
-  },
-  {
-    id: 6,
     name: "Angela Freeman",
     city: "Miami",
     state: "FL",
@@ -77,51 +67,7 @@ const testimonials: Testimonial[] = [
     date: "2025-07-05",
   },
   {
-    id: 7,
-    name: "Robert Chen",
-    city: "Columbus",
-    state: "OH",
-    rating: 4.5,
-    quote:
-      "Our gutters were overflowing during every rain, causing foundation erosion along the back of our house. ProTech installed seamless 6-inch gutters with gutter guards and regraded the downspout drainage. Before the project, we had standing water within two feet of our foundation after every storm. Now the water channels away properly and we no longer worry about basement flooding. The crew was neat, efficient, and completed the job in one day.",
-    serviceType: "gutters-siding",
-    date: "2025-05-30",
-  },
-  {
-    id: 8,
-    name: "Patricia Nguyen",
-    city: "San Antonio",
-    state: "TX",
-    rating: 5.0,
-    quote:
-      "We were skeptical about switching to a metal roof but ProTech walked us through the benefits for our San Antonio home. Our old shingle roof was 22 years old and our summer electric bills were over $400 a month. After the standing seam metal installation, our cooling costs dropped by nearly 25 percent. The crew completed the entire project in 3 days and left our yard cleaner than they found it. Two years in and the roof still looks brand new with zero maintenance.",
-    serviceType: "roof-replacement",
-    date: "2025-04-12",
-  },
-  {
-    id: 9,
-    name: "Thomas Bradley",
-    city: "Cleveland",
-    state: "OH",
-    rating: 5.0,
-    quote:
-      "Cleveland winters are brutal on roofs, and ours was showing it with ice dams forming along the entire front edge. ProTech did a full inspection that revealed inadequate attic ventilation and missing ice-and-water shield. Before the fix, we had icicles hanging three feet off the eaves and water dripping inside the walls. They replaced the roof, added proper ventilation, and installed ice-and-water shield on all eaves. This past winter was the first in five years without a single ice dam. Worth every penny.",
-    serviceType: "roof-repair",
-    date: "2025-12-01",
-  },
-  {
-    id: 10,
-    name: "Jennifer Lawson",
-    city: "Austin",
-    state: "TX",
-    rating: 4.5,
-    quote:
-      "We hired ProTech for a pre-sale roof inspection before listing our home. Their detailed 42-point report identified minor flashing issues and a few cracked shingles that we had not noticed. Before the inspection, we assumed the roof was fine since we had no leaks. The $350 inspection saved us from a buyer demanding a $10,000 credit during negotiations. ProTech fixed the issues for under $800 and we sold the house at full asking price. Smart investment for anyone selling a home.",
-    serviceType: "roof-inspection",
-    date: "2025-03-28",
-  },
-  {
-    id: 11,
+    id: 4,
     name: "Marcus Williams",
     city: "Fort Lauderdale",
     state: "FL",
@@ -132,29 +78,7 @@ const testimonials: Testimonial[] = [
     date: "2025-08-25",
   },
   {
-    id: 12,
-    name: "Karen Sullivan",
-    city: "Fort Worth",
-    state: "TX",
-    rating: 5.0,
-    quote:
-      "Our 15-year-old roof had been patched three times by different companies, and it was still leaking around the chimney. ProTech did a thermal scan and found that every previous repair had been a bandage over a much larger flashing problem. They removed the old flashing, rebuilt the cricket behind the chimney, and installed new step and counter flashing. Before ProTech, we had a bucket in the attic for two years. After their repair, we went through an entire hail season with zero leaks. Finally done right.",
-    serviceType: "roof-repair",
-    date: "2025-07-19",
-  },
-  {
-    id: 13,
-    name: "Brian Hoffman",
-    city: "Cincinnati",
-    state: "OH",
-    rating: 4.5,
-    quote:
-      "We manage a 24-unit apartment complex in West Chester and needed the entire flat roof replaced without displacing tenants. ProTech completed the EPDM membrane replacement in sections over 10 days, working around tenant schedules and keeping noise to reasonable hours. Before the project, we had six units reporting ceiling leaks and our maintenance costs were spiraling. Since the new roof went on, we have had zero leak complaints and reduced our maintenance budget by $12,000 annually.",
-    serviceType: "commercial-roofing",
-    date: "2025-09-05",
-  },
-  {
-    id: 14,
+    id: 5,
     name: "Diana Vasquez",
     city: "Jacksonville",
     state: "FL",
@@ -165,29 +89,7 @@ const testimonials: Testimonial[] = [
     date: "2025-10-30",
   },
   {
-    id: 15,
-    name: "Kevin Brennan",
-    city: "Lexington",
-    state: "KY",
-    rating: 5.0,
-    quote:
-      "We bought a fixer-upper in the Chevy Chase neighborhood and needed a roof inspection before finalizing financing. ProTech's inspector spent over an hour on the property and delivered a 15-page report the next day. Before the inspection, the seller claimed the roof was only five years old, but ProTech identified it as closer to 15 years with significant wear. That report gave us the leverage to negotiate $8,500 off the purchase price. We then hired ProTech for the replacement and they did exceptional work matching the neighborhood's historic character.",
-    serviceType: "roof-inspection",
-    date: "2025-11-15",
-  },
-  {
-    id: 16,
-    name: "Rachel Morrison",
-    city: "Atlanta",
-    state: "GA",
-    rating: 5.0,
-    quote:
-      "A massive thunderstorm ripped off a section of our roof in Marietta and water was pouring into the master bedroom. ProTech had an emergency crew at our house within two hours to tarp the damage. They handled the entire insurance claim and replaced our roof with impact-resistant shingles in just 3 days. Before their help, we were overwhelmed and had no idea where to start. They made a stressful situation completely manageable and the new roof looks incredible.",
-    serviceType: "storm-damage",
-    date: "2025-10-05",
-  },
-  {
-    id: 17,
+    id: 6,
     name: "William Tran",
     city: "Charlotte",
     state: "NC",
@@ -198,7 +100,7 @@ const testimonials: Testimonial[] = [
     date: "2025-08-18",
   },
   {
-    id: 18,
+    id: 7,
     name: "Samantha Blake",
     city: "Virginia Beach",
     state: "VA",
@@ -209,7 +111,7 @@ const testimonials: Testimonial[] = [
     date: "2025-09-22",
   },
   {
-    id: 19,
+    id: 8,
     name: "Daniel Garrett",
     city: "Philadelphia",
     state: "PA",
@@ -220,7 +122,7 @@ const testimonials: Testimonial[] = [
     date: "2025-07-14",
   },
   {
-    id: 20,
+    id: 9,
     name: "Lisa Caldwell",
     city: "Baltimore",
     state: "MD",
@@ -231,7 +133,7 @@ const testimonials: Testimonial[] = [
     date: "2025-11-08",
   },
   {
-    id: 21,
+    id: 10,
     name: "Mark Espinoza",
     city: "Charleston",
     state: "SC",
@@ -242,7 +144,7 @@ const testimonials: Testimonial[] = [
     date: "2025-10-28",
   },
   {
-    id: 22,
+    id: 11,
     name: "Christine Novak",
     city: "Hartford",
     state: "CT",
@@ -253,7 +155,7 @@ const testimonials: Testimonial[] = [
     date: "2025-12-10",
   },
   {
-    id: 23,
+    id: 12,
     name: "Andrew Kemp",
     city: "Wilmington",
     state: "DE",
@@ -263,51 +165,13 @@ const testimonials: Testimonial[] = [
     serviceType: "gutters-siding",
     date: "2025-06-30",
   },
-  {
-    id: 24,
-    name: "Jason Whitfield",
-    city: "Nashville",
-    state: "TN",
-    rating: 5.0,
-    quote:
-      "After a severe hailstorm hit our neighborhood in Franklin, we called ProTech Roofing for an assessment. They had a team at our house within 24 hours, documented every bit of damage with their drone, and handled our entire insurance claim. Before they got involved, the adjuster was only going to cover partial replacement. ProTech got us full approval and installed a beautiful new impact-resistant roof in just two days. The crew was professional, cleaned up perfectly, and the new roof looks incredible.",
-    serviceType: "storm-damage",
-    date: "2025-09-18",
-  },
-  {
-    id: 25,
-    name: "Ashley Caldwell",
-    city: "Memphis",
-    state: "TN",
-    rating: 5.0,
-    quote:
-      "Our Germantown home had a 20-year-old roof that was showing its age, with missing shingles and a persistent leak around the skylight. ProTech replaced the entire roof in two days, rebuilt the skylight flashing, and installed new ridge vents. Before the replacement, we had water stains on our vaulted ceiling every time it rained. After their work, we went through an entire storm season with zero leaks. The quality of their craftsmanship is outstanding and their pricing was fair.",
-    serviceType: "roof-replacement",
-    date: "2025-08-05",
-  },
-  {
-    id: 26,
-    name: "Derek Mullins",
-    city: "Charleston",
-    state: "WV",
-    rating: 5.0,
-    quote:
-      "Living in the Kanawha Valley means dealing with heavy rain and harsh winters that take a toll on your roof. Our 18-year-old shingle roof had ice dam damage along the entire front eave and water was seeping into the walls. ProTech replaced the roof, added proper ice-and-water shield, and improved our attic ventilation. Before their work, we had paint peeling off interior walls every spring. This past winter was the first without any ice dam issues. Excellent company.",
-    serviceType: "roof-replacement",
-    date: "2025-11-20",
-  },
-  {
-    id: 27,
-    name: "Laura Jennings",
-    city: "Knoxville",
-    state: "TN",
-    rating: 4.5,
-    quote:
-      "We needed a complete roof replacement on our ranch home in Farragut after a spring storm damaged a large section. ProTech handled the insurance claim from start to finish and had the new roof installed within three weeks of approval. Before they stepped in, we were overwhelmed by the claims process and had tarps on the roof for a month. Their project manager kept us informed every step of the way. The new architectural shingles look great and we have peace of mind heading into storm season.",
-    serviceType: "storm-damage",
-    date: "2025-06-12",
-  },
 ];
+
+// Source-of-truth selector: real Google reviews if any have been fetched,
+// otherwise the placeholder fallback.
+const googleReviews = (googleReviewsData.reviews ?? []) as Testimonial[];
+const testimonials: Testimonial[] =
+  googleReviews.length > 0 ? googleReviews : placeholderTestimonials;
 
 export function getTestimonialsByCity(city: string): Testimonial[] {
   return testimonials.filter(

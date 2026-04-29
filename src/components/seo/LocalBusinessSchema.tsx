@@ -25,6 +25,20 @@ export default function LocalBusinessSchema({
   canonicalPath,
 }: LocalBusinessSchemaProps) {
   if (type === 'homepage') {
+    // PostalAddress block. Street and zip pull from SITE_CONFIG.hq —
+    // populated values produce a fully valid LocalBusiness schema.
+    // If street/zip are blank, omit those fields to avoid emitting empty
+    // strings (Google's Rich Results validator flags those as errors).
+    const hq = SITE_CONFIG.hq;
+    const address: Record<string, string> = {
+      '@type': 'PostalAddress',
+      addressLocality: hq.addressLocality,
+      addressRegion: hq.addressRegion,
+      addressCountry: hq.addressCountry,
+    };
+    if (hq.streetAddress) address.streetAddress = hq.streetAddress;
+    if (hq.postalCode) address.postalCode = hq.postalCode;
+
     const homepageSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'RoofingContractor',
@@ -35,6 +49,8 @@ export default function LocalBusinessSchema({
       description: SITE_CONFIG.description,
       telephone: SITE_CONFIG.defaultPhone,
       email: SITE_CONFIG.email,
+      // REQUIRED for valid LocalBusiness rich-results — Tampa-metro HQ.
+      address,
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: String(SITE_CONFIG.googleRating),
@@ -42,21 +58,23 @@ export default function LocalBusinessSchema({
         bestRating: '5',
         worstRating: '1',
       },
+      // 9 actual service areas: 8 states + DC. Removed GA/TX/OH/KY/TN/WV
+      // — ProTech does not service those states, and listing them as
+      // areaServed inflated geographic claims and confused local SEO.
       areaServed: [
         { '@type': 'State', name: 'Florida', abbreviation: 'FL' },
-        { '@type': 'State', name: 'Georgia', abbreviation: 'GA' },
-        { '@type': 'State', name: 'Texas', abbreviation: 'TX' },
-        { '@type': 'State', name: 'North Carolina', abbreviation: 'NC' },
         { '@type': 'State', name: 'South Carolina', abbreviation: 'SC' },
+        { '@type': 'State', name: 'North Carolina', abbreviation: 'NC' },
         { '@type': 'State', name: 'Virginia', abbreviation: 'VA' },
         { '@type': 'State', name: 'Maryland', abbreviation: 'MD' },
         { '@type': 'State', name: 'Pennsylvania', abbreviation: 'PA' },
         { '@type': 'State', name: 'Connecticut', abbreviation: 'CT' },
         { '@type': 'State', name: 'Delaware', abbreviation: 'DE' },
-        { '@type': 'State', name: 'West Virginia', abbreviation: 'WV' },
-        { '@type': 'State', name: 'Tennessee', abbreviation: 'TN' },
-        { '@type': 'State', name: 'Kentucky', abbreviation: 'KY' },
-        { '@type': 'State', name: 'Ohio', abbreviation: 'OH' },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Washington, D.C.',
+          abbreviation: 'DC',
+        },
       ],
       sameAs: [
         'https://www.facebook.com/protechroofing',

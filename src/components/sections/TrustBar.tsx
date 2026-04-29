@@ -3,24 +3,24 @@ import { SITE_CONFIG } from '@/lib/constants';
 
 const stats = [
   {
-    icon: Shield,
-    value: SITE_CONFIG.yearsExperience,
-    label: 'Years Experience',
+    icon: Award,
+    value: 'Master',
+    label: 'GAF Certified Elite',
   },
   {
-    icon: Award,
-    value: SITE_CONFIG.roofsInstalled,
-    label: 'Roofs Installed',
+    icon: Shield,
+    value: SITE_CONFIG.statesLicensed,
+    label: 'States Served',
   },
   {
     icon: Star,
     value: `${SITE_CONFIG.googleRating}`,
-    label: `Star Rating (${SITE_CONFIG.reviewCount}+ Reviews)`,
+    label: `Google Rating (${SITE_CONFIG.reviewCount}+ Reviews)`,
   },
   {
     icon: MapPin,
-    value: SITE_CONFIG.statesLicensed,
-    label: 'States Licensed',
+    value: '$0',
+    label: 'Down Financing',
   },
 ];
 

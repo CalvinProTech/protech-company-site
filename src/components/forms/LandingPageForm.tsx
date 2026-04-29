@@ -9,36 +9,26 @@ import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 const SERVICE_STATES = [
   'FL',
-  'GA',
-  'TX',
-  'NC',
   'SC',
+  'NC',
   'VA',
   'MD',
+  'DC',
+  'DE',
   'PA',
   'CT',
-  'DE',
-  'WV',
-  'TN',
-  'KY',
-  'OH',
 ];
 
 const SERVICE_AREAS: Record<string, string> = {
   FL: 'Florida',
-  GA: 'Georgia',
-  TX: 'Texas',
-  NC: 'North Carolina',
   SC: 'South Carolina',
+  NC: 'North Carolina',
   VA: 'Virginia',
   MD: 'Maryland',
+  DC: 'Washington, D.C.',
+  DE: 'Delaware',
   PA: 'Pennsylvania',
   CT: 'Connecticut',
-  DE: 'Delaware',
-  WV: 'West Virginia',
-  TN: 'Tennessee',
-  KY: 'Kentucky',
-  OH: 'Ohio',
 };
 
 const SERVICE_OPTIONS = [

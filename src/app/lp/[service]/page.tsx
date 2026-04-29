@@ -15,7 +15,7 @@ const SERVICES: Record<
   'roof-replacement': {
     headline: 'Roof Replacement — Free Quote in 60 Seconds',
     subheadline:
-      'Master Elite Certified. Licensed in 14 states. 5-star rated on Google.',
+      'Master Elite Certified. Licensed in 9 states. 5-star rated on Google.',
     bullets: [
       '25-year manufacturer warranty included',
       '$0 down financing available',
@@ -37,7 +37,7 @@ const SERVICES: Record<
   'storm-damage': {
     headline: 'Storm Damage? We Handle Everything',
     subheadline:
-      'Insurance claim experts. Free damage assessment. Licensed in 14 states.',
+      'Insurance claim experts. Free damage assessment. Licensed in 9 states.',
     bullets: [
       'We work directly with your insurance',
       'Free storm damage inspection',
@@ -51,7 +51,7 @@ const SERVICES: Record<
       'Master Elite Certified. 500+ roofs completed. Financing available.',
     bullets: [
       'Satellite-powered instant measurement',
-      'Licensed & insured in 14 states',
+      'Licensed & insured in 9 states',
       'Call back within 5 minutes',
     ],
     defaultService: '',
@@ -59,7 +59,7 @@ const SERVICES: Record<
   financing: {
     headline: '$0 Down Roof Financing — Fast Approval',
     subheadline:
-      'New roof today, easy monthly payments. Licensed in 14 states. 5-star rated on Google.',
+      'New roof today, easy monthly payments. Licensed in 9 states. 5-star rated on Google.',
     bullets: [
       '$0 down, flexible monthly payments',
       'Quick pre-qualification — no hard credit pull',

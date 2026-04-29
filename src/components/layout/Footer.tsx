@@ -16,26 +16,6 @@ const LOCATIONS = [
     ],
   },
   {
-    state: 'GA',
-    stateSlug: 'georgia',
-    cities: [
-      { name: 'Atlanta', slug: 'atlanta' },
-      { name: 'Savannah', slug: 'savannah' },
-      { name: 'Augusta', slug: 'augusta' },
-    ],
-  },
-  {
-    state: 'TX',
-    stateSlug: 'texas',
-    cities: [
-      { name: 'Dallas', slug: 'dallas' },
-      { name: 'Houston', slug: 'houston' },
-      { name: 'San Antonio', slug: 'san-antonio' },
-      { name: 'Austin', slug: 'austin' },
-      { name: 'Fort Worth', slug: 'fort-worth' },
-    ],
-  },
-  {
     state: 'NC',
     stateSlug: 'north-carolina',
     cities: [
@@ -97,42 +77,6 @@ const LOCATIONS = [
       { name: 'Dover', slug: 'dover' },
     ],
   },
-  {
-    state: 'WV',
-    stateSlug: 'west-virginia',
-    cities: [
-      { name: 'Charleston', slug: 'charleston' },
-      { name: 'Huntington', slug: 'huntington' },
-      { name: 'Morgantown', slug: 'morgantown' },
-    ],
-  },
-  {
-    state: 'TN',
-    stateSlug: 'tennessee',
-    cities: [
-      { name: 'Nashville', slug: 'nashville' },
-      { name: 'Memphis', slug: 'memphis' },
-      { name: 'Knoxville', slug: 'knoxville' },
-      { name: 'Chattanooga', slug: 'chattanooga' },
-    ],
-  },
-  {
-    state: 'KY',
-    stateSlug: 'kentucky',
-    cities: [
-      { name: 'Louisville', slug: 'louisville' },
-      { name: 'Lexington', slug: 'lexington' },
-    ],
-  },
-  {
-    state: 'OH',
-    stateSlug: 'ohio',
-    cities: [
-      { name: 'Columbus', slug: 'columbus' },
-      { name: 'Cincinnati', slug: 'cincinnati' },
-      { name: 'Cleveland', slug: 'cleveland' },
-    ],
-  },
 ] as const;
 
 export default function Footer() {
@@ -155,16 +99,16 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-3 text-sm text-neutral-300">
-              Protecting homes across America
+              Tampa-headquartered. Protecting homes across the Eastern Seaboard.
             </p>
             <p className="mt-4 text-sm text-neutral-300">
+              GAF Master Elite Contractor
+              <br />
               Licensed &amp; Insured
               <br />
-              {SITE_CONFIG.statesLicensed} States
+              {SITE_CONFIG.statesLicensed} States Served
               <br />
-              {SITE_CONFIG.yearsExperience} Years Experience
-              <br />
-              {SITE_CONFIG.roofsInstalled} Roofs Installed
+              {SITE_CONFIG.googleRating}★ on Google ({SITE_CONFIG.reviewCount}+ reviews)
             </p>
           </div>
 

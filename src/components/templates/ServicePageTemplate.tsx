@@ -379,14 +379,13 @@ export default function ServicePageTemplate({
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {[
               { name: 'Florida', slug: 'florida' },
-              { name: 'Pennsylvania', slug: 'pennsylvania' },
-              { name: 'North Carolina', slug: 'north-carolina' },
               { name: 'South Carolina', slug: 'south-carolina' },
+              { name: 'North Carolina', slug: 'north-carolina' },
               { name: 'Virginia', slug: 'virginia' },
               { name: 'Maryland', slug: 'maryland' },
               { name: 'Delaware', slug: 'delaware' },
+              { name: 'Pennsylvania', slug: 'pennsylvania' },
               { name: 'Connecticut', slug: 'connecticut' },
-              { name: 'West Virginia', slug: 'west-virginia' },
             ].map((state) => (
               <Link
                 key={state.slug}

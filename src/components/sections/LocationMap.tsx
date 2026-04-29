@@ -19,16 +19,11 @@ const STATE_LABELS: Array<{
   { x: 866, y: 178, abbr: 'CT', slug: 'connecticut' },
   { x: 815, y: 245, abbr: 'MD', slug: 'maryland' },
   { x: 838, y: 240, abbr: 'DE', slug: 'delaware' },
+  { x: 800, y: 240, abbr: 'DC', slug: 'dc' },
   { x: 768, y: 275, abbr: 'VA', slug: 'virginia' },
   { x: 778, y: 335, abbr: 'NC', slug: 'north-carolina' },
   { x: 752, y: 376, abbr: 'SC', slug: 'south-carolina' },
   { x: 720, y: 480, abbr: 'FL', slug: 'florida' },
-  { x: 715, y: 235, abbr: 'OH', slug: 'ohio' },
-  { x: 755, y: 285, abbr: 'WV', slug: 'west-virginia' },
-  { x: 655, y: 315, abbr: 'KY', slug: 'kentucky' },
-  { x: 655, y: 370, abbr: 'TN', slug: 'tennessee' },
-  { x: 735, y: 425, abbr: 'GA', slug: 'georgia' },
-  { x: 395, y: 510, abbr: 'TX', slug: 'texas' },
 ];
 
 export function LocationMap({ showCityLinks = true }: LocationMapProps) {
@@ -39,21 +34,21 @@ export function LocationMap({ showCityLinks = true }: LocationMapProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
-            Service Areas Across America
+            Service Areas Across the Eastern Seaboard
           </h2>
           <p className="mt-4 text-lg text-neutral-600">
-            Licensed and insured in {states.length} states with{' '}
-            {SITE_CONFIG.serviceAreaCount} local service areas
+            Tampa-headquartered, with crews running roof replacements, insurance
+            claim work, and financing across {SITE_CONFIG.serviceAreaCount}.
           </p>
         </div>
 
-        {/* Branded SVG service area map — 14 service-area states highlighted, click-to-navigate */}
+        {/* Branded SVG service area map — 8 IS states + DC highlighted, click-to-navigate */}
         <div className={`mx-auto max-w-3xl${showCityLinks ? 'mb-12' : ''}`}>
           <svg
             viewBox="0 0 959 593"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="ProTech Roofing service area map: Florida, Georgia, Texas, North Carolina, South Carolina, Virginia, Maryland, Pennsylvania, Connecticut, Delaware, West Virginia, Tennessee, Kentucky, and Ohio."
+            aria-label="ProTech Roofing service area map: Florida, South Carolina, North Carolina, Virginia, Maryland, Washington D.C., Delaware, Pennsylvania, and Connecticut."
             className="h-auto w-full"
           >
             <g stroke="white" strokeWidth="1.5" strokeLinejoin="round">

@@ -33,7 +33,7 @@ export default function LocationsPage() {
 
       <Hero
         heading="Find Your Local ProTech Roofers"
-        subtitle="Licensed and insured roofing professionals serving communities across 14 states. Select your area to get started."
+        subtitle="Tampa-headquartered roofing professionals serving communities across nine states + D.C. Select your area to get started."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
           text: 'Call Now',

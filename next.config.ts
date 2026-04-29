@@ -30,29 +30,10 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      // In-scope alias redirects (these targets still exist).
       {
         source: '/locations/florida/tampa',
         destination: '/locations/tampa-fl',
-        permanent: true,
-      },
-      {
-        source: '/locations/texas/houston',
-        destination: '/locations/houston-tx',
-        permanent: true,
-      },
-      {
-        source: '/locations/kentucky/louisville',
-        destination: '/locations/louisville-ky',
-        permanent: true,
-      },
-      {
-        source: '/locations/ohio/columbus',
-        destination: '/locations/columbus-oh',
-        permanent: true,
-      },
-      {
-        source: '/locations/georgia/atlanta',
-        destination: '/locations/atlanta-ga',
         permanent: true,
       },
       {
@@ -65,9 +46,89 @@ const nextConfig: NextConfig = {
         destination: '/locations/jacksonville-fl',
         permanent: true,
       },
+      // Out-of-scope state cleanup (2026-04-29). The state hubs and
+      // city-state aliases for GA / KY / OH / TN / TX / WV were removed
+      // because ProTech does not service those areas. Catch-all redirects
+      // send any inbound link to the canonical /locations index so users
+      // and crawlers don't hit 404s.
       {
-        source: '/locations/tennessee/nashville',
-        destination: '/locations/nashville-tn',
+        source: '/locations/georgia/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/kentucky/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/ohio/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/tennessee/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/texas/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/west-virginia/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/atlanta-ga',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/atlanta-ga/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/columbus-oh',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/columbus-oh/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/houston-tx',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/houston-tx/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/louisville-ky',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/louisville-ky/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/nashville-tn',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/nashville-tn/:path*',
+        destination: '/locations',
         permanent: true,
       },
     ];

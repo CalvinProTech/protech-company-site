@@ -18,10 +18,10 @@ interface HeroProps {
 }
 
 const trustBadges = [
-  { icon: Shield, label: `${SITE_CONFIG.yearsExperience} Years` },
-  { icon: Award, label: `${SITE_CONFIG.roofsInstalled} Roofs` },
-  { icon: Star, label: `${SITE_CONFIG.googleRating}★ Rating` },
-  { icon: MapPin, label: `Licensed in ${SITE_CONFIG.statesLicensed} States` },
+  { icon: Award, label: 'GAF Master Elite' },
+  { icon: Shield, label: `${SITE_CONFIG.statesLicensed} States Served` },
+  { icon: Star, label: `${SITE_CONFIG.googleRating}★ on Google` },
+  { icon: MapPin, label: 'Tampa-Headquartered' },
 ];
 
 export function Hero({

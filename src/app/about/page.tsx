@@ -8,9 +8,9 @@ import { CTABanner } from '@/components/sections/CTABanner';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'About ProTech Roofing | Our Story, Team & Values',
+    title: 'About ProTech Roofing | GAF Master Elite, Tampa-Headquartered',
     description:
-      'Learn about ProTech Roofing — 20+ years of quality roofing across 14 states nationwide. Meet our team, certifications, and why 1,000+ homeowners trust us.',
+      'ProTech Roofing — Tampa-headquartered, GAF Master Elite certified, serving nine states with in-house financing and full insurance-claim assistance. Meet our team and certifications.',
     path: '/about',
   });
 }
@@ -21,9 +21,9 @@ const breadcrumbItems = [
 ];
 
 const stats = [
-  { value: '20+', label: 'Years of Experience' },
-  { value: '1,000+', label: 'Roofs Completed' },
-  { value: '14', label: 'States Served' },
+  { value: 'Master', label: 'GAF Certified Elite' },
+  { value: SITE_CONFIG.statesLicensed, label: 'States Served' },
+  { value: 'In-House', label: 'Financing & Crews' },
   { value: String(SITE_CONFIG.googleRating), label: 'Google Rating' },
 ];
 
@@ -89,35 +89,34 @@ export default function AboutPage() {
             </h2>
             <div className="mt-8 space-y-6 text-left text-lg leading-relaxed text-neutral-700">
               <p>
-                ProTech Roofing was founded on a simple belief: every homeowner
-                deserves honest, quality roofing work at a fair price. After
-                years of watching homeowners get overcharged for subpar work or
-                pressured into unnecessary replacements, our founder decided
-                there had to be a better way. He assembled a team of
-                experienced, like-minded professionals and built a company where
-                integrity comes first and every customer is treated like a
-                neighbor.
+                ProTech Roofing was founded in Tampa on a simple belief: every
+                homeowner deserves honest, quality roofing work at a fair price.
+                Too many roofers in our markets sell pressure tactics, hide
+                behind subcontractors, and disappear after the deposit clears.
+                We built ProTech to be the opposite — a Tampa-headquartered
+                contractor with in-house crews, transparent pricing, and a real
+                claim-assistance practice that homeowners can actually rely on
+                when a storm hits.
               </p>
               <p>
-                Over the past two decades, that founding principle has guided
-                every decision we make. We started as a small crew in a single
-                city and grew through word of mouth, one satisfied homeowner at
-                a time. Today, ProTech Roofing operates across 14 states with a
-                team of certified professionals who share the same commitment to
-                doing things right. We never cut corners on materials, we never
-                skip steps in installation, and we never walk away from a
-                project until the homeowner is completely satisfied.
+                We&apos;re a young company that grew quickly because the model
+                works. Our crews live and work locally in each state we serve,
+                so the team that shows up to your home is from your area — not
+                flown in from out of state. We pull our own permits, manage the
+                full insurance-claim file end-to-end, and back every install
+                with the GAF Golden Pledge warranty (50 years on materials, 25
+                years on workmanship) plus our own workmanship guarantee.
               </p>
               <p>
-                What sets us apart is not just our technical skill, but our
-                approach to communication. We explain every finding during
-                inspections in plain language. We provide detailed, line-item
-                estimates so there are no surprises. We handle insurance claims
-                from start to finish. And we back every project with the
-                strongest warranties in the industry because we are confident in
-                the work we deliver. When you choose ProTech Roofing, you are
-                choosing a partner who will be there long after the last shingle
-                is nailed down.
+                What sets us apart is communication. We explain every finding
+                during inspections in plain language. We provide detailed,
+                line-item estimates so there are no surprises. We handle
+                insurance claims from documentation through supplement to final
+                check. And we offer in-house financing — soft-pull
+                pre-qualification, deferred-interest options, no prepayment
+                penalty — so the right roof is never out of reach. When you
+                choose ProTech, you&apos;re choosing a partner who will be there
+                long after the last shingle is nailed down.
               </p>
             </div>
           </div>

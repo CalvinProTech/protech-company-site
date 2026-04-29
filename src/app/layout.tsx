@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: '%s | ProTech Roofing',
   },
   description:
-    'Expert roof replacement, repair, and storm damage restoration across 14 states nationwide. Licensed, insured, and rated 5.0 stars. Get your free estimate today.',
+    'Expert roof replacement, insurance-claim help, and in-house financing across nine states + D.C. Tampa-headquartered, GAF Master Elite certified, rated 5.0 stars on Google. Get your free estimate today.',
   openGraph: {
     type: 'website',
     locale: 'en_US',

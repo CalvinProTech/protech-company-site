@@ -41,11 +41,16 @@ const AI_CRAWLERS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Default rule for all crawlers
+      // Default rule for all crawlers.
+      // NOTE: /_next/ is intentionally NOT disallowed — Google needs to fetch
+      // the chunked JS/CSS to render client-rendered pages. Blocking /_next/
+      // produces ~6,000 "disallowed internal resource" warnings in Semrush
+      // and silently degrades indexing because Googlebot can't see hydrated
+      // content. Block only routes that should never be indexed.
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/'],
+        disallow: ['/api/', '/admin/'],
       },
       // AI search crawlers — explicit allow (some default-restrict otherwise)
       ...AI_CRAWLERS.map((agent) => ({
