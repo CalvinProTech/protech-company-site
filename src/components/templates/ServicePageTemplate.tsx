@@ -368,39 +368,41 @@ export default function ServicePageTemplate({
         </section>
       )}
 
-      {/* State Service Links */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-primary-900 md:text-3xl">
-              {service.name} by State
-            </h2>
+      {/* State Service Links — only for services with per-state pages */}
+      {['roof-replacement', 'roof-repair', 'storm-damage', 'gutters-siding'].includes(service.slug) && (
+        <section className="bg-white py-16 md:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="text-2xl font-bold text-primary-900 md:text-3xl">
+                {service.name} by State
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {[
+                { name: 'Florida', slug: 'florida' },
+                { name: 'South Carolina', slug: 'south-carolina' },
+                { name: 'North Carolina', slug: 'north-carolina' },
+                { name: 'Virginia', slug: 'virginia' },
+                { name: 'Maryland', slug: 'maryland' },
+                { name: 'Delaware', slug: 'delaware' },
+                { name: 'Pennsylvania', slug: 'pennsylvania' },
+                { name: 'Connecticut', slug: 'connecticut' },
+              ].map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/locations/${state.slug}/${service.slug}`}
+                  className="group flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 p-3 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  <MapPin className="h-4 w-4 shrink-0 text-primary-600 group-hover:text-accent-500" />
+                  <span className="text-sm font-medium text-primary-900">
+                    {state.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {[
-              { name: 'Florida', slug: 'florida' },
-              { name: 'South Carolina', slug: 'south-carolina' },
-              { name: 'North Carolina', slug: 'north-carolina' },
-              { name: 'Virginia', slug: 'virginia' },
-              { name: 'Maryland', slug: 'maryland' },
-              { name: 'Delaware', slug: 'delaware' },
-              { name: 'Pennsylvania', slug: 'pennsylvania' },
-              { name: 'Connecticut', slug: 'connecticut' },
-            ].map((state) => (
-              <Link
-                key={state.slug}
-                href={`/locations/${state.slug}/${service.slug}`}
-                className="group flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 p-3 transition-all hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <MapPin className="h-4 w-4 shrink-0 text-primary-600 group-hover:text-accent-500" />
-                <span className="text-sm font-medium text-primary-900">
-                  {state.name}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Related Services */}
       <section className="bg-white py-16 md:py-24">

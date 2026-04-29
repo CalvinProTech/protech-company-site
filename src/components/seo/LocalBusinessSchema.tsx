@@ -118,8 +118,10 @@ export default function LocalBusinessSchema({
       email: SITE_CONFIG.email,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: SITE_CONFIG.hq.streetAddress,
         addressLocality: location.city,
         addressRegion: location.stateAbbr,
+        postalCode: SITE_CONFIG.hq.postalCode,
         addressCountry: 'US',
       },
       geo: {
