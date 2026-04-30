@@ -9,7 +9,7 @@ const locations = getLocationsByState('pennsylvania');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in Pennsylvania | ProTech Roofing',
+    title: 'Roof Repair in Pennsylvania',
     description:
       'Fast, reliable roof repair in Pennsylvania. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Philadelphia, Pittsburgh, and Allentown. Free inspection.',
     path: '/locations/pennsylvania/roof-repair',

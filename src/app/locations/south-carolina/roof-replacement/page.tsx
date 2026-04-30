@@ -9,7 +9,7 @@ const locations = getLocationsByState('south-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Replacement in South Carolina | ProTech Roofing',
+    title: 'Roof Replacement in South Carolina',
     description:
       'Professional roof replacement in South Carolina. GAF Master Elite certified, $0 down financing, lifetime warranty. Serving Charleston, Columbia, and Greenville. Free estimate — call (866) 308-2640.',
     path: '/locations/south-carolina/roof-replacement',

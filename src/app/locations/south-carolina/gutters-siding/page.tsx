@@ -9,7 +9,7 @@ const locations = getLocationsByState('south-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in South Carolina | ProTech Roofing',
+    title: 'Gutters & Siding in South Carolina',
     description:
       'Gutter installation and siding services in South Carolina. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Charleston, Columbia, and Greenville. Free estimate.',
     path: '/locations/south-carolina/gutters-siding',

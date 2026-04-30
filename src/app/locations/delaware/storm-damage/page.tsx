@@ -9,7 +9,7 @@ const locations = getLocationsByState('delaware');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in Delaware | ProTech Roofing',
+    title: 'Storm Damage in Delaware',
     description:
       'Storm damage roof repair in Delaware. Insurance claim assistance included. Free inspection and documentation. Serving Wilmington and Dover. Call (866) 308-2640.',
     path: '/locations/delaware/storm-damage',

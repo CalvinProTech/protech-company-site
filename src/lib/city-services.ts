@@ -21,7 +21,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'tampa-fl',
     serviceSlug: 'roof-replacement',
-    metaTitle: 'Roof Replacement in Tampa, FL | ProTech Roofing',
+    metaTitle: 'Roof Replacement in Tampa, FL',
     metaDescription:
       'Tampa roof replacement with lifetime warranty. GAF & Owens Corning shingles rated for Florida hurricanes. Free inspection — call today.',
     h1: 'Tampa Roof Replacement Experts',
@@ -95,7 +95,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'tampa-fl',
     serviceSlug: 'storm-damage',
-    metaTitle: 'Storm Damage Roof Repair Tampa, FL | ProTech Roofing',
+    metaTitle: 'Storm Damage Roof Repair Tampa, FL',
     metaDescription:
       'Tampa storm damage restoration with insurance claim support. Emergency tarping, drone inspections & full restoration. Call now for immediate help.',
     h1: 'Tampa Storm Damage Roof Restoration',
@@ -132,7 +132,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'tampa-fl',
     serviceSlug: 'insurance-claims',
-    metaTitle: 'Roofing Insurance Claims Tampa, FL | ProTech Roofing',
+    metaTitle: 'Roofing Insurance Claims Tampa, FL',
     metaDescription:
       'Tampa roofing insurance claim experts. Free inspections, adjuster meetings & supplement negotiation. Pay only your deductible. Call today.',
     h1: 'Tampa Roofing Insurance Claims Assistance',
@@ -171,7 +171,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'charlotte-nc',
     serviceSlug: 'roof-replacement',
-    metaTitle: 'Roof Replacement in Charlotte, NC | ProTech Roofing',
+    metaTitle: 'Roof Replacement in Charlotte, NC',
     metaDescription:
       'Charlotte roof replacement with lifetime warranty. Shingle & metal options for NC storms. Free inspection & financing available.',
     h1: 'Charlotte Roof Replacement Professionals',
@@ -245,7 +245,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'charlotte-nc',
     serviceSlug: 'storm-damage',
-    metaTitle: 'Storm Damage Roof Repair Charlotte, NC | ProTech Roofing',
+    metaTitle: 'Storm Damage Roof Repair Charlotte, NC',
     metaDescription:
       'Charlotte storm damage restoration with insurance support. Hail, wind & hurricane damage repair. Emergency tarping available. Call now.',
     h1: 'Charlotte Storm Damage Roof Restoration',
@@ -282,7 +282,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'charlotte-nc',
     serviceSlug: 'insurance-claims',
-    metaTitle: 'Roofing Insurance Claims Charlotte, NC | ProTech Roofing',
+    metaTitle: 'Roofing Insurance Claims Charlotte, NC',
     metaDescription:
       'Charlotte roofing insurance claim specialists. Free inspections, adjuster meetings & supplement filing. Pay only your deductible.',
     h1: 'Charlotte Roofing Insurance Claims Experts',
@@ -319,7 +319,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'charlotte-nc',
     serviceSlug: 'gutters-siding',
-    metaTitle: 'Gutter Installation & Siding in Charlotte, NC | ProTech Roofing',
+    metaTitle: 'Gutter Installation & Siding in Charlotte, NC',
     metaDescription:
       'Seamless gutters, gutter guards & vinyl/fiber cement siding in Charlotte. Designed for Carolina storms. Free estimate — call today.',
     h1: 'Charlotte Gutter Installation & Siding Experts',
@@ -358,7 +358,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'jacksonville-fl',
     serviceSlug: 'roof-replacement',
-    metaTitle: 'Roof Replacement in Jacksonville, FL | ProTech Roofing',
+    metaTitle: 'Roof Replacement in Jacksonville, FL',
     metaDescription:
       'Jacksonville roof replacement with lifetime warranty. Hurricane-rated shingles & metal for coastal FL. Free inspection & financing.',
     h1: 'Jacksonville Roof Replacement Experts',
@@ -432,7 +432,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'jacksonville-fl',
     serviceSlug: 'storm-damage',
-    metaTitle: 'Storm Damage Roof Repair Jacksonville, FL | ProTech Roofing',
+    metaTitle: 'Storm Damage Roof Repair Jacksonville, FL',
     metaDescription:
       'Jacksonville storm damage restoration with insurance claim support. Hurricane, wind & hail damage. Emergency tarping 24/7. Call now.',
     h1: 'Jacksonville Storm Damage Roof Restoration',
@@ -469,7 +469,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'jacksonville-fl',
     serviceSlug: 'insurance-claims',
-    metaTitle: 'Roofing Insurance Claims Jacksonville, FL | ProTech Roofing',
+    metaTitle: 'Roofing Insurance Claims Jacksonville, FL',
     metaDescription:
       'Jacksonville roofing insurance claim experts. Free inspections, adjuster meetings & supplement negotiation. Pay only your deductible.',
     h1: 'Jacksonville Roofing Insurance Claims Assistance',
@@ -506,7 +506,7 @@ const cityServiceData: CityServiceData[] = [
   {
     cityStateSlug: 'jacksonville-fl',
     serviceSlug: 'gutters-siding',
-    metaTitle: 'Gutter Installation & Siding in Jacksonville, FL | ProTech Roofing',
+    metaTitle: 'Gutter Installation & Siding in Jacksonville, FL',
     metaDescription:
       'Seamless gutters, gutter guards & vinyl/fiber cement siding in Jacksonville. Built for Florida storms & salt air. Free estimate.',
     h1: 'Jacksonville Gutter Installation & Siding Experts',

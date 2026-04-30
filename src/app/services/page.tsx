@@ -14,7 +14,7 @@ const breadcrumbItems = [
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Roofing Services | ProTech Roofing',
+    title: 'Roofing Services',
     description:
       'Explore our full range of roofing services including roof replacement, repair, storm damage restoration, commercial roofing, inspections, gutters, and siding. Licensed and insured.',
     path: '/services',

@@ -58,7 +58,7 @@ export async function generateMetadata({
     }
 
     return createPageMetadata({
-      title: `${post.frontmatter.title} | ProTech Roofing Blog`,
+      title: post.frontmatter.title,
       description: post.frontmatter.excerpt,
       path: `/blog/${post.frontmatter.slug}`,
       image: post.frontmatter.featuredImage,

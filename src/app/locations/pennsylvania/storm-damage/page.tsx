@@ -9,7 +9,7 @@ const locations = getLocationsByState('pennsylvania');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in Pennsylvania | ProTech Roofing',
+    title: 'Storm Damage in Pennsylvania',
     description:
       'Storm damage roof repair in Pennsylvania. Insurance claim assistance included. Free inspection and documentation. Serving Philadelphia, Pittsburgh, and Allentown. Call (866) 308-2640.',
     path: '/locations/pennsylvania/storm-damage',

@@ -9,7 +9,7 @@ const locations = getLocationsByState('virginia');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in Virginia | ProTech Roofing',
+    title: 'Roof Repair in Virginia',
     description:
       'Fast, reliable roof repair in Virginia. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Virginia Beach, Richmond, and Norfolk. Free inspection.',
     path: '/locations/virginia/roof-repair',

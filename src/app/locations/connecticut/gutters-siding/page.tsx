@@ -9,7 +9,7 @@ const locations = getLocationsByState('connecticut');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in Connecticut | ProTech Roofing',
+    title: 'Gutters & Siding in Connecticut',
     description:
       'Gutter installation and siding services in Connecticut. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Hartford, New Haven, and Stamford. Free estimate.',
     path: '/locations/connecticut/gutters-siding',

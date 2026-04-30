@@ -9,7 +9,7 @@ const locations = getLocationsByState('south-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in South Carolina | ProTech Roofing',
+    title: 'Roof Repair in South Carolina',
     description:
       'Fast, reliable roof repair in South Carolina. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Charleston, Columbia, and Greenville. Free inspection.',
     path: '/locations/south-carolina/roof-repair',

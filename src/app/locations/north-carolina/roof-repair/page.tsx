@@ -9,7 +9,7 @@ const locations = getLocationsByState('north-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in North Carolina | ProTech Roofing',
+    title: 'Roof Repair in North Carolina',
     description:
       'Fast, reliable roof repair in North Carolina. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Charlotte, Raleigh, and Greensboro. Free inspection.',
     path: '/locations/north-carolina/roof-repair',

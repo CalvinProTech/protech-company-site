@@ -17,7 +17,7 @@ const breadcrumbItems = [
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Service Areas & Locations | ProTech Roofing',
+    title: 'Service Areas & Locations',
     description:
       'ProTech Roofing serves homeowners and businesses across FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. Find your local roofing experts and schedule a free inspection today.',
     path: '/locations',

@@ -9,7 +9,7 @@ const locations = getLocationsByState('maryland');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in Maryland | ProTech Roofing',
+    title: 'Gutters & Siding in Maryland',
     description:
       'Gutter installation and siding services in Maryland. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Baltimore, Frederick, and Annapolis. Free estimate.',
     path: '/locations/maryland/gutters-siding',

@@ -9,7 +9,7 @@ const locations = getLocationsByState('connecticut');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in Connecticut | ProTech Roofing',
+    title: 'Storm Damage in Connecticut',
     description:
       'Storm damage roof repair in Connecticut. Insurance claim assistance included. Free inspection and documentation. Serving Hartford, New Haven, and Stamford. Call (866) 308-2640.',
     path: '/locations/connecticut/storm-damage',

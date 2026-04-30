@@ -8,7 +8,7 @@ import ReviewsContent from './ReviewsContent';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Customer Reviews | 5.0 Star Rating | ProTech Roofing',
+    title: 'Customer Reviews | 5.0 Star Rating',
     description:
       'Verified Google reviews for ProTech Roofing. Rated 5.0 stars by Tampa-area homeowners. See what customers say about our roof replacement, insurance-claim, and financing services.',
     path: '/reviews',

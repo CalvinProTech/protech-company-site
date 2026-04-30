@@ -116,7 +116,7 @@ const services: Service[] = [
     ],
     warrantyInfo:
       'Every ProTech roof replacement includes a lifetime workmanship warranty and manufacturer material warranties ranging from 25 to 50 years depending on the product selected. We stand behind our work for as long as you own your home.',
-    metaTitle: 'Roof Replacement Services | ProTech Roofing',
+    metaTitle: 'Roof Replacement Services',
     metaDescription:
       'Premium roof replacement with lifetime warranty. GAF, Owens Corning, and metal options. Free inspection, financing available. Get your estimate today.',
   },
@@ -198,7 +198,7 @@ const services: Service[] = [
     ],
     warrantyInfo:
       'All ProTech roof repairs include a written workmanship warranty. The duration depends on the scope of repair, and we use manufacturer-approved materials to ensure lasting results.',
-    metaTitle: 'Roof Repair Services - Fast Leak Fixes | ProTech Roofing',
+    metaTitle: 'Roof Repair Services - Fast Leak Fixes',
     metaDescription:
       'Fast, reliable roof repair to stop leaks and prevent water damage. 24-hour emergency service, thermal imaging diagnostics. Schedule your free assessment now.',
   },
@@ -455,7 +455,7 @@ const services: Service[] = [
     ],
     warrantyInfo:
       'Our inspection service includes a detailed written report with condition ratings and repair estimates. If you proceed with recommended repairs through ProTech, the inspection fee is credited toward the project cost.',
-    metaTitle: 'Roof Inspection Services - Thermal & Drone | ProTech Roofing',
+    metaTitle: 'Roof Inspection Services - Thermal & Drone',
     metaDescription:
       'Comprehensive roof inspections with thermal imaging and drone technology. 42-point evaluation with detailed report. Book your inspection today.',
   },
@@ -543,7 +543,7 @@ const services: Service[] = [
     ],
     warrantyInfo:
       'Gutter installations include a workmanship warranty, and siding projects carry both our workmanship guarantee and manufacturer material warranties up to 50 years depending on the product selected.',
-    metaTitle: 'Gutters & Siding Installation | ProTech Roofing',
+    metaTitle: 'Gutters & Siding Installation',
     metaDescription:
       'Seamless gutters, gutter guards, and premium siding installation. Custom on-site fabrication. Bundle with your roof project and save. Free exterior assessment.',
   },
@@ -647,7 +647,7 @@ const services: Service[] = [
     ],
     warrantyInfo:
       'Insurance claim restorations include our lifetime workmanship warranty. Materials are restored to pre-storm condition or better, and all work meets manufacturer and local code specifications.',
-    metaTitle: 'Roofing Insurance Claims Assistance | ProTech Roofing',
+    metaTitle: 'Roofing Insurance Claims Assistance',
     metaDescription:
       'Expert insurance claims support for storm-damaged roofs. We handle documentation, adjuster meetings, and supplement negotiation. Zero cost beyond your deductible.',
   },

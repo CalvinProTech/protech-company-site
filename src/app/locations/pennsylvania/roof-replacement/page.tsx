@@ -9,7 +9,7 @@ const locations = getLocationsByState('pennsylvania');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Replacement in Pennsylvania | ProTech Roofing',
+    title: 'Roof Replacement in Pennsylvania',
     description:
       'Professional roof replacement in Pennsylvania. GAF Master Elite certified, $0 down financing, lifetime warranty. Serving Philadelphia, Pittsburgh, and Allentown. Free estimate — call (866) 308-2640.',
     path: '/locations/pennsylvania/roof-replacement',

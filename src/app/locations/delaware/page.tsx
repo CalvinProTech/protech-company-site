@@ -6,7 +6,7 @@ const locations = getLocationsByState('delaware');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roofing Services in Delaware | ProTech Roofing',
+    title: 'Roofing Services in Delaware',
     description:
       'ProTech Roofing serves Wilmington and Dover with expert roof replacement, repair, and storm damage restoration. Licensed and insured in Delaware.',
     path: '/locations/delaware',

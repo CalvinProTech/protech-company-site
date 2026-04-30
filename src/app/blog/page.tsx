@@ -10,7 +10,7 @@ import Badge from '@/components/ui/Badge';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Roofing Blog | Tips, Guides & Industry News | ProTech Roofing',
+    title: 'Roofing Blog | Tips, Guides & Industry News',
     description:
       'Read expert roofing tips, maintenance guides, and industry news from ProTech Roofing. Stay informed about roof care, storm preparation, and material comparisons.',
     path: '/blog',

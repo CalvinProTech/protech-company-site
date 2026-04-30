@@ -116,7 +116,7 @@ interface ServiceForMetadata {
 }
 
 export function createServiceMetadata(service: ServiceForMetadata): Metadata {
-  const title = `${service.name} Services | ProTech Roofing`;
+  const title = `${service.name} Services`;
   const description = `${service.shortDescription.slice(0, 120).trim()}. Licensed & insured. Get your free estimate from ProTech Roofing today!`.slice(
     0,
     160

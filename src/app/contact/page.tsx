@@ -16,7 +16,7 @@ import { CTABanner } from '@/components/sections/CTABanner';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Contact Us | ProTech Roofing',
+    title: 'Contact Us',
     description:
       'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. We respond within 24 hours.',
     path: '/contact',

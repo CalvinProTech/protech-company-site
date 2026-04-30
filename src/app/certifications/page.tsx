@@ -18,7 +18,7 @@ import { CTABanner } from '@/components/sections/CTABanner';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'GAF Master Elite Certified Roofing Contractor | ProTech Roofing',
+    title: 'GAF Master Elite Certified Roofing Contractor',
     description:
       'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed across nine states + D.C. with industry-leading warranties.',
     path: '/certifications',

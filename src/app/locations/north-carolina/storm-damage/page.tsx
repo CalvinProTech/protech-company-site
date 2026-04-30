@@ -9,7 +9,7 @@ const locations = getLocationsByState('north-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in North Carolina | ProTech Roofing',
+    title: 'Storm Damage in North Carolina',
     description:
       'Storm damage roof repair in North Carolina. Insurance claim assistance included. Free inspection and documentation. Serving Charlotte, Raleigh, and Greensboro. Call (866) 308-2640.',
     path: '/locations/north-carolina/storm-damage',

@@ -6,7 +6,7 @@ const locations = getLocationsByState('south-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roofing Services in South Carolina | ProTech Roofing',
+    title: 'Roofing Services in South Carolina',
     description:
       'ProTech Roofing serves Charleston, Columbia, and Greenville with expert roof replacement, repair, and storm damage restoration. Licensed and insured in South Carolina.',
     path: '/locations/south-carolina',

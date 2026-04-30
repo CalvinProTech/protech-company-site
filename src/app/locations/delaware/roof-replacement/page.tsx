@@ -9,7 +9,7 @@ const locations = getLocationsByState('delaware');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Replacement in Delaware | ProTech Roofing',
+    title: 'Roof Replacement in Delaware',
     description:
       'Professional roof replacement in Delaware. GAF Master Elite certified, $0 down financing, lifetime warranty. Serving Wilmington and Dover. Free estimate — call (866) 308-2640.',
     path: '/locations/delaware/roof-replacement',

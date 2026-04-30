@@ -9,7 +9,7 @@ const locations = getLocationsByState('florida');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in Florida | ProTech Roofing',
+    title: 'Storm Damage in Florida',
     description:
       'Storm damage roof repair in Florida. Insurance claim assistance included. Free inspection and documentation. Serving Tampa, Orlando, Miami, Jacksonville, and Fort Lauderdale. Call (866) 308-2640.',
     path: '/locations/florida/storm-damage',

@@ -9,7 +9,7 @@ const locations = getLocationsByState('delaware');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in Delaware | ProTech Roofing',
+    title: 'Gutters & Siding in Delaware',
     description:
       'Gutter installation and siding services in Delaware. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Wilmington and Dover. Free estimate.',
     path: '/locations/delaware/gutters-siding',

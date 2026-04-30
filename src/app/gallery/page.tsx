@@ -6,7 +6,7 @@ import GalleryGrid from './GalleryGrid';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Project Gallery | Before & After Roofing Photos | ProTech Roofing',
+    title: 'Project Gallery | Before & After Roofing Photos',
     description:
       'Browse before and after photos of completed roofing projects across 9 states. See the quality of ProTech Roofing workmanship firsthand.',
     path: '/gallery',

@@ -6,7 +6,7 @@ const locations = getLocationsByState('pennsylvania');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roofing Services in Pennsylvania | ProTech Roofing',
+    title: 'Roofing Services in Pennsylvania',
     description:
       'ProTech Roofing serves Philadelphia, Pittsburgh, and Allentown with expert roof replacement, repair, and storm damage restoration. Licensed and insured in Pennsylvania.',
     path: '/locations/pennsylvania',

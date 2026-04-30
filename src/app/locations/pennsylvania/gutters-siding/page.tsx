@@ -9,7 +9,7 @@ const locations = getLocationsByState('pennsylvania');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in Pennsylvania | ProTech Roofing',
+    title: 'Gutters & Siding in Pennsylvania',
     description:
       'Gutter installation and siding services in Pennsylvania. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Philadelphia, Pittsburgh, and Allentown. Free estimate.',
     path: '/locations/pennsylvania/gutters-siding',

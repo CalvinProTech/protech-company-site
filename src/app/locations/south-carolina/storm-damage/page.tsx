@@ -9,7 +9,7 @@ const locations = getLocationsByState('south-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in South Carolina | ProTech Roofing',
+    title: 'Storm Damage in South Carolina',
     description:
       'Storm damage roof repair in South Carolina. Insurance claim assistance included. Free inspection and documentation. Serving Charleston, Columbia, and Greenville. Call (866) 308-2640.',
     path: '/locations/south-carolina/storm-damage',

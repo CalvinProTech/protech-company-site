@@ -9,7 +9,7 @@ const locations = getLocationsByState('connecticut');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Replacement in Connecticut | ProTech Roofing',
+    title: 'Roof Replacement in Connecticut',
     description:
       'Professional roof replacement in Connecticut. GAF Master Elite certified, $0 down financing, lifetime warranty. Serving Hartford, New Haven, and Stamford. Free estimate — call (866) 308-2640.',
     path: '/locations/connecticut/roof-replacement',

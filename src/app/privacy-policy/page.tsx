@@ -6,7 +6,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Privacy Policy | ProTech Roofing',
+    title: 'Privacy Policy',
     description:
       'Read the ProTech Roofing privacy policy. Learn how we collect, use, and protect your personal information when you use our website and services.',
     path: '/privacy-policy',

@@ -20,7 +20,7 @@ import HearthWidget from '@/components/financing/HearthWidget';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Roofing Financing Options | Affordable Monthly Payments | ProTech Roofing',
+    title: 'Roofing Financing Options | Affordable Monthly Payments',
     description:
       'Affordable roofing with flexible financing from ProTech Roofing. Roof replacement starting at $89/month. Apply in 10 minutes. Multiple loan options available.',
     path: '/financing',

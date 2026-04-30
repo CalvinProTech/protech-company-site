@@ -9,7 +9,7 @@ const locations = getLocationsByState('delaware');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in Delaware | ProTech Roofing',
+    title: 'Roof Repair in Delaware',
     description:
       'Fast, reliable roof repair in Delaware. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Wilmington and Dover. Free inspection.',
     path: '/locations/delaware/roof-repair',

@@ -9,7 +9,7 @@ const locations = getLocationsByState('north-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Replacement in North Carolina | ProTech Roofing',
+    title: 'Roof Replacement in North Carolina',
     description:
       'Professional roof replacement in North Carolina. GAF Master Elite certified, $0 down financing, lifetime warranty. Serving Charlotte, Raleigh, and Greensboro. Free estimate — call (866) 308-2640.',
     path: '/locations/north-carolina/roof-replacement',

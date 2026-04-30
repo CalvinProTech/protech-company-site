@@ -9,7 +9,7 @@ const locations = getLocationsByState('connecticut');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in Connecticut | ProTech Roofing',
+    title: 'Roof Repair in Connecticut',
     description:
       'Fast, reliable roof repair in Connecticut. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Hartford, New Haven, and Stamford. Free inspection.',
     path: '/locations/connecticut/roof-repair',

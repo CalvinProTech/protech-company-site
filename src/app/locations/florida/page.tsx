@@ -6,7 +6,7 @@ const locations = getLocationsByState('florida');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roofing Services in Florida | ProTech Roofing',
+    title: 'Roofing Services in Florida',
     description:
       'ProTech Roofing serves Tampa, Orlando, Miami, Jacksonville, and Fort Lauderdale with expert roof replacement, repair, and storm damage restoration. Licensed and insured in Florida.',
     path: '/locations/florida',

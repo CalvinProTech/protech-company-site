@@ -6,7 +6,7 @@ const locations = getLocationsByState('maryland');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roofing Services in Maryland | ProTech Roofing',
+    title: 'Roofing Services in Maryland',
     description:
       'ProTech Roofing serves Baltimore, Frederick, and Annapolis with expert roof replacement, repair, and storm damage restoration. Licensed and insured in Maryland.',
     path: '/locations/maryland',

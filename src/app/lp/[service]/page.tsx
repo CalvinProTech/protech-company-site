@@ -91,7 +91,7 @@ export function generateMetadata({
 }): Metadata {
   // Static metadata — no async needed for static params
   return {
-    title: 'Free Roof Estimate | ProTech Roofing',
+    title: 'Free Roof Estimate',
     description:
       'Get a free roofing estimate in 60 seconds. Licensed, insured, 5-star rated. Serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH.',
     robots: { index: false, follow: false },

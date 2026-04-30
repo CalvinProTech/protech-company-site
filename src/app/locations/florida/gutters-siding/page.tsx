@@ -9,7 +9,7 @@ const locations = getLocationsByState('florida');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in Florida | ProTech Roofing',
+    title: 'Gutters & Siding in Florida',
     description:
       'Gutter installation and siding services in Florida. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Tampa, Orlando, Miami, Jacksonville, and Fort Lauderdale. Free estimate.',
     path: '/locations/florida/gutters-siding',

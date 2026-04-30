@@ -7,7 +7,7 @@ import EstimateForm from '@/components/forms/EstimateForm';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Get a Free Roofing Quote | ProTech Roofing',
+    title: 'Get a Free Roofing Quote',
     description:
       'Request your free roofing quote from ProTech Roofing. Licensed across nine states + D.C. Roof replacement, storm damage, and insurance-claim assistance. $0 down financing. Call (866) 308-2640.',
     path: '/get-quote',

@@ -9,7 +9,7 @@ const locations = getLocationsByState('virginia');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in Virginia | ProTech Roofing',
+    title: 'Gutters & Siding in Virginia',
     description:
       'Gutter installation and siding services in Virginia. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Virginia Beach, Richmond, and Norfolk. Free estimate.',
     path: '/locations/virginia/gutters-siding',

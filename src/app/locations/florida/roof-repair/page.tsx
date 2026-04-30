@@ -9,7 +9,7 @@ const locations = getLocationsByState('florida');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in Florida | ProTech Roofing',
+    title: 'Roof Repair in Florida',
     description:
       'Fast, reliable roof repair in Florida. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Tampa, Orlando, Miami, Jacksonville, and Fort Lauderdale. Free inspection.',
     path: '/locations/florida/roof-repair',

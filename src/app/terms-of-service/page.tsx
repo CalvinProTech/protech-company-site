@@ -6,7 +6,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Terms of Service | ProTech Roofing',
+    title: 'Terms of Service',
     description:
       'Read the ProTech Roofing terms of service. Understand the terms and conditions governing your use of our website and roofing services.',
     path: '/terms-of-service',

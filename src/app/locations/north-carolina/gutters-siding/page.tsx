@@ -9,7 +9,7 @@ const locations = getLocationsByState('north-carolina');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Gutters & Siding in North Carolina | ProTech Roofing',
+    title: 'Gutters & Siding in North Carolina',
     description:
       'Gutter installation and siding services in North Carolina. Seamless gutters, vinyl and fiber cement siding. Licensed & insured. Serving Charlotte, Raleigh, and Greensboro. Free estimate.',
     path: '/locations/north-carolina/gutters-siding',

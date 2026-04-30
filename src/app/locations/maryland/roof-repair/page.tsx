@@ -9,7 +9,7 @@ const locations = getLocationsByState('maryland');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roof Repair in Maryland | ProTech Roofing',
+    title: 'Roof Repair in Maryland',
     description:
       'Fast, reliable roof repair in Maryland. Storm damage, leaks, missing shingles — we fix it all. Licensed & insured. Serving Baltimore, Frederick, and Annapolis. Free inspection.',
     path: '/locations/maryland/roof-repair',

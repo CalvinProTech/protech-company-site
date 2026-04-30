@@ -9,7 +9,7 @@ const locations = getLocationsByState('maryland');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Storm Damage in Maryland | ProTech Roofing',
+    title: 'Storm Damage in Maryland',
     description:
       'Storm damage roof repair in Maryland. Insurance claim assistance included. Free inspection and documentation. Serving Baltimore, Frederick, and Annapolis. Call (866) 308-2640.',
     path: '/locations/maryland/storm-damage',

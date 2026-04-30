@@ -6,7 +6,7 @@ const locations = getLocationsByState('virginia');
 
 export function generateMetadata() {
   return createPageMetadata({
-    title: 'Roofing Services in Virginia | ProTech Roofing',
+    title: 'Roofing Services in Virginia',
     description:
       'ProTech Roofing serves Virginia Beach, Richmond, and Norfolk with expert roof replacement, repair, and storm damage restoration. Licensed and insured in Virginia.',
     path: '/locations/virginia',
