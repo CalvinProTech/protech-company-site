@@ -27,7 +27,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Roof Replacement & Repair — Free Estimate',
     description:
-      'Licensed roofing contractor serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
+      'Licensed roofing contractor serving FL, NC, SC, VA, MD, DE, PA, CT & D.C. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
     path: '/',
   });
 }
