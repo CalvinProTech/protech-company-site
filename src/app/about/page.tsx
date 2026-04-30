@@ -8,7 +8,7 @@ import { CTABanner } from '@/components/sections/CTABanner';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'About ProTech Roofing | GAF Master Elite, Tampa-Headquartered',
+    title: 'About — GAF Master Elite, Tampa-HQ',
     description:
       'ProTech Roofing — Tampa-headquartered, GAF Master Elite certified, serving nine states with in-house financing and full insurance-claim assistance. Meet our team and certifications.',
     path: '/about',
