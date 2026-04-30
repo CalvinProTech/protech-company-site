@@ -23,6 +23,15 @@ export default function ServiceSchema({ service }: ServiceSchemaProps) {
       url: SITE_CONFIG.url,
       telephone: SITE_CONFIG.defaultPhone,
       email: SITE_CONFIG.email,
+      // Required for valid LocalBusiness rich-results — Tampa-metro HQ.
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: SITE_CONFIG.hq.streetAddress,
+        addressLocality: SITE_CONFIG.hq.addressLocality,
+        addressRegion: SITE_CONFIG.hq.addressRegion,
+        postalCode: SITE_CONFIG.hq.postalCode,
+        addressCountry: SITE_CONFIG.hq.addressCountry,
+      },
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: String(SITE_CONFIG.googleRating),
