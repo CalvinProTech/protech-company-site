@@ -18,6 +18,7 @@ export default function Page() {
   if (!location || !service || !cityService) notFound();
   const siblingServices = CITY_SERVICE_SLUGS
     .filter((s) => s !== 'roof-repair')
+    .filter((s) => getCityServiceData('jacksonville-fl', s) !== undefined)
     .map((s) => {
       const svc = getServiceBySlug(s);
       return svc ? { name: svc.name, slug: svc.slug, cityStateSlug: 'jacksonville-fl' } : null;

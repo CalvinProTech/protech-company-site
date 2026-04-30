@@ -41,7 +41,13 @@ export default function StateServicePageTemplate({
     },
   ];
 
-  const otherServices = SERVICES.filter((s) => s.slug !== service.slug);
+  // Only services that have per-state pages — prevents 404s on
+  // /locations/{state}/roof-inspection, /insurance-claims, /commercial-roofing
+  // which are not built per-state.
+  const STATE_SERVICE_SLUGS = ['roof-replacement', 'roof-repair', 'storm-damage', 'gutters-siding'];
+  const otherServices = SERVICES.filter(
+    (s) => s.slug !== service.slug && STATE_SERVICE_SLUGS.includes(s.slug)
+  );
 
   return (
     <>

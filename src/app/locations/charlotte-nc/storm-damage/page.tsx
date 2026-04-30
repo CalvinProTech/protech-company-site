@@ -18,6 +18,7 @@ export default function Page() {
   if (!location || !service || !cityService) notFound();
   const siblingServices = CITY_SERVICE_SLUGS
     .filter((s) => s !== 'storm-damage')
+    .filter((s) => getCityServiceData('charlotte-nc', s) !== undefined)
     .map((s) => {
       const svc = getServiceBySlug(s);
       return svc ? { name: svc.name, slug: svc.slug, cityStateSlug: 'charlotte-nc' } : null;

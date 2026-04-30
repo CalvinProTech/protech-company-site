@@ -131,6 +131,31 @@ const nextConfig: NextConfig = {
         destination: '/locations',
         permanent: true,
       },
+      // 2026-04-30 — fix Semrush 4xx findings.
+      // Each state has only 4 of 7 services available as per-state pages
+      // (roof-replacement, roof-repair, storm-damage, gutters-siding).
+      // Bounce the missing 3 to the state hub so inbound links don't 404.
+      {
+        source: '/locations/:state(florida|north-carolina|south-carolina|virginia|maryland|pennsylvania|delaware|connecticut)/roof-inspection',
+        destination: '/locations/:state',
+        permanent: true,
+      },
+      {
+        source: '/locations/:state(florida|north-carolina|south-carolina|virginia|maryland|pennsylvania|delaware|connecticut)/insurance-claims',
+        destination: '/locations/:state',
+        permanent: true,
+      },
+      {
+        source: '/locations/:state(florida|north-carolina|south-carolina|virginia|maryland|pennsylvania|delaware|connecticut)/commercial-roofing',
+        destination: '/locations/:state',
+        permanent: true,
+      },
+      // tampa-fl/gutters-siding has no city-service data. Route deleted.
+      {
+        source: '/locations/tampa-fl/gutters-siding',
+        destination: '/locations/tampa-fl',
+        permanent: true,
+      },
     ];
   },
   async headers() {
