@@ -25,10 +25,11 @@ import { generalFaqs } from '@/lib/faqs';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'Roof Replacement & Repair — Free Estimate',
+    title: 'Roof Replacement & Repair — Free Estimate | ProTech Roofing',
     description:
       'Licensed roofing contractor serving FL, NC, SC, VA, MD, DE, PA, CT & D.C. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
     path: '/',
+    absolute: true,
   });
 }
 

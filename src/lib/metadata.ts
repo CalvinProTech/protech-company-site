@@ -10,6 +10,9 @@ interface CreatePageMetadataOptions {
   path: string;
   image?: string;
   type?: 'website' | 'article';
+  /** When true, do NOT apply the layout's "%s | ProTech Roofing" template.
+   *  Use for the homepage where Next.js root-page-template behavior is inconsistent. */
+  absolute?: boolean;
 }
 
 export function createPageMetadata({
@@ -18,6 +21,7 @@ export function createPageMetadata({
   path,
   image,
   type = 'website',
+  absolute = false,
 }: CreatePageMetadataOptions): Metadata {
   const canonicalUrl = `${BASE_URL}${path}`;
   const ogImage = image
@@ -27,7 +31,7 @@ export function createPageMetadata({
     : `${BASE_URL}/images/og-default.jpg`;
 
   return {
-    title,
+    title: absolute ? { absolute: title } : title,
     description,
     alternates: {
       canonical: canonicalUrl,
