@@ -68,7 +68,8 @@ export default function LandingPageForm({
   const [city, setCity] = useState('');
   const [stateCode, setStateCode] = useState('');
   const [addressPicked, setAddressPicked] = useState(false);
-  const [smsConsent, setSmsConsent] = useState(false);
+  const [smsConsentInfo, setSmsConsentInfo] = useState(false);
+  const [smsConsentPromo, setSmsConsentPromo] = useState(false);
 
   // Step 1: Zip code validation
   const handleZipSubmit = useCallback(async () => {
@@ -140,7 +141,7 @@ export default function LandingPageForm({
       setError('Please enter your home address.');
       return;
     }
-    if (!smsConsent) {
+    if (!smsConsentInfo) {
       setError('Please agree to receive text messages to continue.');
       return;
     }
@@ -165,7 +166,8 @@ export default function LandingPageForm({
           zip,
           serviceType: service,
           timeframe,
-          smsConsent,
+          smsConsent: smsConsentInfo,
+          smsConsentPromo,
           source: `lp-${service || 'general'}`,
           _utm: utm,
         }),
@@ -199,7 +201,8 @@ export default function LandingPageForm({
     zip,
     service,
     timeframe,
-    smsConsent,
+    smsConsentInfo,
+    smsConsentPromo,
   ]);
 
   const handleAddressPicked = useCallback(
@@ -393,7 +396,12 @@ export default function LandingPageForm({
               📍 {city}, {stateCode} {zip}
             </p>
           )}
-          <SMSConsentCheckbox checked={smsConsent} onChange={setSmsConsent} />
+          <SMSConsentCheckbox
+            infoChecked={smsConsentInfo}
+            promoChecked={smsConsentPromo}
+            onInfoChange={setSmsConsentInfo}
+            onPromoChange={setSmsConsentPromo}
+          />
           <button
             onClick={handleSubmit}
             disabled={
@@ -402,7 +410,7 @@ export default function LandingPageForm({
               !phone.trim() ||
               !email.trim() ||
               !streetAddress.trim() ||
-              !smsConsent
+              !smsConsentInfo
             }
             className="bg-accent-500 hover:bg-accent-600 flex h-14 w-full items-center justify-center rounded-xl text-lg font-bold text-white shadow-md transition-all disabled:opacity-50"
           >

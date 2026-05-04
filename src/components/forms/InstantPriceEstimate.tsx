@@ -25,7 +25,8 @@ export default function InstantPriceEstimate() {
   const [showCallbackForm, setShowCallbackForm] = useState(false);
   const [callbackName, setCallbackName] = useState('');
   const [callbackPhone, setCallbackPhone] = useState('');
-  const [callbackSmsConsent, setCallbackSmsConsent] = useState(false);
+  const [callbackSmsConsentInfo, setCallbackSmsConsentInfo] = useState(false);
+  const [callbackSmsConsentPromo, setCallbackSmsConsentPromo] = useState(false);
   const [callbackSent, setCallbackSent] = useState(false);
   const [callbackError, setCallbackError] = useState<string | null>(null);
   const [callbackSubmitting, setCallbackSubmitting] = useState(false);
@@ -61,7 +62,7 @@ export default function InstantPriceEstimate() {
   }, [address]);
 
   const handleCallback = useCallback(async () => {
-    if (!callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent) return;
+    if (!callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsentInfo) return;
 
     setCallbackSubmitting(true);
     setCallbackError(null);
@@ -82,7 +83,8 @@ export default function InstantPriceEstimate() {
             phone: callbackPhone,
             streetAddress: address,
             serviceType: 'Roof Replacement',
-            smsConsent: callbackSmsConsent,
+            smsConsent: callbackSmsConsentInfo,
+            smsConsentPromo: callbackSmsConsentPromo,
             utm_source: utm.utm_source,
             utm_medium: utm.utm_medium,
             utm_campaign: utm.utm_campaign,
@@ -103,7 +105,7 @@ export default function InstantPriceEstimate() {
     } finally {
       setCallbackSubmitting(false);
     }
-  }, [callbackName, callbackPhone, callbackSmsConsent, address]);
+  }, [callbackName, callbackPhone, callbackSmsConsentInfo, callbackSmsConsentPromo, address]);
 
   const formatNumber = (n: number) =>
     new Intl.NumberFormat('en-US').format(Math.round(n));
@@ -248,9 +250,11 @@ export default function InstantPriceEstimate() {
                   className="h-12 w-full rounded-lg border border-neutral-300 px-4 text-base focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
                 />
                 <SMSConsentCheckbox
-                  id="callback-sms-consent"
-                  checked={callbackSmsConsent}
-                  onChange={setCallbackSmsConsent}
+                  idPrefix="callback-sms-consent"
+                  infoChecked={callbackSmsConsentInfo}
+                  promoChecked={callbackSmsConsentPromo}
+                  onInfoChange={setCallbackSmsConsentInfo}
+                  onPromoChange={setCallbackSmsConsentPromo}
                 />
                 {callbackError && (
                   <p className="rounded-lg bg-red-50 px-4 py-2 text-sm text-red-700">
@@ -259,7 +263,7 @@ export default function InstantPriceEstimate() {
                 )}
                 <button
                   onClick={handleCallback}
-                  disabled={callbackSubmitting || !callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsent}
+                  disabled={callbackSubmitting || !callbackName.trim() || !callbackPhone.trim() || !callbackSmsConsentInfo}
                   className="flex h-12 w-full items-center justify-center rounded-lg bg-primary-700 font-semibold text-white transition-all hover:bg-primary-800 disabled:opacity-50"
                 >
                   {callbackSubmitting ? (
@@ -287,7 +291,8 @@ export default function InstantPriceEstimate() {
               setAddress('');
               setShowCallbackForm(false);
               setCallbackSent(false);
-              setCallbackSmsConsent(false);
+              setCallbackSmsConsentInfo(false);
+              setCallbackSmsConsentPromo(false);
               setCallbackError(null);
             }}
             className="w-full text-center text-sm text-neutral-500 hover:text-primary-700"

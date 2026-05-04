@@ -105,6 +105,7 @@ export async function POST(request: Request) {
           serviceType: data.serviceType || undefined,
           timeframe: data.timeframe || undefined,
           smsConsent: data.smsConsent,
+          smsConsentPromo: data.smsConsentPromo,
           source: data.source,
           utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
           utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,

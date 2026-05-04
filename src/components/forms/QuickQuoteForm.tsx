@@ -48,6 +48,7 @@ export default function QuickQuoteForm({
       phone: '',
       zip: '',
       source,
+      smsConsentPromo: false,
     },
   });
 

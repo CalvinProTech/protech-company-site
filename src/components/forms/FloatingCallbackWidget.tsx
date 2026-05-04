@@ -43,6 +43,7 @@ export default function FloatingCallbackWidget() {
       name: '',
       phone: '',
       source: 'floating-widget',
+      smsConsentPromo: false,
     },
   });
 

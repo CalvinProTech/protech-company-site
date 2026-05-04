@@ -44,6 +44,7 @@ export default function ExitIntentPopup() {
       name: '',
       phone: '',
       source: 'exit-intent',
+      smsConsentPromo: false,
     },
   });
 

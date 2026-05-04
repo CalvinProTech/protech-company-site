@@ -178,6 +178,7 @@ export const callbackRequestSchema = z.object({
       (v) => v === true,
       'You must agree to receive SMS messages to continue'
     ),
+  smsConsentPromo: z.boolean(),
   source: z.enum(CALLBACK_SOURCES, 'Invalid source'),
 });
 
