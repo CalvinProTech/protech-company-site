@@ -14,6 +14,7 @@ export const CITY_SERVICE_SLUGS = [
   'storm-damage',
   'insurance-claims',
   'gutters-siding',
+  'roof-inspection',
 ] as const;
 
 const cityServiceData: CityServiceData[] = [
@@ -537,6 +538,119 @@ const cityServiceData: CityServiceData[] = [
         question: 'How long does gutter or siding installation take in Jacksonville?',
         answer:
           'Gutter installation on most Jacksonville homes is completed in 1 day. Full siding replacement typically takes 3 to 7 days depending on home size and complexity. We schedule around Florida\'s afternoon storm pattern and start early to maximize dry working hours.',
+      },
+    ],
+  },
+
+  // ─── Roof Inspection (Tampa / Jacksonville / Charlotte) ─────────────
+  {
+    cityStateSlug: 'tampa-fl',
+    serviceSlug: 'roof-inspection',
+    metaTitle: 'Roof Inspection in Tampa, FL | 4-Point & Wind Mitigation',
+    metaDescription:
+      'Tampa roof inspections by certified inspectors. 4-point insurance, wind mitigation, storm damage & pre-listing reports. Same-week scheduling. Free quote.',
+    h1: 'Tampa Roof Inspection — Insurance, Storm & Pre-Listing',
+    intro:
+      'A professional roof inspection is the cheapest insurance Tampa homeowners can buy against hurricane season — and it is also a required document for keeping your homeowner\'s policy active in Florida. ProTech Roofing performs comprehensive inspections across Hillsborough County, from waterfront homes on Bayshore Boulevard to suburban subdivisions in Westchase, New Tampa, and Brandon. Our inspectors are certified to produce the four-point insurance inspection form required by every major Florida carrier for homes 25 years or older, plus the OIR-B1-1802 wind mitigation report that can lower your premium by hundreds of dollars per year. Beyond the paperwork, our inspections catch the real Tampa-specific damage signs that DIY assessments miss: salt-air corrosion at the flashing line, hidden moisture intrusion from afternoon thunderstorms, granule loss accelerated by Gulf-coast UV exposure, and lifted shingles from sustained tropical winds. Each inspection includes drone-assisted photography of every slope, infrared moisture detection in suspect areas, and a written report you can hand to your insurance carrier, your buyer\'s realtor, or the My Safe Florida Home program for state mitigation grants. Most inspections are scheduled within the week and take 45 to 90 minutes on site.',
+    faqs: [
+      {
+        question: 'How much does a roof inspection cost in Tampa?',
+        answer:
+          'ProTech Roofing offers free general roof inspections for Tampa homeowners considering repair or replacement work. Insurance-required four-point inspections and wind mitigation inspections range from $125 to $225 depending on home size and roof complexity — and most homeowners save several times that amount in annual premium reductions.',
+      },
+      {
+        question: 'What is a four-point inspection and do I need one in Tampa?',
+        answer:
+          'A four-point inspection is a Florida-specific report covering the roof, plumbing, electrical, and HVAC systems. Most Florida insurance carriers require it for homes 25 years or older to issue or renew a policy. ProTech Roofing\'s certified inspectors complete the roof portion in compliance with carrier formatting requirements.',
+      },
+      {
+        question: 'How does a wind mitigation inspection lower my Tampa insurance?',
+        answer:
+          'Florida insurers offer significant premium discounts for roofs built or upgraded with hurricane-resistant features such as secondary water barriers, hurricane straps, and reinforced roof-to-wall connections. Our wind mitigation inspection documents these features on the OIR-B1-1802 form, which most Tampa homeowners use to save $300 to $1,500 per year on premiums.',
+      },
+      {
+        question: 'How often should I have my Tampa roof inspected?',
+        answer:
+          'Tampa\'s climate ages roofs faster than most of the country, so we recommend a professional inspection every 2 to 3 years for roofs under 15 years old, and annually for roofs over 15 years. Always schedule an inspection after any named storm or severe thunderstorm event, and before listing a Tampa home for sale.',
+      },
+      {
+        question: 'Will ProTech\'s inspection report work for my Tampa insurance carrier?',
+        answer:
+          'Yes. Our inspectors are familiar with the documentation formats used by every major Florida carrier including Citizens, Tower Hill, Universal, State Farm, and Allstate. We also produce the standard OIR-B1-1802 wind mitigation form and the Citizens-specific four-point format used by most state-backed policies.',
+      },
+    ],
+  },
+  {
+    cityStateSlug: 'jacksonville-fl',
+    serviceSlug: 'roof-inspection',
+    metaTitle: 'Roof Inspection in Jacksonville, FL | Insurance & Storm',
+    metaDescription:
+      'Jacksonville roof inspections with 4-point insurance & wind mitigation reports. Coastal salt-air expertise, drone imaging, same-week scheduling. Free quote.',
+    h1: 'Jacksonville Roof Inspection Specialists',
+    intro:
+      'Jacksonville\'s combination of Atlantic salt air, summer thunderstorm activity, and the ever-present hurricane threat makes professional roof inspections one of the most important maintenance investments local homeowners can make. ProTech Roofing inspects roofs throughout Duval County, from historic neighborhoods like Riverside and San Marco to coastal communities in Atlantic Beach, Neptune Beach, and Ponte Vedra. Our certified inspectors produce the four-point insurance inspection required by every major Florida carrier for Jacksonville homes 25 years or older, plus the OIR-B1-1802 wind mitigation form that can shave hundreds of dollars off your annual premium. The Atlantic side of Florida brings unique inspection challenges that inland inspectors miss — salt-driven corrosion at metal flashings, accelerated underlayment degradation from coastal humidity, and hidden moisture pockets in dimensional shingles after a Nor\'easter event. Every Jacksonville inspection includes drone photography of all roof slopes, thermal imaging of suspect areas, and a comprehensive written report formatted for your insurance carrier, real-estate transaction, or the My Safe Florida Home program. Most appointments are scheduled within the same week and completed in 45 to 90 minutes on site.',
+    faqs: [
+      {
+        question: 'How much does a roof inspection cost in Jacksonville?',
+        answer:
+          'General roof inspections are free for Jacksonville homeowners considering repair or replacement work with ProTech Roofing. Insurance-required four-point and wind mitigation inspections range from $125 to $225 depending on home size — and most Jacksonville owners save several times that amount in annual premium discounts.',
+      },
+      {
+        question: 'Do I need a four-point inspection for my Jacksonville home?',
+        answer:
+          'Most Florida insurance carriers require a four-point inspection for Jacksonville homes 25 years or older as a condition of issuing or renewing coverage. The report covers roof, plumbing, electrical, and HVAC. ProTech Roofing\'s certified inspectors complete the roof portion in the format your specific Jacksonville carrier requires.',
+      },
+      {
+        question: 'How does coastal salt air affect Jacksonville roofs?',
+        answer:
+          'Salt air drives accelerated corrosion of exposed metal — roof flashings, valleys, vent boots, and fasteners deteriorate faster on Jacksonville Beach, Atlantic Beach, and Ponte Vedra homes than on inland properties. Our inspectors specifically check these failure points and document any corrosion signs that could become leak sources.',
+      },
+      {
+        question: 'Should I get an inspection after a Jacksonville storm?',
+        answer:
+          'Yes. Any tropical system, severe thunderstorm, or Nor\'easter event with sustained winds over 50 mph or significant hail can produce damage that is invisible from the ground. Document the event date, then schedule an inspection within 30 days so any insurance claim is filed before the carrier\'s deadline.',
+      },
+      {
+        question: 'Can ProTech Roofing produce the wind mitigation form for Jacksonville?',
+        answer:
+          'Yes. We complete the standard OIR-B1-1802 wind mitigation form recognized by every Florida carrier writing policies in Jacksonville. The form documents secondary water barriers, hurricane straps, roof deck attachment, and other features that qualify your Duval County home for premium discounts.',
+      },
+    ],
+  },
+  {
+    cityStateSlug: 'charlotte-nc',
+    serviceSlug: 'roof-inspection',
+    metaTitle: 'Roof Inspection in Charlotte, NC | Storm & Pre-Listing',
+    metaDescription:
+      'Charlotte roof inspections by certified pros. Hail & wind damage assessments, pre-listing reports, drone imaging. Same-week scheduling. Free quote.',
+    h1: 'Charlotte Roof Inspection — Storm, Pre-Sale & Annual',
+    intro:
+      'Charlotte\'s position in the Piedmont exposes residential roofs to a punishing mix of severe spring thunderstorms with damaging hail, summer wind events, and the occasional remnant hurricane that pushes inland from the Carolina coast — all of which can produce damage that is invisible from the ground but compromises the roof system from underneath. ProTech Roofing performs comprehensive inspections throughout Mecklenburg County and the surrounding metro, from historic Myers Park and Dilworth to growing communities in Ballantyne, Huntersville, Concord, and the Lake Norman area. Our certified inspectors document hail strikes, wind-creased shingles, lifted ridge caps, granule displacement, and flashing failures using drone photography and high-resolution close-up imagery formatted for insurance carriers, pre-listing reports, or annual maintenance records. Carolina-specific concerns we check on every Charlotte inspection include algae streaking from the humid summer climate, decking saturation from heavy rainfall events, and ice-dam evidence from the occasional winter storm that catches Piedmont homeowners unprepared. Every inspection produces a written report with photo documentation, severity ratings on identified issues, and a clear repair-versus-replace recommendation grounded in the remaining service life of your specific shingle system. Most inspections are scheduled within the same week and completed in 45 to 90 minutes on site.',
+    faqs: [
+      {
+        question: 'How much does a roof inspection cost in Charlotte?',
+        answer:
+          'General roof inspections are free for Charlotte homeowners considering repair or replacement with ProTech Roofing. Pre-listing inspections, formal storm-damage assessments, and standalone annual reports range from $150 to $275 depending on home size and roof complexity, with documentation packages suitable for insurance, real estate, or maintenance records.',
+      },
+      {
+        question: 'How do I know if my Charlotte roof has hail damage?',
+        answer:
+          'Hail damage is often invisible from the ground — the telltale signs are circular bruises in the shingle mat, granule loss in concentrated patterns, and dented metal flashings or vent caps. After any reported hail event in the Charlotte area, schedule an inspection within 30 days so any potential insurance claim is filed within most carriers\' 1-year deadline.',
+      },
+      {
+        question: 'How often should I have my Charlotte roof inspected?',
+        answer:
+          'For Charlotte homes, we recommend a professional inspection every 3 to 5 years for roofs under 15 years old, and every 1 to 2 years for roofs over 15 years. Always schedule an inspection after any severe thunderstorm with reported hail, sustained winds over 50 mph, or remnant tropical activity that pushes through the Carolinas.',
+      },
+      {
+        question: 'Do I need an inspection before selling my Charlotte home?',
+        answer:
+          'A pre-listing roof inspection prevents surprises during the buyer\'s due diligence period and gives you negotiating leverage. ProTech Roofing\'s pre-sale report documents the current condition of your Charlotte roof, the estimated remaining service life, and any repair recommendations — a document many local realtors specifically request to streamline closings.',
+      },
+      {
+        question: 'Will ProTech help with my insurance claim after a Charlotte storm?',
+        answer:
+          'Yes. If our inspection identifies storm damage worth filing on, our claims specialists work directly with your insurance carrier, attend the adjuster meeting, and file supplements if the initial settlement is short. North Carolina policy language varies more than Florida\'s, so we review your specific coverage before recommending whether a claim is warranted.',
       },
     ],
   },
