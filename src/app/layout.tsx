@@ -22,7 +22,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://protechroof.net'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.protechroof.net'
   ),
   title: {
     default: 'ProTech Roofing | Licensed Roofing Contractor',

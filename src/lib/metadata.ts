@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/constants';
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || SITE_CONFIG.url || 'https://protechroof.net';
+  process.env.NEXT_PUBLIC_SITE_URL || SITE_CONFIG.url || 'https://www.protechroof.net';
 
 interface CreatePageMetadataOptions {
   title: string;

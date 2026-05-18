@@ -6,7 +6,7 @@ import { getAllPosts } from '@/lib/blog';
 import { getAllCityServiceData } from '@/lib/city-services';
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://protechroof.net';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.protechroof.net';
 
 const LAST_BUILD = new Date();
 

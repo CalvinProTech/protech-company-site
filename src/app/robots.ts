@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://protechroof.net';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.protechroof.net';
 
 // AI search + answer engine crawlers — explicitly allowed so ProTech is
 // visible when users ask ChatGPT, Claude, Perplexity, Gemini, Copilot, etc.

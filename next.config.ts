@@ -14,6 +14,7 @@ const cspDirectives = [
 ].join('; ');
 
 const nextConfig: NextConfig = {
+  trailingSlash: false,
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -25,6 +26,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Canonical host enforcement: apex → www. Vercel domain config
+      // handles this at the edge; this is a belt-and-suspenders backup
+      // so the app stays canonical even if the Vercel domain config is
+      // ever reverted, and works in local/non-Vercel environments.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'protechroof.net' }],
+        destination: 'https://www.protechroof.net/:path*',
+        permanent: true,
+      },
       {
         source: '/offerings',
         destination: '/services',

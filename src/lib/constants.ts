@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   name: 'ProTech Roofing',
-  url: 'https://protechroof.net',
+  url: 'https://www.protechroof.net',
   description:
     'Expert roof replacement, insurance-claim help, and in-house financing across nine states — FL, SC, NC, VA, MD, DC, DE, PA, CT. Tampa-headquartered, GAF Master Elite certified.',
   defaultPhone: '1-866-308-2640',
