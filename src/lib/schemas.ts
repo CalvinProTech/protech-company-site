@@ -9,27 +9,25 @@ export const SERVICE_OPTIONS = [
   'roof-replacement',
   'roof-repair',
   'storm-damage',
-  'commercial-roofing',
   'roof-inspection',
   'gutters-siding',
   'other',
 ] as const;
 
+// IS-9 + DC: jurisdictions ProTech is actually licensed/operating in.
+// Out-of-scope states (GA/KY/OH/TN/TX/WV) were removed 2026-04-29
+// from sitemap + routes; this list completes the cleanup by gating
+// form acceptance so out-of-scope leads no longer slip through.
 export const STATE_OPTIONS = [
   'CT',
+  'DC',
   'DE',
   'FL',
-  'GA',
-  'KY',
   'MD',
   'NC',
-  'OH',
   'PA',
   'SC',
-  'TN',
-  'TX',
   'VA',
-  'WV',
 ] as const;
 
 // ---------------------------------------------------------------------------

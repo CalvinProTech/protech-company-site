@@ -32,7 +32,6 @@ const SERVICE_LABELS: Record<(typeof SERVICE_OPTIONS)[number], string> = {
   'roof-replacement': 'Roof Replacement',
   'roof-repair': 'Roof Repair',
   'storm-damage': 'Storm Damage',
-  'commercial-roofing': 'Commercial Roofing',
   'roof-inspection': 'Roof Inspection',
   'gutters-siding': 'Gutters & Siding',
   other: 'Other',

@@ -28,8 +28,6 @@ const serviceDescriptions: Record<string, string> = {
     'Stop leaks before they become costly water damage. Fast, reliable repairs that restore your roof to peak condition.',
   'storm-damage':
     'We handle your insurance claim from start to finish so you can focus on what matters most — your family.',
-  'commercial-roofing':
-    'Minimize downtime with expert commercial roofing solutions designed for businesses of all sizes.',
   'roof-inspection':
     'Know your roof\'s condition before problems start. Comprehensive inspections with detailed written reports.',
   'gutters-siding':

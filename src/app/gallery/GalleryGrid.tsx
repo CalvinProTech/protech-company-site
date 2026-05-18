@@ -14,7 +14,6 @@ interface GalleryGridProps {
 const serviceTypeLabels: Record<string, string> = {
   'roof-replacement': 'Roof Replacement',
   'storm-damage': 'Storm Damage',
-  'commercial-roofing': 'Commercial Roofing',
   'roof-repair': 'Roof Repair',
   'gutters-siding': 'Gutters & Siding',
 };

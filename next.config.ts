@@ -41,6 +41,17 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      // Commercial roofing service retired 2026-05-18 (residential focus).
+      {
+        source: '/services/commercial-roofing',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/locations/:state/:city/commercial-roofing',
+        destination: '/services',
+        permanent: true,
+      },
       // In-scope alias redirects (these targets still exist).
       {
         source: '/locations/florida/tampa',

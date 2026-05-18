@@ -48,11 +48,6 @@ export const SERVICES = [
   { name: 'Roof Replacement', slug: 'roof-replacement', icon: 'Home' },
   { name: 'Roof Repair', slug: 'roof-repair', icon: 'Wrench' },
   { name: 'Storm Damage', slug: 'storm-damage', icon: 'CloudLightning' },
-  {
-    name: 'Commercial Roofing',
-    slug: 'commercial-roofing',
-    icon: 'Building2',
-  },
   { name: 'Roof Inspection', slug: 'roof-inspection', icon: 'Search' },
   { name: 'Gutters & Siding', slug: 'gutters-siding', icon: 'Droplets' },
   { name: 'Insurance Claims', slug: 'insurance-claims', icon: 'FileCheck' },

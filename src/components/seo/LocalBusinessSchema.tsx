@@ -189,13 +189,6 @@ export default function LocalBusinessSchema({
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Commercial Roofing',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
               name: 'Roof Inspection',
             },
           },
