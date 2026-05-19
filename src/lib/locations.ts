@@ -15,6 +15,22 @@ export interface Location {
   metaDescription: string;
   headline: string;
   intro: string;
+
+  // Optional hyper-local content. When present, CityLandingTemplate renders
+  // a dedicated "Roofing in [City]" section after the intro. Pages without
+  // these fields render the template's generic layout — no breaking change.
+  // Pattern modeled on competitor hernandoroofer.com, which dominates its
+  // micro-market (Spring Hill, FL) with hyper-local content like this.
+  localContent?: {
+    countyName?: string;
+    metroArea?: string;
+    climateChallenges?: string;
+    commonIssues?: string[];
+    localCodes?: string;
+    neighborhoods?: string[];
+    seasonalConsiderations?: string;
+  };
+  localFaqs?: Array<{ question: string; answer: string }>;
 }
 
 const locations: Location[] = [
@@ -38,12 +54,269 @@ const locations: Location[] = [
     ],
     licenseNumber: "CCC-1332871",
     heroImage: "/images/hero/tampa.jpg",
-    metaTitle: "Roof Replacement & Repair in Tampa",
+    metaTitle: "Roofers in Tampa, FL · Repair & Replacement",
     metaDescription:
-      "Tampa's top-rated roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Get your free estimate today.",
+      "Licensed Tampa roofing contractor specializing in roof replacement, repair, and storm damage. Hyper-local Hillsborough County crews. Free estimates · $0 down financing.",
     headline: "Protect Your Home with Tampa's Most Trusted Roofers",
     intro:
-      "Tampa homeowners face unique roofing challenges, from intense summer storms to year-round UV exposure that degrades shingles faster than the national average. ProTech Roofing has served the Tampa Bay area for over a decade, completing more than 1,000 residential and commercial projects. Our crews understand the local building codes, HOA requirements, and insurance processes that keep your project on track. Whether you need a full replacement or emergency leak repair, we deliver lasting results backed by our lifetime workmanship warranty.",
+      "Tampa homeowners face unique roofing challenges, from intense summer storms to year-round UV exposure that degrades shingles faster than the national average. ProTech Roofing is headquartered in Tampa at 4950 W Kennedy Blvd and has served the Tampa Bay area for over a decade, completing more than 100 residential and commercial projects. Our crews know Hillsborough County building codes, wind-mitigation discounts, and HOA processes inside and out. Whether you need a full replacement or emergency leak repair, we deliver lasting results backed by our lifetime workmanship warranty.",
+    localContent: {
+      countyName: "Hillsborough County",
+      metroArea: "Tampa Bay",
+      climateChallenges:
+        "Tampa sits at the inland edge of one of the most weather-stressed roofing markets in the country. Summer afternoon thunderstorms drop 1-2 inches of rain in 30 minutes with 50+ mph gusts, accelerating shingle uplift and flashing failure. Year-round UV exposure averaging 260+ sunny days per year shortens asphalt shingle lifespan to 15-18 years (vs the national 25-30). Salt-air drift from Tampa Bay and the Gulf corrodes metal valleys, drip edge, and fasteners on roofs within 5 miles of the water. And every June through November, the Atlantic hurricane season brings the possibility of named-storm wind events that require Florida-Building-Code-compliant installation to survive.",
+      commonIssues: [
+        "Wind uplift from afternoon thunderstorms (50+ mph gusts)",
+        "UV degradation shortening shingle life to 15-18 years",
+        "Salt-air corrosion of metal flashing and fasteners near the bay",
+        "Wind-driven rain infiltration around valleys, vents, and chimneys",
+        "Hurricane debris impact damage (June-November)",
+        "Improper attic ventilation accelerating shingle failure",
+        "Tile slip and crack from age and storm impact (older South Tampa homes)",
+      ],
+      localCodes:
+        "All roof replacements in Hillsborough County require a permit from the Tampa or county building department and must comply with the Florida Building Code (FBC) high-velocity wind zone requirements: secondary water barrier, ring-shank nails, and enhanced fastening at field/edge/ridge. Completing a wind mitigation inspection after install qualifies most homeowners for 25-45% off their windstorm insurance premium — we coordinate this for every customer at no charge.",
+        seasonalConsiderations:
+        "The optimal install window in Tampa is October through May, when humidity drops and the daily afternoon storm threat fades. June-November is hurricane season — we maintain reserve material inventory and emergency tarp crews on standby. If your roof is 12+ years old, schedule a pre-season inspection in May to identify and fix vulnerabilities before storms arrive.",
+      neighborhoods: [
+        "South Tampa",
+        "Hyde Park",
+        "Westchase",
+        "New Tampa",
+        "Carrollwood",
+        "Seminole Heights",
+        "Davis Islands",
+        "Channelside",
+        "Ballast Point",
+        "Tampa Palms",
+        "Town 'N' Country",
+        "Citrus Park",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "How to find a reliable roofer in Tampa?",
+        answer:
+          "Verify the contractor is licensed by the Florida DBPR (look up CCC# license number), check Google reviews with 50+ ratings minimum, ask for proof of general liability and workers' comp insurance, and confirm they carry a manufacturer certification like GAF Master Elite. Avoid out-of-state 'storm chasers' who appear after hurricanes — Tampa-headquartered companies stand behind warranties long-term. ProTech Roofing is HQ'd at 4950 W Kennedy Blvd in Tampa.",
+      },
+      {
+        question: "How long does a roof last in Tampa?",
+        answer:
+          "Asphalt shingle roofs in Tampa typically last 15-18 years — shorter than the national 25-30 year benchmark — due to high UV exposure and salt-air conditions. Concrete tile lasts 30-50 years. Standing-seam metal lasts 40+ years and handles wind better. If your asphalt shingle roof is 12+ years old in Tampa, schedule an inspection — small repairs now prevent storm-season disasters later.",
+      },
+      {
+        question: "How to prepare your roof for hurricane season in Tampa?",
+        answer:
+          "Schedule a professional inspection by May to catch loose shingles, deteriorated flashing, or compromised seals before storms arrive. Trim trees within 10 feet of the roof to prevent debris impact. Clear gutters and downspouts. Verify your homeowner policy includes wind/hurricane coverage and that your wind mitigation report is current (it expires every 5 years). For roofs 12+ years old, the safest move is full replacement before hurricane season — claims after a named storm can take 6-12 months to resolve.",
+      },
+      {
+        question: "What causes most roof damage in Tampa?",
+        answer:
+          "In order of frequency: (1) afternoon thunderstorm wind uplift, (2) UV-accelerated shingle degradation, (3) salt-air corrosion of metal components, (4) wind-driven rain finding compromised valleys and flashings, (5) hurricane debris and high-wind events, and (6) improper original installation that fails sooner. Most leak calls we get in Tampa trace back to the first four causes layered on a roof that's already past 12 years old.",
+      },
+    ],
+  },
+  {
+    state: "Florida",
+    stateSlug: "florida",
+    stateAbbr: "FL",
+    city: "St. Petersburg",
+    citySlug: "st-petersburg",
+    lat: 27.7706,
+    lng: -82.6404,
+    phone: "1-866-308-2640",
+    serviceRadius: "30 miles",
+    surroundingCities: [
+      "Clearwater",
+      "Tampa",
+      "Largo",
+      "Pinellas Park",
+      "Gulfport",
+    ],
+    licenseNumber: "CCC-1332871",
+    heroImage: "/images/hero/tampa.jpg",
+    metaTitle: "Roofers in St. Petersburg, FL · Free Estimates",
+    metaDescription:
+      "St. Petersburg roofing contractor specializing in roof replacement, repair, and hurricane preparation. Pinellas County crews. Free estimates · $0 down financing.",
+    headline: "St. Petersburg's Trusted Roofing Contractor",
+    intro:
+      "St. Petersburg's nickname — the Sunshine City — comes with a roofing cost: more than 360 days of sun per year, intense year-round UV exposure, and salt-air drift from Boca Ciega Bay and Tampa Bay that corrode metal components faster than inland Florida averages. ProTech Roofing serves St. Petersburg from our Tampa Bay HQ, with crews fluent in Pinellas County permitting, the city's historic-district overlays, and the wind-mitigation reports that knock 25-45% off windstorm insurance premiums. Whether your home is a 1920s Old Northeast bungalow or a 2010s Skyway Marina townhouse, we deliver code-compliant roofing built for the Gulf Coast.",
+    localContent: {
+      countyName: "Pinellas County",
+      metroArea: "Tampa Bay",
+      climateChallenges:
+        "St. Petersburg is the most weather-exposed major city in Florida, with the Gulf of Mexico on three sides and minimal natural windbreaks. Summer thunderstorms reliably produce 50+ mph gusts and wind-driven rain. Year-round UV exposure averaging 360+ sunny days per year degrades asphalt shingles 30-40% faster than the national benchmark. Salt-air corrosion from Boca Ciega Bay and Tampa Bay attacks galvanized fasteners, drip edge, and metal valleys on any home within 5 miles of the water — which is most of the city. Hurricane storm-surge risk requires every coastal homeowner to plan for evacuation, but also to ensure the roof survives if they don't.",
+      commonIssues: [
+        "UV degradation accelerated by 360+ sunny days per year",
+        "Salt-air corrosion of metal flashing, fasteners, and valleys",
+        "Wind uplift on coastal-facing roofs lacking proper edge fastening",
+        "Hurricane storm-surge driving water under shingles in low-lying areas",
+        "Historic-district shingle and tile replacement requiring city approval",
+        "Aging tile roofs in Old Northeast and Snell Isle requiring underlayment replacement",
+      ],
+      localCodes:
+        "All roof replacements in St. Petersburg require a permit from the city building department and must comply with the Florida Building Code high-velocity wind zone requirements. Homes in designated historic districts (Old Northeast, Granada Terrace, Driftwood) require additional design review for material and color changes. Wind mitigation inspections post-install qualify most homeowners for 25-45% off windstorm insurance premiums.",
+      seasonalConsiderations:
+        "Schedule install work between October and May to avoid the daily afternoon storm cycle and the active hurricane season. If your roof is 10+ years old, a pre-hurricane-season inspection in April or May is the single highest-ROI maintenance call you can make. After any named storm passes within 100 miles, schedule a same-week inspection — wind damage often isn't visible from the ground but compromises the next year of weather exposure.",
+      neighborhoods: [
+        "Old Northeast",
+        "Snell Isle",
+        "Downtown",
+        "Crescent Lake",
+        "Tyrone",
+        "Skyway Marina",
+        "Pinellas Point",
+        "Disston Heights",
+        "Historic Roser Park",
+        "Coquina Key",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "Do I need a special permit for a roof replacement in St. Petersburg's historic districts?",
+        answer:
+          "Yes. Homes in St. Petersburg's designated historic districts (Old Northeast, Granada Terrace, Driftwood, Bayview Heights) require Certificate of Appropriateness review for any roof material or color change visible from the street. ProTech handles the application and coordinates with the city historic preservation office on your behalf — typical approval takes 4-8 weeks before install can begin.",
+      },
+      {
+        question: "How long do tile roofs last in St. Petersburg?",
+        answer:
+          "Concrete tile roofs in St. Petersburg typically last 30-50 years before tile replacement, but the underlayment beneath the tiles fails at 20-25 years due to UV and heat. Many Old Northeast and Snell Isle homes need underlayment replacement (lift, re-felt, re-set the existing tiles) rather than full tile replacement — extending roof life 20+ more years at roughly half the cost of a full replacement.",
+      },
+    ],
+  },
+  {
+    state: "Florida",
+    stateSlug: "florida",
+    stateAbbr: "FL",
+    city: "Clearwater",
+    citySlug: "clearwater",
+    lat: 27.9659,
+    lng: -82.8001,
+    phone: "1-866-308-2640",
+    serviceRadius: "30 miles",
+    surroundingCities: [
+      "St. Petersburg",
+      "Largo",
+      "Dunedin",
+      "Safety Harbor",
+      "Belleair",
+    ],
+    licenseNumber: "CCC-1332871",
+    heroImage: "/images/hero/tampa.jpg",
+    metaTitle: "Roofers in Clearwater, FL · Free Estimates",
+    metaDescription:
+      "Clearwater roofing contractor specializing in coastal roof replacement, repair, and hurricane preparation. Pinellas County crews. Free estimates · $0 down financing.",
+    headline: "Clearwater's Trusted Coastal Roofing Contractor",
+    intro:
+      "Clearwater roofing has to survive what most of the country doesn't deal with: salt-air corrosion from the Gulf and Tampa Bay, year-round UV at coastal-Florida levels, and a hurricane corridor that produces named storms on a yearly cadence. ProTech Roofing serves Clearwater from our Tampa Bay HQ — close enough that emergency tarping reaches Clearwater Beach in under 45 minutes. Our crews are fluent in Pinellas County permitting, coastal building requirements, and the wind mitigation discount that knocks 25-45% off windstorm insurance for Clearwater homeowners. From Sand Key beachfront tile roofs to Countryside asphalt-shingle ranches, we install roofing built for the Gulf Coast.",
+    localContent: {
+      countyName: "Pinellas County",
+      metroArea: "Tampa Bay",
+      climateChallenges:
+        "Clearwater is a coastal community on the Pinellas Peninsula, bracketed by the Gulf of Mexico to the west and Tampa Bay to the east. That position means salt-air corrosion is unavoidable: galvanized fasteners, drip edge, and metal valleys all corrode 2-3x faster than inland Florida averages. Year-round UV averaging 260+ sunny days degrades asphalt shingles to a 15-18 year typical lifespan. Hurricane season (June-November) brings named-storm risk, and even a near-miss can produce 60+ mph sustained winds that test every fastener on the roof.",
+      commonIssues: [
+        "Salt-air corrosion of metal components on coastal-facing roofs",
+        "Wind uplift on shingle and tile roofs lacking proper edge fastening",
+        "Hurricane debris impact damage (June-November)",
+        "UV degradation accelerated by 260+ sunny days per year",
+        "Tile underlayment failure in older homes (20-25 year cycle)",
+        "Standing water on flat roof sections of mid-century Clearwater homes",
+      ],
+      localCodes:
+        "All roof replacements in Clearwater require a permit from the city or Pinellas County building department and must comply with Florida Building Code high-velocity wind zone requirements: secondary water barrier, ring-shank nails, enhanced edge fastening, and corrosion-resistant fasteners on coastal homes. Wind mitigation inspection post-install qualifies most homeowners for 25-45% off windstorm insurance premiums — we coordinate this at no charge.",
+      seasonalConsiderations:
+        "October through May is the optimal install window — humidity drops, afternoon storms fade, and crews can keep tighter schedules. Hurricane season (June-November) requires reserve material inventory and emergency tarp readiness, which we maintain year-round. Beachfront and Sand Key homes should add a coastal salt-air inspection every 3-5 years to catch fastener corrosion before it produces leaks.",
+      neighborhoods: [
+        "Clearwater Beach",
+        "Sand Key",
+        "Island Estates",
+        "Downtown Clearwater",
+        "Belleair",
+        "Countryside",
+        "Morningside",
+        "Skycrest",
+        "On Top of the World",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "Do coastal Clearwater roofs need special materials?",
+        answer:
+          "Yes. Homes within 5 miles of the Gulf or Tampa Bay should use stainless steel or hot-dipped galvanized fasteners (not standard galvanized), aluminum or copper drip edge and flashing (not galvanized steel), and shingles or tiles rated for high-wind coastal exposure. The upfront cost premium is typically 5-10% but doubles the time-to-failure on metal components in the salt-air environment.",
+      },
+      {
+        question: "How quickly can you tarp a damaged Clearwater roof after a storm?",
+        answer:
+          "Emergency tarping for Clearwater addresses arrives within 4 hours during business hours and within 24 hours after-hours or on weekends. Our crews are based in Tampa, roughly a 45-minute drive to Clearwater Beach. After named-storm events, response times extend based on volume — pre-booking a tarp for vulnerable roofs in advance of a forecasted storm shortens response.",
+      },
+    ],
+  },
+  {
+    state: "Florida",
+    stateSlug: "florida",
+    stateAbbr: "FL",
+    city: "Brandon",
+    citySlug: "brandon",
+    lat: 27.9378,
+    lng: -82.2859,
+    phone: "1-866-308-2640",
+    serviceRadius: "25 miles",
+    surroundingCities: [
+      "Tampa",
+      "Valrico",
+      "Riverview",
+      "Bloomingdale",
+      "Lithia",
+    ],
+    licenseNumber: "CCC-1332871",
+    heroImage: "/images/hero/tampa.jpg",
+    metaTitle: "Roofers in Brandon, FL · Free Estimates",
+    metaDescription:
+      "Brandon roofing contractor specializing in suburban roof replacement, repair, and storm damage. Hillsborough County crews. Free estimates · $0 down financing.",
+    headline: "Brandon's Trusted Suburban Roofing Contractor",
+    intro:
+      "Brandon is one of Tampa Bay's largest suburbs, with most homes built between 1990 and 2010 and dominated by asphalt shingle roofs that are now at or past their 15-18 year Tampa-area life expectancy. ProTech Roofing serves Brandon from our Tampa HQ, with crews that know Hillsborough County permitting, the wind-mitigation inspection process that knocks 25-45% off windstorm insurance, and the HOA architectural-review requirements common in Bloomingdale, Valrico, and Lithia subdivisions. Whether your home is in the original Brandon core or one of the newer Riverview developments, we deliver code-compliant roofing built for Florida summer storms.",
+    localContent: {
+      countyName: "Hillsborough County",
+      metroArea: "Tampa Bay",
+      climateChallenges:
+        "Brandon is far enough from the Gulf to escape the worst of the salt-air corrosion that hits Clearwater and St. Pete, but close enough that summer thunderstorm activity is still intense. Most damage we see in Brandon comes from afternoon storm wind uplift, UV-accelerated shingle aging (Brandon homes typically need replacement at 15-18 years vs the national 25-30), and the occasional hailstorm — Hillsborough County saw three notable hail events in 2023-2025 that produced widespread insurance claim activity in Brandon and Riverview.",
+      commonIssues: [
+        "Wind uplift from afternoon thunderstorms (50+ mph gusts)",
+        "UV degradation shortening asphalt shingle life to 15-18 years",
+        "Aging 1990s-2000s shingles past warranty in original Brandon and Bloomingdale",
+        "Hail damage from periodic Hillsborough County hailstorms",
+        "HOA architectural-review delays in Lithia and Valrico subdivisions",
+        "Improper attic ventilation in 1990s tract homes accelerating shingle failure",
+      ],
+      localCodes:
+        "All roof replacements in Brandon require a permit from the Hillsborough County building department and must comply with Florida Building Code wind zone requirements. Most Brandon-area HOAs (Bloomingdale, FishHawk Ranch, Lithia Pinecrest) require architectural-review-committee approval for shingle color and material changes before permit application. ProTech handles HOA submittals at no charge. Wind mitigation inspection post-install qualifies most homeowners for 25-45% off windstorm insurance premiums.",
+      seasonalConsiderations:
+        "October through May is the optimal install window for Brandon — dry, mild weather and minimal storm-day delays. Schedule a pre-hurricane-season inspection in April or May if your roof is 12+ years old. After Hillsborough County hailstorms, document any damage with photos within 48 hours and call us for a no-charge inspection before filing an insurance claim — claims supported by professional documentation settle faster and for more.",
+      neighborhoods: [
+        "Brandon",
+        "Valrico",
+        "Bloomingdale",
+        "Lithia",
+        "Riverview",
+        "FishHawk Ranch",
+        "Limona",
+        "Mango",
+        "Seffner",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "Do Brandon HOAs require approval before I replace my roof?",
+        answer:
+          "Most Brandon-area HOAs (Bloomingdale, FishHawk Ranch, Lithia Pinecrest, parts of Valrico) require Architectural Review Committee approval before any roof color or material change. Approval typically takes 2-4 weeks. ProTech submits the application package on your behalf at no charge, including manufacturer color samples and shingle specifications. Permits cannot be pulled until HOA approval is in hand.",
+      },
+      {
+        question: "How can I tell if my Brandon roof has hail damage?",
+        answer:
+          "Hail damage on asphalt shingles shows as small circular bruises or missing granules, often on the slopes facing the storm direction. From the ground it's often invisible — most homeowners only notice when a leak starts months later. After any Hillsborough County hailstorm, schedule a no-charge inspection within 48 hours. If we document damage, you have a much stronger insurance claim than waiting until leaks appear.",
+      },
+    ],
   },
   {
     state: "Florida",

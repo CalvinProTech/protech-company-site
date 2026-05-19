@@ -67,11 +67,20 @@ interface LocationForMetadata {
   stateAbbr: string;
   stateSlug: string;
   citySlug: string;
+  // When present on the Location record, these win over the generic
+  // template — used for cities with hyper-local keyword-targeted titles
+  // surfaced from Semrush research.
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export function createLocationMetadata(location: LocationForMetadata): Metadata {
-  const title = `Roofing Services ${location.city}, ${location.stateAbbr}`;
-  const description = `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair & storm damage restoration. Licensed & insured. Get your free estimate today!`;
+  const title =
+    location.metaTitle ??
+    `Roofing Services ${location.city}, ${location.stateAbbr}`;
+  const description =
+    location.metaDescription ??
+    `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair & storm damage restoration. Licensed & insured. Get your free estimate today!`;
 
   return createPageMetadata({
     title,
@@ -84,12 +93,18 @@ interface CityLandingForMetadata {
   city: string;
   stateAbbr: string;
   citySlug: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export function createCityLandingMetadata(location: CityLandingForMetadata): Metadata {
   const cityStateSlug = `${location.citySlug}-${location.stateAbbr.toLowerCase()}`;
-  const title = `Roofing Services in ${location.city}, ${location.stateAbbr}`;
-  const description = `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair, storm damage & insurance claims. Licensed & insured. Get your free estimate today!`;
+  const title =
+    location.metaTitle ??
+    `Roofing Services in ${location.city}, ${location.stateAbbr}`;
+  const description =
+    location.metaDescription ??
+    `Top-rated roofing contractor in ${location.city}, ${location.stateAbbr}. Roof replacement, repair, storm damage & insurance claims. Licensed & insured. Get your free estimate today!`;
 
   return createPageMetadata({
     title,

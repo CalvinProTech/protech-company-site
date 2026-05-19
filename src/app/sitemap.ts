@@ -43,6 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/roof-replacement-cost-calculator`,
+      lastModified: LAST_BUILD,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/financing`,
       lastModified: LAST_BUILD,
       changeFrequency: 'monthly',

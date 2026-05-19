@@ -54,9 +54,12 @@ export default function CityLandingTemplate({
 }: CityLandingTemplateProps) {
   const testimonials = getTestimonialsByCity(location.city);
   const projects = getProjectsByCity(location.city);
-  const cityFaqs = buildCityFaqs(location);
+  // Generic city FAQs first, then any city-specific localFaqs appended.
+  // Both feed FAQSchema so Google sees the full set as structured data.
+  const cityFaqs = [...buildCityFaqs(location), ...(location.localFaqs ?? [])];
   const phoneDigits = location.phone.replace(/\D/g, '');
   const cityStateSlug = getCityStateSlug(location);
+  const lc = location.localContent;
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -194,6 +197,90 @@ export default function CityLandingTemplate({
           </div>
         </div>
       </section>
+
+      {/* Hyper-local content — renders only when location.localContent is set.
+          Targets the SEO pattern Semrush competitor analysis surfaced: pages
+          that win local rankings carry county/climate/neighborhood specificity,
+          not template-generic copy. */}
+      {lc && (
+        <section className="bg-neutral-50 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+                Roofing in {location.city}
+                {lc.countyName ? `, ${lc.countyName}` : ''}
+              </h2>
+
+              {lc.climateChallenges && (
+                <p className="mt-6 text-lg leading-relaxed text-neutral-700">
+                  {lc.climateChallenges}
+                </p>
+              )}
+
+              <div className="mt-10 grid gap-8 md:grid-cols-2">
+                {lc.commonIssues && lc.commonIssues.length > 0 && (
+                  <div className="rounded-xl border border-neutral-200 bg-white p-6">
+                    <h3 className="text-lg font-semibold text-primary-900">
+                      Common Roofing Issues in {location.city}
+                    </h3>
+                    <ul className="mt-4 space-y-2">
+                      {lc.commonIssues.map((issue) => (
+                        <li
+                          key={issue}
+                          className="flex items-start gap-2 text-sm text-neutral-700"
+                        >
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" />
+                          {issue}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {lc.localCodes && (
+                  <div className="rounded-xl border border-neutral-200 bg-white p-6">
+                    <h3 className="text-lg font-semibold text-primary-900">
+                      Local Building Codes
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-neutral-700">
+                      {lc.localCodes}
+                    </p>
+                  </div>
+                )}
+
+                {lc.seasonalConsiderations && (
+                  <div className="rounded-xl border border-neutral-200 bg-white p-6">
+                    <h3 className="text-lg font-semibold text-primary-900">
+                      Seasonal Considerations
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-neutral-700">
+                      {lc.seasonalConsiderations}
+                    </p>
+                  </div>
+                )}
+
+                {lc.neighborhoods && lc.neighborhoods.length > 0 && (
+                  <div className="rounded-xl border border-neutral-200 bg-white p-6">
+                    <h3 className="text-lg font-semibold text-primary-900">
+                      {location.city} Neighborhoods We Serve
+                    </h3>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {lc.neighborhoods.map((n) => (
+                        <span
+                          key={n}
+                          className="inline-flex items-center rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-800"
+                        >
+                          {n}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Service Cards — links to city+service sub-pages */}
       <section className="bg-white py-16 md:py-24">
