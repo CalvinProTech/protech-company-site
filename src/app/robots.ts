@@ -50,7 +50,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/'],
+        disallow: ['/api/', '/admin/', '/portal/', '/q/', '/j/', '/s/'],
       },
       // AI search crawlers — explicit allow (some default-restrict otherwise)
       ...AI_CRAWLERS.map((agent) => ({

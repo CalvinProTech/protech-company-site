@@ -252,6 +252,14 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
+                    href="/portal"
+                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                  >
+                    Customer Portal
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/sitemap.xml"
                     className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
                   >
