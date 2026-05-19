@@ -388,13 +388,62 @@ const locations: Location[] = [
     ],
     licenseNumber: "CCC-1332874",
     heroImage: "/images/hero/jacksonville.jpg",
-    metaTitle: "Jacksonville Roofing Services & Repair",
+    metaTitle: "Roofers in Jacksonville, FL · Repair & Replacement",
     metaDescription:
-      "Jacksonville's trusted roofing company for shingle, metal, and flat roof systems. Storm damage specialists with insurance claim support. Get a free quote.",
+      "Licensed Jacksonville roofing contractor specializing in roof replacement, repair, and hurricane prep. Duval County crews. Free estimates · $0 down financing.",
     headline:
       "Protect Your Home with Jacksonville's Most Trusted Roofers",
     intro:
-      "As the largest city by area in the continental U.S., Jacksonville presents a wide range of roofing needs, from coastal homes near Ponte Vedra to suburban neighborhoods in Mandarin and the Westside. ProTech Roofing has built a reputation across Duval County for quality materials, honest pricing, and fast turnaround. We are experienced with nor'easters, tropical storms, and the heavy afternoon rains that test every roof. Our team provides full-service solutions including insurance claim assistance for storm-damaged properties.",
+      "Jacksonville is the largest city by area in the continental U.S., spanning coastal beach communities, the historic urban core, and sprawling suburbs across Duval County. Roofing needs vary just as widely — from salt-air-rated shingle systems on Atlantic Beach and Ponte Vedra homes, to mid-century tile in Riverside, to standard suburban asphalt across Mandarin and Westside. ProTech Roofing handles all of it with crews fluent in Duval County permitting, the Florida Building Code high-velocity wind zone requirements, and the wind-mitigation reports that knock 25-45% off windstorm insurance for most homeowners.",
+    localContent: {
+      countyName: "Duval County",
+      metroArea: "Northeast Florida",
+      climateChallenges:
+        "Jacksonville sits on the Atlantic coast at the northernmost edge of Florida's tropical-storm corridor — close enough to face named-storm wind events and far enough north to also catch occasional nor'easters that batter the coast in winter. Year-round UV exposure averages 220+ sunny days per year, shortening asphalt shingle lifespan to 18-22 years (vs the national 25-30). Salt-air drift from the Atlantic and the St. Johns River corrodes galvanized fasteners, drip edge, and metal valleys on any home within 5 miles of the water. Summer afternoon thunderstorms produce 1-2 inches of rain in 30 minutes with 50+ mph gusts that test every fastener on aging roofs.",
+      commonIssues: [
+        "Salt-air corrosion on coastal-facing roofs (beaches, Ponte Vedra, Mayport)",
+        "Wind uplift from afternoon summer thunderstorms",
+        "UV degradation shortening shingle life to 18-22 years",
+        "Hurricane and nor'easter wind events (multiple per decade)",
+        "Wind-driven rain infiltration on aging valleys and chimney flashings",
+        "Improper attic ventilation in 1980s-1990s tract homes",
+      ],
+      localCodes:
+        "All roof replacements in Jacksonville require a permit from the Duval County building department and must comply with Florida Building Code wind zone requirements: secondary water barrier, ring-shank nails, and enhanced edge fastening. Coastal homes within Velocity Wind Zone 3 (beachfront and within a mile of the coast) face stricter fastening and material standards. Wind mitigation inspection post-install qualifies most homeowners for 25-45% off windstorm insurance premiums — we coordinate this for every customer at no charge.",
+      seasonalConsiderations:
+        "October through May is the optimal install window — humidity drops and the daily afternoon storm threat fades. Hurricane season (June-November) requires reserve material inventory and emergency tarp readiness, both of which we maintain year-round. If your roof is 12+ years old, schedule a pre-hurricane-season inspection in April or May to catch loose shingles or deteriorated flashing before a named storm exposes them.",
+      neighborhoods: [
+        "Riverside",
+        "Avondale",
+        "San Marco",
+        "Mandarin",
+        "Jacksonville Beach",
+        "Atlantic Beach",
+        "Neptune Beach",
+        "Southside",
+        "Westside",
+        "Arlington",
+        "Ponte Vedra",
+        "Nocatee",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "Do coastal Jacksonville roofs need special materials?",
+        answer:
+          "Yes. Homes within 5 miles of the Atlantic, the Intracoastal, or the St. Johns River should use stainless steel or hot-dipped galvanized fasteners (not standard galvanized), aluminum or copper drip edge and flashing (not galvanized steel), and shingles or tiles rated for coastal high-wind exposure. The upfront cost premium is typically 5-10% but doubles the time-to-failure on metal components in the salt-air environment.",
+      },
+      {
+        question: "How long do roofs last in Jacksonville?",
+        answer:
+          "Asphalt shingle roofs in Jacksonville typically last 18-22 years — shorter than the national 25-30 year benchmark — due to high UV exposure and salt-air conditions near the coast. Concrete tile lasts 30-50 years. Standing-seam metal lasts 40+ years and handles hurricane wind better than any other material. If your asphalt shingle roof is 15+ years old in Jacksonville, schedule an inspection — small repairs now prevent storm-season disasters later.",
+      },
+      {
+        question: "When is the best time to replace a roof in Jacksonville?",
+        answer:
+          "October through May is the optimal install window. Humidity drops, the daily afternoon storm threat fades, and material-supply chains run faster (no hurricane-season demand spikes). If your roof is already compromised, don't wait — replacing before hurricane season starts in June is much better than scrambling after a named storm passes.",
+      },
+    ],
   },
   {
     state: "Florida",
@@ -728,12 +777,62 @@ const locations: Location[] = [
     surroundingCities: ['Huntersville', 'Concord', 'Matthews', 'Gastonia', 'Indian Trail'],
     licenseNumber: 'NC-GC-78231',
     heroImage: '/images/hero/default.jpg',
-    metaTitle: 'Charlotte Roofing Contractor - Expert Install | ProTech',
+    metaTitle: 'Roofers in Charlotte, NC · Repair & Replacement',
     metaDescription:
-      "Charlotte's trusted roofing contractor for replacement, repair, and storm damage. Licensed, insured, and backed by a lifetime warranty. Free estimates.",
+      "Licensed Charlotte roofing contractor specializing in roof replacement, hail damage repair, and storm restoration. Mecklenburg County crews. Free estimates · $0 down financing.",
     headline: "Protect Your Home with Charlotte's Most Trusted Roofers",
     intro:
-      "Charlotte's rapid growth and severe spring storms make quality roofing essential for every homeowner in the region. ProTech Roofing serves the greater Charlotte metro with roofing systems designed for North Carolina's humid subtropical climate. We handle hail damage restoration, full replacements, and commercial installations across Mecklenburg County. Our team provides free inspections, works with your insurance company, and delivers lasting results backed by a lifetime workmanship warranty.",
+      "Charlotte is one of the fastest-growing metro areas in the Southeast, and the roofing market reflects it — thousands of 1990s-2010s tract homes are now hitting the 20-25 year mark when asphalt shingles need attention, and severe spring hailstorms produce widespread insurance-claim activity across Mecklenburg County most years. ProTech Roofing serves the greater Charlotte metro with crews fluent in NC building codes, Mecklenburg County permitting, and the insurance documentation process that gets hail claims paid fast and fully. Whether your home is a Myers Park bungalow or a Ballantyne new-construction, we deliver lasting roofing built for North Carolina's humid subtropical climate.",
+    localContent: {
+      countyName: "Mecklenburg County",
+      metroArea: "Greater Charlotte",
+      climateChallenges:
+        "Charlotte's humid subtropical climate produces a roofing-stress profile distinct from coastal Florida. The biggest threat is spring and early-summer hail: Mecklenburg County records 1-3 significant hailstorms per year, and a single severe event can damage thousands of roofs across the metro. Hot humid summers accelerate granule loss on asphalt shingles. Occasional winter ice storms (1-2 per decade) add freeze-thaw stress to roofing components. The mature tree canopy across older neighborhoods like Myers Park and Dilworth means heavy fall leaf litter that clogs gutters and traps moisture against the roof edge if not cleaned annually.",
+      commonIssues: [
+        "Hail damage from spring storms (1-3 significant events per year)",
+        "Wind uplift from severe spring thunderstorm gusts",
+        "Granule loss accelerated by hot humid summers",
+        "Gutter clogs from heavy fall leaf canopy",
+        "Ice damming after rare but real winter ice storms",
+        "Improper attic ventilation in 1990s-2000s tract homes",
+        "Aged shingles past 20 years in original Charlotte neighborhoods",
+      ],
+      localCodes:
+        "All roof replacements in Charlotte require a permit from the Mecklenburg County or City of Charlotte building department and must comply with North Carolina building code requirements. NC code is less stringent than coastal Florida on wind fastening, but high-quality installs still use ring-shank nails and enhanced edge fastening for hail and wind resilience. Charlotte does not have a statewide windstorm-insurance discount like Florida's wind mitigation program, but most insurers offer 10-20% off for impact-resistant (Class 4) shingles.",
+      seasonalConsiderations:
+        "September through April is the optimal install window — outside of peak hail and storm season. After any Mecklenburg County hailstorm, schedule a no-charge inspection within 48 hours. Even if damage isn't visible from the ground, professional documentation strengthens any insurance claim and locks in your settlement before the carrier deadline (typically 12 months from event date in NC).",
+      neighborhoods: [
+        "Myers Park",
+        "Dilworth",
+        "Plaza Midwood",
+        "Ballantyne",
+        "SouthPark",
+        "NoDa",
+        "Uptown",
+        "Steele Creek",
+        "University City",
+        "Lake Norman",
+        "Huntersville",
+        "Matthews",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "How can I tell if my Charlotte roof has hail damage?",
+        answer:
+          "Hail damage on asphalt shingles shows as small circular bruises or missing granules, often concentrated on slopes facing the storm direction. From the ground it's frequently invisible — most homeowners only notice when a leak starts months later. After any Mecklenburg County hailstorm, schedule a no-charge inspection within 48 hours. If we document damage, you have a much stronger insurance claim than waiting until leaks appear.",
+      },
+      {
+        question: "Are impact-resistant shingles worth it in Charlotte?",
+        answer:
+          "Yes. Class 4 impact-resistant shingles cost 10-15% more upfront but most major NC home insurers (State Farm, Allstate, Erie, Travelers, USAA) offer 10-20% windstorm-coverage discounts that pay back the premium within 5-7 years. Given Mecklenburg County's hail frequency, the resilience alone is worth the upgrade — Class 4 shingles survive most hailstorms that would total a standard shingle roof.",
+      },
+      {
+        question: "How long does an insurance hail claim take in Charlotte?",
+        answer:
+          "From initial filing to install, a well-documented Mecklenburg County hail claim typically takes 30-60 days. The biggest delay is the adjuster site visit, which ranges from 1-3 weeks after filing depending on claim volume. We meet the adjuster on-site, provide our documentation, and handle the supplemental claim process for any items the adjuster initially misses (drip edge, ice and water shield, decking, code upgrades) — which typically adds 15-30% to the final settlement.",
+      },
+    ],
   },
   {
     state: 'North Carolina',
@@ -748,12 +847,56 @@ const locations: Location[] = [
     surroundingCities: ['Durham', 'Cary', 'Apex', 'Wake Forest', 'Garner'],
     licenseNumber: 'NC-GC-78232',
     heroImage: '/images/hero/default.jpg',
-    metaTitle: 'Raleigh, NC Roof Replacement & Repair',
+    metaTitle: 'Roofers in Raleigh, NC · Repair & Replacement',
     metaDescription:
-      "Raleigh roofing experts for replacement, storm damage, and commercial roofing. Triangle area's trusted contractor. Free inspections.",
+      "Licensed Raleigh roofing contractor specializing in roof replacement, hail damage repair, and storm restoration. Wake County crews. Free estimates · $0 down financing.",
     headline: "Protect Your Home with Raleigh's Most Trusted Roofers",
     intro:
-      "The Research Triangle's booming housing market means thousands of new and aging roofs need expert attention every year. ProTech Roofing serves Wake County and surrounding areas with roofing systems built for North Carolina's hot summers, hurricane remnants, and occasional ice storms. From downtown Raleigh bungalows to sprawling Cary developments, our crews deliver quality installation with premium materials and transparent pricing.",
+      "Raleigh is at the center of one of the fastest-growing metro areas in the country — the Research Triangle has added more than 100,000 homes in the last decade alone, and a wave of 1990s-2000s tract construction is now hitting the 20-25 year mark where asphalt shingles need attention. Spring hail events and the trailing edge of hurricane season add to the workload. ProTech Roofing serves Wake County and the surrounding Triangle with crews fluent in NC building codes, Wake County and Durham permitting, and the insurance documentation process that gets hail claims paid fast and fully.",
+    localContent: {
+      countyName: "Wake County",
+      metroArea: "Research Triangle",
+      climateChallenges:
+        "Raleigh's roofing market faces a layered set of climate stresses. Spring and early-summer hailstorms are the most frequent damage source — Wake County records 1-3 significant hail events per year. Hurricane season (September-October) brings occasional remnant storms from systems that made landfall on the Carolina coast and tracked inland. Hot humid summers accelerate asphalt shingle granule loss. Mature oak and pine canopy in older neighborhoods (Five Points, Cameron Village, North Hills) drops heavy fall leaf litter that clogs gutters if not cleaned annually. Occasional winter ice storms (1-2 per decade) test flashing and decking under freeze-thaw cycles.",
+      commonIssues: [
+        "Hail damage from spring storms (1-3 significant events per year)",
+        "Hurricane remnant wind events (September-October)",
+        "Granule loss accelerated by hot humid summers",
+        "Heavy gutter debris from oak and pine canopy",
+        "Aged asphalt shingles in 1990s-2000s Triangle tract homes",
+        "Ice damming after rare but real winter ice storms",
+      ],
+      localCodes:
+        "All roof replacements in Raleigh require a permit from the Wake County or City of Raleigh building department and must comply with North Carolina building code. NC code is less stringent than coastal Florida on wind fastening, but high-quality installs still use ring-shank nails and enhanced edge fastening for hail and wind resilience. Most major NC home insurers offer 10-20% off windstorm coverage for impact-resistant (Class 4) shingles.",
+      seasonalConsiderations:
+        "September through April is the optimal install window — outside of peak hail and storm season. After any Wake County or Durham hailstorm, schedule a no-charge inspection within 48 hours. NC insurance carriers typically allow 12 months from the event date to file a claim, so documentation now protects your option to file later if leaks emerge.",
+      neighborhoods: [
+        "North Hills",
+        "Cameron Village",
+        "Five Points",
+        "Brier Creek",
+        "North Raleigh",
+        "Downtown Raleigh",
+        "Mordecai",
+        "Hayes Barton",
+        "Cary",
+        "Apex",
+        "Wake Forest",
+        "Holly Springs",
+      ],
+    },
+    localFaqs: [
+      {
+        question: "How can I tell if my Raleigh roof has hail damage?",
+        answer:
+          "Hail damage on asphalt shingles shows as small circular bruises or missing granules, often concentrated on slopes facing the storm direction. From the ground it's frequently invisible — most homeowners only notice when a leak starts months later. After any Wake County hailstorm, schedule a no-charge inspection within 48 hours. Documented damage is much easier to convert into an insurance claim than damage discovered after leaks appear.",
+      },
+      {
+        question: "Are impact-resistant shingles worth it in Raleigh?",
+        answer:
+          "Yes. Class 4 impact-resistant shingles cost 10-15% more upfront but most major NC insurers (State Farm, Allstate, Erie, Travelers, USAA) offer 10-20% windstorm-coverage discounts that pay back the premium within 5-7 years. Given the Triangle's hail frequency, the resilience alone is worth the upgrade — Class 4 shingles survive most hailstorms that would total a standard shingle roof.",
+      },
+    ],
   },
   {
     state: 'North Carolina',
