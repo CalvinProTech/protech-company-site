@@ -1,3 +1,5 @@
+import { LICENSED_STATES } from './constants';
+
 export interface Project {
   id: number;
   slug: string;
@@ -144,20 +146,35 @@ const projects: Project[] = [
   },
 ];
 
+// Gallery is restricted to projects in states where ProTech holds its own
+// contractor license. Out-of-scope projects (currently 4 Florida customer
+// jobs) stay in the data file but are filtered out of every consumer —
+// gallery grid, /gallery/[project] detail pages, homepage preview,
+// sitemap — to keep the visible footprint aligned with LICENSED_STATES.
+const LICENSED_STATE_ABBRS = new Set<string>(
+  LICENSED_STATES.map((s) => s.abbr)
+);
+
+const publishedProjects = projects.filter((p) =>
+  LICENSED_STATE_ABBRS.has(p.state)
+);
+
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((project) => project.slug === slug);
+  return publishedProjects.find((project) => project.slug === slug);
 }
 
 export function getProjectsByCity(city: string): Project[] {
-  return projects.filter(
+  return publishedProjects.filter(
     (project) => project.city.toLowerCase() === city.toLowerCase()
   );
 }
 
 export function getProjectsByService(serviceType: string): Project[] {
-  return projects.filter((project) => project.serviceType === serviceType);
+  return publishedProjects.filter(
+    (project) => project.serviceType === serviceType
+  );
 }
 
 export function getAllProjects(): Project[] {
-  return projects;
+  return publishedProjects;
 }
