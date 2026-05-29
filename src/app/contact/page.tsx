@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 
 import { createPageMetadata } from '@/lib/metadata';
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, LICENSED_STATES } from '@/lib/constants';
 import { formatPhoneNumber } from '@/lib/utils';
 import { getFeaturedTestimonials } from '@/lib/testimonials';
-import { getAllStates, getLocationsByState } from '@/lib/locations';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -18,7 +17,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Contact Us',
     description:
-      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. We respond within 24 hours.',
+      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving TX, KY, MO, OH, PA, MD & WV. We respond within 24 hours.',
     path: '/contact',
   });
 }
@@ -34,12 +33,6 @@ const officeHours = [
   { days: 'Sunday', hours: 'Closed' },
 ];
 
-const serviceStates = getAllStates().map(({ state, stateSlug }) => ({
-  name: state,
-  cities: getLocationsByState(stateSlug)
-    .map((loc) => loc.city)
-    .join(', '),
-}));
 
 export default function ContactPage() {
   const testimonials = getFeaturedTestimonials();
@@ -155,22 +148,22 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Service Areas */}
+              {/* Licensed States */}
               <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-6">
                 <h3 className="text-primary-900 flex items-center gap-2 text-lg font-semibold">
                   <MapPin className="text-primary-700 h-5 w-5" />
-                  Service Areas
+                  Licensed States
                 </h3>
-                <div className="mt-4 space-y-3">
-                  {serviceStates.map((state) => (
-                    <div key={state.name}>
-                      <p className="text-primary-900 text-sm font-medium">
-                        {state.name}
-                      </p>
-                      <p className="text-sm text-neutral-600">{state.cities}</p>
-                    </div>
+                <ul className="mt-4 grid grid-cols-2 gap-2">
+                  {LICENSED_STATES.map((state) => (
+                    <li
+                      key={state.abbr}
+                      className="text-primary-900 text-sm font-medium"
+                    >
+                      {state.name}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           </div>

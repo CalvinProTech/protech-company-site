@@ -14,20 +14,17 @@ export const SERVICE_OPTIONS = [
   'other',
 ] as const;
 
-// IS-9 + DC: jurisdictions ProTech is actually licensed/operating in.
-// Out-of-scope states (GA/KY/OH/TN/TX/WV) were removed 2026-04-29
-// from sitemap + routes; this list completes the cleanup by gating
-// form acceptance so out-of-scope leads no longer slip through.
+// All 50 US states + DC. The visible licensed footprint (TX/KY/MO/OH/PA/MD/WV)
+// is enforced separately via LICENSED_STATES in constants.ts. The form
+// dropdown accepts any US state so finance-partner submissions match the
+// licensed-entity record on file (the prior 9-state allowlist caused
+// out-of-state leads to be silently rejected at validation).
 export const STATE_OPTIONS = [
-  'CT',
-  'DC',
-  'DE',
-  'FL',
-  'MD',
-  'NC',
-  'PA',
-  'SC',
-  'VA',
+  'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
+  'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+  'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+  'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+  'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY',
 ] as const;
 
 // ---------------------------------------------------------------------------

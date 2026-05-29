@@ -50,7 +50,7 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               ProTech Roofing provides roof replacement, insurance-claim help,
-              and in-house financing across nine states + D.C. Every
+              and in-house financing across seven states. Every
               project is backed by our lifetime workmanship warranty, premium
               materials from manufacturers like GAF, Owens Corning, and
               CertainTeed, and a team of factory-trained installers who treat

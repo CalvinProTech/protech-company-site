@@ -58,23 +58,18 @@ export default function LocalBusinessSchema({
         bestRating: '5',
         worstRating: '1',
       },
-      // 9 actual service areas: 8 states + DC. Removed GA/TX/OH/KY/TN/WV
-      // — ProTech does not service those states, and listing them as
-      // areaServed inflated geographic claims and confused local SEO.
+      // 7 states where ProTech holds its own contractor license.
+      // Finance-partner approvals require the schema/visible footprint to
+      // match the licensed-entity record on file — IS-partnership states
+      // (FL, NC, SC, VA, DE, CT, DC) are intentionally excluded.
       areaServed: [
-        { '@type': 'State', name: 'Florida', abbreviation: 'FL' },
-        { '@type': 'State', name: 'South Carolina', abbreviation: 'SC' },
-        { '@type': 'State', name: 'North Carolina', abbreviation: 'NC' },
-        { '@type': 'State', name: 'Virginia', abbreviation: 'VA' },
-        { '@type': 'State', name: 'Maryland', abbreviation: 'MD' },
+        { '@type': 'State', name: 'Texas', abbreviation: 'TX' },
+        { '@type': 'State', name: 'Kentucky', abbreviation: 'KY' },
+        { '@type': 'State', name: 'Missouri', abbreviation: 'MO' },
+        { '@type': 'State', name: 'Ohio', abbreviation: 'OH' },
         { '@type': 'State', name: 'Pennsylvania', abbreviation: 'PA' },
-        { '@type': 'State', name: 'Connecticut', abbreviation: 'CT' },
-        { '@type': 'State', name: 'Delaware', abbreviation: 'DE' },
-        {
-          '@type': 'AdministrativeArea',
-          name: 'Washington, D.C.',
-          abbreviation: 'DC',
-        },
+        { '@type': 'State', name: 'Maryland', abbreviation: 'MD' },
+        { '@type': 'State', name: 'West Virginia', abbreviation: 'WV' },
       ],
       sameAs: [
         'https://www.facebook.com/protechroofing',

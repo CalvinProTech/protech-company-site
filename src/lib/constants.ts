@@ -1,8 +1,23 @@
+// States where ProTech holds its own contractor license.
+// Used as the canonical service-area list across the site and schema.
+// (Other states are serviced via Installation Services partnership and
+// are NOT listed publicly — finance partner approvals require the
+// website footprint to match the licensed-entity record.)
+export const LICENSED_STATES = [
+  { abbr: 'TX', name: 'Texas' },
+  { abbr: 'KY', name: 'Kentucky' },
+  { abbr: 'MO', name: 'Missouri' },
+  { abbr: 'OH', name: 'Ohio' },
+  { abbr: 'PA', name: 'Pennsylvania' },
+  { abbr: 'MD', name: 'Maryland' },
+  { abbr: 'WV', name: 'West Virginia' },
+] as const;
+
 export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://www.protechroof.net',
   description:
-    'Expert roof replacement, insurance-claim help, and in-house financing across nine states — FL, SC, NC, VA, MD, DC, DE, PA, CT. Tampa-headquartered, GAF Master Elite certified.',
+    'Expert roof replacement, insurance-claim help, and in-house financing across seven states — TX, KY, MO, OH, PA, MD, WV. Tampa-headquartered, GAF Master Elite certified.',
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
@@ -29,9 +44,9 @@ export const SITE_CONFIG = {
   // Approximate based on funded-deal velocity (~15/qtr) over operating life.
   // Adjust upward as the actual count grows.
   roofsInstalled: '100+',
-  statesLicensed: '9',
+  statesLicensed: '7',
   cityCount: '25+',
-  serviceAreaCount: '9 states + DC',
+  serviceAreaCount: '7 states',
 } as const;
 
 export const NAV_ITEMS = [
@@ -39,7 +54,6 @@ export const NAV_ITEMS = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Financing', href: '/financing' },
-  { label: 'Locations', href: '/locations' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },
 ] as const;

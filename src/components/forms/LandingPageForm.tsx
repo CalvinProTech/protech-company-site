@@ -7,29 +7,26 @@ import { getUtmParams } from '@/lib/utm';
 import AddressAutocomplete, { type ParsedAddress } from './AddressAutocomplete';
 import SMSConsentCheckbox from './SMSConsentCheckbox';
 
-const SERVICE_STATES = [
-  'FL',
-  'SC',
-  'NC',
-  'VA',
-  'MD',
-  'DC',
-  'DE',
-  'PA',
-  'CT',
-];
-
+// All US states + DC. Form accepts submissions from any US state so
+// out-of-area leads aren't silently rejected at validation (finance-partner
+// match requirement). Visible licensed footprint is enforced via copy
+// elsewhere, not by form gating.
 const SERVICE_AREAS: Record<string, string> = {
-  FL: 'Florida',
-  SC: 'South Carolina',
-  NC: 'North Carolina',
-  VA: 'Virginia',
-  MD: 'Maryland',
-  DC: 'Washington, D.C.',
-  DE: 'Delaware',
-  PA: 'Pennsylvania',
-  CT: 'Connecticut',
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
+  CO: 'Colorado', CT: 'Connecticut', DC: 'Washington, D.C.', DE: 'Delaware',
+  FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois',
+  IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana',
+  ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan',
+  MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana',
+  NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey',
+  NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota',
+  OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania',
+  RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee',
+  TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington',
+  WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming',
 };
+
+const SERVICE_STATES = Object.keys(SERVICE_AREAS);
 
 const SERVICE_OPTIONS = [
   { value: 'roof-replacement', label: 'Roof Replacement', icon: '🏠' },

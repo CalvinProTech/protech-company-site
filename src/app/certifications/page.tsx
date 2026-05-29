@@ -7,7 +7,7 @@ import {
   CheckCircle,
   MapPin,
 } from 'lucide-react';
-import { getAllLocations } from '@/lib/locations';
+import { LICENSED_STATES } from '@/lib/constants';
 import { createPageMetadata } from '@/lib/metadata';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'GAF Master Elite Certified Roofing Contractor',
     description:
-      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed across nine states + D.C. with industry-leading warranties.',
+      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed across seven states with industry-leading warranties.',
     path: '/certifications',
   });
 }
@@ -134,28 +134,7 @@ const benefitCards = [
   },
 ];
 
-function getStateLicenses() {
-  const locations = getAllLocations();
-  const stateMap = new Map<
-    string,
-    { state: string; stateAbbr: string; licenseNumber: string }
-  >();
-
-  for (const loc of locations) {
-    if (!stateMap.has(loc.stateAbbr)) {
-      stateMap.set(loc.stateAbbr, {
-        state: loc.state,
-        stateAbbr: loc.stateAbbr,
-        licenseNumber: loc.licenseNumber,
-      });
-    }
-  }
-
-  return Array.from(stateMap.values());
-}
-
 export default function CertificationsPage() {
-  const stateLicenses = getStateLicenses();
 
   return (
     <>
@@ -165,7 +144,7 @@ export default function CertificationsPage() {
       {/* Hero */}
       <Hero
         heading="GAF Master Elite Certified Roofing Contractor"
-        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed across nine states + D.C. and backed by industry-leading certifications."
+        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed across seven states and backed by industry-leading certifications."
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{ text: 'Call 1-866-308-2640', href: 'tel:18663082640' }}
         showTrustBadges
@@ -210,12 +189,12 @@ export default function CertificationsPage() {
         </section>
       ))}
 
-      {/* Licensed across nine states + DC */}
+      {/* Licensed across 7 states */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
-              Licensed &amp; Insured Across Nine States + D.C.
+              Licensed &amp; Insured Across Seven States
             </h2>
             <p className="mt-4 text-lg text-neutral-600">
               Every state license is current and verifiable through the
@@ -223,9 +202,9 @@ export default function CertificationsPage() {
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {stateLicenses.map((entry) => (
+            {LICENSED_STATES.map((entry) => (
               <div
-                key={entry.stateAbbr}
+                key={entry.abbr}
                 className="flex items-center gap-4 rounded-lg border border-neutral-200 bg-neutral-50 p-4"
               >
                 <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
@@ -233,11 +212,9 @@ export default function CertificationsPage() {
                 </div>
                 <div>
                   <p className="text-primary-900 font-semibold">
-                    {entry.state}
+                    {entry.name}
                   </p>
-                  <p className="text-sm text-neutral-600">
-                    {entry.licenseNumber}
-                  </p>
+                  <p className="text-sm text-neutral-600">{entry.abbr}</p>
                 </div>
               </div>
             ))}

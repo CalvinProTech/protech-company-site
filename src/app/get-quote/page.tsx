@@ -9,7 +9,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Get a Free Roofing Quote',
     description:
-      'Request your free roofing quote from ProTech Roofing. Licensed across nine states + D.C. Roof replacement, storm damage, and insurance-claim assistance. $0 down financing. Call (866) 308-2640.',
+      'Request your free roofing quote from ProTech Roofing. Licensed across seven states. Roof replacement, storm damage, and insurance-claim assistance. $0 down financing. Call (866) 308-2640.',
     path: '/get-quote',
   });
 }
@@ -136,7 +136,7 @@ export default function GetQuotePage() {
                 <ul className="mt-3 space-y-2">
                   {[
                     'GAF Master Elite Certified (top 2%)',
-                    'Licensed & insured across 9 states + D.C.',
+                    'Licensed & insured across 7 states',
                     'Tampa-headquartered, in-house crews',
                     'GAF Golden Pledge 50-year warranty',
                     '$0 down financing options',

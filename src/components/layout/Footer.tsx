@@ -1,83 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
-import { SITE_CONFIG, SERVICES } from '@/lib/constants';
-
-const LOCATIONS = [
-  {
-    state: 'FL',
-    stateSlug: 'florida',
-    cities: [
-      { name: 'Tampa', slug: 'tampa' },
-      { name: 'Orlando', slug: 'orlando' },
-      { name: 'Miami', slug: 'miami' },
-      { name: 'Jacksonville', slug: 'jacksonville' },
-      { name: 'Fort Lauderdale', slug: 'fort-lauderdale' },
-    ],
-  },
-  {
-    state: 'NC',
-    stateSlug: 'north-carolina',
-    cities: [
-      { name: 'Charlotte', slug: 'charlotte' },
-      { name: 'Raleigh', slug: 'raleigh' },
-      { name: 'Greensboro', slug: 'greensboro' },
-    ],
-  },
-  {
-    state: 'SC',
-    stateSlug: 'south-carolina',
-    cities: [
-      { name: 'Charleston', slug: 'charleston' },
-      { name: 'Columbia', slug: 'columbia' },
-      { name: 'Greenville', slug: 'greenville' },
-    ],
-  },
-  {
-    state: 'VA',
-    stateSlug: 'virginia',
-    cities: [
-      { name: 'Virginia Beach', slug: 'virginia-beach' },
-      { name: 'Richmond', slug: 'richmond' },
-      { name: 'Norfolk', slug: 'norfolk' },
-    ],
-  },
-  {
-    state: 'MD',
-    stateSlug: 'maryland',
-    cities: [
-      { name: 'Baltimore', slug: 'baltimore' },
-      { name: 'Frederick', slug: 'frederick' },
-      { name: 'Annapolis', slug: 'annapolis' },
-    ],
-  },
-  {
-    state: 'PA',
-    stateSlug: 'pennsylvania',
-    cities: [
-      { name: 'Philadelphia', slug: 'philadelphia' },
-      { name: 'Pittsburgh', slug: 'pittsburgh' },
-      { name: 'Allentown', slug: 'allentown' },
-    ],
-  },
-  {
-    state: 'CT',
-    stateSlug: 'connecticut',
-    cities: [
-      { name: 'Hartford', slug: 'hartford' },
-      { name: 'New Haven', slug: 'new-haven' },
-      { name: 'Stamford', slug: 'stamford' },
-    ],
-  },
-  {
-    state: 'DE',
-    stateSlug: 'delaware',
-    cities: [
-      { name: 'Wilmington', slug: 'wilmington' },
-      { name: 'Dover', slug: 'dover' },
-    ],
-  },
-] as const;
+import { SITE_CONFIG, SERVICES, LICENSED_STATES } from '@/lib/constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -99,7 +23,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-3 text-sm text-neutral-300">
-              Tampa-headquartered. Protecting homes across the Eastern Seaboard.
+              Tampa-headquartered. Licensed and protecting homes across {SITE_CONFIG.statesLicensed} states.
             </p>
             <p className="mt-4 text-sm text-neutral-300">
               GAF Master Elite Contractor
@@ -139,32 +63,21 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 — Locations */}
+          {/* Column 3 — Licensed States */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">
-              Locations
+              Licensed States
             </h3>
-            <div className="mt-4 space-y-4">
-              {LOCATIONS.map((group) => (
-                <div key={group.state}>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                    {group.state}
-                  </h4>
-                  <ul className="mt-1 space-y-1">
-                    {group.cities.map((city) => (
-                      <li key={city.slug}>
-                        <Link
-                          href={`/locations/${group.stateSlug}/${city.slug}`}
-                          className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
-                        >
-                          {city.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <ul className="mt-4 space-y-2">
+              {LICENSED_STATES.map((state) => (
+                <li
+                  key={state.abbr}
+                  className="text-sm text-neutral-300"
+                >
+                  {state.name}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Column 4 — Contact */}

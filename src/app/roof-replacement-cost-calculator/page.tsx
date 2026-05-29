@@ -26,7 +26,7 @@ import InstantPriceEstimate from '@/components/forms/InstantPriceEstimate';
 export const metadata: Metadata = createPageMetadata({
   title: 'Roof Replacement Cost Calculator — Free Instant Estimate',
   description:
-    'Free roof replacement cost calculator. Get a satellite-powered estimate in seconds plus a full 2026 cost guide covering shingle, metal, and tile pricing in Tampa Bay and across nine states.',
+    'Free roof replacement cost calculator. Get a satellite-powered estimate in seconds plus a full 2026 cost guide covering shingle, metal, and tile pricing across seven states.',
   path: '/roof-replacement-cost-calculator',
   absolute: true,
 });

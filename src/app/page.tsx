@@ -13,8 +13,6 @@ import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { ProjectGalleryPreview } from '@/components/sections/ProjectGalleryPreview';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
-import { PrimaryMarkets } from '@/components/sections/PrimaryMarkets';
-import { LocationMap } from '@/components/sections/LocationMap';
 import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABanner } from '@/components/sections/CTABanner';
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema';
@@ -80,12 +78,6 @@ export default function HomePage() {
 
       {/* Testimonial Carousel */}
       <TestimonialCarousel testimonials={featuredTestimonials} />
-
-      {/* Primary Markets */}
-      <PrimaryMarkets />
-
-      {/* Location Map */}
-      <LocationMap />
 
       {/* Blog Preview */}
       <BlogPreview posts={recentPosts} />

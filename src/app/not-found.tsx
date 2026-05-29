@@ -39,11 +39,11 @@ export default function NotFound() {
             Our Services
           </Link>
           <Link
-            href="/locations"
+            href="/free-estimate"
             className="flex items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-6 py-4 font-medium text-primary-900 shadow-sm transition-colors hover:bg-neutral-50"
           >
             <MapPin className="h-5 w-5 text-primary-600" />
-            Service Locations
+            Get a Free Estimate
           </Link>
           <Link
             href="/contact"
