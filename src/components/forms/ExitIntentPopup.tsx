@@ -115,7 +115,10 @@ export default function ExitIntentPopup() {
       }
 
       setSubmitStatus('success');
-      trackFormSubmit('callback', { name: data.name, source: 'exit-intent' });
+      // Suppress Google Ads conv pixel when server flagged the submission as spam.
+      if (!result.blocked) {
+        trackFormSubmit('callback', { name: data.name, source: 'exit-intent' });
+      }
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');

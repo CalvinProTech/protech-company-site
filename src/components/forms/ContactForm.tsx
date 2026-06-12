@@ -75,7 +75,10 @@ export default function ContactForm() {
       }
 
       setSubmitStatus('success');
-      trackFormSubmit('contact', { name: data.firstName });
+      // Suppress Google Ads conv pixel when server flagged the submission as spam.
+      if (!result.blocked) {
+        trackFormSubmit('contact', { name: data.firstName });
+      }
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');

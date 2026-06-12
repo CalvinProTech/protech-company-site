@@ -174,14 +174,19 @@ export default function LandingPageForm({
         throw new Error(`Submission failed with status ${res.status}`);
       }
 
+      const result = await res.json().catch(() => ({}));
+
       setSubmitted(true);
-      trackFormSubmit('callback', {
-        name,
-        source: `lp-${service || 'general'}`,
-        zip,
-        service,
-        timeframe,
-      });
+      // Suppress Google Ads conv pixel when server flagged the submission as spam.
+      if (!result?.blocked) {
+        trackFormSubmit('callback', {
+          name,
+          source: `lp-${service || 'general'}`,
+          zip,
+          service,
+          timeframe,
+        });
+      }
     } catch {
       setError('Something went wrong. Please try again.');
     } finally {

@@ -41,7 +41,9 @@ export async function POST(request: Request) {
       })
     ) {
       console.log('[estimate] Spam blocked:', body.email);
-      return NextResponse.json({ success: true, emailSent: false }, { status: 200 });
+      // Return success-shaped 200 so bots don't retry, but include `blocked: true`
+      // so the client can suppress the Google Ads conversion pixel.
+      return NextResponse.json({ success: true, emailSent: false, blocked: true }, { status: 200 });
     }
 
     // ------------------------------------------------------------------

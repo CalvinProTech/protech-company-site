@@ -110,7 +110,10 @@ export default function EstimateForm() {
       }
 
       setSubmitStatus('success');
-      trackFormSubmit('estimate', { service: data.serviceNeeded });
+      // Suppress Google Ads conv pixel when server flagged the submission as spam.
+      if (!result.blocked) {
+        trackFormSubmit('estimate', { service: data.serviceNeeded });
+      }
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');
