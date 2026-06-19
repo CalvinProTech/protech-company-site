@@ -57,7 +57,6 @@ export default function robots(): MetadataRoute.Robots {
           '/q/',
           '/j/',
           '/s/',
-          '/locations/',
         ],
       },
       // AI search crawlers — explicit allow (some default-restrict otherwise)

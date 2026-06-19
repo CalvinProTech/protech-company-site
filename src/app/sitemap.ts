@@ -2,10 +2,17 @@ import type { MetadataRoute } from 'next';
 import { getAllServices } from '@/lib/services';
 import { getAllProjects } from '@/lib/projects';
 import { getAllPosts } from '@/lib/blog';
+import { getAllStates, getAllLocations } from '@/lib/locations';
 
-// Locations tree (/locations/**) is intentionally excluded — see
-// /src/app/locations/layout.tsx for the corresponding noindex cascade
-// and /src/app/robots.ts for the matching crawler disallow.
+// Own-license service-area tree (/locations/**) — state hubs, state-service
+// pages, and one page per city across TX/KY/MO/OH/PA/MD/WV.
+const LOCATION_SERVICES = [
+  'roof-replacement',
+  'roof-repair',
+  'storm-damage',
+  'gutters-siding',
+];
+
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || 'https://www.protechroof.net';
 
@@ -112,10 +119,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const states = getAllStates();
+
+  const stateHubPages: MetadataRoute.Sitemap = states.map((s) => ({
+    url: `${BASE_URL}/locations/${s.stateSlug}`,
+    lastModified: LAST_BUILD,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  const stateServicePages: MetadataRoute.Sitemap = states.flatMap((s) =>
+    LOCATION_SERVICES.map((svc) => ({
+      url: `${BASE_URL}/locations/${s.stateSlug}/${svc}`,
+      lastModified: LAST_BUILD,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
+  );
+
+  const cityPages: MetadataRoute.Sitemap = getAllLocations().map((loc) => ({
+    url: `${BASE_URL}/locations/${loc.stateSlug}/${loc.citySlug}`,
+    lastModified: LAST_BUILD,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticPages,
     ...servicePages,
     ...projectPages,
     ...blogPages,
+    ...stateHubPages,
+    ...stateServicePages,
+    ...cityPages,
   ];
 }

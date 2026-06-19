@@ -70,11 +70,13 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-2">
               {LICENSED_STATES.map((state) => (
-                <li
-                  key={state.abbr}
-                  className="text-sm text-neutral-300"
-                >
-                  {state.name}
+                <li key={state.abbr}>
+                  <Link
+                    href={`/locations/${state.slug}`}
+                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                  >
+                    {state.name}
+                  </Link>
                 </li>
               ))}
             </ul>

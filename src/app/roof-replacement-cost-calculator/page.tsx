@@ -26,7 +26,7 @@ import InstantPriceEstimate from '@/components/forms/InstantPriceEstimate';
 export const metadata: Metadata = createPageMetadata({
   title: 'Roof Replacement Cost Calculator — Free Instant Estimate',
   description:
-    'Free roof replacement cost calculator. Get a satellite-powered estimate in seconds plus a full 2026 cost guide covering shingle, metal, and tile pricing across seven states.',
+    'Free roof replacement cost calculator. Get a satellite-powered estimate in seconds plus a full 2026 cost guide covering shingle, metal, and tile pricing across nine states.',
   path: '/roof-replacement-cost-calculator',
   absolute: true,
 });
@@ -101,7 +101,7 @@ const materialPricing = [
     perSqFt: '$3.50 – $7.00',
     typicalHome: '$9,000 – $18,000',
     lifespan: '15 – 25 years',
-    notes: 'Most common in Tampa Bay and across all nine ProTech states. GAF Timberline HDZ is the architectural-grade default.',
+    notes: 'The architectural-grade default across all ProTech service states. GAF Timberline HDZ is our most-installed shingle.',
   },
   {
     material: 'Concrete Tile',
@@ -452,7 +452,7 @@ export default function RoofReplacementCostCalculatorPage() {
       {/* FAQ */}
       <FAQSection
         heading="Roof Replacement Cost — Frequently Asked Questions"
-        subtitle="The questions Tampa Bay and nine-state homeowners ask most often"
+        subtitle="The questions homeowners across our nine-state service area ask most often"
         faqs={costFaqs}
       />
 

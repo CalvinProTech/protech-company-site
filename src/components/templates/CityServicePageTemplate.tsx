@@ -70,7 +70,7 @@ export default function CityServicePageTemplate({
       {/* Hero */}
       <Hero
         heading={cityServiceData.h1}
-        subtitle={`Licensed ${service.name.toLowerCase()} contractor serving ${location.city}, ${location.stateAbbr} and surrounding areas. License #${location.licenseNumber}.`}
+        subtitle={`Licensed ${service.name.toLowerCase()} contractor serving ${location.city}, ${location.stateAbbr} and surrounding areas.${location.licenseNumber ? ` License #${location.licenseNumber}.` : ''}`}
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
           text: `Call ${formatPhoneNumber(phoneDigits)}`,

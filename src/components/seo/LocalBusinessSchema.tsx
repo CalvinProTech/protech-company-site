@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, LICENSED_STATES } from '@/lib/constants';
 import JsonLd from './JsonLd';
 
 interface LocationData {
@@ -58,19 +58,15 @@ export default function LocalBusinessSchema({
         bestRating: '5',
         worstRating: '1',
       },
-      // 7 states where ProTech holds its own contractor license.
-      // Finance-partner approvals require the schema/visible footprint to
-      // match the licensed-entity record on file — IS-partnership states
-      // (FL, NC, SC, VA, DE, CT, DC) are intentionally excluded.
-      areaServed: [
-        { '@type': 'State', name: 'Texas', abbreviation: 'TX' },
-        { '@type': 'State', name: 'Kentucky', abbreviation: 'KY' },
-        { '@type': 'State', name: 'Missouri', abbreviation: 'MO' },
-        { '@type': 'State', name: 'Ohio', abbreviation: 'OH' },
-        { '@type': 'State', name: 'Pennsylvania', abbreviation: 'PA' },
-        { '@type': 'State', name: 'Maryland', abbreviation: 'MD' },
-        { '@type': 'State', name: 'West Virginia', abbreviation: 'WV' },
-      ],
+      // States where ProTech holds its own contractor license (single source:
+      // LICENSED_STATES). Finance-partner approvals require the schema footprint
+      // to match the licensed-entity record — non-licensed IS-partnership states
+      // (FL, NC, VA, DE, CT, DC) are intentionally excluded.
+      areaServed: LICENSED_STATES.map((s) => ({
+        '@type': 'State',
+        name: s.name,
+        abbreviation: s.abbr,
+      })),
       sameAs: [
         'https://www.facebook.com/protechroofing',
         'https://www.instagram.com/protechroofing',

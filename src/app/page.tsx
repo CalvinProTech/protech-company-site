@@ -12,6 +12,7 @@ import { ServiceCards } from '@/components/sections/ServiceCards';
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { ProjectGalleryPreview } from '@/components/sections/ProjectGalleryPreview';
+import { PrimaryMarkets } from '@/components/sections/PrimaryMarkets';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
 import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CTABanner } from '@/components/sections/CTABanner';
@@ -25,7 +26,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Roof Replacement & Repair — Free Estimate | ProTech Roofing',
     description:
-      'Licensed roofing contractor serving FL, NC, SC, VA, MD, DE, PA, CT & D.C. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
+      'Licensed roofing contractor serving TX, KY, MO, OH, IN, PA, MD, WV & SC. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
     path: '/',
     absolute: true,
   });
@@ -72,6 +73,9 @@ export default function HomePage() {
 
       {/* Process Steps */}
       <ProcessSteps />
+
+      {/* Primary Service Markets */}
+      <PrimaryMarkets />
 
       {/* Project Gallery Preview */}
       <ProjectGalleryPreview projects={allProjects} />

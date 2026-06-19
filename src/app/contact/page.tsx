@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Contact Us',
     description:
-      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving TX, KY, MO, OH, PA, MD & WV. We respond within 24 hours.',
+      'Contact ProTech Roofing by phone, email, or online form. Licensed roofing contractor serving TX, KY, MO, OH, IN, PA, MD, WV & SC. We respond within 24 hours.',
     path: '/contact',
   });
 }

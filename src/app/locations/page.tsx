@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Service Areas & Locations',
     description:
-      'ProTech Roofing serves homeowners and businesses across FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH. Find your local roofing experts and schedule a free inspection today.',
+      'ProTech Roofing serves homeowners across TX, KY, MO, OH, IN, PA, MD, WV & SC — the nine states where we hold our own contractor license. Find your local roofing experts and schedule a free inspection.',
     path: '/locations',
   });
 }
@@ -33,7 +33,7 @@ export default function LocationsPage() {
 
       <Hero
         heading="Find Your Local ProTech Roofers"
-        subtitle="Tampa-headquartered roofing professionals serving communities across nine states + D.C. Select your area to get started."
+        subtitle="Tampa-headquartered roofing professionals serving communities across nine states. Select your area to get started."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
           text: 'Call Now',

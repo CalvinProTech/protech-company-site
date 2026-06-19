@@ -4,20 +4,22 @@
 // are NOT listed publicly — finance partner approvals require the
 // website footprint to match the licensed-entity record.)
 export const LICENSED_STATES = [
-  { abbr: 'TX', name: 'Texas' },
-  { abbr: 'KY', name: 'Kentucky' },
-  { abbr: 'MO', name: 'Missouri' },
-  { abbr: 'OH', name: 'Ohio' },
-  { abbr: 'PA', name: 'Pennsylvania' },
-  { abbr: 'MD', name: 'Maryland' },
-  { abbr: 'WV', name: 'West Virginia' },
+  { abbr: 'TX', name: 'Texas', slug: 'texas' },
+  { abbr: 'KY', name: 'Kentucky', slug: 'kentucky' },
+  { abbr: 'MO', name: 'Missouri', slug: 'missouri' },
+  { abbr: 'OH', name: 'Ohio', slug: 'ohio' },
+  { abbr: 'PA', name: 'Pennsylvania', slug: 'pennsylvania' },
+  { abbr: 'MD', name: 'Maryland', slug: 'maryland' },
+  { abbr: 'WV', name: 'West Virginia', slug: 'west-virginia' },
+  { abbr: 'SC', name: 'South Carolina', slug: 'south-carolina' },
+  { abbr: 'IN', name: 'Indiana', slug: 'indiana' },
 ] as const;
 
 export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://www.protechroof.net',
   description:
-    'Expert roof replacement, insurance-claim help, and in-house financing across seven states — TX, KY, MO, OH, PA, MD, WV. Tampa-headquartered, GAF Master Elite certified.',
+    'Expert roof replacement, insurance-claim help, and in-house financing across nine states — TX, KY, MO, OH, IN, PA, MD, WV, SC. Tampa-headquartered, GAF Master Elite certified.',
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
@@ -44,15 +46,16 @@ export const SITE_CONFIG = {
   // Approximate based on funded-deal velocity (~15/qtr) over operating life.
   // Adjust upward as the actual count grows.
   roofsInstalled: '100+',
-  statesLicensed: '7',
-  cityCount: '25+',
-  serviceAreaCount: '7 states',
+  statesLicensed: '9',
+  cityCount: '350+',
+  serviceAreaCount: '9 states',
 } as const;
 
 export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
+  { label: 'Locations', href: '/locations' },
   { label: 'Financing', href: '/financing' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },

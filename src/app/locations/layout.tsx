@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 
-// Hide all /locations/* routes (including pilot hyper-local pages
-// like /locations/tampa-fl) from indexing and crawling. Files are
-// retained for future use — visible footprint is finance-partner-gated.
+// /locations/* is the own-license service-area tree (TX/KY/MO/OH/PA/MD/WV) and
+// is fully indexable. Per-page titles/canonicals come from each route's
+// generateMetadata; this layout just allows crawling/indexing of the subtree.
 export const metadata: Metadata = {
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: true,
+    follow: true,
   },
 };
 

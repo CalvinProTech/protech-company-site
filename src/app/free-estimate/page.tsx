@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Free Roof Estimate — No Obligation',
     description:
-      'Get a free satellite-powered roof estimate in minutes. No obligation, no pressure. Serving TX, KY, MO, OH, PA, MD & WV. $0 down financing available. Call (866) 308-2640 or fill out our form.',
+      'Get a free satellite-powered roof estimate in minutes. No obligation, no pressure. Serving TX, KY, MO, OH, IN, PA, MD, WV & SC. $0 down financing available. Call (866) 308-2640 or fill out our form.',
     path: '/free-estimate',
   });
 }

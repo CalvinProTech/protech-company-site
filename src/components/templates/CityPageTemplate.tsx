@@ -31,7 +31,7 @@ function buildCityFaqs(location: Location) {
     },
     {
       question: `Is ProTech Roofing licensed in ${location.state}?`,
-      answer: `Yes, ProTech Roofing is fully licensed and insured in ${location.state}. Our license number is ${location.licenseNumber}. We carry comprehensive general liability and workers' compensation insurance to protect our customers and crew members on every project.`,
+      answer: `Yes, ProTech Roofing is fully licensed and insured in ${location.state}.${location.licenseNumber ? ` Our license number is ${location.licenseNumber}.` : ''} We carry comprehensive general liability and workers' compensation insurance to protect our customers and crew members on every project.`,
     },
     {
       question: `How quickly can you start a roofing project in ${location.city}?`,
@@ -145,10 +145,12 @@ export default function CityPageTemplate({ location }: CityPageTemplateProps) {
                       {location.city}, {location.stateAbbr}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-neutral-700">
-                    <Shield className="h-5 w-5 shrink-0 text-primary-700" />
-                    <span>License: {location.licenseNumber}</span>
-                  </div>
+                  {location.licenseNumber && (
+                    <div className="flex items-center gap-2 text-neutral-700">
+                      <Shield className="h-5 w-5 shrink-0 text-primary-700" />
+                      <span>License: {location.licenseNumber}</span>
+                    </div>
+                  )}
                 </div>
                 <p className="mt-4 text-sm text-neutral-500">
                   Service radius: {location.serviceRadius}

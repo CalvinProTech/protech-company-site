@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'GAF Master Elite Certified Roofing Contractor',
     description:
-      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed across seven states with industry-leading warranties.',
+      'ProTech Roofing is a GAF Master Elite certified contractor, Owens Corning Preferred, and NRCA member. Licensed across nine states with industry-leading warranties.',
     path: '/certifications',
   });
 }
@@ -144,7 +144,7 @@ export default function CertificationsPage() {
       {/* Hero */}
       <Hero
         heading="GAF Master Elite Certified Roofing Contractor"
-        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed across seven states and backed by industry-leading certifications."
+        subtitle="Only 2% of roofing contractors earn GAF Master Elite status. ProTech Roofing is licensed across nine states and backed by industry-leading certifications."
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{ text: 'Call 1-866-308-2640', href: 'tel:18663082640' }}
         showTrustBadges
@@ -189,12 +189,12 @@ export default function CertificationsPage() {
         </section>
       ))}
 
-      {/* Licensed across 7 states */}
+      {/* Licensed across 9 states */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-primary-900 text-3xl font-bold md:text-4xl">
-              Licensed &amp; Insured Across Seven States
+              Licensed &amp; Insured Across Nine States
             </h2>
             <p className="mt-4 text-lg text-neutral-600">
               Every state license is current and verifiable through the

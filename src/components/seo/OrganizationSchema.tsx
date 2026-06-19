@@ -1,5 +1,5 @@
 import JsonLd from './JsonLd';
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, LICENSED_STATES } from '@/lib/constants';
 
 export default function OrganizationSchema() {
   return (
@@ -14,17 +14,7 @@ export default function OrganizationSchema() {
         telephone: SITE_CONFIG.defaultPhone,
         email: SITE_CONFIG.email,
         foundingDate: '2024',
-        areaServed: [
-          'Florida',
-          'South Carolina',
-          'North Carolina',
-          'Virginia',
-          'Maryland',
-          'Washington, D.C.',
-          'Delaware',
-          'Pennsylvania',
-          'Connecticut',
-        ],
+        areaServed: LICENSED_STATES.map((s) => s.name),
         contactPoint: {
           '@type': 'ContactPoint',
           telephone: SITE_CONFIG.defaultPhone,

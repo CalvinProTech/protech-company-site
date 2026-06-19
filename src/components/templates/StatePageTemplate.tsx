@@ -105,9 +105,11 @@ export default function StatePageTemplate({
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm text-neutral-500">
-                  License: {city.licenseNumber}
-                </p>
+                {city.licenseNumber && (
+                  <p className="mt-4 text-sm text-neutral-500">
+                    License: {city.licenseNumber}
+                  </p>
+                )}
               </Link>
               );
             })}

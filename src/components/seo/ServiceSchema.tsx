@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, LICENSED_STATES } from '@/lib/constants';
 import JsonLd from './JsonLd';
 
 interface ServiceSchemaProps {
@@ -40,17 +40,11 @@ export default function ServiceSchema({ service }: ServiceSchemaProps) {
         worstRating: '1',
       },
     },
-    areaServed: [
-      { '@type': 'State', name: 'Florida', abbreviation: 'FL' },
-      { '@type': 'State', name: 'South Carolina', abbreviation: 'SC' },
-      { '@type': 'State', name: 'North Carolina', abbreviation: 'NC' },
-      { '@type': 'State', name: 'Virginia', abbreviation: 'VA' },
-      { '@type': 'State', name: 'Maryland', abbreviation: 'MD' },
-      { '@type': 'AdministrativeArea', name: 'Washington, D.C.', abbreviation: 'DC' },
-      { '@type': 'State', name: 'Delaware', abbreviation: 'DE' },
-      { '@type': 'State', name: 'Pennsylvania', abbreviation: 'PA' },
-      { '@type': 'State', name: 'Connecticut', abbreviation: 'CT' },
-    ],
+    areaServed: LICENSED_STATES.map((s) => ({
+      '@type': 'State',
+      name: s.name,
+      abbreviation: s.abbr,
+    })),
     serviceType: service.name,
     termsOfService: `${SITE_CONFIG.url}/terms`,
     offers: {
