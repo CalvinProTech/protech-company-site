@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
 import { SITE_CONFIG, SERVICES, LICENSED_STATES } from '@/lib/constants';
+import FinancingDisclosure from '@/components/financing/FinancingDisclosure';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -143,6 +144,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 border-t border-primary-800 pt-8">
+          {/* Lender / financing compliance disclosure (Equal Housing + Sunlight/Cross River) */}
+          <FinancingDisclosure variant="dark" className="mb-8" />
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-sm text-neutral-300">
               &copy; {currentYear} {SITE_CONFIG.name}. All rights reserved.

@@ -17,6 +17,7 @@ import { FAQSection } from '@/components/sections/FAQSection';
 import FAQSchema from '@/components/seo/FAQSchema';
 import { CTABanner } from '@/components/sections/CTABanner';
 import HearthWidget from '@/components/financing/HearthWidget';
+import FinancingDisclosure from '@/components/financing/FinancingDisclosure';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
@@ -82,7 +83,7 @@ const steps = [
     step: '2',
     title: 'Get Approved',
     description:
-      'Receive a financing decision within 24 hours. Our lending partners work with all credit profiles to find a solution that fits your budget.',
+      'Receive a financing decision within 24 hours. Our lending partners, including Sunlight Financial, work with all credit profiles to find a solution that fits your budget.',
   },
   {
     icon: Hammer,
@@ -218,6 +219,13 @@ export default function FinancingPage() {
               Apply for Financing Now →
             </a>
           </p>
+        </div>
+      </section>
+
+      {/* Lender compliance disclosure */}
+      <section className="bg-white py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <FinancingDisclosure />
         </div>
       </section>
 
