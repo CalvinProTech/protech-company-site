@@ -34,7 +34,7 @@ export const generalFaqs: FAQItem[] = [
   {
     question: 'Does ProTech Roofing offer financing for roof replacement?',
     answer:
-      'Yes, ProTech Roofing offers flexible financing options through multiple lending partners. Qualified homeowners can access plans with terms up to 15 years, competitive interest rates, and monthly payments that fit their budget. We also offer same-as-cash promotional periods for qualified borrowers. Financing applications take about 10 minutes and you receive a decision within 24 hours.',
+      'Yes, ProTech Roofing offers flexible financing options through multiple lending partners. Qualified homeowners can access plans with competitive fixed interest rates and multiple repayment terms. Promotional financing may be available for qualified borrowers. Financing applications take about 10 minutes, and you receive a decision within 24 hours, subject to credit approval.',
   },
   {
     question: 'Is ProTech Roofing licensed and insured?',
@@ -61,7 +61,7 @@ export const financingFaqs: FAQItem[] = [
   {
     question: 'What financing options are available for a new roof?',
     answer:
-      'ProTech Roofing partners with multiple lending institutions to offer personal loans, home improvement loans, and same-as-cash promotional plans for roof replacement and repair. Loan terms range from 12 months to 15 years with fixed interest rates. Approval amounts vary based on credit profile, but we work with borrowers across the credit spectrum to find a solution that fits their financial situation.',
+      'ProTech Roofing partners with multiple lending institutions to offer personal loans, home improvement loans, and promotional financing plans for roof replacement and repair. Fixed interest rates and multiple repayment terms are available. Approval amounts vary based on credit profile, but we work with borrowers across the credit spectrum to find a solution that fits their financial situation.',
   },
   {
     question: 'Can I finance a roof replacement with bad credit?',
@@ -74,9 +74,9 @@ export const financingFaqs: FAQItem[] = [
       'You can apply for financing during your free estimate appointment or online through our website. The application takes approximately 10 minutes and requires basic personal and financial information. Most applicants receive a decision within 24 hours. Once approved, financing terms are incorporated into your project agreement and payments begin after the work is completed to your satisfaction.',
   },
   {
-    question: 'Does ProTech Roofing offer zero-interest financing?',
+    question: 'Does ProTech Roofing offer promotional financing?',
     answer:
-      'Yes, ProTech Roofing offers same-as-cash promotional periods of 12 to 18 months for qualified borrowers. During this period, no interest accrues as long as the balance is paid in full before the promotional period ends. This option is ideal for homeowners who want to spread payments over a year without incurring additional costs. Qualification depends on credit profile and loan amount.',
+      'Promotional financing options, including deferred-interest plans, may be available for qualified borrowers. Availability and terms depend on your credit profile and loan amount, and all financing is subject to credit approval. Ask your ProTech representative for the current offers and full terms and conditions.',
   },
   {
     question: 'Can I use insurance money and financing together for my roof?',

@@ -57,11 +57,11 @@ const SERVICES: Record<
     defaultService: '',
   },
   financing: {
-    headline: '$0 Down Roof Financing — Fast Approval',
+    headline: '$0 Down Roof Financing — Fast Credit Decision',
     subheadline:
-      'New roof today, easy monthly payments. Licensed in 9 states. 5-star rated on Google.',
+      'New roof today, no down payment required. Licensed in 9 states. 5-star rated on Google.',
     bullets: [
-      '$0 down, flexible monthly payments',
+      '$0 down — multiple repayment options may be available',
       'Quick pre-qualification — no hard credit pull',
       '25-year manufacturer warranty included',
     ],

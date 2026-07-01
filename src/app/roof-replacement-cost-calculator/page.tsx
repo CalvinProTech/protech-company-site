@@ -68,7 +68,7 @@ const costFaqs = [
   {
     question: 'Can I get financing for a roof replacement?',
     answer:
-      'Yes. ProTech Roofing partners with Hearth and GreenSky for $0-down financing on roof replacements, with terms up to 15 years and monthly payments starting around 0.6 percent of the project total. Soft-credit pre-qualification does not impact your credit score. Many homeowners pair financing with insurance proceeds when storm damage covers part of the project — we coordinate both at no charge.',
+      'Yes. ProTech Roofing partners with Hearth, GreenSky, and Sunlight Financial to offer financing on roof replacements, with no down payment required and multiple repayment terms available. Soft-credit pre-qualification does not impact your credit score. Many homeowners pair financing with insurance proceeds when storm damage covers part of the project — we coordinate both at no charge.',
   },
 ];
 
@@ -346,8 +346,8 @@ export default function RoofReplacementCostCalculatorPage() {
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               Roof replacement is one of the largest home-maintenance costs a
               homeowner faces — and the one with the shortest decision window
-              once leaks start. ProTech partners with two industry-leading
-              financing platforms so most projects can move forward without
+              once leaks start. ProTech partners with several trusted
+              financing partners so most projects can move forward without
               upfront cash:
             </p>
 
@@ -357,10 +357,9 @@ export default function RoofReplacementCostCalculatorPage() {
                   Hearth Financing
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-700">
-                  Soft-pull pre-qualification in 60 seconds. Terms up to 15
-                  years. Loans from $1,000 to $250,000. No prepayment
-                  penalties. Approved homeowners typically pay 0.6 to 1.2
-                  percent of project cost per month.
+                  Soft-pull pre-qualification in 60 seconds. Multiple financing
+                  terms available. Loans from $1,000 to $250,000. No prepayment
+                  penalties. No down payment required.
                 </p>
                 <Link
                   href="/financing"
@@ -376,10 +375,9 @@ export default function RoofReplacementCostCalculatorPage() {
                   GreenSky Financing
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-700">
-                  Promotional 0 percent intro APR options available on
-                  qualifying terms. Loans up to $65,000. Decisions in minutes.
-                  Popular for storm-damage repairs not fully covered by
-                  insurance.
+                  Promotional financing may be available on qualifying terms.
+                  Loans up to $65,000. Fast credit decision. Popular for
+                  storm-damage repairs not fully covered by insurance.
                 </p>
                 <Link
                   href="/financing"
@@ -396,6 +394,13 @@ export default function RoofReplacementCostCalculatorPage() {
               affect your credit score. Calling ProTech first lets us
               coordinate financing with insurance proceeds if your project
               involves storm damage.
+            </p>
+            <p className="mt-4 text-xs text-neutral-500">
+              Representative example: the monthly payment for a 15-year home
+              improvement installment loan of $10,000 with an APR of 10.99% would
+              be $113, for a total of approximately $20,340 over the 15-year term.
+              No down payment required. Not all loan products will be available to
+              all partners or all consumers.
             </p>
           </div>
         </div>

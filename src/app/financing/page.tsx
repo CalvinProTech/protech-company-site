@@ -23,7 +23,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Roofing Financing Options | Affordable Monthly Payments',
     description:
-      'Affordable roofing with flexible financing from ProTech Roofing. Roof replacement starting at $89/month. Apply in 10 minutes. Multiple loan options available.',
+      'Affordable roofing with flexible financing from ProTech Roofing. Multiple loan options and repayment terms available. Apply in about 10 minutes.',
     path: '/financing',
   });
 }
@@ -31,43 +31,6 @@ export function generateMetadata(): Metadata {
 const breadcrumbItems = [
   { label: 'Home', href: '/' },
   { label: 'Financing', href: '/financing' },
-];
-
-const paymentPlans = [
-  {
-    name: 'Roof Repair',
-    monthlyPayment: '$49',
-    description: 'Minor to moderate repairs, flashing, and leak fixes.',
-    features: [
-      'Loans from $1,000 to $10,000',
-      'Terms up to 5 years',
-      'Fast approval in 24 hours',
-      '5-year workmanship warranty',
-    ],
-  },
-  {
-    name: 'Roof Replacement',
-    monthlyPayment: '$89',
-    description: 'Standard asphalt shingle replacement for most homes.',
-    popular: true,
-    features: [
-      'Loans from $8,000 to $25,000',
-      'Terms up to 12 years',
-      'Same-as-cash options available',
-      'Lifetime workmanship warranty',
-    ],
-  },
-  {
-    name: 'Premium Replacement',
-    monthlyPayment: '$129',
-    description: 'Metal, tile, or luxury shingle upgrades and large projects.',
-    features: [
-      'Loans from $15,000 to $50,000',
-      'Terms up to 15 years',
-      'Competitive fixed rates',
-      'Lifetime workmanship warranty',
-    ],
-  },
 ];
 
 const steps = [
@@ -112,8 +75,8 @@ export default function FinancingPage() {
               Affordable Roofing with Flexible Financing
             </h1>
             <p className="mt-4 text-lg text-primary-200 sm:text-xl md:mt-6 md:text-2xl">
-              Protect your home now and pay over time. Monthly payments starting
-              as low as $49/month with approved credit.
+              Protect your home now and pay over time with flexible financing —
+              no down payment required, subject to credit approval.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
@@ -218,6 +181,13 @@ export default function FinancingPage() {
             >
               Apply for Financing Now →
             </a>
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-neutral-500">
+            Representative example: the monthly payment for a 15-year home
+            improvement installment loan of $10,000 with an APR of 10.99% would be
+            $113, for a total of approximately $20,340 over the 15-year term. No
+            down payment required. Not all loan products will be available to all
+            partners or all consumers.
           </p>
         </div>
       </section>

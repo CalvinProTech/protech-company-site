@@ -421,8 +421,8 @@ export default function QuotePage() {
                       $0 Down Financing Available
                     </h3>
                     <p className="mt-1 text-sm text-neutral-600">
-                      As low as {formatCurrency(Math.round(quote.priceMid / 180))}/mo
-                      with approved credit (180 months).{' '}
+                      Financing available with no down payment and multiple
+                      repayment terms, subject to credit approval.{' '}
                       <Link href="/financing" className="text-accent-500 underline">
                         See financing options
                       </Link>
