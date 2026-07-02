@@ -52,29 +52,17 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
-      // In-scope alias redirects (these targets still exist).
+      // ── /locations redirect map (rebuilt 2026-07-02, Semrush QS cleanup) ──
+      // Three URL classes. `:path*` matches zero-or-more segments, so each
+      // rule covers the state hub AND every sub-path.
+      //
+      // 1. HIDDEN own-license states — pages exist in the codebase but the
+      //    whole subtree stays 308 → /locations until the visibility
+      //    decision (B11) lands. MUST stay in sync with
+      //    HIDDEN_LOCATION_STATE_SLUGS in src/lib/constants.ts. Their
+      //    legacy flat city aliases go to the same place.
       {
-        source: '/locations/florida/tampa',
-        destination: '/locations/tampa-fl',
-        permanent: true,
-      },
-      {
-        source: '/locations/north-carolina/charlotte',
-        destination: '/locations/charlotte-nc',
-        permanent: true,
-      },
-      {
-        source: '/locations/florida/jacksonville',
-        destination: '/locations/jacksonville-fl',
-        permanent: true,
-      },
-      // Out-of-scope state cleanup (2026-04-29). The state hubs and
-      // city-state aliases for GA / KY / OH / TN / TX / WV were removed
-      // because ProTech does not service those areas. Catch-all redirects
-      // send any inbound link to the canonical /locations index so users
-      // and crawlers don't hit 404s.
-      {
-        source: '/locations/georgia/:path*',
+        source: '/locations/texas/:path*',
         destination: '/locations',
         permanent: true,
       },
@@ -89,42 +77,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/locations/tennessee/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/texas/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
         source: '/locations/west-virginia/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/atlanta-ga',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/atlanta-ga/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/columbus-oh',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/columbus-oh/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/houston-tx',
         destination: '/locations',
         permanent: true,
       },
@@ -134,48 +87,129 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/locations/louisville-ky',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
         source: '/locations/louisville-ky/:path*',
         destination: '/locations',
         permanent: true,
       },
       {
-        source: '/locations/nashville-tn',
+        source: '/locations/columbus-oh/:path*',
         destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/locations/charleston-wv/:path*',
+        destination: '/locations',
+        permanent: true,
+      },
+      //
+      // 2. RETIRED states — dropped from the public footprint (GA/TN on
+      //    2026-04-29; FL/NC/VA/DE/CT with the 2026-05-29 own-license trim).
+      //    Routes are deleted; everything 308s to the homepage (NOT to
+      //    /locations — the hub is noindexed and shouldn't accumulate
+      //    redirect equity). /locations/florida previously hard-404'd (home
+      //    market!) because no rule covered it. Flat legacy pilot aliases
+      //    for retired states (tampa-fl, charlotte-nc, jacksonville-fl,
+      //    atlanta-ga, nashville-tn) go to the homepage too.
+      {
+        source: '/locations/florida/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/north-carolina/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/virginia/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/delaware/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/connecticut/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/georgia/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/tennessee/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/tampa-fl/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/jacksonville-fl/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/charlotte-nc/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/locations/atlanta-ga/:path*',
+        destination: '/',
         permanent: true,
       },
       {
         source: '/locations/nashville-tn/:path*',
-        destination: '/locations',
+        destination: '/',
         permanent: true,
       },
-      // 2026-04-30 — fix Semrush 4xx findings.
-      // Each state has only 4 of 7 services available as per-state pages
-      // (roof-replacement, roof-repair, storm-damage, gutters-siding).
-      // Bounce the missing 3 to the state hub so inbound links don't 404.
+      //
+      // 3. LEGACY FLAT city slugs for LIVE states — the old
+      //    /locations/{city}-{st} pilot URLs were linked from state pages
+      //    and picked up external links; 308 them to the nested canonical
+      //    page that actually serves 200.
       {
-        source: '/locations/:state(florida|north-carolina|south-carolina|virginia|maryland|pennsylvania|delaware|connecticut)/roof-inspection',
+        source: '/locations/philadelphia-pa/:path*',
+        destination: '/locations/pennsylvania/philadelphia',
+        permanent: true,
+      },
+      {
+        source: '/locations/kansas-city-mo/:path*',
+        destination: '/locations/missouri/kansas-city',
+        permanent: true,
+      },
+      {
+        source: '/locations/baltimore-md/:path*',
+        destination: '/locations/maryland/baltimore',
+        permanent: true,
+      },
+      //
+      // Missing state-service bounces (2026-04-30 Semrush 4xx fix, regex
+      // updated 2026-07-02 to the CURRENTLY LIVE states): each state ships
+      // only 4 of 7 services as per-state pages (roof-replacement,
+      // roof-repair, storm-damage, gutters-siding) — bounce the other 3 to
+      // the state hub so inbound links don't 404. Hidden/retired states are
+      // already caught by the catch-alls above.
+      {
+        source: '/locations/:state(missouri|pennsylvania|maryland|south-carolina|indiana)/roof-inspection',
         destination: '/locations/:state',
         permanent: true,
       },
       {
-        source: '/locations/:state(florida|north-carolina|south-carolina|virginia|maryland|pennsylvania|delaware|connecticut)/insurance-claims',
+        source: '/locations/:state(missouri|pennsylvania|maryland|south-carolina|indiana)/insurance-claims',
         destination: '/locations/:state',
         permanent: true,
       },
       {
-        source: '/locations/:state(florida|north-carolina|south-carolina|virginia|maryland|pennsylvania|delaware|connecticut)/commercial-roofing',
+        source: '/locations/:state(missouri|pennsylvania|maryland|south-carolina|indiana)/commercial-roofing',
         destination: '/locations/:state',
-        permanent: true,
-      },
-      // tampa-fl/gutters-siding has no city-service data. Route deleted.
-      {
-        source: '/locations/tampa-fl/gutters-siding',
-        destination: '/locations/tampa-fl',
         permanent: true,
       },
     ];

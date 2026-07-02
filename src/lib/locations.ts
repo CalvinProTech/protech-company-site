@@ -1,4 +1,5 @@
 import { CITY_DATA, STATE_PROFILES, type StateProfile } from './city-data';
+import { HIDDEN_LOCATION_STATE_SLUGS } from './constants';
 
 export interface Location {
   state: string;
@@ -41,15 +42,15 @@ const HERO_IMAGE = '/images/hero/default.jpg';
 // rendering across the templates is guarded so a blank value shows NOTHING
 // (never a fabricated number). Drop the verified numbers in here and they
 // appear automatically on every city/service page + LocalBusiness schema.
-// (Maryland MHIC #168264 is verified and on file — pending Calvin's confirm.)
+// MD / PA / WV filled 2026-07-02 (D10) with verified on-file numbers.
 const STATE_LICENSE: Record<string, string> = {
   texas: '',
   ohio: '',
   missouri: '',
   kentucky: '',
-  pennsylvania: '',
-  maryland: '',
-  'west-virginia': '',
+  pennsylvania: 'PA212435',
+  maryland: 'MHIC 168264',
+  'west-virginia': 'WV066231',
   'south-carolina': '',
   indiana: '',
 };
@@ -223,6 +224,33 @@ export function getAllStates(): {
 
 export function getAllLocations(): Location[] {
   return locations;
+}
+
+// ─── /locations visibility (pending business decision B11) ──────────────────
+// Some own-license states have their /locations/{state}/** subtree
+// 308-redirected to /locations by next.config.ts (see
+// HIDDEN_LOCATION_STATE_SLUGS in constants.ts). Link-emitting components and
+// the sitemap must use these visible-only variants so nothing points at a
+// permanent redirect. getAllStates()/getAllLocations() stay unfiltered — they
+// back footprint COPY (e.g. faqs.ts "we serve N states"), which is a
+// compliance claim independent of page visibility.
+
+export function isLocationStateVisible(stateSlug: string): boolean {
+  return !(HIDDEN_LOCATION_STATE_SLUGS as readonly string[]).includes(
+    stateSlug
+  );
+}
+
+export function getVisibleStates(): {
+  state: string;
+  stateSlug: string;
+  stateAbbr: string;
+}[] {
+  return getAllStates().filter((s) => isLocationStateVisible(s.stateSlug));
+}
+
+export function getVisibleLocations(): Location[] {
+  return locations.filter((loc) => isLocationStateVisible(loc.stateSlug));
 }
 
 export function getStateProfile(stateSlug: string): StateProfile | undefined {

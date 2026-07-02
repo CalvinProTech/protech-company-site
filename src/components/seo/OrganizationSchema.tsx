@@ -14,6 +14,16 @@ export default function OrganizationSchema() {
         telephone: SITE_CONFIG.defaultPhone,
         email: SITE_CONFIG.email,
         foundingDate: '2024',
+        // Tampa HQ — same SITE_CONFIG.hq source as LocalBusinessSchema
+        // (verified against the FL Sunbiz principal-address record).
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: SITE_CONFIG.hq.streetAddress,
+          addressLocality: SITE_CONFIG.hq.addressLocality,
+          addressRegion: SITE_CONFIG.hq.addressRegion,
+          postalCode: SITE_CONFIG.hq.postalCode,
+          addressCountry: SITE_CONFIG.hq.addressCountry,
+        },
         areaServed: LICENSED_STATES.map((s) => s.name),
         contactPoint: {
           '@type': 'ContactPoint',
@@ -23,6 +33,8 @@ export default function OrganizationSchema() {
           availableLanguage: 'English',
         },
         sameAs: [
+          // LinkedIn company page launched 2026-06-15 (ID 105521611).
+          'https://www.linkedin.com/company/105521611',
           'https://www.facebook.com/protechroofing',
           'https://www.instagram.com/protechroofing',
         ],

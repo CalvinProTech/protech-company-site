@@ -68,6 +68,8 @@ export default function LocalBusinessSchema({
         abbreviation: s.abbr,
       })),
       sameAs: [
+        // LinkedIn company page launched 2026-06-15 (ID 105521611).
+        'https://www.linkedin.com/company/105521611',
         'https://www.facebook.com/protechroofing',
         'https://www.instagram.com/protechroofing',
         'https://www.youtube.com/@protechroofing',

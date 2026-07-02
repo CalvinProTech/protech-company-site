@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
-import { getAllStates, getLocationsByState } from '@/lib/locations';
+import { getVisibleStates, getLocationsByState } from '@/lib/locations';
 import { SITE_CONFIG } from '@/lib/constants';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -16,16 +16,30 @@ const breadcrumbItems = [
 ];
 
 export function generateMetadata(): Metadata {
-  return createPageMetadata({
-    title: 'Service Areas & Locations',
-    description:
-      'ProTech Roofing serves homeowners across TX, KY, MO, OH, IN, PA, MD, WV & SC — the nine states where we hold our own contractor license. Find your local roofing experts and schedule a free inspection.',
-    path: '/locations',
-  });
+  return {
+    ...createPageMetadata({
+      title: 'Service Areas & Locations',
+      description:
+        'ProTech Roofing serves homeowners across TX, KY, MO, OH, IN, PA, MD, WV & SC — the nine states where we hold our own contractor license. Find your local roofing experts and schedule a free inspection.',
+      path: '/locations',
+    }),
+    // Noindexed on purpose: Google was flapping the brand landing page
+    // between / and /locations, splitting brand equity. The hub stays
+    // reachable/usable (nav + footer) and passes link equity to the state
+    // pages (follow), but only / should rank for the brand. It is also the
+    // 308 target for every hidden-state URL — targets of hidden redirects
+    // must not be indexable landing pages.
+    robots: {
+      index: false,
+      follow: true,
+    },
+  };
 }
 
 export default function LocationsPage() {
-  const states = getAllStates();
+  // Visible states only — hidden states (B11) are 308-redirected and must
+  // not be linked from here.
+  const states = getVisibleStates();
 
   return (
     <>

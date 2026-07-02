@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
-import { SITE_CONFIG, SERVICES, LICENSED_STATES } from '@/lib/constants';
+import {
+  SITE_CONFIG,
+  SERVICES,
+  LICENSED_STATES,
+  HIDDEN_LOCATION_STATE_SLUGS,
+} from '@/lib/constants';
 import FinancingDisclosure from '@/components/financing/FinancingDisclosure';
 
 export default function Footer() {
@@ -70,16 +75,30 @@ export default function Footer() {
               Licensed States
             </h3>
             <ul className="mt-4 space-y-2">
-              {LICENSED_STATES.map((state) => (
-                <li key={state.abbr}>
-                  <Link
-                    href={`/locations/${state.slug}`}
-                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
-                  >
-                    {state.name}
-                  </Link>
-                </li>
-              ))}
+              {/* All 9 licensed states stay listed (compliance footprint),
+                  but only visible states get a link — hidden states' pages
+                  (B11) 308-redirect, and the footer must not emit links to
+                  permanent redirects on every page of the site. */}
+              {LICENSED_STATES.map((state) =>
+                (HIDDEN_LOCATION_STATE_SLUGS as readonly string[]).includes(
+                  state.slug
+                ) ? (
+                  <li key={state.abbr}>
+                    <span className="text-sm text-neutral-300">
+                      {state.name}
+                    </span>
+                  </li>
+                ) : (
+                  <li key={state.abbr}>
+                    <Link
+                      href={`/locations/${state.slug}`}
+                      className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                    >
+                      {state.name}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -168,14 +187,9 @@ export default function Footer() {
                     Terms
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/portal"
-                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
-                  >
-                    Customer Portal
-                  </Link>
-                </li>
+                {/* Customer Portal link hidden 2026-07-02 (Calvin): the portal backend
+                    was never migrated, so the page dead-ends. Long-term goal — restore
+                    the link when the portal actually works. */}
                 <li>
                   <Link
                     href="/sitemap.xml"

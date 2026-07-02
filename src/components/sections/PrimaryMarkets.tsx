@@ -3,12 +3,17 @@ import { MapPin, ArrowRight } from 'lucide-react';
 import {
   PILOT_CITY_STATE_SLUGS,
   getLocationByCityStateSlug,
+  isLocationStateVisible,
 } from '@/lib/locations';
 
 export function PrimaryMarkets() {
+  // Hidden states (B11) are dropped: their city pages 308-redirect, so the
+  // homepage must not emit cards linking into a redirected subtree.
   const markets = PILOT_CITY_STATE_SLUGS.map((slug) => {
     const location = getLocationByCityStateSlug(slug);
-    return location ? { slug: slug as string, location } : null;
+    return location && isLocationStateVisible(location.stateSlug)
+      ? { slug: slug as string, location }
+      : null;
   }).filter(
     (m): m is { slug: string; location: NonNullable<ReturnType<typeof getLocationByCityStateSlug>> } =>
       m !== null

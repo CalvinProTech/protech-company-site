@@ -11,10 +11,11 @@ import {
 
 import { type Service, getRelatedServices } from '@/lib/services';
 import { getTestimonialsByService } from '@/lib/testimonials';
-import { SITE_CONFIG, LICENSED_STATES } from '@/lib/constants';
+import { SITE_CONFIG, LINKABLE_LOCATION_STATES } from '@/lib/constants';
 import {
   PILOT_CITY_STATE_SLUGS,
   getLocationByCityStateSlug,
+  isLocationStateVisible,
 } from '@/lib/locations';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -36,9 +37,13 @@ export default function ServicePageTemplate({
   const testimonials = getTestimonialsByService(service.slug);
   const relatedServices = getRelatedServices(service.slug, 3);
 
+  // Hidden states (B11) are dropped: their city pages 308-redirect, so
+  // service pages must not emit links into a redirected subtree.
   const pilotMarkets = PILOT_CITY_STATE_SLUGS.map((slug) => {
     const location = getLocationByCityStateSlug(slug);
-    return location ? { slug: slug as string, location } : null;
+    return location && isLocationStateVisible(location.stateSlug)
+      ? { slug: slug as string, location }
+      : null;
   }).filter(
     (
       m
@@ -378,7 +383,9 @@ export default function ServicePageTemplate({
               </h2>
             </div>
             <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
-              {LICENSED_STATES.map((state) => (
+              {/* Visible states only — hidden states' service pages (B11)
+                  308-redirect and must not be linked. */}
+              {LINKABLE_LOCATION_STATES.map((state) => (
                 <Link
                   key={state.slug}
                   href={`/locations/${state.slug}/${service.slug}`}

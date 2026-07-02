@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
-import { getAllStates, getLocationsByState } from '@/lib/locations';
+import { getVisibleStates, getLocationsByState } from '@/lib/locations';
 import { SITE_CONFIG } from '@/lib/constants';
 
 interface LocationMapProps {
@@ -8,7 +8,9 @@ interface LocationMapProps {
 }
 
 export function LocationMap({ showCityLinks = true }: LocationMapProps) {
-  const states = getAllStates();
+  // Visible states only — hidden states (B11) 308-redirect and must not be
+  // linked from shared components.
+  const states = getVisibleStates();
 
   return (
     <section className="bg-neutral-100 py-16 md:py-24">
