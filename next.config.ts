@@ -56,49 +56,28 @@ const nextConfig: NextConfig = {
       // Three URL classes. `:path*` matches zero-or-more segments, so each
       // rule covers the state hub AND every sub-path.
       //
-      // 1. HIDDEN own-license states — pages exist in the codebase but the
-      //    whole subtree stays 308 → /locations until the visibility
-      //    decision (B11) lands. MUST stay in sync with
-      //    HIDDEN_LOCATION_STATE_SLUGS in src/lib/constants.ts. Their
-      //    legacy flat city aliases go to the same place.
-      {
-        source: '/locations/texas/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/kentucky/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/ohio/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
-      {
-        source: '/locations/west-virginia/:path*',
-        destination: '/locations',
-        permanent: true,
-      },
+      // 1. (RESTORED 2026-07-02) The four states hidden by stale April-era
+      //    redirects are live again — full 9-state ProTech footprint per
+      //    Calvin. Only their legacy flat city aliases remain, redirecting
+      //    to the nested canonicals (same pattern as class 3).
       {
         source: '/locations/houston-tx/:path*',
-        destination: '/locations',
+        destination: '/locations/texas/houston',
         permanent: true,
       },
       {
         source: '/locations/louisville-ky/:path*',
-        destination: '/locations',
+        destination: '/locations/kentucky/louisville',
         permanent: true,
       },
       {
         source: '/locations/columbus-oh/:path*',
-        destination: '/locations',
+        destination: '/locations/ohio/columbus',
         permanent: true,
       },
       {
         source: '/locations/charleston-wv/:path*',
-        destination: '/locations',
+        destination: '/locations/west-virginia/charleston',
         permanent: true,
       },
       //

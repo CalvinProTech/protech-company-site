@@ -26,12 +26,10 @@ export const LICENSED_STATES = [
 //
 // To un-hide a state (B11): remove its slug here AND remove its
 // /locations/{state}/:path* redirect in next.config.ts.
-export const HIDDEN_LOCATION_STATE_SLUGS = [
-  'texas',
-  'kentucky',
-  'ohio',
-  'west-virginia',
-] as const;
+// 2026-07-02 (Calvin): full 9-state ProTech footprint restored — TX/KY/OH/WV
+// had been hidden by stale April-era redirects, not policy. Add a slug here
+// (AND the matching redirect class in next.config.ts) to hide a state again.
+export const HIDDEN_LOCATION_STATE_SLUGS = [] as const;
 
 // Licensed states whose /locations pages are live (safe to link / sitemap).
 export const LINKABLE_LOCATION_STATES = LICENSED_STATES.filter(
