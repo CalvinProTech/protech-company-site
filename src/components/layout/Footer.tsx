@@ -187,14 +187,9 @@ export default function Footer() {
                     Terms
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/portal"
-                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
-                  >
-                    Customer Portal
-                  </Link>
-                </li>
+                {/* Customer Portal link hidden 2026-07-02 (Calvin): the portal backend
+                    was never migrated, so the page dead-ends. Long-term goal — restore
+                    the link when the portal actually works. */}
                 <li>
                   <Link
                     href="/sitemap.xml"
