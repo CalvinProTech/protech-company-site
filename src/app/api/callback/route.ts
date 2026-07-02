@@ -154,7 +154,7 @@ export async function POST(request: Request) {
     // Return success (no email confirmation — no email collected)
     // ------------------------------------------------------------------
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({ success: true, tracked: true }, { status: 200 });
   } catch (error) {
     console.error('[callback] Unexpected error:', error);
 

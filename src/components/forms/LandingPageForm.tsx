@@ -180,13 +180,17 @@ export default function LandingPageForm({
       // Spam-blocked submissions come back success:true (bot deception) with
       // tracked:false — never fire ad conversions for those.
       if (result.tracked !== false) {
-        trackFormSubmit('callback', {
-          name,
-          source: `lp-${service || 'general'}`,
-          zip,
-          service,
-          timeframe,
-        });
+        trackFormSubmit(
+          'callback',
+          {
+            name,
+            source: `lp-${service || 'general'}`,
+            zip,
+            service,
+            timeframe,
+          },
+          phone,
+        );
       }
     } catch {
       setError('Something went wrong. Please try again.');

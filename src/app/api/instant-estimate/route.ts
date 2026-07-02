@@ -152,9 +152,12 @@ export async function POST(request: Request) {
     // ------------------------------------------------------------------
 
     if (!roofData) {
+      // The lead was already forwarded in parallel — tell the client, so a
+      // REAL captured lead still fires its conversion even without an estimate.
       return NextResponse.json(
         {
           success: false,
+          leadForwarded,
           message:
             "We couldn't measure your roof remotely. Call us for a free in-person estimate!",
         },

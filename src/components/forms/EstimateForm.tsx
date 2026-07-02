@@ -113,7 +113,7 @@ export default function EstimateForm() {
       // Spam-blocked submissions come back success:true (bot deception) with
       // tracked:false — never fire ad conversions for those.
       if (result.tracked !== false) {
-        trackFormSubmit('estimate', { service: data.serviceNeeded });
+        trackFormSubmit('estimate', { service: data.serviceNeeded }, data.phone);
       }
     } catch {
       setServerError('Something went wrong. Please try again.');

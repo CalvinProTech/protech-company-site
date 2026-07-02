@@ -64,7 +64,20 @@ export function getUtmParams(): UtmParams {
   if (typeof window === 'undefined') return {};
 
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    let raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      // Migrate visitors who captured UTMs into sessionStorage before the
+      // localStorage deploy — don't drop their attribution mid-session.
+      const legacy = sessionStorage.getItem(STORAGE_KEY);
+      if (legacy) {
+        raw = JSON.stringify({
+          ...(JSON.parse(legacy) as UtmParams),
+          _exp: Date.now() + TTL_MS,
+        });
+        localStorage.setItem(STORAGE_KEY, raw);
+        sessionStorage.removeItem(STORAGE_KEY);
+      }
+    }
     if (!raw) return {};
     const stored = JSON.parse(raw) as UtmParams & { _exp?: number };
     const { _exp, ...utm } = stored;

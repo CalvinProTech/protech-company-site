@@ -150,7 +150,7 @@ export async function POST(request: Request) {
     // Return success
     // ------------------------------------------------------------------
 
-    return NextResponse.json({ success: true, emailSent }, { status: 200 });
+    return NextResponse.json({ success: true, emailSent, tracked: true }, { status: 200 });
   } catch (error) {
     console.error('[contact] Unexpected error:', error);
 

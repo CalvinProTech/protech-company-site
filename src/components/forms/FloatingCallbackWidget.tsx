@@ -91,7 +91,7 @@ export default function FloatingCallbackWidget() {
       // Spam-blocked submissions come back success:true (bot deception) with
       // tracked:false — never fire ad conversions for those.
       if (result.tracked !== false) {
-        trackFormSubmit('callback', { name: data.name, source: 'floating-widget' });
+        trackFormSubmit('callback', { name: data.name, source: 'floating-widget' }, data.phone);
       }
     } catch {
       setServerError('Something went wrong. Please try again.');

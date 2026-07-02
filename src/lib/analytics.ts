@@ -12,18 +12,31 @@ function pushEvent(event: string, data: Record<string, unknown> = {}) {
   }
 }
 
-function fireGoogleAdsConversion(conversionLabel?: string) {
+// FNV-1a hash — Google dedupes conversions that share the SAME transaction_id,
+// so the id must be STABLE per lead (derived from their phone digits), not
+// unique per fire. A double-submit or the same household converting through
+// both the exit-intent popup and the floating widget then collides into one
+// counted conversion instead of two.
+function stableDedupeId(key: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < key.length; i++) {
+    h ^= key.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return `lead-${(h >>> 0).toString(36)}`;
+}
+
+function fireGoogleAdsConversion(conversionLabel?: string, dedupeKey?: string) {
   const conversionId = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID;
   if (typeof window !== 'undefined' && window.gtag && conversionId) {
+    const normalizedKey = dedupeKey?.replace(/\D/g, '') || dedupeKey;
     window.gtag('event', 'conversion', {
       send_to: conversionLabel
         ? `${conversionId}/${conversionLabel}`
         : conversionId,
-      // Unique per fire so Google dedupes re-fires (the exit-intent popup and
-      // floating widget are both mounted globally — one household could
-      // otherwise register multiple identical conversions).
-      transaction_id:
-        typeof crypto !== 'undefined' && crypto.randomUUID
+      transaction_id: normalizedKey
+        ? stableDedupeId(normalizedKey)
+        : typeof crypto !== 'undefined' && crypto.randomUUID
           ? crypto.randomUUID()
           : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
     });
@@ -32,7 +45,9 @@ function fireGoogleAdsConversion(conversionLabel?: string) {
 
 export function trackFormSubmit(
   formType: 'estimate' | 'contact' | 'instant-estimate' | 'callback',
-  data: Record<string, unknown>
+  data: Record<string, unknown>,
+  /** Stable per-lead key (their phone number) so duplicate fires dedupe. */
+  dedupeKey?: string
 ) {
   pushEvent(`form_submit_${formType}`, {
     form_type: formType,
@@ -48,7 +63,7 @@ export function trackFormSubmit(
         : formType === 'contact'
           ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL
           : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL;
-  fireGoogleAdsConversion(label);
+  fireGoogleAdsConversion(label, dedupeKey);
 
   // Fire Meta Pixel Lead event
   if (typeof window !== 'undefined' && window.fbq) {
