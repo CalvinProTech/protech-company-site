@@ -41,7 +41,8 @@ export async function POST(request: Request) {
       })
     ) {
       console.log('[contact] Spam blocked:', body.email);
-      return NextResponse.json({ success: true, emailSent: false }, { status: 200 });
+      // Fake 200 for bots; tracked:false suppresses client-side ad conversions.
+      return NextResponse.json({ success: true, emailSent: false, tracked: false }, { status: 200 });
     }
 
     // ------------------------------------------------------------------

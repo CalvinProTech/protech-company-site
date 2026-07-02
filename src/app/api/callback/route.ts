@@ -45,7 +45,10 @@ export async function POST(request: Request) {
       })
     ) {
       console.log('[callback] Spam blocked:', body.phone);
-      return NextResponse.json({ success: true }, { status: 200 });
+      // Fake 200 keeps the bot-deception contract, but tracked:false tells the
+      // client NOT to fire ad conversions — spam fires were a root cause of the
+      // April ghost-conversion overcount that paused all Google Ads spend.
+      return NextResponse.json({ success: true, tracked: false }, { status: 200 });
     }
 
     // ------------------------------------------------------------------

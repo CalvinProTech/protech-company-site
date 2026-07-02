@@ -170,10 +170,14 @@ export default function InstantEstimateWidget() {
           estimatePrice: result.data.estimatePrice,
           formattedAddress: result.data.formattedAddress,
         });
-        trackFormSubmit('instant-estimate', {
-          roof_area: result.data.roofAreaSqFt,
-          estimate_price: result.data.estimatePrice,
-        });
+        // Only a lead that ACTUALLY reached the Lead API counts as a conversion —
+        // an estimate render with a failed/skipped lead forward must not fire.
+        if (result.leadForwarded) {
+          trackFormSubmit('instant-estimate', {
+            roof_area: result.data.roofAreaSqFt,
+            estimate_price: result.data.estimatePrice,
+          });
+        }
       }
       setStep('result');
     } catch {

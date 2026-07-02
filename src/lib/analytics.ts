@@ -19,6 +19,13 @@ function fireGoogleAdsConversion(conversionLabel?: string) {
       send_to: conversionLabel
         ? `${conversionId}/${conversionLabel}`
         : conversionId,
+      // Unique per fire so Google dedupes re-fires (the exit-intent popup and
+      // floating widget are both mounted globally — one household could
+      // otherwise register multiple identical conversions).
+      transaction_id:
+        typeof crypto !== 'undefined' && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
     });
   }
 }

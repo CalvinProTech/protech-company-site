@@ -75,7 +75,11 @@ export default function ContactForm() {
       }
 
       setSubmitStatus('success');
-      trackFormSubmit('contact', { name: data.firstName });
+      // Spam-blocked submissions come back success:true (bot deception) with
+      // tracked:false — never fire ad conversions for those.
+      if (result.tracked !== false) {
+        trackFormSubmit('contact', { name: data.firstName });
+      }
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');
