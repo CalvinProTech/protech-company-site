@@ -18,9 +18,17 @@ export interface UtmParams {
   gclid?: string;
 }
 
+// Google Ads click lookback is 30 days; 90 gives margin for long roofing
+// decision cycles while still expiring stale attribution.
+const TTL_MS = 90 * 24 * 60 * 60 * 1000;
+
 /**
  * Reads UTM / gclid params from the current URL and stores them in
- * sessionStorage. Call once on page load (e.g. in AnalyticsProvider).
+ * localStorage with a 90-day expiry. Call once on page load (e.g. in
+ * AnalyticsProvider). localStorage (not sessionStorage) so a visitor who
+ * clicks an ad today and submits from a new tab next week still carries
+ * their gclid — sessionStorage was silently dropping returning-visitor
+ * attribution (leads landed in SF as "Website" instead of "Google Ads").
  */
 export function captureUtmParams(): void {
   if (typeof window === 'undefined') return;
@@ -39,9 +47,12 @@ export function captureUtmParams(): void {
 
   if (hasAny) {
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(utm));
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ ...utm, _exp: Date.now() + TTL_MS }),
+      );
     } catch {
-      // sessionStorage unavailable (private browsing, etc.)
+      // localStorage unavailable (private browsing, etc.)
     }
   }
 }
@@ -53,8 +64,28 @@ export function getUtmParams(): UtmParams {
   if (typeof window === 'undefined') return {};
 
   try {
-    const raw = sessionStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as UtmParams) : {};
+    let raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      // Migrate visitors who captured UTMs into sessionStorage before the
+      // localStorage deploy — don't drop their attribution mid-session.
+      const legacy = sessionStorage.getItem(STORAGE_KEY);
+      if (legacy) {
+        raw = JSON.stringify({
+          ...(JSON.parse(legacy) as UtmParams),
+          _exp: Date.now() + TTL_MS,
+        });
+        localStorage.setItem(STORAGE_KEY, raw);
+        sessionStorage.removeItem(STORAGE_KEY);
+      }
+    }
+    if (!raw) return {};
+    const stored = JSON.parse(raw) as UtmParams & { _exp?: number };
+    const { _exp, ...utm } = stored;
+    if (_exp && Date.now() > _exp) {
+      localStorage.removeItem(STORAGE_KEY);
+      return {};
+    }
+    return utm;
   } catch {
     return {};
   }

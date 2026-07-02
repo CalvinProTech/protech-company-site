@@ -43,7 +43,8 @@ export async function POST(request: Request) {
       })
     ) {
       console.log('[instant-estimate] Spam blocked:', body.email);
-      return NextResponse.json({ success: true, emailSent: false, data: null }, { status: 200 });
+      // Fake 200 for bots; leadForwarded:false suppresses client-side ad conversions.
+      return NextResponse.json({ success: true, emailSent: false, data: null, leadForwarded: false }, { status: 200 });
     }
 
     // ------------------------------------------------------------------
@@ -121,6 +122,14 @@ export async function POST(request: Request) {
       leadPromise,
     ]);
 
+    // The conversion signal: did the lead ACTUALLY reach the Lead API? The client
+    // only fires ad conversions when this is true — an outage or missing env keys
+    // must not turn estimate lookups into ghost conversions (April root cause #3).
+    const leadForwarded =
+      leadResult.status === 'fulfilled' &&
+      leadResult.value !== null &&
+      leadResult.value.ok;
+
     // Log PTR Lead API errors
     if (leadResult.status === 'rejected') {
       console.error('[instant-estimate] PTR Lead API forwarding failed:', leadResult.reason);
@@ -143,9 +152,12 @@ export async function POST(request: Request) {
     // ------------------------------------------------------------------
 
     if (!roofData) {
+      // The lead was already forwarded in parallel — tell the client, so a
+      // REAL captured lead still fires its conversion even without an estimate.
       return NextResponse.json(
         {
           success: false,
+          leadForwarded,
           message:
             "We couldn't measure your roof remotely. Call us for a free in-person estimate!",
         },
@@ -205,6 +217,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       emailSent,
+      leadForwarded,
       data: {
         roofAreaSqFt: roofData.roofAreaSqFt,
         estimatePrice,

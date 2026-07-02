@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import {
   Upload,
@@ -15,7 +15,9 @@ import {
   DollarSign,
 } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
-// trackFormSubmit removed — conversions should only fire when contact info is submitted
+// trackFormSubmit fires ONLY on the callback path (real contact info),
+// never on PDF-only uploads.
+import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
 
 interface QuoteData {
@@ -52,6 +54,8 @@ export default function QuotePage() {
   const [callbackName, setCallbackName] = useState('');
   const [callbackPhone, setCallbackPhone] = useState('');
   const [callbackSent, setCallbackSent] = useState(false);
+  const [callbackError, setCallbackError] = useState<string | null>(null);
+  const mountedAt = useRef(Date.now());
   const [dragOver, setDragOver] = useState(false);
 
   const handleFile = useCallback(async (file: File) => {
@@ -166,31 +170,42 @@ export default function QuotePage() {
     if (!callbackName.trim() || !callbackPhone.trim() || !quote) return;
 
     try {
+      // Through the site's spam-gated proxy — NOT straight to the Lead API.
+      // The old direct path exposed the API key in the bundle AND swallowed
+      // failures while showing "sent" (silent lead loss).
       const utm = getUtmParams();
-      await fetch(
-        'https://ptr-lead-api.onrender.com/api/leads',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': 'website-9c7895c50cb2996fd014980643d5038c',
-          },
-          body: JSON.stringify({
-            firstName: callbackName.split(' ')[0],
-            lastName: callbackName.split(' ').slice(1).join(' ') || '(Quote Request)',
-            phone: callbackPhone,
-            streetAddress: quote.address,
-            serviceType: 'Roof Replacement',
+      const res = await fetch('/api/quick-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: callbackName,
+          phone: callbackPhone,
+          streetAddress: quote.address,
+          serviceType: 'Roof Replacement',
+          source: 'quote-upload',
+          _t: mountedAt.current,
+          _utm: {
             utm_source: utm.utm_source || 'website',
             utm_medium: utm.utm_medium || 'quote-upload',
             utm_campaign: utm.utm_campaign || 'self-quote',
-          }),
-        }
-      );
+            gclid: utm.gclid,
+          },
+        }),
+      });
+
+      if (!res.ok) {
+        setCallbackError('Something went wrong — please call us at (866) 308-2640.');
+        return;
+      }
+
+      const result = await res.json();
+
       setCallbackSent(true);
+      if (result.tracked !== false) {
+        trackFormSubmit('callback', { name: callbackName, source: 'quote-upload' }, callbackPhone);
+      }
     } catch {
-      // Non-blocking
-      setCallbackSent(true);
+      setCallbackError('Something went wrong — please call us at (866) 308-2640.');
     }
   }, [callbackName, callbackPhone, quote]);
 

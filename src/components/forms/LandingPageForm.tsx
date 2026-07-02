@@ -174,14 +174,24 @@ export default function LandingPageForm({
         throw new Error(`Submission failed with status ${res.status}`);
       }
 
+      const result = await res.json();
+
       setSubmitted(true);
-      trackFormSubmit('callback', {
-        name,
-        source: `lp-${service || 'general'}`,
-        zip,
-        service,
-        timeframe,
-      });
+      // Spam-blocked submissions come back success:true (bot deception) with
+      // tracked:false — never fire ad conversions for those.
+      if (result.tracked !== false) {
+        trackFormSubmit(
+          'callback',
+          {
+            name,
+            source: `lp-${service || 'general'}`,
+            zip,
+            service,
+            timeframe,
+          },
+          phone,
+        );
+      }
     } catch {
       setError('Something went wrong. Please try again.');
     } finally {

@@ -157,6 +157,11 @@ export default function InstantEstimateWidget() {
       const result: InstantEstimateResponse = await response.json();
 
       if (!response.ok || !result.success) {
+        // No-coverage (404) still captured the lead — count the conversion
+        // even though we can't show an estimate.
+        if (result.leadForwarded) {
+          trackFormSubmit('instant-estimate', { no_coverage: true }, data.phone);
+        }
         setErrorMessage(
           result.message ?? 'Something went wrong. Please try again or call us.',
         );
@@ -170,10 +175,18 @@ export default function InstantEstimateWidget() {
           estimatePrice: result.data.estimatePrice,
           formattedAddress: result.data.formattedAddress,
         });
-        trackFormSubmit('instant-estimate', {
-          roof_area: result.data.roofAreaSqFt,
-          estimate_price: result.data.estimatePrice,
-        });
+        // Only a lead that ACTUALLY reached the Lead API counts as a conversion —
+        // an estimate render with a failed/skipped lead forward must not fire.
+        if (result.leadForwarded) {
+          trackFormSubmit(
+            'instant-estimate',
+            {
+              roof_area: result.data.roofAreaSqFt,
+              estimate_price: result.data.estimatePrice,
+            },
+            data.phone,
+          );
+        }
       }
       setStep('result');
     } catch {

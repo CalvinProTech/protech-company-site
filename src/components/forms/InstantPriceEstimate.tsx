@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Phone, MapPin, Loader2, ArrowRight, Home } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
 import { trackFormSubmit } from '@/lib/analytics';
@@ -18,6 +18,7 @@ interface RoofEstimate {
 }
 
 export default function InstantPriceEstimate() {
+  const mountedAt = useRef(Date.now());
   const [address, setAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -68,38 +69,36 @@ export default function InstantPriceEstimate() {
     setCallbackError(null);
 
     try {
-      const utm = getUtmParams();
-      const res = await fetch(
-        process.env.NEXT_PUBLIC_LEAD_API_URL || 'https://ptr-lead-api.onrender.com/api/leads',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': process.env.NEXT_PUBLIC_LEAD_API_KEY || 'website-9c7895c50cb2996fd014980643d5038c',
-          },
-          body: JSON.stringify({
-            firstName: callbackName.split(' ')[0],
-            lastName: callbackName.split(' ').slice(1).join(' ') || '(Callback)',
-            phone: callbackPhone,
-            streetAddress: address,
-            serviceType: 'Roof Replacement',
-            smsConsent: callbackSmsConsentInfo,
-            smsConsentPromo: callbackSmsConsentPromo,
-            utm_source: utm.utm_source,
-            utm_medium: utm.utm_medium,
-            utm_campaign: utm.utm_campaign,
-            gclid: utm.gclid,
-          }),
-        }
-      );
+      // Through the site's spam-gated proxy — NOT straight to the Lead API.
+      // The direct path had no spam gates (bots fired ad conversions) and
+      // exposed the Lead API key in the public bundle.
+      const res = await fetch('/api/quick-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: callbackName,
+          phone: callbackPhone,
+          streetAddress: address,
+          serviceType: 'Roof Replacement',
+          smsConsent: callbackSmsConsentInfo,
+          smsConsentPromo: callbackSmsConsentPromo,
+          source: 'instant-price-estimate',
+          _t: mountedAt.current,
+          _utm: getUtmParams(),
+        }),
+      });
 
       if (!res.ok) {
         setCallbackError('Something went wrong. Please try again or call us directly.');
         return;
       }
 
+      const result = await res.json();
+
       setCallbackSent(true);
-      trackFormSubmit('callback', { name: callbackName });
+      if (result.tracked !== false) {
+        trackFormSubmit('callback', { name: callbackName }, callbackPhone);
+      }
     } catch {
       setCallbackError('Something went wrong. Please try again or call us directly.');
     } finally {

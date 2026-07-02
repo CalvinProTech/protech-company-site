@@ -79,7 +79,11 @@ export default function QuickQuoteForm({
       }
 
       setSubmitStatus('success');
-      trackFormSubmit('callback', { name: data.name, source });
+      // Spam-blocked submissions come back success:true (bot deception) with
+      // tracked:false — never fire ad conversions for those.
+      if (result.tracked !== false) {
+        trackFormSubmit('callback', { name: data.name, source }, data.phone);
+      }
     } catch {
       setServerError('Something went wrong. Please try again.');
       setSubmitStatus('error');

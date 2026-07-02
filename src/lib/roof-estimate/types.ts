@@ -37,4 +37,7 @@ export interface InstantEstimateResponse {
   data?: InstantEstimateResult;
   message?: string;
   emailSent?: boolean;
+  /** True only when the lead actually reached the PTR Lead API — the client
+   *  must not fire ad conversions without it. */
+  leadForwarded?: boolean;
 }
