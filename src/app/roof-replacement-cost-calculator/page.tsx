@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Calculator, DollarSign, Home, Shield, ArrowRight } from 'lucide-react';
 
 import { createPageMetadata } from '@/lib/metadata';
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, LINKABLE_LOCATION_STATES } from '@/lib/constants';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -49,6 +49,11 @@ const costFaqs = [
     question: 'How much does a roof replacement cost in Tampa Bay, Florida?',
     answer:
       'Tampa Bay roof replacement costs are slightly above the national average due to coastal building-code requirements and salt-air-rated materials. Typical pricing in 2026: asphalt shingle $9,000 to $18,000 on a 2,000 sq ft home, concrete tile $20,000 to $35,000, standing-seam metal $22,000 to $40,000. Florida wind-mitigation requirements (secondary water barrier, ring-shank nails, enhanced fastening) add roughly $1,500 to a shingle install but qualify most homeowners for 25 to 45 percent off windstorm insurance — usually paying for itself within 5 years.',
+  },
+  {
+    question: "How do roof replacement costs vary across ProTech's service states?",
+    answer:
+      'Regional codes and climate drive most of the spread. In our Midwest markets (Missouri, Indiana, Ohio, Kentucky), pricing typically lands at or slightly below the national average, with hail resistance and ice-and-water shield the main code considerations. Mid-Atlantic metros like Philadelphia, Pittsburgh, and Baltimore run at or slightly above average, driven by labor rates and snow-load requirements. Coastal South Carolina and high-wind Texas markets carry enhanced wind-zone fastening requirements similar to Florida. Our calculator adjusts the estimate for your region automatically, and the free on-site inspection locks in local code items.',
   },
   {
     question: 'What factors affect roof replacement cost the most?',
@@ -108,7 +113,7 @@ const materialPricing = [
     perSqFt: '$9.00 – $15.00',
     typicalHome: '$20,000 – $35,000',
     lifespan: '30 – 50 years',
-    notes: 'Heavy and beautiful — but requires reinforced framing on most homes. Common on older South Tampa, Snell Isle, and historic-district properties.',
+    notes: 'Heavy and beautiful — but requires reinforced framing on most homes. Common on Mediterranean-style and historic-district properties across our service states.',
   },
   {
     material: 'Standing-Seam Metal',
@@ -122,14 +127,14 @@ const materialPricing = [
     perSqFt: '$12.00 – $22.00',
     typicalHome: '$26,000 – $48,000',
     lifespan: '50 – 100 years',
-    notes: 'Authentic Mediterranean / Spanish look common on older Florida homes. Highest upfront cost; longest lifespan.',
+    notes: 'Authentic Mediterranean / Spanish look. Highest upfront cost; longest lifespan of any residential material.',
   },
   {
     material: 'TPO Flat Roof',
     perSqFt: '$5.50 – $10.00',
     typicalHome: '$11,000 – $22,000',
     lifespan: '20 – 25 years',
-    notes: 'For low-slope (<3/12) roofs. Reflective white membrane reduces cooling costs in Florida summers.',
+    notes: 'For low-slope (<3/12) roofs. Reflective white membrane reduces cooling costs in hot-summer markets.',
   },
 ];
 
@@ -150,7 +155,7 @@ const costFactors = [
     icon: Shield,
     title: 'Code requirements',
     description:
-      'Florida high-velocity wind zones require secondary water barrier, ring-shank nails, and enhanced edge fastening. These add roughly $1,500 to a shingle install but unlock 25 to 45 percent off windstorm insurance — usually paying for itself in 3 to 5 years.',
+      'Code requirements vary by state. Florida high-velocity wind zones require secondary water barrier, ring-shank nails, and enhanced edge fastening (roughly $1,500 on a shingle install, but they unlock 25 to 45 percent off windstorm insurance). Northern service states add ice-and-water shield and snow-load considerations instead.',
   },
   {
     icon: DollarSign,
@@ -274,9 +279,9 @@ export default function RoofReplacementCostCalculatorPage() {
             </h2>
             <p className="mt-4 text-lg text-neutral-600">
               Pricing reflects ProTech Roofing&apos;s typical 2026 install
-              costs across Florida and our other eight service states. Final
-              quote depends on roof complexity, decking condition, and local
-              code requirements.
+              costs across our nine service states. Final quote depends on
+              roof complexity, decking condition, and local code
+              requirements.
             </p>
 
             <div className="mt-10 overflow-x-auto rounded-xl border border-neutral-200 bg-white">
@@ -406,45 +411,45 @@ export default function RoofReplacementCostCalculatorPage() {
         </div>
       </section>
 
-      {/* Regional Pricing — Tampa Bay focus */}
+      {/* Regional Pricing — Tampa Bay (HQ) primary, plus live state pages.
+          Previous version linked four Florida city pages that no longer
+          exist (retired with the own-license footprint trim) — links must
+          point only at live, indexable location pages. */}
       <section className="bg-neutral-50 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
-              Roof Replacement Cost in Tampa Bay
+              Regional Roof Replacement Costs
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
-              Tampa Bay roof replacement costs run slightly above the national
-              average. The Florida Building Code high-velocity wind zone
-              requirements — secondary water barrier, ring-shank nails,
-              enhanced edge fastening — add roughly $1,500 to a standard
-              asphalt shingle install but unlock 25 to 45 percent off
-              windstorm insurance for most homeowners after a wind-mitigation
-              inspection. Coastal homes within 5 miles of the bay or Gulf
-              should also upgrade to corrosion-resistant fasteners and metal
-              flashing.
+              At our Tampa Bay headquarters market, roof replacement costs run
+              slightly above the national average. The Florida Building Code
+              high-velocity wind zone requirements — secondary water barrier,
+              ring-shank nails, enhanced edge fastening — add roughly $1,500
+              to a standard asphalt shingle install but unlock 25 to 45
+              percent off windstorm insurance for most homeowners after a
+              wind-mitigation inspection. Across our Midwest and Mid-Atlantic
+              service states, pricing typically tracks at or near the
+              national average, with hail resistance, ice-and-water shield,
+              and snow-load requirements shaping the quote instead of wind
+              zones. Explore statewide pricing, codes, and city pages below.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                { city: 'Tampa', slug: '/locations/tampa-fl' },
-                { city: 'St. Petersburg', slug: '/locations/florida/st-petersburg' },
-                { city: 'Clearwater', slug: '/locations/florida/clearwater' },
-                { city: 'Brandon', slug: '/locations/florida/brandon' },
-              ].map((c) => (
+              {LINKABLE_LOCATION_STATES.map((s) => (
                 <Link
-                  key={c.city}
-                  href={c.slug}
+                  key={s.slug}
+                  href={`/locations/${s.slug}`}
                   className="group rounded-xl border border-neutral-200 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-accent-500 hover:shadow-md"
                 >
                   <h3 className="text-base font-semibold text-primary-900">
-                    Roofing in {c.city}
+                    Roofing in {s.name}
                   </h3>
                   <p className="mt-2 text-xs text-neutral-500">
-                    Local pricing, codes, and neighborhoods
+                    Statewide pricing, codes, and city pages
                   </p>
                   <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent-500 transition-colors group-hover:text-accent-600">
-                    View {c.city} page
+                    View {s.name} page
                     <ArrowRight className="h-3 w-3" />
                   </span>
                 </Link>

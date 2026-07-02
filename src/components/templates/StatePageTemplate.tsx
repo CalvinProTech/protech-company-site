@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, Phone } from 'lucide-react';
 
 import type { Location } from '@/lib/locations';
-import { PILOT_CITY_STATE_SLUGS } from '@/lib/locations';
 import { SITE_CONFIG, SERVICES } from '@/lib/constants';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -67,11 +66,10 @@ export default function StatePageTemplate({
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {cities.map((city) => {
-              const cityStateSlug = `${city.citySlug}-${city.stateAbbr.toLowerCase()}`;
-              const isPilot = (PILOT_CITY_STATE_SLUGS as readonly string[]).includes(cityStateSlug);
-              const cityHref = isPilot
-                ? `/locations/${cityStateSlug}`
-                : `/locations/${stateSlug}/${city.citySlug}`;
+              // Always link the nested canonical URL. The legacy flat
+              // /locations/{city}-{st} pilot routes no longer exist — flat
+              // slugs survive only as permanent redirects in next.config.
+              const cityHref = `/locations/${stateSlug}/${city.citySlug}`;
               return (
               <Link
                 key={city.citySlug}

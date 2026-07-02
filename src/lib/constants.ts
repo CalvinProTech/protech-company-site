@@ -15,6 +15,30 @@ export const LICENSED_STATES = [
   { abbr: 'IN', name: 'Indiana', slug: 'indiana' },
 ] as const;
 
+// ─── /locations visibility (pending business decision B11) ──────────────────
+// These own-license states have their ENTIRE /locations/{state}/** subtree
+// 308-redirected to /locations by next.config.ts (leftover catch-alls from the
+// 2026-04-29 IS-era cleanup, kept until the un-hide decision lands). Until
+// then, NOTHING may link to or sitemap these subtrees — every such URL is a
+// permanent redirect. The states remain part of the licensed footprint
+// (LICENSED_STATES, schema areaServed, footer copy); only their location
+// PAGES are hidden.
+//
+// To un-hide a state (B11): remove its slug here AND remove its
+// /locations/{state}/:path* redirect in next.config.ts.
+export const HIDDEN_LOCATION_STATE_SLUGS = [
+  'texas',
+  'kentucky',
+  'ohio',
+  'west-virginia',
+] as const;
+
+// Licensed states whose /locations pages are live (safe to link / sitemap).
+export const LINKABLE_LOCATION_STATES = LICENSED_STATES.filter(
+  (s) =>
+    !(HIDDEN_LOCATION_STATE_SLUGS as readonly string[]).includes(s.slug)
+);
+
 export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://www.protechroof.net',

@@ -2,10 +2,14 @@ import type { MetadataRoute } from 'next';
 import { getAllServices } from '@/lib/services';
 import { getAllProjects } from '@/lib/projects';
 import { getAllPosts } from '@/lib/blog';
-import { getAllStates, getAllLocations } from '@/lib/locations';
+import { getVisibleStates, getVisibleLocations } from '@/lib/locations';
 
 // Own-license service-area tree (/locations/**) — state hubs, state-service
-// pages, and one page per city across TX/KY/MO/OH/PA/MD/WV.
+// pages, and one page per city. ONLY visible states are listed: the hidden
+// states (HIDDEN_LOCATION_STATE_SLUGS in constants.ts, pending B11) have
+// their whole subtree 308-redirected by next.config.ts, and redirected URLs
+// must never appear in the sitemap. The /locations hub itself is noindexed
+// (brand-equity split with /) and is intentionally absent too.
 const LOCATION_SERVICES = [
   'roof-replacement',
   'roof-repair',
@@ -119,7 +123,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const states = getAllStates();
+  const states = getVisibleStates();
 
   const stateHubPages: MetadataRoute.Sitemap = states.map((s) => ({
     url: `${BASE_URL}/locations/${s.stateSlug}`,
@@ -137,7 +141,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const cityPages: MetadataRoute.Sitemap = getAllLocations().map((loc) => ({
+  const cityPages: MetadataRoute.Sitemap = getVisibleLocations().map((loc) => ({
     url: `${BASE_URL}/locations/${loc.stateSlug}/${loc.citySlug}`,
     lastModified: LAST_BUILD,
     changeFrequency: 'monthly' as const,
