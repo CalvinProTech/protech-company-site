@@ -116,12 +116,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.frontmatter.slug}`,
-    lastModified: new Date(post.frontmatter.date),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
+  const blogPages: MetadataRoute.Sitemap = posts
+    // Off-footprint state guides are noindex — keep them out of the sitemap too.
+    .filter((post) => !post.frontmatter.noindex)
+    .map((post) => ({
+      url: `${BASE_URL}/blog/${post.frontmatter.slug}`,
+      lastModified: new Date(post.frontmatter.date),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }));
 
   const states = getVisibleStates();
 

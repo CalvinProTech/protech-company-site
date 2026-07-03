@@ -63,6 +63,7 @@ export async function generateMetadata({
       path: `/blog/${post.frontmatter.slug}`,
       image: post.frontmatter.featuredImage,
       type: 'article',
+      noindex: post.frontmatter.noindex ?? false,
     });
   } catch {
     return createPageMetadata({

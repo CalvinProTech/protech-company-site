@@ -24,6 +24,9 @@ export interface BlogPostFrontmatter {
   excerpt: string;
   featuredImage: string;
   readingTime: string;
+  /** Off-footprint content (state guide for a state ProTech doesn't service).
+   *  Sets robots noindex + drops the post from the sitemap. URL stays live. */
+  noindex?: boolean;
   howTo?: {
     name: string;
     description: string;
@@ -57,6 +60,7 @@ function parseMdxFile(filePath: string): BlogPost {
       excerpt: data.excerpt,
       featuredImage: data.featuredImage,
       readingTime: data.readingTime || stats.text,
+      noindex: data.noindex ?? false,
       howTo: data.howTo,
     },
     content,
