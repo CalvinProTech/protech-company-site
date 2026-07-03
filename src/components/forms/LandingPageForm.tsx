@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Loader2, CheckCircle } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
@@ -67,6 +67,14 @@ export default function LandingPageForm({
   const [addressPicked, setAddressPicked] = useState(false);
   const [smsConsentInfo, setSmsConsentInfo] = useState(false);
   const [smsConsentPromo, setSmsConsentPromo] = useState(false);
+
+  // Anti-spam: honeypot field + form mount timestamp (mirrors ContactForm)
+  const [honeypot, setHoneypot] = useState('');
+  const formLoadedAt = useRef(0);
+
+  useEffect(() => {
+    formLoadedAt.current = Date.now();
+  }, []);
 
   // Step 1: Zip code validation
   const handleZipSubmit = useCallback(async () => {
@@ -167,6 +175,8 @@ export default function LandingPageForm({
           smsConsentPromo,
           source: `lp-${service || 'general'}`,
           _utm: utm,
+          _hp: honeypot,
+          _t: formLoadedAt.current,
         }),
       });
 
@@ -210,6 +220,7 @@ export default function LandingPageForm({
     timeframe,
     smsConsentInfo,
     smsConsentPromo,
+    honeypot,
   ]);
 
   const handleAddressPicked = useCallback(
@@ -372,6 +383,24 @@ export default function LandingPageForm({
               A roofing specialist will call you within 5 minutes
             </p>
           </div>
+
+          {/* Honeypot — hidden from real users, bots fill it */}
+          <div
+            aria-hidden="true"
+            className="absolute -left-[9999px] -top-[9999px]"
+          >
+            <label htmlFor="lp-website">Website</label>
+            <input
+              id="lp-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+            />
+          </div>
+
           <input
             type="text"
             value={name}

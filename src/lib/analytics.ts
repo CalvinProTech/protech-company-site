@@ -65,12 +65,19 @@ export function trackFormSubmit(
           : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL;
   fireGoogleAdsConversion(label, dedupeKey);
 
-  // Fire Meta Pixel Lead event
+  // Fire Meta Pixel Lead event — pass the same stable per-lead eventID used
+  // for the Google Ads transaction_id so Meta dedupes duplicate fires too.
   if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'Lead', {
-      content_name: formType,
-      ...data,
-    });
+    const normalizedKey = dedupeKey?.replace(/\D/g, '') || dedupeKey;
+    window.fbq(
+      'track',
+      'Lead',
+      {
+        content_name: formType,
+        ...data,
+      },
+      normalizedKey ? { eventID: stableDedupeId(normalizedKey) } : undefined
+    );
   }
 }
 

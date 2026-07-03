@@ -31,6 +31,8 @@ export default function InstantPriceEstimate() {
   const [callbackSent, setCallbackSent] = useState(false);
   const [callbackError, setCallbackError] = useState<string | null>(null);
   const [callbackSubmitting, setCallbackSubmitting] = useState(false);
+  // Anti-spam honeypot — hidden from real users, bots fill it
+  const [honeypot, setHoneypot] = useState('');
 
   const handleEstimate = useCallback(async () => {
     if (!address.trim()) return;
@@ -83,6 +85,7 @@ export default function InstantPriceEstimate() {
           smsConsent: callbackSmsConsentInfo,
           smsConsentPromo: callbackSmsConsentPromo,
           source: 'instant-price-estimate',
+          _hp: honeypot,
           _t: mountedAt.current,
           _utm: getUtmParams(),
         }),
@@ -104,7 +107,7 @@ export default function InstantPriceEstimate() {
     } finally {
       setCallbackSubmitting(false);
     }
-  }, [callbackName, callbackPhone, callbackSmsConsentInfo, callbackSmsConsentPromo, address]);
+  }, [callbackName, callbackPhone, callbackSmsConsentInfo, callbackSmsConsentPromo, address, honeypot]);
 
   const formatNumber = (n: number) =>
     new Intl.NumberFormat('en-US').format(Math.round(n));
@@ -234,6 +237,22 @@ export default function InstantPriceEstimate() {
                 We&apos;ll call you within 5 minutes
               </p>
               <div className="mt-3 space-y-3">
+                {/* Honeypot — hidden from real users, bots fill it */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] -top-[9999px]"
+                >
+                  <label htmlFor="ipe-website">Website</label>
+                  <input
+                    id="ipe-website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
                 <input
                   type="text"
                   value={callbackName}

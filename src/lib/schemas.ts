@@ -152,7 +152,8 @@ export const callbackRequestSchema = z.object({
   email: z
     .string()
     .email('Please enter a valid email address')
-    .min(1, 'Email is required'),
+    .optional()
+    .or(z.literal('')),
   zip: z
     .string()
     .regex(/^\d{5}$/, 'Please enter a valid 5-digit ZIP code')
@@ -167,12 +168,7 @@ export const callbackRequestSchema = z.object({
     .or(z.literal('')),
   serviceType: z.string().optional().or(z.literal('')),
   timeframe: z.string().optional().or(z.literal('')),
-  smsConsent: z
-    .boolean()
-    .refine(
-      (v) => v === true,
-      'You must agree to receive SMS messages to continue'
-    ),
+  smsConsent: z.boolean().optional(),
   smsConsentPromo: z.boolean(),
   source: z.enum(CALLBACK_SOURCES, 'Invalid source'),
 });
