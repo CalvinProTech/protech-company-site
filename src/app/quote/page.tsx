@@ -57,6 +57,8 @@ export default function QuotePage() {
   const [callbackError, setCallbackError] = useState<string | null>(null);
   const mountedAt = useRef(Date.now());
   const [dragOver, setDragOver] = useState(false);
+  // Anti-spam honeypot — hidden from real users, bots fill it
+  const [honeypot, setHoneypot] = useState('');
 
   const handleFile = useCallback(async (file: File) => {
     if (!file.name.toLowerCase().endsWith('.pdf')) {
@@ -183,6 +185,7 @@ export default function QuotePage() {
           streetAddress: quote.address,
           serviceType: 'Roof Replacement',
           source: 'quote-upload',
+          _hp: honeypot,
           _t: mountedAt.current,
           _utm: {
             utm_source: utm.utm_source || 'website',
@@ -207,7 +210,7 @@ export default function QuotePage() {
     } catch {
       setCallbackError('Something went wrong — please call us at (866) 308-2640.');
     }
-  }, [callbackName, callbackPhone, quote]);
+  }, [callbackName, callbackPhone, quote, honeypot]);
 
   return (
     <>
@@ -475,6 +478,22 @@ export default function QuotePage() {
                   <p className="text-sm font-medium text-primary-900">
                     Can&apos;t call right now? We&apos;ll reach out to you.
                   </p>
+                  {/* Honeypot — hidden from real users, bots fill it */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] -top-[9999px]"
+                  >
+                    <label htmlFor="quote-website">Website</label>
+                    <input
+                      id="quote-website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <div className="mt-3 flex gap-3">
                     <input
                       type="text"
