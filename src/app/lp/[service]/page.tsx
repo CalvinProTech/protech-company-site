@@ -23,6 +23,18 @@ const SERVICES: Record<
     ],
     defaultService: 'roof-replacement',
   },
+  'roof-replacement-baltimore': {
+    headline: 'Baltimore Roof Replacement — Free Quote in 60 Seconds',
+    subheadline:
+      'Maryland licensed & insured — MHIC No. 168264. Serving Baltimore County, Baltimore City, Anne Arundel, Howard, Carroll & Harford counties.',
+    bullets: [
+      '25-year manufacturer warranty included',
+      'Flexible financing options available',
+      'Free satellite roof measurement',
+      'Serving Baltimore, Towson, Columbia, Annapolis, Bel Air & Westminster',
+    ],
+    defaultService: 'roof-replacement',
+  },
   'roof-repair': {
     headline: 'Roof Repair — Fast, Reliable Service',
     subheadline:
@@ -57,12 +69,14 @@ const SERVICES: Record<
     defaultService: '',
   },
   financing: {
-    headline: '$0 Down Roof Financing — Fast Credit Decision',
+    // Language constrained by lender ad-compliance (Sunlight Do's & Don'ts) —
+    // no "fast/instant approval", no "as low as $X/mo", no "same-as-cash".
+    headline: '$0 Down Roof Financing Available',
     subheadline:
-      'New roof today, no down payment required. Licensed in 9 states. 5-star rated on Google.',
+      'Replace your roof with no down payment required. Licensed in 9 states. 5-star rated on Google.',
     bullets: [
       '$0 down — multiple repayment options may be available',
-      'Quick pre-qualification — no hard credit pull',
+      'Pre-qualification with no hard credit pull',
       '25-year manufacturer warranty included',
     ],
     defaultService: 'roof-replacement',
@@ -84,16 +98,24 @@ export function generateStaticParams() {
   return Object.keys(SERVICES).map((service) => ({ service }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ service: string }>;
-}): Metadata {
-  // Static metadata — no async needed for static params
+}): Promise<Metadata> {
+  const { service } = await params;
+  if (service === 'roof-replacement-baltimore') {
+    return {
+      title: 'Baltimore Roof Replacement — Free Estimate',
+      description:
+        'Get a free roof replacement estimate for Baltimore County and surrounding areas. Maryland licensed & insured — MHIC No. 168264.',
+      robots: { index: false, follow: false },
+    };
+  }
   return {
     title: 'Free Roof Estimate',
     description:
-      'Get a free roofing estimate in 60 seconds. Licensed, insured, 5-star rated. Serving FL, GA, TX, NC, SC, VA, MD, PA, CT, DE, WV, TN, KY & OH.',
+      'Get a free roofing estimate in 60 seconds. Licensed, insured, 5-star rated. Serving TX, KY, MO, OH, PA, MD, WV, SC & IN.',
     robots: { index: false, follow: false },
   };
 }

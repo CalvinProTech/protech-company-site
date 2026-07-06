@@ -7,6 +7,7 @@ import {
   LICENSED_STATES,
   HIDDEN_LOCATION_STATE_SLUGS,
 } from '@/lib/constants';
+import { STATE_LICENSE } from '@/lib/locations';
 import FinancingDisclosure from '@/components/financing/FinancingDisclosure';
 
 export default function Footer() {
@@ -87,6 +88,11 @@ export default function Footer() {
                     <span className="text-sm text-neutral-300">
                       {state.name}
                     </span>
+                    {STATE_LICENSE[state.slug] && (
+                      <span className="block text-xs text-neutral-500">
+                        {STATE_LICENSE[state.slug]}
+                      </span>
+                    )}
                   </li>
                 ) : (
                   <li key={state.abbr}>
@@ -96,6 +102,11 @@ export default function Footer() {
                     >
                       {state.name}
                     </Link>
+                    {STATE_LICENSE[state.slug] && (
+                      <span className="block text-xs text-neutral-500">
+                        {STATE_LICENSE[state.slug]}
+                      </span>
+                    )}
                   </li>
                 )
               )}

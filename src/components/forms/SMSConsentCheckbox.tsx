@@ -39,11 +39,13 @@ export default function SMSConsentCheckbox({
           className="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer rounded border-neutral-300 text-accent-500 focus:ring-2 focus:ring-accent-500/30"
         />
         <span className="leading-snug">
-          I agree to receive informational SMS text messages from{' '}
-          <strong>ProTech Roofing</strong> at the number provided, including
-          appointment reminders and quote updates. Message frequency varies.
-          Consent is not a condition of purchase. Msg &amp; data rates may
-          apply. Reply <strong>STOP</strong> to opt out or{' '}
+          By checking this box, I give my express written consent for{' '}
+          <strong>ProTech Roofing</strong> to call and text me at the number
+          provided about my request (appointment reminders, quote updates),
+          including via autodialer or other automated dialing/texting
+          technology and prerecorded or artificial-voice messages. Message
+          frequency varies. Consent is not a condition of purchase. Msg &amp;
+          data rates may apply. Reply <strong>STOP</strong> to opt out or{' '}
           <strong>HELP</strong> for help. See our{' '}
           <a
             href="/privacy-policy"
@@ -82,11 +84,11 @@ export default function SMSConsentCheckbox({
         />
         <span className="leading-snug">
           <span className="font-medium text-neutral-800">Optional:</span> I
-          also agree to receive occasional promotional SMS text messages from{' '}
-          <strong>ProTech Roofing</strong> (special offers and seasonal
-          promotions). This is optional and not required to receive a quote.
-          Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt
-          out.
+          also agree that <strong>ProTech Roofing</strong> may call or text me
+          occasional promotional messages (special offers and seasonal
+          promotions), including via automated technology. This is optional
+          and not required to receive a quote. Msg &amp; data rates may apply.
+          Reply <strong>STOP</strong> to opt out.
         </span>
       </label>
     </div>

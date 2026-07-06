@@ -27,7 +27,7 @@ function stableDedupeId(key: string): string {
 }
 
 function fireGoogleAdsConversion(conversionLabel?: string, dedupeKey?: string) {
-  const conversionId = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID;
+  const conversionId = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID?.trim();
   if (typeof window !== 'undefined' && window.gtag && conversionId) {
     const normalizedKey = dedupeKey?.replace(/\D/g, '') || dedupeKey;
     window.gtag('event', 'conversion', {
@@ -54,15 +54,16 @@ export function trackFormSubmit(
     ...data,
   });
 
-  // Fire Google Ads conversion
-  const label =
+  // Fire Google Ads conversion (.trim() guards against trailing-newline env values)
+  const label = (
     formType === 'callback'
       ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CALLBACK_LABEL
       : formType === 'estimate'
         ? process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL
         : formType === 'contact'
           ? process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_LABEL
-          : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL;
+          : process.env.NEXT_PUBLIC_GOOGLE_ADS_ESTIMATE_LABEL
+  )?.trim();
   fireGoogleAdsConversion(label, dedupeKey);
 
   // Fire Meta Pixel Lead event — pass the same stable per-lead eventID used

@@ -2,9 +2,12 @@
 
 import Script from 'next/script';
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-const GADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID;
+// .trim() everywhere: a trailing newline in a Vercel env value gets
+// interpolated into the inline script as a raw LF inside a quoted string,
+// which is a SyntaxError that kills gtag entirely (bit us 4/29–7/05).
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim();
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID?.trim();
+const GADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID?.trim();
 
 export function GoogleAnalytics() {
   if (!GA_ID || GA_ID === 'G-PLACEHOLDER') return null;
