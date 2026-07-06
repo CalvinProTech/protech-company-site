@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE_CONFIG } from '@/lib/constants';
 import AnalyticsProvider from '@/components/analytics/AnalyticsProvider';
+import FinancingDisclosure from '@/components/financing/FinancingDisclosure';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -47,9 +48,12 @@ export default function LandingPageLayout({
       {/* Minimal footer */}
       <footer className="border-t border-neutral-200 bg-neutral-50 py-6 text-center text-xs text-neutral-500">
         <div className="mx-auto max-w-5xl px-4">
+          {/* Lender-compliance block — several LP variants reference financing */}
+          <FinancingDisclosure className="mx-auto mb-4 max-w-3xl" />
           <p>
             &copy; {new Date().getFullYear()} ProTech Roofing LLC. Licensed &
-            Insured.
+            Insured. MD: MHIC No. 168264 &middot; PA: PA212435 &middot; WV:
+            WV066231.
           </p>
           <div className="mt-2 flex items-center justify-center gap-4">
             <a href="/privacy-policy" className="hover:text-neutral-700">

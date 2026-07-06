@@ -2,7 +2,10 @@
 
 import Script from 'next/script';
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || '939004151480063';
+// .trim(): a trailing newline in the Vercel env value would land inside the
+// quoted fbq('init','…') string and SyntaxError the whole pixel bootstrap.
+const PIXEL_ID =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim() || '939004151480063';
 
 export function MetaPixel() {
   if (!PIXEL_ID) return null;

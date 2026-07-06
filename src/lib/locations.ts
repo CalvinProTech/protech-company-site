@@ -43,13 +43,15 @@ const HERO_IMAGE = '/images/hero/default.jpg';
 // (never a fabricated number). Drop the verified numbers in here and they
 // appear automatically on every city/service page + LocalBusiness schema.
 // MD / PA / WV filled 2026-07-02 (D10) with verified on-file numbers.
-const STATE_LICENSE: Record<string, string> = {
+// MD format: Md. Bus. Reg. §8-615 mandates the exact form "MHIC No. ___" in
+// anything that advertises as licensed — keep the "No." in the string.
+export const STATE_LICENSE: Record<string, string> = {
   texas: '',
   ohio: '',
   missouri: '',
   kentucky: '',
   pennsylvania: 'PA212435',
-  maryland: 'MHIC 168264',
+  maryland: 'MHIC No. 168264',
   'west-virginia': 'WV066231',
   'south-carolina': '',
   indiana: '',
