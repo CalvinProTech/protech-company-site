@@ -129,6 +129,7 @@ export const CALLBACK_SOURCES = [
   'quick-quote-blog',
   'lp-roof-replacement',
   'lp-roof-repair',
+  'lp-roof-inspection',
   'lp-storm-damage',
   'lp-free-estimate',
   'lp-financing',
