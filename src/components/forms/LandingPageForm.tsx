@@ -5,7 +5,6 @@ import { Loader2, CheckCircle } from 'lucide-react';
 import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
 import AddressAutocomplete, { type ParsedAddress } from './AddressAutocomplete';
-import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 // All US states + DC. Form accepts submissions from any US state so
 // out-of-area leads aren't silently rejected at validation (finance-partner
@@ -65,8 +64,6 @@ export default function LandingPageForm({
   const [city, setCity] = useState('');
   const [stateCode, setStateCode] = useState('');
   const [addressPicked, setAddressPicked] = useState(false);
-  const [smsConsentInfo, setSmsConsentInfo] = useState(false);
-  const [smsConsentPromo, setSmsConsentPromo] = useState(false);
 
   // Anti-spam: honeypot field + form mount timestamp (mirrors ContactForm)
   const [honeypot, setHoneypot] = useState('');
@@ -128,7 +125,11 @@ export default function LandingPageForm({
     }
   }, [zip, defaultService]);
 
-  // Step 3: Submit lead
+  // Step 3: Submit lead. Only name + phone are required — every extra
+  // required field measurably cuts conversion (3-field forms ~11.5% vs
+  // 5-field ~8.1%). Email + address are optional; consent is collected via
+  // the conspicuous disclosure above the submit button (TCPA E-SIGN express
+  // written consent pattern) instead of a mandatory checkbox.
   const handleSubmit = useCallback(async () => {
     if (!name.trim() || !phone.trim()) {
       setError('Please enter your name and phone number.');
@@ -138,16 +139,8 @@ export default function LandingPageForm({
       setError('Please enter a valid 10-digit phone number.');
       return;
     }
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-    if (!streetAddress.trim()) {
-      setError('Please enter your home address.');
-      return;
-    }
-    if (!smsConsentInfo) {
-      setError('Please agree to receive text messages to continue.');
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Please enter a valid email address, or leave it blank.');
       return;
     }
 
@@ -171,8 +164,13 @@ export default function LandingPageForm({
           zip,
           serviceType: service,
           timeframe,
-          smsConsent: smsConsentInfo,
-          smsConsentPromo,
+          // Express written consent is collected via the conspicuous
+          // disclosure rendered directly above the submit button — the act of
+          // submitting constitutes consent (TCPA E-SIGN pattern), so
+          // informational consent is always true on submit. Promotional
+          // consent is NOT collected by the disclosure and is sent false.
+          smsConsent: true,
+          smsConsentPromo: false,
           source: `lp-${service || 'general'}`,
           _utm: utm,
           _hp: honeypot,
@@ -218,8 +216,6 @@ export default function LandingPageForm({
     zip,
     service,
     timeframe,
-    smsConsentInfo,
-    smsConsentPromo,
     honeypot,
   ]);
 
@@ -238,6 +234,21 @@ export default function LandingPageForm({
     },
     [zip]
   );
+
+  // Inline disabled-button reasons — a disabled button must always say WHY
+  // (silently dead buttons were killing paid-traffic conversions).
+  const zipDisabledReason =
+    zip.length < 5 ? 'Enter your 5-digit zip code to continue.' : null;
+  const step2DisabledReason = !service
+    ? 'Select a service to continue.'
+    : !timeframe
+      ? 'Select a timeframe to continue.'
+      : null;
+  const submitDisabledReason = !name.trim()
+    ? 'Enter your name to continue.'
+    : !phone.trim()
+      ? 'Enter your phone number to continue.'
+      : null;
 
   if (submitted) {
     return (
@@ -300,6 +311,11 @@ export default function LandingPageForm({
             className="focus:border-accent-500 focus:ring-accent-500/20 h-14 w-full rounded-xl border border-neutral-300 px-4 text-center text-2xl font-semibold tracking-widest focus:ring-2 focus:outline-none"
             autoFocus
           />
+          {zipDisabledReason && zip.length > 0 && (
+            <p className="text-sm font-medium text-red-600">
+              {zipDisabledReason}
+            </p>
+          )}
           <button
             onClick={handleZipSubmit}
             disabled={isLoading || zip.length < 5}
@@ -362,6 +378,11 @@ export default function LandingPageForm({
             </div>
           </div>
 
+          {step2DisabledReason && (
+            <p className="text-sm font-medium text-red-600">
+              {step2DisabledReason}
+            </p>
+          )}
           <button
             onClick={() => setStep(3)}
             disabled={!service || !timeframe}
@@ -420,34 +441,69 @@ export default function LandingPageForm({
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder="Email (optional)"
             className="focus:border-accent-500 focus:ring-accent-500/20 h-14 w-full rounded-xl border border-neutral-300 px-4 text-base focus:ring-2 focus:outline-none"
           />
+          {/* Address is optional and never gates submit. Raw typed input is
+              captured on every keystroke; the Google autocomplete dropdown is
+              a progressive enhancement that overwrites with parsed components
+              when the visitor picks a suggestion. */}
           <AddressAutocomplete
             onAddressSelect={handleAddressPicked}
-            placeholder="Home address"
+            onInputChange={(v) => {
+              setStreetAddress(v);
+              setAddressPicked(false);
+            }}
+            placeholder="Street address (optional)"
           />
           {addressPicked && city && stateCode && (
             <p className="text-xs text-neutral-500">
               📍 {city}, {stateCode} {zip}
             </p>
           )}
-          <SMSConsentCheckbox
-            infoChecked={smsConsentInfo}
-            promoChecked={smsConsentPromo}
-            onInfoChange={setSmsConsentInfo}
-            onPromoChange={setSmsConsentPromo}
-          />
+
+          {/* Conspicuous TCPA/E-SIGN consent disclosure — submitting the form
+              constitutes express written consent (replaces the former
+              mandatory checkbox; same legal substance, incl. MD Stop the Spam
+              Calls Act coverage). */}
+          <p className="rounded-lg bg-neutral-50 p-3 text-[13px] leading-relaxed text-neutral-600">
+            By clicking &ldquo;Get My Free Quote,&rdquo; I give my express
+            written consent for <strong>ProTech Roofing</strong> to call and
+            text me at the number provided about my request (appointment
+            reminders, quote updates), including via autodialer or other
+            automated dialing/texting technology and prerecorded or
+            artificial-voice messages. Message frequency varies. Msg &amp;
+            data rates may apply. Consent is not a condition of purchase.
+            Reply <strong>STOP</strong> to opt out or <strong>HELP</strong>{' '}
+            for help. See our{' '}
+            <a
+              href="/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-600 hover:text-accent-700 underline"
+            >
+              Privacy Policy
+            </a>{' '}
+            and{' '}
+            <a
+              href="/terms-of-service"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-600 hover:text-accent-700 underline"
+            >
+              Terms of Service
+            </a>
+            .
+          </p>
+
+          {submitDisabledReason && (
+            <p className="text-sm font-medium text-red-600">
+              {submitDisabledReason}
+            </p>
+          )}
           <button
             onClick={handleSubmit}
-            disabled={
-              isLoading ||
-              !name.trim() ||
-              !phone.trim() ||
-              !email.trim() ||
-              !streetAddress.trim() ||
-              !smsConsentInfo
-            }
+            disabled={isLoading || !!submitDisabledReason}
             className="bg-accent-500 hover:bg-accent-600 flex h-14 w-full items-center justify-center rounded-xl text-lg font-bold text-white shadow-md transition-all disabled:opacity-50"
           >
             {isLoading ? (

@@ -14,6 +14,13 @@ export interface ParsedAddress {
 
 interface AddressAutocompleteProps {
   onAddressSelect: (address: string, parsed?: ParsedAddress) => void;
+  /**
+   * Fires on every keystroke with the raw typed value. Lets parents capture
+   * the address even when the visitor never picks a Google suggestion or
+   * presses Enter (the old behavior silently dropped typed-but-unpicked
+   * addresses — a documented mobile form-killer).
+   */
+  onInputChange?: (value: string) => void;
   disabled?: boolean;
   placeholder?: string;
 }
@@ -84,6 +91,7 @@ function parseAddressComponents(
 
 export default function AddressAutocomplete({
   onAddressSelect,
+  onInputChange,
   disabled = false,
   placeholder = 'Enter your home address for a free instant estimate',
 }: AddressAutocompleteProps) {
@@ -153,7 +161,10 @@ export default function AddressAutocomplete({
         ref={inputRef}
         type="text"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => {
+          setValue(e.target.value);
+          onInputChange?.(e.target.value);
+        }}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         disabled={disabled}
