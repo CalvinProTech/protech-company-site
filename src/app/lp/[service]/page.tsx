@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SITE_CONFIG } from '@/lib/constants';
 import LandingPageForm from '@/components/forms/LandingPageForm';
+import { FAQSection } from '@/components/sections/FAQSection';
 
 const SERVICES: Record<
   string,
@@ -10,6 +11,10 @@ const SERVICES: Record<
     subheadline: string;
     bullets: string[];
     defaultService: string;
+    costSection?: { heading: string; body: string };
+    stormSection?: { heading: string; body: string };
+    financingSection?: { heading: string; body: string };
+    faqs?: { question: string; answer: string }[];
   }
 > = {
   'roof-replacement': {
@@ -24,16 +29,63 @@ const SERVICES: Record<
     defaultService: 'roof-replacement',
   },
   'roof-replacement-baltimore': {
-    headline: 'Baltimore Roof Replacement — Free Quote in 60 Seconds',
+    headline: 'Baltimore Roof Replacement — Free, No-Pressure Inspection',
     subheadline:
-      'Maryland licensed & insured — MHIC No. 168264. Serving Baltimore County, Baltimore City, Anne Arundel, Howard, Carroll & Harford counties.',
+      'GAF-certified, Maryland licensed & insured — MHIC No. 168264. Serving Baltimore City & County, Anne Arundel, Howard, Carroll & Harford — Towson, Columbia, Annapolis, Bel Air & Westminster.',
     bullets: [
+      'Free, no-pressure roof inspection — see your exact price',
+      '$0 down financing available',
+      'Storm or hail damage? We document it for your insurance claim',
       '25-year manufacturer warranty included',
-      'Flexible financing options available',
-      'Free satellite roof measurement',
-      'Serving Baltimore, Towson, Columbia, Annapolis, Bel Air & Westminster',
+      'GAF-certified, Maryland licensed — MHIC No. 168264',
     ],
     defaultService: 'roof-replacement',
+    costSection: {
+      heading: 'What Does a Roof Replacement Cost in Baltimore?',
+      body: 'Every roof is different — price depends on your roof size, pitch, materials, and access. The only honest number comes from seeing yours. Get your exact price with a free, no-obligation inspection, and ask about $0-down financing.',
+    },
+    stormSection: {
+      heading: 'Storm or Hail Damage? We Handle the Paperwork.',
+      body: 'Baltimore hail and wind can damage a roof without obvious signs. We inspect for free, document any damage in detail, and work directly with your insurance company on your claim. No pressure — just an honest assessment.',
+    },
+    financingSection: {
+      // Lender ad-compliant language (Sunlight Do's & Don'ts): no "fast/instant
+      // approval", no "as low as $X/mo", no "same-as-cash".
+      heading: 'Roof Financing Available — $0 Down',
+      body: 'Spread the cost of your new roof with flexible financing through our lending partners. $0 down with multiple repayment options may be available, and pre-qualification uses no hard credit pull. Ask about your options during your free inspection.',
+    },
+    faqs: [
+      {
+        question: 'How much does a new roof cost in Maryland?',
+        answer:
+          'Every roof is different — cost depends on size, pitch, materials, and access. A free, no-obligation inspection gives you your exact price, and $0-down financing options may be available.',
+      },
+      {
+        question: 'Does homeowners insurance cover roof replacement?',
+        answer:
+          'Often, when the damage is storm- or hail-related. We inspect for free, document the damage in detail, and work directly with your insurance company. Your insurer makes the final coverage decision.',
+      },
+      {
+        question: 'Do you offer roof financing?',
+        answer:
+          'Yes — flexible financing is available through our lending partners, with $0-down repayment options and pre-qualification that uses no hard credit pull. Ask during your inspection.',
+      },
+      {
+        question: 'How long does a roof last?',
+        answer:
+          'Most asphalt-shingle roofs last about 20–30 years depending on material, ventilation, and weather. During your free inspection we’ll tell you honestly where yours stands.',
+      },
+      {
+        question: 'When should I replace my roof?',
+        answer:
+          'Common signs include missing or curling shingles, granule loss in your gutters, active leaks, and age beyond about 20 years. A free inspection settles whether repair or replacement makes more sense.',
+      },
+      {
+        question: 'Are you licensed in Maryland?',
+        answer:
+          'Yes — ProTech is Maryland licensed and insured, MHIC No. 168264, and GAF-certified. You can verify our license anytime with the Maryland Home Improvement Commission.',
+      },
+    ],
   },
   'roof-repair': {
     headline: 'Roof Repair — Fast, Reliable Service',
@@ -179,7 +231,7 @@ export default async function LandingPage({
           </div>
 
           {/* Right: Form */}
-          <div>
+          <div id="lead-form" className="scroll-mt-4">
             <LandingPageForm defaultService={config.defaultService} />
           </div>
         </div>
@@ -231,8 +283,62 @@ export default async function LandingPage({
         </div>
       </section>
 
+      {/* Cost transparency — answers the #1 buyer question */}
+      {config.costSection && (
+        <section className="bg-neutral-50 px-4 py-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-primary-900 text-2xl font-bold">
+              {config.costSection.heading}
+            </h2>
+            <p className="mt-4 leading-relaxed text-neutral-700">
+              {config.costSection.body}
+            </p>
+            <a
+              href="#lead-form"
+              className="bg-accent-500 hover:bg-accent-600 mt-6 inline-flex h-12 items-center justify-center rounded-xl px-8 font-bold text-white shadow-sm transition-all"
+            >
+              See My Price
+            </a>
+          </div>
+        </section>
+      )}
+
+      {/* Financing — competitor-beating wedge (lender ad-compliant copy) */}
+      {config.financingSection && (
+        <section className="bg-white px-4 py-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-primary-900 text-2xl font-bold">
+              {config.financingSection.heading}
+            </h2>
+            <p className="mt-4 leading-relaxed text-neutral-700">
+              {config.financingSection.body}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* Storm / insurance — unclaimed angle in the Baltimore market */}
+      {config.stormSection && (
+        <section className="bg-neutral-50 px-4 py-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-primary-900 text-2xl font-bold">
+              {config.stormSection.heading}
+            </h2>
+            <p className="mt-4 leading-relaxed text-neutral-700">
+              {config.stormSection.body}
+            </p>
+            <a
+              href="#lead-form"
+              className="bg-accent-500 hover:bg-accent-600 mt-6 inline-flex h-12 items-center justify-center rounded-xl px-8 font-bold text-white shadow-sm transition-all"
+            >
+              Book My Free Storm Inspection
+            </a>
+          </div>
+        </section>
+      )}
+
       {/* What's Included */}
-      <section className="bg-neutral-50 px-4 py-12">
+      <section className="bg-white px-4 py-12">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-primary-900 text-center text-2xl font-bold">
             What&apos;s Included With Every Project
@@ -267,6 +373,14 @@ export default async function LandingPage({
           </div>
         </div>
       </section>
+
+      {/* FAQ — buyer-question relevance lifts landing-page quality score */}
+      {config.faqs && config.faqs.length > 0 && (
+        <FAQSection
+          heading="Baltimore Roofing — Frequently Asked Questions"
+          faqs={config.faqs}
+        />
+      )}
 
       {/* Final CTA */}
       <section className="bg-primary-900 px-4 py-12 text-center text-white">
