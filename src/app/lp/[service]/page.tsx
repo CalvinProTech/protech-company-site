@@ -30,9 +30,9 @@ const SERVICES: Record<
     defaultService: 'roof-replacement',
   },
   'roof-replacement-baltimore': {
-    headline: 'Baltimore Roof Replacement — Free, No-Pressure Inspection',
+    headline: 'Maryland Roof Replacement — Free, No-Pressure Inspection',
     subheadline:
-      'Maryland licensed & insured — MHIC No. 168264. Serving Baltimore City & County, Anne Arundel, Howard, Carroll & Harford — Towson, Columbia, Annapolis, Bel Air & Westminster.',
+      'Maryland licensed & insured — MHIC No. 168264. Serving Baltimore, Annapolis, Columbia, Towson, Bel Air, Westminster & communities across Maryland.',
     bullets: [
       'Free, no-pressure roof inspection — see your exact price',
       '$0 down financing available',
@@ -43,12 +43,12 @@ const SERVICES: Record<
     defaultService: 'roof-replacement',
     badges: ['500+ Roofs Completed', 'Licensed & Insured'],
     costSection: {
-      heading: 'What Does a Roof Replacement Cost in Baltimore?',
+      heading: 'What Does a Roof Replacement Cost in Maryland?',
       body: 'Every roof is different — price depends on your roof size, pitch, materials, and access. The only honest number comes from seeing yours. Get your exact price with a free, no-obligation inspection, and ask about $0-down financing.',
     },
     stormSection: {
       heading: 'Storm or Hail Damage? We Handle the Paperwork.',
-      body: 'Baltimore hail and wind can damage a roof without obvious signs. We inspect for free, document any damage in detail, and work directly with your insurance company on your claim. No pressure — just an honest assessment.',
+      body: 'Maryland hail and wind can damage a roof without obvious signs. We inspect for free, document any damage in detail, and work directly with your insurance company on your claim. No pressure — just an honest assessment.',
     },
     financingSection: {
       // Lender ad-compliant language (Sunlight Do's & Don'ts): no "fast/instant
@@ -160,9 +160,9 @@ export async function generateMetadata({
   const { service } = await params;
   if (service === 'roof-replacement-baltimore') {
     return {
-      title: 'Baltimore Roof Replacement — Free Estimate',
+      title: 'Maryland Roof Replacement — Free Estimate',
       description:
-        'Get a free roof replacement estimate for Baltimore County and surrounding areas. Maryland licensed & insured — MHIC No. 168264.',
+        'Get a free roof replacement estimate across Maryland — Baltimore, Annapolis, Columbia & nearby. Maryland licensed & insured — MHIC No. 168264.',
       robots: { index: false, follow: false },
     };
   }
@@ -384,7 +384,7 @@ export default async function LandingPage({
       {/* FAQ — buyer-question relevance lifts landing-page quality score */}
       {config.faqs && config.faqs.length > 0 && (
         <FAQSection
-          heading="Baltimore Roofing — Frequently Asked Questions"
+          heading="Maryland Roofing — Frequently Asked Questions"
           faqs={config.faqs}
         />
       )}
