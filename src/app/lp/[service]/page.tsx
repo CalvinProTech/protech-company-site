@@ -11,6 +11,7 @@ const SERVICES: Record<
     subheadline: string;
     bullets: string[];
     defaultService: string;
+    badges?: string[];
     costSection?: { heading: string; body: string };
     stormSection?: { heading: string; body: string };
     financingSection?: { heading: string; body: string };
@@ -31,15 +32,16 @@ const SERVICES: Record<
   'roof-replacement-baltimore': {
     headline: 'Baltimore Roof Replacement — Free, No-Pressure Inspection',
     subheadline:
-      'GAF-certified, Maryland licensed & insured — MHIC No. 168264. Serving Baltimore City & County, Anne Arundel, Howard, Carroll & Harford — Towson, Columbia, Annapolis, Bel Air & Westminster.',
+      'Maryland licensed & insured — MHIC No. 168264. Serving Baltimore City & County, Anne Arundel, Howard, Carroll & Harford — Towson, Columbia, Annapolis, Bel Air & Westminster.',
     bullets: [
       'Free, no-pressure roof inspection — see your exact price',
       '$0 down financing available',
       'Storm or hail damage? We document it for your insurance claim',
       '25-year manufacturer warranty included',
-      'GAF-certified, Maryland licensed — MHIC No. 168264',
+      'Maryland licensed & insured — MHIC No. 168264',
     ],
     defaultService: 'roof-replacement',
+    badges: ['500+ Roofs Completed', 'Licensed & Insured'],
     costSection: {
       heading: 'What Does a Roof Replacement Cost in Baltimore?',
       body: 'Every roof is different — price depends on your roof size, pitch, materials, and access. The only honest number comes from seeing yours. Get your exact price with a free, no-obligation inspection, and ask about $0-down financing.',
@@ -83,7 +85,7 @@ const SERVICES: Record<
       {
         question: 'Are you licensed in Maryland?',
         answer:
-          'Yes — ProTech is Maryland licensed and insured, MHIC No. 168264, and GAF-certified. You can verify our license anytime with the Maryland Home Improvement Commission.',
+          'Yes — ProTech is Maryland licensed and insured, MHIC No. 168264. You can verify our license anytime with the Maryland Home Improvement Commission.',
       },
     ],
   },
@@ -221,12 +223,17 @@ export default async function LandingPage({
                 <span className="text-yellow-400">★★★★★</span>
                 <span>5.0 on Google</span>
               </div>
-              <div className="rounded-lg bg-white/10 px-3 py-2 text-sm text-white">
-                500+ Roofs Completed
-              </div>
-              <div className="rounded-lg bg-white/10 px-3 py-2 text-sm text-white">
-                Master Elite Certified
-              </div>
+              {(config.badges ?? [
+                '500+ Roofs Completed',
+                'Master Elite Certified',
+              ]).map((badge) => (
+                <div
+                  key={badge}
+                  className="rounded-lg bg-white/10 px-3 py-2 text-sm text-white"
+                >
+                  {badge}
+                </div>
+              ))}
             </div>
           </div>
 
