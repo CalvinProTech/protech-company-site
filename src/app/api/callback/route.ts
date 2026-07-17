@@ -109,6 +109,8 @@ export async function POST(request: Request) {
           timeframe: data.timeframe || undefined,
           smsConsent: data.smsConsent ?? false,
           smsConsentPromo: data.smsConsentPromo,
+          smsConsentAt: data.smsConsent ? new Date().toISOString() : undefined,
+          smsConsentSource: request.headers.get('referer') || undefined,
           source: data.source,
           utm_source: (body._utm as Record<string, string>)?.utm_source || undefined,
           utm_medium: (body._utm as Record<string, string>)?.utm_medium || undefined,

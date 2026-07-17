@@ -15,6 +15,7 @@ import { trackFormSubmit, trackLeadWidgetEvent } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 const SUPPRESSED_PATHS = ['/contact', '/free-estimate'];
 
@@ -26,6 +27,8 @@ export default function FloatingCallbackWidget() {
   >('idle');
   const [serverError, setServerError] = useState('');
   const [honeypot, setHoneypot] = useState('');
+  const [smsInfo, setSmsInfo] = useState(false);
+  const [smsPromo, setSmsPromo] = useState(false);
   const formLoadedAt = useRef(0);
 
   useEffect(() => {
@@ -65,12 +68,17 @@ export default function FloatingCallbackWidget() {
     setServerError('');
     setSubmitStatus('idle');
 
+    // Express SMS consent (informational) is required to submit.
+    if (!smsInfo) return;
+
     try {
       const response = await fetch('/api/callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
+          smsConsent: smsInfo,
+          smsConsentPromo: smsPromo,
           _hp: honeypot,
           _t: formLoadedAt.current,
           _utm: getUtmParams(),
@@ -197,12 +205,21 @@ export default function FloatingCallbackWidget() {
                     {...register('phone')}
                   />
 
+                  <SMSConsentCheckbox
+                    idPrefix="fcw-sms"
+                    infoChecked={smsInfo}
+                    promoChecked={smsPromo}
+                    onInfoChange={setSmsInfo}
+                    onPromoChange={setSmsPromo}
+                    disabled={isSubmitting}
+                  />
+
                   <Button
                     type="submit"
                     variant="primary"
                     fullWidth
                     loading={isSubmitting}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !smsInfo}
                   >
                     Call Me Back
                   </Button>

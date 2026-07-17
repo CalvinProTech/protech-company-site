@@ -12,6 +12,7 @@ import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import Button from '@/components/ui/Button';
 import FormSuccess from './FormSuccess';
+import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 // ---------------------------------------------------------------------------
 // Component
@@ -23,6 +24,8 @@ export default function ContactForm() {
   >('idle');
   const [serverError, setServerError] = useState<string>('');
   const [honeypot, setHoneypot] = useState('');
+  const [smsInfo, setSmsInfo] = useState(false);
+  const [smsPromo, setSmsPromo] = useState(false);
   const formLoadedAt = useRef(0);
 
   useEffect(() => {
@@ -52,12 +55,17 @@ export default function ContactForm() {
     setServerError('');
     setSubmitStatus('idle');
 
+    // Express SMS consent (informational) is required to submit.
+    if (!smsInfo) return;
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
+          smsConsent: smsInfo,
+          smsConsentPromo: smsPromo,
           _hp: honeypot,
           _t: formLoadedAt.current,
           _utm: getUtmParams(),
@@ -187,13 +195,23 @@ export default function ContactForm() {
         {...register('message')}
       />
 
+      {/* SMS consent — express opt-in, required to submit */}
+      <SMSConsentCheckbox
+        idPrefix="contact-sms"
+        infoChecked={smsInfo}
+        promoChecked={smsPromo}
+        onInfoChange={setSmsInfo}
+        onPromoChange={setSmsPromo}
+        disabled={isSubmitting}
+      />
+
       {/* Submit */}
       <Button
         type="submit"
         variant="primary"
         fullWidth
         loading={isSubmitting}
-        disabled={isSubmitting}
+        disabled={isSubmitting || !smsInfo}
         className="h-14"
       >
         Send My Message
