@@ -56,6 +56,11 @@ export const estimateFormSchema = z.object({
   serviceNeeded: z.enum(SERVICE_OPTIONS, 'Please select a service'),
   howDidYouHear: z.string().min(1, 'Please let us know how you heard about us'),
   additionalDetails: z.string().optional(),
+  // Express SMS consent captured at the point of collection (toll-free
+  // verification). Informational consent is required in the UI; kept optional
+  // here so a legacy/edge submission is never hard-rejected server-side.
+  smsConsent: z.boolean().optional(),
+  smsConsentPromo: z.boolean().optional(),
 });
 
 export type EstimateFormData = z.infer<typeof estimateFormSchema>;
@@ -80,6 +85,8 @@ export const contactFormSchema = z.object({
     ),
   email: z.string().email('Please enter a valid email address'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
+  smsConsent: z.boolean().optional(),
+  smsConsentPromo: z.boolean().optional(),
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;

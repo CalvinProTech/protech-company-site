@@ -14,6 +14,7 @@ import { trackFormSubmit } from '@/lib/analytics';
 import { getUtmParams } from '@/lib/utm';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import SMSConsentCheckbox from './SMSConsentCheckbox';
 
 interface QuickQuoteFormProps {
   source: (typeof CALLBACK_SOURCES)[number];
@@ -31,6 +32,8 @@ export default function QuickQuoteForm({
   >('idle');
   const [serverError, setServerError] = useState('');
   const [honeypot, setHoneypot] = useState('');
+  const [smsInfo, setSmsInfo] = useState(false);
+  const [smsPromo, setSmsPromo] = useState(false);
   const formLoadedAt = useRef(0);
 
   useEffect(() => {
@@ -56,12 +59,17 @@ export default function QuickQuoteForm({
     setServerError('');
     setSubmitStatus('idle');
 
+    // Express SMS consent (informational) is required to submit.
+    if (!smsInfo) return;
+
     try {
       const response = await fetch('/api/callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
+          smsConsent: smsInfo,
+          smsConsentPromo: smsPromo,
           _hp: honeypot,
           _t: formLoadedAt.current,
           _utm: getUtmParams(),
@@ -177,20 +185,25 @@ export default function QuickQuoteForm({
           {...register('zip')}
         />
 
+        <SMSConsentCheckbox
+          idPrefix={`qq-${source}`}
+          infoChecked={smsInfo}
+          promoChecked={smsPromo}
+          onInfoChange={setSmsInfo}
+          onPromoChange={setSmsPromo}
+          disabled={isSubmitting}
+        />
+
         <Button
           type="submit"
           variant="primary"
           fullWidth
           loading={isSubmitting}
-          disabled={isSubmitting}
+          disabled={isSubmitting || !smsInfo}
           className="h-14"
         >
           Request a Callback
         </Button>
-
-        <p className="text-center text-xs text-neutral-500">
-          No spam. We&apos;ll only call about your roofing project.
-        </p>
       </form>
     </div>
   );
