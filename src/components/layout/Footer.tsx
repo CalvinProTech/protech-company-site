@@ -33,8 +33,6 @@ export default function Footer() {
               Tampa-headquartered. Licensed and protecting homes across {SITE_CONFIG.statesLicensed} states.
             </p>
             <p className="mt-4 text-sm text-neutral-300">
-              GAF Master Elite Contractor
-              <br />
               Licensed &amp; Insured
               <br />
               {SITE_CONFIG.statesLicensed} States Served

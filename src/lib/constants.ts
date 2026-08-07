@@ -41,7 +41,7 @@ export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://www.protechroof.net',
   description:
-    'Expert roof replacement, insurance-claim help, and in-house financing across nine states — TX, KY, MO, OH, IN, PA, MD, WV, SC. Tampa-headquartered, GAF Master Elite certified.',
+    'Expert roof replacement, insurance-claim help, and flexible financing across nine states — TX, KY, MO, OH, IN, PA, MD, WV, SC. Tampa-headquartered, licensed and insured.',
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
@@ -64,7 +64,13 @@ export const SITE_CONFIG = {
   // truthful display value, plus a separate trust headline.
   foundedYear: 2024,
   yearsExperience: 'Est. 2024',
-  certificationHeadline: 'GAF Master Elite — top 2% nationwide',
+  // 2026-08-07 (Calvin): ProTech holds NO manufacturer or trade-body
+  // certifications — GAF Master Elite, Owens Corning Preferred, NRCA
+  // membership and BBB accreditation were all claimed site-wide and none
+  // are held. Same correction class as the inflated "20+ years" above.
+  // Only state contractor licensure is claimable. Do not reintroduce a
+  // certification claim here without a verifiable credential.
+  certificationHeadline: 'Licensed & insured in all 9 states we serve',
   // Approximate based on funded-deal velocity (~15/qtr) over operating life.
   // Adjust upward as the actual count grows.
   roofsInstalled: '100+',

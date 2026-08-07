@@ -85,7 +85,7 @@ function buildHeadline(city: string): string {
   const s = seedFrom('h' + city);
   return pick(
     [
-      `Protect Your Home with ${city}'s Most Trusted Roofers`,
+      `Licensed, Insured Roofing for ${city} Homeowners`,
       `${city}'s Roof Replacement & Repair Experts`,
       `Expert Roofing Contractor Serving ${city}`,
       `Quality Roofing for ${city} Homeowners`,

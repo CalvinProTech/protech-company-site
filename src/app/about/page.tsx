@@ -8,9 +8,9 @@ import { CTABanner } from '@/components/sections/CTABanner';
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
-    title: 'About — GAF Master Elite, Tampa-HQ',
+    title: 'About — Licensed in 9 States, Tampa-HQ',
     description:
-      'ProTech Roofing — Tampa-headquartered, GAF Master Elite certified, serving nine states with in-house financing and full insurance-claim assistance. Meet our team and certifications.',
+      'ProTech Roofing — Tampa-headquartered, licensed and insured across nine states, with flexible financing and full insurance-claim assistance. Meet our team and verify our licenses.',
     path: '/about',
   });
 }
@@ -21,36 +21,38 @@ const breadcrumbItems = [
 ];
 
 const stats = [
-  { value: 'Master', label: 'GAF Certified Elite' },
-  { value: SITE_CONFIG.statesLicensed, label: 'States Served' },
-  { value: 'In-House', label: 'Financing & Crews' },
+  { value: SITE_CONFIG.statesLicensed, label: 'States Licensed' },
   { value: String(SITE_CONFIG.googleRating), label: 'Google Rating' },
+  { value: SITE_CONFIG.yearsExperience, label: 'Tampa-Headquartered' },
+  { value: '$0', label: 'Down Financing' },
 ];
 
+// 2026-08-07 (Calvin): the previous four cards claimed GAF Master Elite,
+// Owens Corning Preferred and NRCA membership. ProTech holds none of them.
+// Everything below is verifiable by a homeowner from an independent source.
 const certifications = [
-  {
-    icon: Shield,
-    title: 'GAF Master Elite',
-    description:
-      'Top 2% of roofers nationwide, certified to offer the best warranties in the industry.',
-  },
-  {
-    icon: Award,
-    title: 'Owens Corning Preferred',
-    description:
-      'Preferred contractor for Owens Corning, offering premium roofing products with enhanced warranties.',
-  },
-  {
-    icon: CheckCircle,
-    title: 'NRCA Member',
-    description:
-      'Active member of the National Roofing Contractors Association, committed to industry best practices.',
-  },
   {
     icon: Shield,
     title: 'Licensed & Insured',
     description:
-      'Fully licensed in every state we operate and carrying comprehensive liability and workers\u2019 comp coverage.',
+      'Fully licensed in every state we operate, carrying general liability and workers\u2019 compensation coverage.',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Verifiable License Numbers',
+    description:
+      'Our license number for each state is published on that state\u2019s page \u2014 check any of them with the issuing board before you sign.',
+  },
+  {
+    icon: Award,
+    title: `${SITE_CONFIG.googleRating}\u2605 on Google`,
+    description: `Rated ${SITE_CONFIG.googleRating} stars across ${SITE_CONFIG.reviewCount}+ verified homeowner reviews.`,
+  },
+  {
+    icon: Shield,
+    title: 'Written, Itemized Estimates',
+    description:
+      'Free inspection and a written scope of work before anything is signed \u2014 no obligation, no pressure.',
   },
 ];
 
@@ -91,21 +93,24 @@ export default function AboutPage() {
               <p>
                 ProTech Roofing was founded in Tampa on a simple belief: every
                 homeowner deserves honest, quality roofing work at a fair price.
-                Too many roofers in our markets sell pressure tactics, hide
-                behind subcontractors, and disappear after the deposit clears.
-                We built ProTech to be the opposite — a Tampa-headquartered
-                contractor with in-house crews, transparent pricing, and a real
-                claim-assistance practice that homeowners can actually rely on
-                when a storm hits.
+                Too many roofers in our markets sell pressure tactics, quote a
+                number they never put in writing, and disappear after the
+                deposit clears. We built ProTech to be the opposite — a
+                Tampa-headquartered contractor with transparent, line-item
+                pricing and a real claim-assistance practice that homeowners can
+                actually rely on when a storm hits.
               </p>
               <p>
                 We&apos;re a young company that grew quickly because the model
-                works. Our crews live and work locally in each state we serve,
-                so the team that shows up to your home is from your area — not
-                flown in from out of state. We pull our own permits, manage the
-                full insurance-claim file end-to-end, and back every install
-                with the GAF Golden Pledge warranty (50 years on materials, 25
-                years on workmanship) plus our own workmanship guarantee.
+                works. We install through vetted local crews in each state we
+                serve, so the team that shows up to your home is from your area
+                — not flown in from out of state. Every crew works under our
+                license, our insurance, and our workmanship standards, and we
+                stay the single point of accountability from first inspection to
+                final invoice. We pull the permits, manage the insurance-claim
+                file end-to-end, and back every install with our workmanship
+                guarantee. The shingles we install carry the manufacturer&apos;s
+                own limited warranty, which we register for you.
               </p>
               <p>
                 What sets us apart is communication. We explain every finding

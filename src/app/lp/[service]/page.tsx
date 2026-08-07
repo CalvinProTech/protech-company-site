@@ -21,7 +21,7 @@ const SERVICES: Record<
   'roof-replacement': {
     headline: 'Roof Replacement — Free Quote in 60 Seconds',
     subheadline:
-      'Master Elite Certified. Licensed in 9 states. 5-star rated on Google.',
+      'Licensed & insured in 9 states. 5-star rated on Google.',
     bullets: [
       '25-year manufacturer warranty included',
       '$0 down financing available',
@@ -114,7 +114,7 @@ const SERVICES: Record<
   'free-estimate': {
     headline: 'Free Roof Estimate — No Obligation',
     subheadline:
-      'Master Elite Certified. 500+ roofs completed. Financing available.',
+      'Licensed & insured. Free inspection. Financing available.',
     bullets: [
       'Satellite-powered instant measurement',
       'Licensed & insured in 9 states',
@@ -225,7 +225,7 @@ export default async function LandingPage({
               </div>
               {(config.badges ?? [
                 '500+ Roofs Completed',
-                'Master Elite Certified',
+                'Licensed & Insured',
               ]).map((badge) => (
                 <div
                   key={badge}

@@ -26,7 +26,7 @@ export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Roof Replacement & Repair — Free Estimate | ProTech Roofing',
     description:
-      'Licensed roofing contractor serving TX, KY, MO, OH, IN, PA, MD, WV & SC. Roof replacement, repair, storm damage & insurance claims. GAF Master Elite certified. $0 down financing. Free inspection — call (866) 308-2640.',
+      'Licensed roofing contractor serving TX, KY, MO, OH, IN, PA, MD, WV & SC. Roof replacement, repair, storm damage & insurance claims. Licensed and insured. $0 down financing. Free inspection — call (866) 308-2640.',
     path: '/',
     absolute: true,
   });
@@ -55,7 +55,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero
-        heading="Protect Your Home with America's Most Trusted Roofers"
+        heading="Protect Your Home with Roofers You Can Verify"
         subtitle="Get your instant roof estimate in 60 seconds — powered by satellite technology."
         showTrustBadges={true}
       >

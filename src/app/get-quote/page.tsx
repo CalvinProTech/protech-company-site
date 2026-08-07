@@ -15,9 +15,12 @@ export function generateMetadata(): Metadata {
 }
 
 const trustPoints = [
-  { icon: Shield, text: 'GAF Master Elite — Top 2% of Roofers' },
+  { icon: Shield, text: 'Licensed & Insured in All 9 States We Serve' },
   { icon: Star, text: `${SITE_CONFIG.googleRating}★ Google Rating · ${SITE_CONFIG.reviewCount}+ Verified Reviews` },
-  { icon: Clock, text: 'We Respond Within 5 Minutes' },
+  // "Within 5 minutes" was not survivable — website leads currently route to
+  // the fresh dial list and have waited days. Reinstate a speed promise only
+  // once real-time routing is fixed and measured.
+  { icon: Clock, text: 'Same-Day Response, Every Business Day' },
   { icon: CheckCircle, text: '$0 Down Financing Available' },
 ];
 
@@ -135,10 +138,10 @@ export default function GetQuotePage() {
                 </h3>
                 <ul className="mt-3 space-y-2">
                   {[
-                    'GAF Master Elite Certified (top 2%)',
                     'Licensed & insured across 9 states',
-                    'Tampa-headquartered, in-house crews',
-                    'GAF Golden Pledge 50-year warranty',
+                    'License numbers you can verify with the state',
+                    'Tampa-headquartered, vetted local crews',
+                    'Written, line-item estimates — no surprises',
                     '$0 down financing options',
                     'Insurance claim assistance, end-to-end',
                   ].map((item, i) => (

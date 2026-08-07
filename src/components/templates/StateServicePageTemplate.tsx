@@ -64,7 +64,7 @@ export default function StateServicePageTemplate({
       {/* Hero */}
       <Hero
         heading={`${service.name} in ${state}`}
-        subtitle={`Licensed ${service.name.toLowerCase()} services for ${state} homeowners. GAF Master Elite certified. Free inspections and $0 down financing available.`}
+        subtitle={`Licensed ${service.name.toLowerCase()} services for ${state} homeowners. Free inspections and $0 down financing available.`}
         primaryCTA={{ text: 'Get Your Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
           text: `Call ${SITE_CONFIG.defaultPhone}`,
@@ -89,12 +89,11 @@ export default function StateServicePageTemplate({
               backed by a lifetime workmanship warranty.
             </p>
             <p>
-              As a GAF Master Elite certified contractor — a distinction held by
-              only 2% of roofers nationwide — we deliver the highest quality
-              materials and installation standards available. Every{' '}
-              {service.name.toLowerCase()} project includes a thorough
-              inspection, transparent written estimate, and dedicated project
-              management from start to finish.
+              As a licensed and insured {state} contractor, we install
+              architectural shingles from the major manufacturers and stand
+              behind the work. Every {service.name.toLowerCase()} project
+              includes a thorough inspection, transparent written estimate, and
+              dedicated project management from start to finish.
             </p>
           </div>
         </div>
