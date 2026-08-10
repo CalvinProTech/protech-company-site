@@ -88,29 +88,68 @@ function listJoin(items: string[]): string {
   return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 }
 
+// Phrasing is matched to measured demand, not house style. Semrush US volumes
+// (2026-08-10) show "roofing companies {city}" outsearching "roofing
+// contractors {city}" everywhere we sell: Indianapolis 2,400 vs 720,
+// Cincinnati 1,300 vs 720, Houston 1,300 vs 880. "roofers {city}" and
+// "roof repair {city}" are the next strongest heads. Titles and H1s below
+// lead with those forms. Every variant still carries the state — same-named
+// cities exist across the footprint (Columbia MO/MD/SC, Marion OH/IN,
+// Anderson IN/SC, Columbus OH/IN, New Castle PA/IN).
 function buildHeadline(city: string, state: string, abbr: string): string {
+  if (isPriorityMetro(city, abbr)) {
+    return `Roofing Companies Serving ${city}, ${state}`;
+  }
   const s = seedFrom('h' + city + abbr);
   return pick(
     [
-      `Licensed, Insured Roofing for ${city}, ${abbr} Homeowners`,
+      `${city}, ${abbr} Roofing Company — Licensed & Insured`,
       `${city}, ${abbr} Roof Replacement & Repair Experts`,
-      `Expert Roofing Contractor Serving ${city}, ${state}`,
-      `Quality Roofing for ${city}, ${abbr} Homeowners`,
+      `Roofers Serving ${city}, ${state}`,
+      `Roofing Companies Serving ${city}, ${abbr}`,
     ],
     s
   );
 }
 
+// Metros with measured head-term demand (Semrush US, 2026-08-10). These do NOT
+// get a rotated title — the strongest phrasing is assigned deterministically,
+// because leaving the highest-volume page in the footprint to a hash is how
+// Indianapolis ("roofing companies indianapolis", 2,400/mo — our single
+// biggest term) ended up titled for roof repair instead.
+// Volume = "roofing companies {metro}" monthly US searches; KD in comments.
+export const PRIORITY_METROS: Record<string, number> = {
+  'indianapolis|IN': 2400, // KD 33 — best volume-to-difficulty in the footprint
+  'san antonio|TX': 1600, // KD 51
+  'columbus|OH': 1300, // KD 56
+  'houston|TX': 1300, // KD 34
+  'cincinnati|OH': 1300, // KD 26 — low difficulty, high volume
+  'kansas city|MO': 1000, // KD 39
+  'st. louis|MO': 1000, // KD 55
+  'pittsburgh|PA': 590, // KD 32
+  'louisville|KY': 480, // KD 58
+  'cleveland|OH': 390, // KD 18 — easiest head term we have
+  'philadelphia|PA': 390, // KD 50
+  'baltimore|MD': 320, // KD 62 — lowest volume, highest difficulty of the set
+  'columbia|SC': 320, // KD 36
+  'charleston|SC': 260, // KD 22
+  'greenville|SC': 210, // KD 17
+};
+
+export function isPriorityMetro(city: string, abbr: string): boolean {
+  return `${city.toLowerCase()}|${abbr}` in PRIORITY_METROS;
+}
+
 function buildMetaTitle(city: string, abbr: string): string {
+  // Lead with the highest-demand phrasing in metros where we know the numbers.
+  if (isPriorityMetro(city, abbr)) return `Roofing Companies in ${city}, ${abbr}`;
   const s = seedFrom('t' + city + abbr);
-  // Every variant must carry the state — same-named cities exist across the
-  // footprint (Columbia MO/MD/SC, Marion OH/IN, Anderson IN/SC).
   return pick(
     [
-      `${city}, ${abbr} Roofing Contractor`,
-      `Roofing Services in ${city}, ${abbr}`,
-      `${city}, ${abbr} Roof Replacement & Repair`,
-      `Roofing Contractor in ${city}, ${abbr}`,
+      `Roofing Companies in ${city}, ${abbr}`,
+      `${city}, ${abbr} Roofing Company`,
+      `Roof Replacement in ${city}, ${abbr}`,
+      `Roofers in ${city}, ${abbr}`,
     ],
     s
   );
@@ -120,8 +159,8 @@ function buildMetaDescription(city: string, abbr: string, county: string, near: 
   const s = seedFrom('d' + city + abbr);
   return pick(
     [
-      `Trusted ${city}, ${abbr} roofing contractor for roof replacement, repair, and storm-damage restoration. Serving ${county}. Licensed, insured, free estimates.`,
-      `${city}'s roofing experts for replacement, leak repair, and insurance claims. Serving ${county} and ${near}. Free inspection from ProTech Roofing.`,
+      `Roofing companies in ${city}, ${abbr}: ProTech handles replacement, repair, and storm damage across ${county}. Licensed, insured, free estimates.`,
+      `${city} roofers for replacement, leak repair, and insurance claims. Serving ${county} and ${near}. Free inspection from ProTech Roofing.`,
       `Roof replacement, repair, and storm-damage help in ${city}, ${abbr}. Local crews across ${county}. Financing available — get your free ProTech estimate.`,
     ],
     s
