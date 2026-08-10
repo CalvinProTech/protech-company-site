@@ -79,11 +79,18 @@ export const SITE_CONFIG = {
   serviceAreaCount: '9 states',
 } as const;
 
+// 2026-08-10: "Roof Cost" added. /roof-replacement-cost-calculator had ZERO
+// inbound internal links anywhere on the site — a fully orphaned page carrying
+// our single best keyword opportunity ("roof replacement cost" 22,200/mo at
+// KD 25, plus a ~52,000/mo cluster at KD 17-33). Orphan pages accumulate no
+// internal link equity and get crawled rarely. It also converts: the tool
+// captures an address, which is the top of the estimate funnel.
 export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Locations', href: '/locations' },
+  { label: 'Roof Cost', href: '/roof-replacement-cost-calculator' },
   { label: 'Financing', href: '/financing' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },

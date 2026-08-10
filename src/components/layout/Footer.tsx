@@ -59,10 +59,18 @@ export default function Footer() {
               ))}
               <li>
                 <Link
+                  href="/roof-replacement-cost-calculator"
+                  className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                >
+                  Roof Replacement Cost
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/certifications"
                   className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
                 >
-                  Certifications
+                  Licensing &amp; Credentials
                 </Link>
               </li>
             </ul>
