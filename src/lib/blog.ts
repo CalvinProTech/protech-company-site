@@ -39,9 +39,22 @@ export interface BlogPost {
   readingTime: string;
 }
 
+// The post template already renders the title as the page's <h1>. Every MDX
+// body ALSO opens with a `# ...` heading repeating that title, so each post
+// shipped two H1s — flagged by Semrush Site Audit (2026-08-08) across the
+// published set. Strip the leading body H1 at parse time so the fix covers
+// existing posts, the 26 drafts, and anything the generator writes later.
+// Only a *leading* H1 is removed; mid-document H1s are demoted to H2 rather
+// than dropped, so no content is ever silently lost.
+function stripDuplicateH1(content: string): string {
+  const withoutLeading = content.replace(/^\s*#\s+[^\n]*\n+/, "");
+  return withoutLeading.replace(/^#\s+(?=\S)/gm, "## ");
+}
+
 function parseMdxFile(filePath: string): BlogPost {
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContent);
+  const { data, content: rawContent } = matter(fileContent);
+  const content = stripDuplicateH1(rawContent);
   const stats = readingTime(content);
 
   return {

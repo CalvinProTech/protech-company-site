@@ -58,9 +58,16 @@ export const STATE_LICENSE: Record<string, string> = {
 };
 
 // ─── Deterministic copy generation ──────────────────────────────────────────
-// Copy is templated (not hand-authored per city) but seeded off the city slug
-// so each page renders a stable, varied combination — avoiding duplicate-content
-// penalties while scaling to full-state coverage.
+// Copy is templated (not hand-authored per city) but seeded off the city AND
+// state so each page renders a stable, varied combination — avoiding
+// duplicate-content penalties while scaling to full-state coverage.
+//
+// 2026-08-10: seeds were keyed on city name ALONE, so same-named cities in
+// different states rendered byte-identical titles, descriptions and headlines.
+// Semrush Site Audit caught it as 7 duplicate titles + 4 duplicate-content
+// pages — Columbia (MO/MD/SC), Marion (OH/IN), Anderson (IN/SC). Every seed
+// now includes the state abbreviation, and every metaTitle variant carries
+// the state, so a seed collision still cannot produce an identical title.
 
 function seedFrom(s: string): number {
   let h = 0;
@@ -81,26 +88,28 @@ function listJoin(items: string[]): string {
   return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 }
 
-function buildHeadline(city: string): string {
-  const s = seedFrom('h' + city);
+function buildHeadline(city: string, state: string, abbr: string): string {
+  const s = seedFrom('h' + city + abbr);
   return pick(
     [
-      `Licensed, Insured Roofing for ${city} Homeowners`,
-      `${city}'s Roof Replacement & Repair Experts`,
-      `Expert Roofing Contractor Serving ${city}`,
-      `Quality Roofing for ${city} Homeowners`,
+      `Licensed, Insured Roofing for ${city}, ${abbr} Homeowners`,
+      `${city}, ${abbr} Roof Replacement & Repair Experts`,
+      `Expert Roofing Contractor Serving ${city}, ${state}`,
+      `Quality Roofing for ${city}, ${abbr} Homeowners`,
     ],
     s
   );
 }
 
 function buildMetaTitle(city: string, abbr: string): string {
-  const s = seedFrom('t' + city);
+  const s = seedFrom('t' + city + abbr);
+  // Every variant must carry the state — same-named cities exist across the
+  // footprint (Columbia MO/MD/SC, Marion OH/IN, Anderson IN/SC).
   return pick(
     [
       `${city}, ${abbr} Roofing Contractor`,
       `Roofing Services in ${city}, ${abbr}`,
-      `${city} Roof Replacement & Repair`,
+      `${city}, ${abbr} Roof Replacement & Repair`,
       `Roofing Contractor in ${city}, ${abbr}`,
     ],
     s
@@ -108,7 +117,7 @@ function buildMetaTitle(city: string, abbr: string): string {
 }
 
 function buildMetaDescription(city: string, abbr: string, county: string, near: string): string {
-  const s = seedFrom('d' + city);
+  const s = seedFrom('d' + city + abbr);
   return pick(
     [
       `Trusted ${city}, ${abbr} roofing contractor for roof replacement, repair, and storm-damage restoration. Serving ${county}. Licensed, insured, free estimates.`,
@@ -138,7 +147,7 @@ function buildIntro(
     [
       `ProTech Roofing serves ${city} and the surrounding ${county} communities — including ${near} — with full roof replacements, fast leak and storm-damage repair, and complete insurance-claim support. We install ${profile.materials} suited to ${profile.state}'s climate.`,
       `Our local crews cover ${city} and nearby ${near}, handling everything from complete roof replacements to emergency leak repair. We use ${profile.materials} chosen for ${profile.state}'s weather and manage permits and inspections from start to finish.`,
-      `From ${city} to ${near}, ProTech Roofing delivers roof replacement, repair, storm restoration, and insurance-claim help. Our installations pair ${profile.materials} with manufacturer-certified workmanship.`,
+      `From ${city} to ${near}, ProTech Roofing delivers roof replacement, repair, storm restoration, and insurance-claim help. Our installations pair ${profile.materials} with manufacturer-specified installation methods.`,
     ],
     s >> 3
   );
@@ -177,7 +186,7 @@ function buildLocations(): Location[] {
         heroImage: HERO_IMAGE,
         metaTitle: buildMetaTitle(f.city, profile.stateAbbr),
         metaDescription: buildMetaDescription(f.city, profile.stateAbbr, county, near1),
-        headline: buildHeadline(f.city),
+        headline: buildHeadline(f.city, profile.state, profile.stateAbbr),
         intro: buildIntro(f.city, county, near, profile),
       });
     }
