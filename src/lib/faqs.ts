@@ -39,7 +39,7 @@ export const generalFaqs: FAQItem[] = [
   {
     question: 'Is ProTech Roofing licensed and insured?',
     answer:
-      "Yes, ProTech Roofing is fully licensed in every state where we operate and carries comprehensive general liability insurance and workers' compensation coverage. Our license numbers are displayed on our state-specific service pages. We also maintain manufacturer certifications from GAF, Owens Corning, and CertainTeed, which enable us to offer the highest-tier warranties available.",
+      "Yes, ProTech Roofing is fully licensed in every state where we operate and carries comprehensive general liability insurance and workers' compensation coverage. Our license numbers are displayed on our state-specific service pages, and you can verify any of them directly with the issuing state board.",
   },
   {
     question: 'What areas does ProTech Roofing serve?',

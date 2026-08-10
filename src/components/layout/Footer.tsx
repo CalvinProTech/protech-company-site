@@ -33,8 +33,6 @@ export default function Footer() {
               Tampa-headquartered. Licensed and protecting homes across {SITE_CONFIG.statesLicensed} states.
             </p>
             <p className="mt-4 text-sm text-neutral-300">
-              GAF Master Elite Contractor
-              <br />
               Licensed &amp; Insured
               <br />
               {SITE_CONFIG.statesLicensed} States Served
@@ -61,10 +59,18 @@ export default function Footer() {
               ))}
               <li>
                 <Link
+                  href="/roof-replacement-cost-calculator"
+                  className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                >
+                  Roof Replacement Cost
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/certifications"
                   className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
                 >
-                  Certifications
+                  Licensing &amp; Credentials
                 </Link>
               </li>
             </ul>

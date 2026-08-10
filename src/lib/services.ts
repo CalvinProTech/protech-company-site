@@ -34,7 +34,7 @@ const services: Service[] = [
     shortDescription:
       'Get a roof that lasts 30+ years with premium materials, expert installation, and a lifetime workmanship warranty.',
     longDescription:
-      'A full roof replacement is the most effective way to protect your home, boost curb appeal, and increase property value. ProTech Roofing uses manufacturer-certified installation techniques with premium materials from GAF, Owens Corning, and CertainTeed to deliver a roof system that performs for decades. Every replacement includes a thorough decking inspection, proper ventilation assessment, ice-and-water shield application at all vulnerable areas, and meticulous flashing work around penetrations. We handle permits, HOA approvals, and final inspections so you can focus on choosing the style and color that transforms your home.',
+      'A full roof replacement is the most effective way to protect your home, boost curb appeal, and increase property value. ProTech Roofing follows manufacturer-specified installation methods using premium materials from GAF, Owens Corning, and CertainTeed to deliver a roof system that performs for decades. Every replacement includes a thorough decking inspection, proper ventilation assessment, ice-and-water shield application at all vulnerable areas, and meticulous flashing work around penetrations. We handle permits, HOA approvals, and final inspections so you can focus on choosing the style and color that transforms your home.',
     benefits: [
       'Lifetime workmanship warranty plus manufacturer material warranties up to 50 years',
       "Increase your home's resale value by an average of $12,000 to $18,000",

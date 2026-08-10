@@ -41,7 +41,7 @@ export const SITE_CONFIG = {
   name: 'ProTech Roofing',
   url: 'https://www.protechroof.net',
   description:
-    'Expert roof replacement, insurance-claim help, and in-house financing across nine states — TX, KY, MO, OH, IN, PA, MD, WV, SC. Tampa-headquartered, GAF Master Elite certified.',
+    'Expert roof replacement, insurance-claim help, and flexible financing across nine states — TX, KY, MO, OH, IN, PA, MD, WV, SC. Tampa-headquartered, licensed and insured.',
   defaultPhone: '1-866-308-2640',
   defaultPhoneRaw: '18663082640',
   email: 'sales@protechroof.net',
@@ -64,7 +64,13 @@ export const SITE_CONFIG = {
   // truthful display value, plus a separate trust headline.
   foundedYear: 2024,
   yearsExperience: 'Est. 2024',
-  certificationHeadline: 'GAF Master Elite — top 2% nationwide',
+  // 2026-08-07 (Calvin): ProTech holds NO manufacturer or trade-body
+  // certifications — GAF Master Elite, Owens Corning Preferred, NRCA
+  // membership and BBB accreditation were all claimed site-wide and none
+  // are held. Same correction class as the inflated "20+ years" above.
+  // Only state contractor licensure is claimable. Do not reintroduce a
+  // certification claim here without a verifiable credential.
+  certificationHeadline: 'Licensed & insured in all 9 states we serve',
   // Approximate based on funded-deal velocity (~15/qtr) over operating life.
   // Adjust upward as the actual count grows.
   roofsInstalled: '100+',
@@ -73,11 +79,18 @@ export const SITE_CONFIG = {
   serviceAreaCount: '9 states',
 } as const;
 
+// 2026-08-10: "Roof Cost" added. /roof-replacement-cost-calculator had ZERO
+// inbound internal links anywhere on the site — a fully orphaned page carrying
+// our single best keyword opportunity ("roof replacement cost" 22,200/mo at
+// KD 25, plus a ~52,000/mo cluster at KD 17-33). Orphan pages accumulate no
+// internal link equity and get crawled rarely. It also converts: the tool
+// captures an address, which is the top of the estimate funnel.
 export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Locations', href: '/locations' },
+  { label: 'Roof Cost', href: '/roof-replacement-cost-calculator' },
   { label: 'Financing', href: '/financing' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },

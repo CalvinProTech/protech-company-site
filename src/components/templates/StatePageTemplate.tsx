@@ -1,8 +1,27 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import Link from 'next/link';
 import { MapPin, ArrowRight, Phone } from 'lucide-react';
 
 import type { Location } from '@/lib/locations';
 import { SITE_CONFIG, SERVICES } from '@/lib/constants';
+
+// Semrush Site Audit (2026-08-08) flagged 3 broken internal images: the
+// hero requested /images/hero/{stateSlug}.jpg unconditionally, but indiana,
+// missouri and west-virginia have no artwork — those three states were
+// restored to the footprint on 7/02 and their images were never added.
+// Resolved at build time so a missing file degrades to the default rather
+// than shipping a 404 into the hero of a live state page.
+function stateHeroImage(stateSlug: string): string {
+  const rel = `/images/hero/${stateSlug}.jpg`;
+  try {
+    if (fs.existsSync(path.join(process.cwd(), 'public', rel))) return rel;
+  } catch {
+    // fall through to the default
+  }
+  return '/images/hero/default.jpg';
+}
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -47,7 +66,7 @@ export default function StatePageTemplate({
           text: `Call ${SITE_CONFIG.defaultPhone}`,
           href: `tel:${SITE_CONFIG.defaultPhoneRaw}`,
         }}
-        backgroundImage={`/images/hero/${stateSlug}.jpg`}
+        backgroundImage={stateHeroImage(stateSlug)}
         showTrustBadges={true}
       />
 

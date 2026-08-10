@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: '%s | ProTech Roofing',
   },
   description:
-    'Expert roof replacement, insurance-claim help, and in-house financing across nine states. Tampa-headquartered, GAF Master Elite certified, rated 5.0 stars on Google. Get your free estimate today.',
+    'Expert roof replacement, insurance-claim help, and flexible financing across nine states. Tampa-headquartered, licensed and insured, rated 5.0 stars on Google. Get your free estimate today.',
   openGraph: {
     type: 'website',
     locale: 'en_US',

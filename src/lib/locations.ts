@@ -58,9 +58,16 @@ export const STATE_LICENSE: Record<string, string> = {
 };
 
 // ─── Deterministic copy generation ──────────────────────────────────────────
-// Copy is templated (not hand-authored per city) but seeded off the city slug
-// so each page renders a stable, varied combination — avoiding duplicate-content
-// penalties while scaling to full-state coverage.
+// Copy is templated (not hand-authored per city) but seeded off the city AND
+// state so each page renders a stable, varied combination — avoiding
+// duplicate-content penalties while scaling to full-state coverage.
+//
+// 2026-08-10: seeds were keyed on city name ALONE, so same-named cities in
+// different states rendered byte-identical titles, descriptions and headlines.
+// Semrush Site Audit caught it as 7 duplicate titles + 4 duplicate-content
+// pages — Columbia (MO/MD/SC), Marion (OH/IN), Anderson (IN/SC). Every seed
+// now includes the state abbreviation, and every metaTitle variant carries
+// the state, so a seed collision still cannot produce an identical title.
 
 function seedFrom(s: string): number {
   let h = 0;
@@ -81,38 +88,79 @@ function listJoin(items: string[]): string {
   return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 }
 
-function buildHeadline(city: string): string {
-  const s = seedFrom('h' + city);
+// Phrasing is matched to measured demand, not house style. Semrush US volumes
+// (2026-08-10) show "roofing companies {city}" outsearching "roofing
+// contractors {city}" everywhere we sell: Indianapolis 2,400 vs 720,
+// Cincinnati 1,300 vs 720, Houston 1,300 vs 880. "roofers {city}" and
+// "roof repair {city}" are the next strongest heads. Titles and H1s below
+// lead with those forms. Every variant still carries the state — same-named
+// cities exist across the footprint (Columbia MO/MD/SC, Marion OH/IN,
+// Anderson IN/SC, Columbus OH/IN, New Castle PA/IN).
+function buildHeadline(city: string, state: string, abbr: string): string {
+  if (isPriorityMetro(city, abbr)) {
+    return `Roofing Companies Serving ${city}, ${state}`;
+  }
+  const s = seedFrom('h' + city + abbr);
   return pick(
     [
-      `Protect Your Home with ${city}'s Most Trusted Roofers`,
-      `${city}'s Roof Replacement & Repair Experts`,
-      `Expert Roofing Contractor Serving ${city}`,
-      `Quality Roofing for ${city} Homeowners`,
+      `${city}, ${abbr} Roofing Company — Licensed & Insured`,
+      `${city}, ${abbr} Roof Replacement & Repair Experts`,
+      `Roofers Serving ${city}, ${state}`,
+      `Roofing Companies Serving ${city}, ${abbr}`,
     ],
     s
   );
 }
 
+// Metros with measured head-term demand (Semrush US, 2026-08-10). These do NOT
+// get a rotated title — the strongest phrasing is assigned deterministically,
+// because leaving the highest-volume page in the footprint to a hash is how
+// Indianapolis ("roofing companies indianapolis", 2,400/mo — our single
+// biggest term) ended up titled for roof repair instead.
+// Volume = "roofing companies {metro}" monthly US searches; KD in comments.
+export const PRIORITY_METROS: Record<string, number> = {
+  'indianapolis|IN': 2400, // KD 33 — best volume-to-difficulty in the footprint
+  'san antonio|TX': 1600, // KD 51
+  'columbus|OH': 1300, // KD 56
+  'houston|TX': 1300, // KD 34
+  'cincinnati|OH': 1300, // KD 26 — low difficulty, high volume
+  'kansas city|MO': 1000, // KD 39
+  'st. louis|MO': 1000, // KD 55
+  'pittsburgh|PA': 590, // KD 32
+  'louisville|KY': 480, // KD 58
+  'cleveland|OH': 390, // KD 18 — easiest head term we have
+  'philadelphia|PA': 390, // KD 50
+  'baltimore|MD': 320, // KD 62 — lowest volume, highest difficulty of the set
+  'columbia|SC': 320, // KD 36
+  'charleston|SC': 260, // KD 22
+  'greenville|SC': 210, // KD 17
+};
+
+export function isPriorityMetro(city: string, abbr: string): boolean {
+  return `${city.toLowerCase()}|${abbr}` in PRIORITY_METROS;
+}
+
 function buildMetaTitle(city: string, abbr: string): string {
-  const s = seedFrom('t' + city);
+  // Lead with the highest-demand phrasing in metros where we know the numbers.
+  if (isPriorityMetro(city, abbr)) return `Roofing Companies in ${city}, ${abbr}`;
+  const s = seedFrom('t' + city + abbr);
   return pick(
     [
-      `${city}, ${abbr} Roofing Contractor`,
-      `Roofing Services in ${city}, ${abbr}`,
-      `${city} Roof Replacement & Repair`,
-      `Roofing Contractor in ${city}, ${abbr}`,
+      `Roofing Companies in ${city}, ${abbr}`,
+      `${city}, ${abbr} Roofing Company`,
+      `Roof Replacement in ${city}, ${abbr}`,
+      `Roofers in ${city}, ${abbr}`,
     ],
     s
   );
 }
 
 function buildMetaDescription(city: string, abbr: string, county: string, near: string): string {
-  const s = seedFrom('d' + city);
+  const s = seedFrom('d' + city + abbr);
   return pick(
     [
-      `Trusted ${city}, ${abbr} roofing contractor for roof replacement, repair, and storm-damage restoration. Serving ${county}. Licensed, insured, free estimates.`,
-      `${city}'s roofing experts for replacement, leak repair, and insurance claims. Serving ${county} and ${near}. Free inspection from ProTech Roofing.`,
+      `Roofing companies in ${city}, ${abbr}: ProTech handles replacement, repair, and storm damage across ${county}. Licensed, insured, free estimates.`,
+      `${city} roofers for replacement, leak repair, and insurance claims. Serving ${county} and ${near}. Free inspection from ProTech Roofing.`,
       `Roof replacement, repair, and storm-damage help in ${city}, ${abbr}. Local crews across ${county}. Financing available — get your free ProTech estimate.`,
     ],
     s
@@ -138,7 +186,7 @@ function buildIntro(
     [
       `ProTech Roofing serves ${city} and the surrounding ${county} communities — including ${near} — with full roof replacements, fast leak and storm-damage repair, and complete insurance-claim support. We install ${profile.materials} suited to ${profile.state}'s climate.`,
       `Our local crews cover ${city} and nearby ${near}, handling everything from complete roof replacements to emergency leak repair. We use ${profile.materials} chosen for ${profile.state}'s weather and manage permits and inspections from start to finish.`,
-      `From ${city} to ${near}, ProTech Roofing delivers roof replacement, repair, storm restoration, and insurance-claim help. Our installations pair ${profile.materials} with manufacturer-certified workmanship.`,
+      `From ${city} to ${near}, ProTech Roofing delivers roof replacement, repair, storm restoration, and insurance-claim help. Our installations pair ${profile.materials} with manufacturer-specified installation methods.`,
     ],
     s >> 3
   );
@@ -177,7 +225,7 @@ function buildLocations(): Location[] {
         heroImage: HERO_IMAGE,
         metaTitle: buildMetaTitle(f.city, profile.stateAbbr),
         metaDescription: buildMetaDescription(f.city, profile.stateAbbr, county, near1),
-        headline: buildHeadline(f.city),
+        headline: buildHeadline(f.city, profile.state, profile.stateAbbr),
         intro: buildIntro(f.city, county, near, profile),
       });
     }

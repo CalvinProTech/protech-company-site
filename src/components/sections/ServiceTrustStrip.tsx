@@ -8,8 +8,8 @@ const trustItems = [
   },
   {
     icon: Award,
-    label: 'GAF Certified',
-    detail: 'Master Elite installer',
+    label: 'Licensed & Insured',
+    detail: 'In all 9 states we serve',
   },
   {
     icon: Clock,

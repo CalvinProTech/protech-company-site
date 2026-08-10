@@ -18,7 +18,7 @@ interface HeroProps {
 }
 
 const trustBadges = [
-  { icon: Award, label: 'GAF Master Elite' },
+  { icon: Award, label: 'Licensed & Insured' },
   { icon: Shield, label: `${SITE_CONFIG.statesLicensed} States Served` },
   { icon: Star, label: `${SITE_CONFIG.googleRating}★ on Google` },
   { icon: MapPin, label: 'Tampa-Headquartered' },
