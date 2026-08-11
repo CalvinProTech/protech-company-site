@@ -13,6 +13,10 @@ interface CreatePageMetadataOptions {
   /** When true, do NOT apply the layout's "%s | ProTech Roofing" template.
    *  Use for the homepage where Next.js root-page-template behavior is inconsistent. */
   absolute?: boolean;
+  /** When true, emit robots noindex,follow. Used for off-footprint content
+   *  (state guides for states ProTech doesn't service) — keeps the URL live
+   *  (no 404) but pulls it from the index so it stops drawing out-of-area leads. */
+  noindex?: boolean;
 }
 
 export function createPageMetadata({
@@ -22,6 +26,7 @@ export function createPageMetadata({
   image,
   type = 'website',
   absolute = false,
+  noindex = false,
 }: CreatePageMetadataOptions): Metadata {
   const canonicalUrl = `${BASE_URL}${path}`;
   const ogImage = image
@@ -33,6 +38,7 @@ export function createPageMetadata({
   return {
     title: absolute ? { absolute: title } : title,
     description,
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: canonicalUrl,
     },
