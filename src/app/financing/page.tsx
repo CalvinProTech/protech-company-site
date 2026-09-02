@@ -9,7 +9,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
-import { SITE_CONFIG } from '@/lib/constants';
+import { SITE_CONFIG, FINANCING_APPLY_URL } from '@/lib/constants';
 import { financingFaqs } from '@/lib/faqs';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -174,7 +174,7 @@ export default function FinancingPage() {
           <HearthWidget />
           <p className="mt-6 text-center">
             <a
-              href="https://app.gethearth.com/partners/protech-roofing-llc/calvin/apply"
+              href={FINANCING_APPLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-8 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
