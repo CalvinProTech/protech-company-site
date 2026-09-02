@@ -81,16 +81,21 @@ export const SITE_CONFIG = {
 
 // 2026-09-02: single source of truth for the financing application link.
 //
-// It was previously hard-coded in BOTH /financing and HearthWidget, and when
-// the Hearth partner URL died it 404'd in both places at once with nothing
-// catching it — the page CTA and the calculator CTA are the only two ways out
-// of the financing funnel, so the whole funnel dead-ended silently.
+// It was previously hard-coded in BOTH /financing and the calculator widget,
+// and when the Hearth partner URL died it 404'd in both places at once with
+// nothing catching it — those CTAs are the only ways out of the financing
+// funnel, so the whole funnel dead-ended silently.
 //
 // Points at ProTech's co-branded Enhancify application: one soft-pull
 // prequalification that shops multiple lenders, so the homeowner never has to
 // pick a lender (and never eats multiple hard pulls shotgunning applications).
 // This is the SAME destination the rep's "Send Finance App" button uses via
 // lead-api FINANCE_APP_URL — website and sales floor now agree on one door.
+//
+// Render it ONLY through components/financing/FinancingApplyLink: that adds
+// the data-finance-link marker the lead-api liveness monitor reads off the
+// live page and probes every 30 min, so the next dead partner URL pages
+// Telegram within the hour instead of rotting for weeks.
 export const FINANCING_APPLY_URL = 'https://www.enhancify.com/protechroof';
 
 // 2026-08-10: "Roof Cost" added. /roof-replacement-cost-calculator had ZERO

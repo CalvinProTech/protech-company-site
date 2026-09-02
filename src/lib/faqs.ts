@@ -66,12 +66,12 @@ export const financingFaqs: FAQItem[] = [
   {
     question: 'Can I finance a roof replacement with bad credit?',
     answer:
-      'Yes, options exist for homeowners with less-than-perfect credit. ProTech Roofing works with lending partners that consider factors beyond credit score alone, including income stability and home equity. While interest rates may be higher for lower credit profiles, many homeowners qualify for affordable monthly payments. We encourage every homeowner to apply because pre-qualification does not affect your credit score.',
+      'Yes, options exist for homeowners with less-than-perfect credit. ProTech Roofing works with lending partners that consider factors beyond credit score alone, including income stability and home equity. While interest rates may be higher for lower credit profiles, many homeowners still qualify. We encourage every homeowner to apply because pre-qualification does not affect your credit score.',
   },
   {
     question: 'How do I apply for roofing financing?',
     answer:
-      'You can apply for financing during your free estimate appointment or online through our website. The application takes approximately 10 minutes and requires basic personal and financial information. Most applicants receive a decision within 24 hours. Once approved, financing terms are incorporated into your project agreement and payments begin after the work is completed to your satisfaction.',
+      'You can apply for financing during your free estimate appointment or online from our financing page. The application takes a few minutes, requires basic personal and financial information, and reaches multiple lending partners at once so you are not applying to lenders one by one. Once approved, financing terms are incorporated into your project agreement and payments begin after the work is completed to your satisfaction.',
   },
   {
     question: 'Does ProTech Roofing offer promotional financing?',
