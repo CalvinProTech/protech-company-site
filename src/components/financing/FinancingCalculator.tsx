@@ -79,9 +79,6 @@ export default function FinancingCalculator() {
         <h3 className="text-xl font-bold text-primary-900">
           Financing Calculator
         </h3>
-        <p className="mt-1 text-sm text-neutral-500">
-          Estimate your monthly payment
-        </p>
       </div>
 
       {/* Inputs */}
@@ -213,16 +210,14 @@ export default function FinancingCalculator() {
       {/* CTA */}
       <div className="px-6 pb-5 pt-4">
         <p className="mb-3 text-center text-xs font-medium text-neutral-700">
-          See the options you actually qualify for — a few minutes, and
-          checking won&apos;t affect your credit score.
+          Takes a few minutes. Checking your options won&apos;t affect your
+          credit score.
         </p>
         <FinancingApplyLink
           section="calculator"
           label="See My Financing Options"
           className="flex h-12 w-full items-center justify-center rounded-lg bg-accent-500 text-base font-semibold text-white transition-colors hover:bg-accent-600"
-        >
-          See My Financing Options →
-        </FinancingApplyLink>
+        />
         <p className="mt-3 text-center text-[10px] text-neutral-400">
           Estimated payment for information purposes only. Actual rates may vary
           and are subject to credit approval.
