@@ -7,23 +7,39 @@ import {
   Hammer,
   Phone,
   CheckCircle,
+  ShieldCheck,
+  Banknote,
+  BadgeCheck,
 } from 'lucide-react';
 import { createPageMetadata } from '@/lib/metadata';
-import { SITE_CONFIG, FINANCING_APPLY_URL } from '@/lib/constants';
+import { SITE_CONFIG } from '@/lib/constants';
 import { financingFaqs } from '@/lib/faqs';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { FAQSection } from '@/components/sections/FAQSection';
 import FAQSchema from '@/components/seo/FAQSchema';
 import { CTABanner } from '@/components/sections/CTABanner';
-import HearthWidget from '@/components/financing/HearthWidget';
+import FinancingCalculator from '@/components/financing/FinancingCalculator';
+import FinancingApplyLink from '@/components/financing/FinancingApplyLink';
 import FinancingDisclosure from '@/components/financing/FinancingDisclosure';
+
+// This page is the ONE door into financing, for two audiences at once:
+//   1. a homeowner a ProTech rep just sent here from a quote call ("go to
+//      protechroof.net/financing") — they want to APPLY, now, so the apply
+//      CTA is the first thing in the hero, not three scrolls down;
+//   2. an organic visitor researching "roof financing" — they get the same
+//      door plus the estimate CTA at the bottom.
+// One application (Enhancify, co-branded) shops multiple lenders off a soft
+// pull, which is why there is deliberately NO menu of lender links: a lender
+// menu makes homeowners choose blind, and each direct application is a hard
+// pull. Every apply CTA renders through FinancingApplyLink — one URL, one
+// analytics event, one data-finance-link marker the liveness monitor probes.
 
 export function generateMetadata(): Metadata {
   return createPageMetadata({
     title: 'Roofing Financing Options | Affordable Monthly Payments',
     description:
-      'Affordable roofing with flexible financing from ProTech Roofing. Multiple loan options and repayment terms available. Apply in about 10 minutes.',
+      'Affordable roofing with flexible financing from ProTech Roofing. Multiple loan options and repayment terms available. Apply online in minutes — checking your options does not affect your credit score.',
     path: '/financing',
   });
 }
@@ -33,20 +49,23 @@ const breadcrumbItems = [
   { label: 'Financing', href: '/financing' },
 ];
 
+const applyButtonClass =
+  'inline-flex h-14 items-center justify-center rounded-lg bg-accent-500 px-8 text-lg font-semibold text-white transition-colors hover:bg-accent-600';
+
 const steps = [
   {
     icon: ClipboardCheck,
     step: '1',
     title: 'Apply in Minutes',
     description:
-      'Fill out a short application online or during your free estimate appointment. Pre-qualification does not affect your credit score.',
+      'Start the short online application from this page or during your free estimate. Pre-qualification does not affect your credit score.',
   },
   {
     icon: CreditCard,
     step: '2',
-    title: 'Get Approved',
+    title: 'See Your Options',
     description:
-      'Receive a financing decision within 24 hours. Our lending partners, including Sunlight Financial, work with all credit profiles to find a solution that fits your budget.',
+      'One application reaches multiple lending partners, so you see the options you qualify for without applying to lenders one by one. Our partners work with a wide range of credit profiles.',
   },
   {
     icon: Hammer,
@@ -57,13 +76,35 @@ const steps = [
   },
 ];
 
+const otherWays = [
+  {
+    icon: ShieldCheck,
+    title: 'Insurance proceeds',
+    description:
+      'Storm or hail damage? Many homeowners pay for most of the roof through their claim and finance only the deductible or an upgrade. We work with your adjuster directly.',
+    link: { label: 'How insurance claims work', href: '/services/insurance-claims' },
+  },
+  {
+    icon: Banknote,
+    title: 'Cash or check',
+    description:
+      'Prefer to pay outright? Tell your ProTech representative and we will set up the payment schedule in your project agreement — no application needed.',
+  },
+  {
+    icon: BadgeCheck,
+    title: 'Already approved with one of our lending partners?',
+    description:
+      'If you have an approval in hand from a lender we work with, let your ProTech representative know and we will apply it to your project. No need to apply again.',
+  },
+];
+
 export default function FinancingPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
       <FAQSchema faqs={financingFaqs} />
 
-      {/* Hero Section */}
+      {/* Hero — the apply door comes first for the rep-sent homeowner */}
       <section className="relative flex min-h-[400px] items-center bg-primary-900">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -75,16 +116,13 @@ export default function FinancingPage() {
               Affordable Roofing with Flexible Financing
             </h1>
             <p className="mt-4 text-lg text-primary-200 sm:text-xl md:mt-6 md:text-2xl">
-              Protect your home now and pay over time with flexible financing —
-              no down payment required, subject to credit approval.
+              Protect your home now and pay over time — no down payment
+              required, subject to credit approval.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/free-estimate"
-                className="inline-flex h-14 items-center justify-center rounded-lg bg-accent-500 px-8 text-lg font-semibold text-white transition-colors hover:bg-accent-600"
-              >
-                Get Your Free Estimate
-              </Link>
+              <FinancingApplyLink section="hero" className={applyButtonClass}>
+                Apply for Financing →
+              </FinancingApplyLink>
               <a
                 href={`tel:${SITE_CONFIG.defaultPhoneRaw}`}
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-lg border-2 border-white px-8 text-lg font-semibold text-white transition-colors hover:bg-white/10"
@@ -93,6 +131,11 @@ export default function FinancingPage() {
                 {SITE_CONFIG.defaultPhone}
               </a>
             </div>
+            <p className="mt-6 max-w-2xl text-sm text-primary-300">
+              Have a quote from ProTech? This is the page your representative
+              sent you to. The application takes a few minutes, and checking
+              your options does not affect your credit score.
+            </p>
           </div>
         </div>
       </section>
@@ -110,7 +153,8 @@ export default function FinancingPage() {
               How It Works
             </h2>
             <p className="mt-4 text-lg text-neutral-600">
-              Getting financing for your roof is simple and straightforward.
+              One short application. Multiple lending partners. No guessing
+              which lender to pick.
             </p>
           </div>
 
@@ -127,6 +171,72 @@ export default function FinancingPage() {
                   {step.title}
                 </h3>
                 <p className="mt-3 text-neutral-600">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Payment estimator + the apply door again */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+              Estimate Your Monthly Payment
+            </h2>
+            <p className="mt-4 text-lg text-neutral-600">
+              Adjust the numbers to see an estimate, then apply to see the
+              options you actually qualify for.
+            </p>
+          </div>
+          <FinancingCalculator />
+          <p className="mt-6 text-center">
+            <FinancingApplyLink
+              section="calculator-below"
+              label="Apply for Financing Now"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-8 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
+            >
+              Apply for Financing Now →
+            </FinancingApplyLink>
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-neutral-500">
+            Representative example: the monthly payment for a 15-year home
+            improvement installment loan of $10,000 with an APR of 10.99% would be
+            $113, for a total of approximately $20,340 over the 15-year term. No
+            down payment required. Not all loan products will be available to all
+            partners or all consumers.
+          </p>
+        </div>
+      </section>
+
+      {/* Other ways to pay — deliberately no lender-link menu */}
+      <section className="bg-neutral-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
+              Other Ways to Pay
+            </h2>
+            <p className="mt-4 text-lg text-neutral-600">
+              Financing is one option. These work too — on their own or
+              combined with it.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {otherWays.map((way) => (
+              <div key={way.title} className="rounded-lg bg-white p-8 shadow-sm">
+                <way.icon className="mb-4 h-10 w-10 text-primary-600" />
+                <h3 className="text-xl font-semibold text-primary-900">
+                  {way.title}
+                </h3>
+                <p className="mt-3 text-neutral-600">{way.description}</p>
+                {way.link && (
+                  <Link
+                    href={way.link.href}
+                    className="mt-4 inline-block font-medium text-accent-600 hover:text-accent-700"
+                  >
+                    {way.link.label} →
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -159,41 +269,8 @@ export default function FinancingPage() {
         </div>
       </section>
 
-      {/* Hearth Financing Calculator */}
-      <section className="bg-neutral-50 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
-              Check Your Rate in Minutes
-            </h2>
-            <p className="mt-4 text-lg text-neutral-600">
-              See what you qualify for — checking your rate does not affect your
-              credit score.
-            </p>
-          </div>
-          <HearthWidget />
-          <p className="mt-6 text-center">
-            <a
-              href={FINANCING_APPLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-accent-500 px-8 py-3 font-semibold text-white transition-colors hover:bg-accent-600"
-            >
-              Apply for Financing Now →
-            </a>
-          </p>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-neutral-500">
-            Representative example: the monthly payment for a 15-year home
-            improvement installment loan of $10,000 with an APR of 10.99% would be
-            $113, for a total of approximately $20,340 over the 15-year term. No
-            down payment required. Not all loan products will be available to all
-            partners or all consumers.
-          </p>
-        </div>
-      </section>
-
       {/* Lender compliance disclosure */}
-      <section className="bg-white py-12">
+      <section className="bg-neutral-50 py-12">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <FinancingDisclosure />
         </div>
@@ -206,10 +283,10 @@ export default function FinancingPage() {
         faqs={financingFaqs}
       />
 
-      {/* CTA Banner */}
+      {/* Organic visitors without a quote yet */}
       <CTABanner
-        heading="Ready to Get Started?"
-        subtext="Apply for financing during your free estimate or call us to discuss your options."
+        heading="Don't Have a Quote Yet?"
+        subtext="Start with a free, no-obligation estimate — financing is arranged as part of your project, and you can apply from this page any time."
       />
     </>
   );
