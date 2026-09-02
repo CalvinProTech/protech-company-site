@@ -2,6 +2,8 @@
 
 import { useState, useCallback } from 'react';
 
+import { FINANCING_APPLY_URL } from '@/lib/constants';
+
 const APR_BY_CREDIT: Record<string, { label: string; apr: number }> = {
   excellent: { label: 'Excellent (741–850)', apr: 0.1049 },
   good: { label: 'Good (681–740)', apr: 0.1437 },
@@ -24,9 +26,6 @@ const TERM_OPTIONS = [
   { months: 168, label: '168 mo' },
   { months: 180, label: '180 mo' },
 ];
-
-const APPLY_URL =
-  'https://app.gethearth.com/partners/protech-roofing-llc/calvin/apply';
 
 function formatCurrency(n: number): string {
   return new Intl.NumberFormat('en-US', {
@@ -211,7 +210,7 @@ export default function HearthWidget() {
           credit score.
         </p>
         <a
-          href={APPLY_URL}
+          href={FINANCING_APPLY_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex h-12 w-full items-center justify-center rounded-lg bg-accent-500 text-base font-semibold text-white transition-colors hover:bg-accent-600"
@@ -219,8 +218,8 @@ export default function HearthWidget() {
           Get Financing Options →
         </a>
         <p className="mt-3 text-center text-[10px] text-neutral-400">
-          Estimated payment for information purposes only. Actual rates may vary.
-          Powered by Hearth.
+          Estimated payment for information purposes only. Actual rates may vary
+          and are subject to credit approval.
         </p>
       </div>
     </div>
