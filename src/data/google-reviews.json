@@ -2,8 +2,8 @@
   "placeId": "ChIJn1cfk47DwogRGNEapuGPpD0",
   "displayName": "ProTech Roofing LLC",
   "rating": 5,
-  "userRatingCount": 21,
-  "fetchedAt": "2026-04-29T17:35:57.087Z",
+  "userRatingCount": 22,
+  "fetchedAt": "2026-09-16T01:18:24.595Z",
   "reviews": [
     {
       "id": 1,
@@ -18,17 +18,6 @@
     },
     {
       "id": 2,
-      "name": "Official._.Jaylen_",
-      "city": "Tampa",
-      "state": "FL",
-      "rating": 5,
-      "quote": "ProTech Roofing exceeded all my expectations! From the moment I contacted them for a quote, I was impressed by their professionalism and attention to detail. They thoroughly assessed my roofing needs and provided a comprehensive plan that fit my budget.\n\nThe installation team was fantastic. They arrived on time, worked diligently, and completed the job with exceptional skill. They used high-quality materials, and the finished roof looks amazing. I especially appreciated their commitment to safety and cleanliness – they left my property spotless.\n\nThroughout the entire process, ProTech Roofing demonstrated excellent communication and customer service. They were always available to answer my questions and address any concerns. I highly recommend ProTech Roofing to anyone looking for a reliable and trustworthy roofing company. They are the best in the business!",
-      "serviceType": "roof-replacement",
-      "date": "2026-02-17",
-      "googleAuthorUrl": "https://www.google.com/maps/contrib/118335588371889836343/reviews"
-    },
-    {
-      "id": 3,
       "name": "Kelsey N.",
       "city": "Tampa",
       "state": "FL",
@@ -37,6 +26,17 @@
       "serviceType": "roof-replacement",
       "date": "2026-02-17",
       "googleAuthorUrl": "https://www.google.com/maps/contrib/117503286748898796836/reviews"
+    },
+    {
+      "id": 3,
+      "name": "Nikia S.",
+      "city": "Tampa",
+      "state": "FL",
+      "rating": 5,
+      "quote": "I had an outstanding experience working with Josiah. From the very beginning, he demonstrated an impressive level of knowledge, professionalism, and genuine care for making sure every question and concern was addressed thoroughly. Josiah took the time to explain the entire process in a way that was easy to understand. What truly stood out was his diligence and commitment to customer service. He was responsive, respectful, and consistently went above and beyond to ensure everything was handled smoothly from start to finish. It’s rare to come across someone who combines expertise with such a strong sense of integrity and professionalism.\n\nAs for Protech Roofing LLC as a whole, the company exceeded expectations in every area. Their pricing was competitive and fair, their warranty options provided peace of mind, and the quality of service was exceptional. The entire experience felt transparent, efficient, and customer-focused. You can tell this is a company that values integrity, stands behind their work, and truly cares about delivering excellent results.\n\nI highly recommend Josiah and Protech Roofing LLC to anyone looking for a reliable, trustworthy, and professional roofing company. They absolutely earned my confidence and future business.",
+      "serviceType": "roof-replacement",
+      "date": "2026-05-09",
+      "googleAuthorUrl": "https://www.google.com/maps/contrib/100725683367321366082/reviews"
     },
     {
       "id": 4,
@@ -51,14 +51,14 @@
     },
     {
       "id": 5,
-      "name": "Matthew S.",
+      "name": "Official._.Jaylen_",
       "city": "Tampa",
       "state": "FL",
       "rating": 5,
-      "quote": "I received a few different quotes when I needed an urgent roof repair obviously it was a very stressful time for my family. Having a team of professionals that were able to compare prices help me understand critical roofing concepts AND repair the roof was critical. My service rep micheal was informative patient and diligent throughout the entire process. I absolutely recommend their services if youre in need of a roof.",
+      "quote": "ProTech Roofing exceeded all my expectations! From the moment I contacted them for a quote, I was impressed by their professionalism and attention to detail. They thoroughly assessed my roofing needs and provided a comprehensive plan that fit my budget.\n\nThe installation team was fantastic. They arrived on time, worked diligently, and completed the job with exceptional skill. They used high-quality materials, and the finished roof looks amazing. I especially appreciated their commitment to safety and cleanliness – they left my property spotless.\n\nThroughout the entire process, ProTech Roofing demonstrated excellent communication and customer service. They were always available to answer my questions and address any concerns. I highly recommend ProTech Roofing to anyone looking for a reliable and trustworthy roofing company. They are the best in the business!",
       "serviceType": "roof-replacement",
       "date": "2026-02-17",
-      "googleAuthorUrl": "https://www.google.com/maps/contrib/100752229547949471553/reviews"
+      "googleAuthorUrl": "https://www.google.com/maps/contrib/118335588371889836343/reviews"
     }
   ]
 }

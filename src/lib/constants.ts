@@ -54,10 +54,10 @@ export const SITE_CONFIG = {
     postalCode: '33609',
     addressCountry: 'US',
   },
-  // Google Business Profile rating — pulled live from Places API 2026-04-29.
+  // Google Business Profile rating — pulled live from Places API 2026-09-15.
   // Refresh with `npm run fetch-reviews` (also rewrites google-reviews.json).
   googleRating: 5.0,
-  reviewCount: 21,
+  reviewCount: 22,
   // Conservative truth: ProTech Roofing LLC established Sep 2024.
   // The previous "20+ years" claim was inflated. Keeping the field name
   // so existing components don't break, but using "Est. 2024" as the
