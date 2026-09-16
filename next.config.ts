@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
         destination: 'https://www.protechroof.net/:path*',
         permanent: true,
       },
+      // /yourdreamjob was a stripped ad landing page for the same application
+      // form; retired 2026-09-15 in favour of one careers page.
+      {
+        source: '/yourdreamjob',
+        destination: '/careers',
+        permanent: true,
+      },
       {
         source: '/offerings',
         destination: '/services',

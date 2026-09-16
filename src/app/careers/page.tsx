@@ -20,9 +20,10 @@ import ApplicationForm from '@/components/careers/ApplicationForm';
 // paragraph + buttons, no icon badge; sections alternate white / neutral-50 at
 // py-16/24; one CTA per section.
 //
-// Two audiences, one page: someone who found us organically and wants to know
-// what the job is, and someone who arrived from a social ad and just wants the
-// form (that traffic lands on /yourdreamjob, which reuses the same component).
+// One page for both audiences: someone who found us organically and wants to
+// know what the job is, and someone who arrived from an ad and just wants the
+// form — which is why the form sits at #apply with every role card linking
+// straight to it.
 //
 // Deliberately absent: any earnings figure. Recruiting pages that imply income
 // draw FTC complaints, so pay is described qualitatively and COMP_DISCLAIMER

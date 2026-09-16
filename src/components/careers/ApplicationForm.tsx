@@ -28,13 +28,7 @@ import Button from '@/components/ui/Button';
 
 const MAX_RESUME_BYTES = 4 * 1024 * 1024;
 
-type Props = {
-  /** Preselect the role — used by the "Apply for this role" buttons. */
-  defaultRole?: CareerRoleSlug;
-  id?: string;
-};
-
-export default function ApplicationForm({ defaultRole, id }: Props) {
+export default function ApplicationForm() {
   const [step, setStep] = useState<1 | 2>(1);
   const [applicationId, setApplicationId] = useState('');
   const [applyKind, setApplyKind] = useState<ApplyKind>('resume');
@@ -48,8 +42,8 @@ export default function ApplicationForm({ defaultRole, id }: Props) {
 
   useEffect(() => {
     formLoadedAt.current = Date.now();
-    trackCareerEvent('application_started', { role: defaultRole ?? 'unset' });
-  }, [defaultRole]);
+    trackCareerEvent('application_started');
+  }, []);
 
   const {
     register,
@@ -59,7 +53,7 @@ export default function ApplicationForm({ defaultRole, id }: Props) {
   } = useForm<CareerApplicationData>({
     resolver: zodResolver(careerApplicationSchema),
     defaultValues: {
-      role: defaultRole,
+      role: undefined,
       firstName: '',
       lastName: '',
       email: '',
@@ -86,12 +80,11 @@ export default function ApplicationForm({ defaultRole, id }: Props) {
   // whole route behind a Suspense boundary and out of static rendering, and
   // this page is worth keeping static.
   useEffect(() => {
-    if (defaultRole) return;
     const requested = new URLSearchParams(window.location.search).get('role');
     if (requested && getRole(requested)) {
       setValue('role', requested as CareerRoleSlug);
     }
-  }, [defaultRole, setValue]);
+  }, [setValue]);
 
   // -----------------------------------------------------------------------
   // Step 1 — contact details
@@ -244,7 +237,7 @@ export default function ApplicationForm({ defaultRole, id }: Props) {
   // -----------------------------------------------------------------------
 
   return (
-    <div id={id} className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between text-xs font-semibold tracking-widest text-neutral-500 uppercase">
           <span>{step === 1 ? 'Your details' : 'Almost done'}</span>
@@ -284,7 +277,7 @@ export default function ApplicationForm({ defaultRole, id }: Props) {
             options={ROLE_OPTIONS}
             // Without an explicit value the browser skips the disabled
             // placeholder and shows the first real option instead.
-            defaultValue={defaultRole ?? ''}
+            defaultValue=""
             required
             error={errors.role?.message}
             {...register('role')}

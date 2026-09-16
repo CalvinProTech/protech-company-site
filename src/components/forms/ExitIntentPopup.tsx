@@ -17,11 +17,9 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import SMSConsentCheckbox from './SMSConsentCheckbox';
 
-import { BARE_PATHS } from '@/lib/constants';
-
-// Conversion pages own their own form; bare funnels (/yourdreamjob) are not
-// selling roofs at all, so a roof-quote popup there is pure interference.
-const SUPPRESSED_PATHS = ['/contact', '/free-estimate', '/careers', ...BARE_PATHS];
+// Conversion pages own their own form, and /careers is not selling roofs at all —
+// an applicant clicking a roof-quote popup would create a junk Salesforce lead.
+const SUPPRESSED_PATHS = ['/contact', '/free-estimate', '/careers'];
 const SHOW_DELAY_MS = 15_000;
 const SESSION_KEY = 'protech_exit_popup_shown';
 

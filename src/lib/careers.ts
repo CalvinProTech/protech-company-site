@@ -3,7 +3,7 @@ import { LICENSED_STATES } from '@/lib/constants';
 // ---------------------------------------------------------------------------
 // Careers content
 //
-// One source of truth for /careers and /yourdreamjob. The role catalog is
+// One source of truth for the careers page. The role catalog is
 // deliberately small: ProTech hires for the Tampa-run sales floor (remote
 // seats) and for install crews, and nothing else is worth listing as an open
 // position. Crews are NOT a resume hire — they route into the existing

@@ -3,11 +3,6 @@
 // (Other states are serviced via Installation Services partnership and
 // are NOT listed publicly — finance partner approvals require the
 // website footprint to match the licensed-entity record.)
-// Landing pages that render WITHOUT site chrome (header, footer, mobile CTA
-// bar) and without the lead popups. These are single-purpose funnels where the
-// roofing navigation would push the wrong action — see SiteChrome.
-export const BARE_PATHS = ['/yourdreamjob'];
-
 export const LICENSED_STATES = [
   { abbr: 'TX', name: 'Texas', slug: 'texas' },
   { abbr: 'KY', name: 'Kentucky', slug: 'kentucky' },
