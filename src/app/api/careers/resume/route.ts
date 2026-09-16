@@ -6,6 +6,7 @@ import { getRole } from '@/lib/careers';
 import { attachResume } from '@/lib/careers-sheet';
 import {
   sendCareerApplicationNotification,
+  sendCareerApplicationConfirmation,
   isEmailConfigured,
 } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
@@ -149,6 +150,18 @@ export async function POST(request: Request) {
         notified = true;
       } catch (error) {
         console.error('[careers] resume notification failed:', error);
+      }
+
+      // The applicant's receipt also waits until here, so nobody gets a
+      // "thanks for applying" for an application they never finished.
+      try {
+        await sendCareerApplicationConfirmation({
+          firstName: data.firstName,
+          email: data.email,
+          roleTitle: role?.title ?? data.role,
+        });
+      } catch (error) {
+        console.error('[careers] applicant confirmation failed:', error);
       }
     }
 

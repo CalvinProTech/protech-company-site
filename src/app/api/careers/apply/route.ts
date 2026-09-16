@@ -6,7 +6,6 @@ import { getRole } from '@/lib/careers';
 import { appendApplication } from '@/lib/careers-sheet';
 import {
   sendCareerApplicationNotification,
-  sendCareerApplicationConfirmation,
   isEmailConfigured,
 } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
@@ -100,29 +99,22 @@ export async function POST(request: Request) {
       utm,
     };
 
-    // Two independent sinks: the sheet and the careers@ notification. Either
-    // one on its own is enough to have "received" the application.
+    // Step 1 writes the sheet row and NOTHING ELSE. The careers@ notification
+    // and the applicant's receipt both wait for step 2 (Calvin, 2026-09-15):
+    // a half-finished application is not worth an inbox interruption, and two
+    // emails per applicant — one without a resume, one with — is just noise.
     const sheet = await appendApplication(record);
     let notified = false;
 
-    if (isEmailConfigured()) {
+    // The one exception: if the sheet did not take the row, this person exists
+    // nowhere. Fall back to the email so they are not silently lost, and label
+    // it so it reads as the degraded path rather than the normal one.
+    if (!sheet.ok && isEmailConfigured()) {
       try {
         await sendCareerApplicationNotification(record);
         notified = true;
       } catch (error) {
-        console.error('[careers] notification email failed:', error);
-      }
-
-      try {
-        await sendCareerApplicationConfirmation({
-          firstName: data.firstName,
-          email: data.email,
-          roleTitle: role.title,
-        });
-      } catch (error) {
-        // The applicant's own receipt is a nicety — its failure alone does not
-        // mean we lost the application.
-        console.error('[careers] applicant confirmation failed:', error);
+        console.error('[careers] fallback notification failed:', error);
       }
     }
 

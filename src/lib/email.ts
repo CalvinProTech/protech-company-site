@@ -96,9 +96,12 @@ export async function sendEstimateConfirmation({
 // ---------------------------------------------------------------------------
 // Careers — applicant confirmation + internal notification
 //
-// The notification is the backstop for the Google Sheet: if the sheet write
-// fails, this email is still the record that someone applied. It goes to the
-// careers@ distribution group (CAREERS_NOTIFY_EMAIL overrides for testing).
+// Both emails fire at STEP 2 — once the applicant has actually finished
+// (resume uploaded, or crew details submitted). Step 1 writes the sheet row
+// silently; a half-finished application is not worth an inbox interruption.
+// The one exception is the fallback: if the sheet write fails, step 1 sends
+// the notification anyway, because otherwise that person exists nowhere.
+// Goes to the careers@ group (CAREERS_NOTIFY_EMAIL overrides for testing).
 // ---------------------------------------------------------------------------
 
 const CAREERS_INBOX =
@@ -157,7 +160,7 @@ export async function sendCareerApplicationNotification(
         ${
           resume
             ? '<p style="margin-top: 20px;">Resume attached.</p>'
-            : '<p style="margin-top: 20px; color: #C2410C;">No resume yet — they stopped after step 1. Worth a call anyway.</p>'
+            : '<p style="margin-top: 20px; color: #C2410C;">Step 1 only — sent because the careers sheet could not be reached, so this email is the only record of them. They may still be finishing step 2.</p>'
         }
       </div>
     `,

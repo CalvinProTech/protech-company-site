@@ -5,6 +5,7 @@ import { getRole } from '@/lib/careers';
 import { appendCrewDetails } from '@/lib/careers-sheet';
 import {
   sendCareerApplicationNotification,
+  sendCareerApplicationConfirmation,
   isEmailConfigured,
 } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
@@ -93,6 +94,16 @@ export async function POST(request: Request) {
         notified = true;
       } catch (error) {
         console.error('[careers] crew notification failed:', error);
+      }
+
+      try {
+        await sendCareerApplicationConfirmation({
+          firstName: data.firstName,
+          email: data.email,
+          roleTitle: role?.title ?? 'Install Crew',
+        });
+      } catch (error) {
+        console.error('[careers] crew confirmation failed:', error);
       }
     }
 
