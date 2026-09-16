@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 
-import { FINANCING_APPLY_URL } from '@/lib/constants';
+import FinancingApplyLink from '@/components/financing/FinancingApplyLink';
 
 const APR_BY_CREDIT: Record<string, { label: string; apr: number }> = {
   excellent: { label: 'Excellent (741–850)', apr: 0.1049 },
@@ -42,7 +42,14 @@ function formatCurrencyFull(n: number): string {
   }).format(n);
 }
 
-export default function HearthWidget() {
+/**
+ * Lender-neutral payment estimator (plain amortization over illustrative APR
+ * bands) — it does not check rates or pull credit. Was "HearthWidget" until
+ * 2026-09-02; the Hearth partner link it fed died and the name kept pointing
+ * people at a dead partner. The way OUT is FinancingApplyLink (one URL, one
+ * monitor contract) — never a hard-coded href here.
+ */
+export default function FinancingCalculator() {
   const [projectCost, setProjectCost] = useState(12000);
   const [downPayment, setDownPayment] = useState(0);
   const [creditTier, setCreditTier] = useState('excellent');
@@ -72,9 +79,6 @@ export default function HearthWidget() {
         <h3 className="text-xl font-bold text-primary-900">
           Financing Calculator
         </h3>
-        <p className="mt-1 text-sm text-neutral-500">
-          Estimate your monthly payment
-        </p>
       </div>
 
       {/* Inputs */}
@@ -206,17 +210,14 @@ export default function HearthWidget() {
       {/* CTA */}
       <div className="px-6 pb-5 pt-4">
         <p className="mb-3 text-center text-xs font-medium text-neutral-700">
-          Get your personalized rates — takes 2 minutes, won&apos;t affect your
+          Takes a few minutes. Checking your options won&apos;t affect your
           credit score.
         </p>
-        <a
-          href={FINANCING_APPLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <FinancingApplyLink
+          section="calculator"
+          label="See My Financing Options"
           className="flex h-12 w-full items-center justify-center rounded-lg bg-accent-500 text-base font-semibold text-white transition-colors hover:bg-accent-600"
-        >
-          Get Financing Options →
-        </a>
+        />
         <p className="mt-3 text-center text-[10px] text-neutral-400">
           Estimated payment for information purposes only. Actual rates may vary
           and are subject to credit approval.
