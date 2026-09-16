@@ -64,7 +64,7 @@ export async function POST(request: Request) {
     const crew = crewResult.data;
     const role = getRole(data.role);
 
-    await appendCrewDetails({
+    const sheet = await appendCrewDetails({
       applicationId: crew.applicationId,
       companyName: crew.companyName,
       statesCovered: crew.statesCovered,
@@ -72,6 +72,8 @@ export async function POST(request: Request) {
       insured: crew.insured,
       notes: crew.notes || undefined,
     });
+
+    let notified = false;
 
     if (isEmailConfigured()) {
       try {
@@ -88,9 +90,27 @@ export async function POST(request: Request) {
           source: request.headers.get('referer') || 'direct',
           utm: {},
         });
+        notified = true;
       } catch (error) {
         console.error('[careers] crew notification failed:', error);
       }
+    }
+
+    if (!sheet.ok && !notified) {
+      console.error('[careers] CREW DETAILS LOST — no sink accepted them:', {
+        applicationId: crew.applicationId,
+        company: crew.companyName,
+        sheet: sheet.error,
+      });
+
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            'We could not save your crew details right now. Please call 1-866-308-2640 and we will take them over the phone.',
+        },
+        { status: 503 }
+      );
     }
 
     return NextResponse.json({ success: true }, { status: 200 });

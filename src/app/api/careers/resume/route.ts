@@ -126,6 +126,8 @@ export async function POST(request: Request) {
       contentBase64: buffer.toString('base64'),
     });
 
+    let notified = false;
+
     if (isEmailConfigured()) {
       try {
         await sendCareerApplicationNotification(
@@ -144,9 +146,26 @@ export async function POST(request: Request) {
           },
           { filename: safeName, content: buffer, driveUrl: stored.fileUrl }
         );
+        notified = true;
       } catch (error) {
         console.error('[careers] resume notification failed:', error);
       }
+    }
+
+    if (!stored.ok && !notified) {
+      console.error('[careers] RESUME LOST — no sink accepted it:', {
+        applicationId,
+        drive: stored.error,
+      });
+
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            'We have your details but could not attach your resume. Please email it to careers@protechroof.net or call 1-866-308-2640.',
+        },
+        { status: 503 }
+      );
     }
 
     return NextResponse.json({ success: true }, { status: 200 });

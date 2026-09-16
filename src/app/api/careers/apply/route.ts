@@ -100,12 +100,15 @@ export async function POST(request: Request) {
       utm,
     };
 
-    // Sheet first, but never fatal — the email below is the real backstop.
-    await appendApplication(record);
+    // Two independent sinks: the sheet and the careers@ notification. Either
+    // one on its own is enough to have "received" the application.
+    const sheet = await appendApplication(record);
+    let notified = false;
 
     if (isEmailConfigured()) {
       try {
         await sendCareerApplicationNotification(record);
+        notified = true;
       } catch (error) {
         console.error('[careers] notification email failed:', error);
       }
@@ -117,8 +120,30 @@ export async function POST(request: Request) {
           roleTitle: role.title,
         });
       } catch (error) {
+        // The applicant's own receipt is a nicety — its failure alone does not
+        // mean we lost the application.
         console.error('[careers] applicant confirmation failed:', error);
       }
+    }
+
+    // Both sinks down means nobody would ever see this person. Say so instead
+    // of showing a success screen over a dropped application — someone who
+    // calls the number is recoverable, someone told "we got it" is not.
+    if (!sheet.ok && !notified) {
+      console.error('[careers] APPLICATION LOST — no sink accepted it:', {
+        applicationId,
+        email: data.email,
+        sheet: sheet.error,
+      });
+
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            'We could not submit your application right now. Please call 1-866-308-2640 and we will take it over the phone.',
+        },
+        { status: 503 }
+      );
     }
 
     return NextResponse.json(
