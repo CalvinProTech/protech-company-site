@@ -179,7 +179,7 @@ export default function FreeEstimatePage() {
                 <ul className="mt-4 space-y-3">
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
                     <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
-                    {SITE_CONFIG.yearsExperience} years of experience
+                    Licensed and insured in every state we serve
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
                     <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />

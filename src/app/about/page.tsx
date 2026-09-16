@@ -23,7 +23,7 @@ const breadcrumbItems = [
 const stats = [
   { value: SITE_CONFIG.statesLicensed, label: 'States Licensed' },
   { value: String(SITE_CONFIG.googleRating), label: 'Google Rating' },
-  { value: SITE_CONFIG.yearsExperience, label: 'Tampa-Headquartered' },
+  { value: 'Tampa', label: 'Headquarters' },
   { value: '$0', label: 'Down Financing' },
 ];
 
