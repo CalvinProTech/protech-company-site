@@ -6,6 +6,7 @@ import SkipToContent from '@/components/layout/SkipToContent';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MobileBottomBar from '@/components/layout/MobileBottomBar';
+import SiteChrome from '@/components/layout/SiteChrome';
 import AnalyticsProvider from '@/components/analytics/AnalyticsProvider';
 import ExitIntentPopup from '@/components/forms/ExitIntentPopup';
 import FloatingCallbackWidget from '@/components/forms/FloatingCallbackWidget';
@@ -48,12 +49,16 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="antialiased">
         <SkipToContent />
-        <Header />
+        <SiteChrome>
+          <Header />
+        </SiteChrome>
         <main id="main-content" className="pb-16 lg:pb-0">
           {children}
         </main>
-        <Footer />
-        <MobileBottomBar />
+        <SiteChrome>
+          <Footer />
+          <MobileBottomBar />
+        </SiteChrome>
         <ExitIntentPopup />
         <FloatingCallbackWidget />
         <AnalyticsProvider />

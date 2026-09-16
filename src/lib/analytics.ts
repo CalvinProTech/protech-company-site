@@ -120,3 +120,18 @@ export function trackScrollDepth(page: string, depth: number) {
 export function trackProjectView(projectId: string, city: string) {
   pushEvent('view_project', { project_id: projectId, city });
 }
+
+/**
+ * Careers funnel events.
+ *
+ * Deliberately dataLayer-only: NO Google Ads conversion and NO Meta Lead
+ * event. A job applicant is not a roofing lead, and firing the lead
+ * conversions here would feed recruiting traffic into the bidding models that
+ * optimize for homeowners — quietly poisoning both ad accounts.
+ */
+export function trackCareerEvent(
+  action: 'application_started' | 'application_submitted' | 'resume_uploaded' | 'crew_submitted',
+  data: Record<string, unknown> = {}
+) {
+  pushEvent('careers', { action, ...data });
+}

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { isFakePhoneNumber } from '@/lib/spam-detection';
+import { CAREER_ROLES } from '@/lib/careers';
 
 // ---------------------------------------------------------------------------
 // Shared enums
@@ -182,3 +183,49 @@ export const callbackRequestSchema = z.object({
 });
 
 export type CallbackRequestData = z.infer<typeof callbackRequestSchema>;
+
+// ---------------------------------------------------------------------------
+// Careers — job application (step 1) and crew details (step 2, crew roles)
+//
+// Step 1 is deliberately identical for every role so the contact details are
+// captured before anyone is asked for a file. Step 2 branches: a resume upload
+// for staff roles, these fields for install crews.
+// ---------------------------------------------------------------------------
+
+export const careerApplicationSchema = z.object({
+  role: z.enum(CAREER_ROLES, 'Please choose the role you are applying for'),
+  firstName: z.string().min(1, 'First name is required').max(60),
+  lastName: z.string().min(1, 'Last name is required').max(60),
+  email: z.email('Please enter a valid email address'),
+  phone: z
+    .string()
+    .min(10, 'Phone number must be at least 10 digits')
+    .regex(
+      /^\+?1?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+      'Please enter a valid US phone number'
+    )
+    .refine(
+      (val) => !isFakePhoneNumber(val),
+      'Please enter a real phone number'
+    ),
+  city: z.string().min(1, 'City is required').max(80),
+  state: z.enum(STATE_OPTIONS, 'Please choose your state'),
+  // Optional: texts about THIS application only. No promotional tier here —
+  // an applicant is not a marketing contact.
+  smsConsent: z.boolean().optional(),
+});
+
+export type CareerApplicationData = z.infer<typeof careerApplicationSchema>;
+
+export const crewDetailsSchema = z.object({
+  applicationId: z.uuid('Missing application reference'),
+  companyName: z.string().min(1, 'Company name is required').max(120),
+  statesCovered: z
+    .array(z.enum(STATE_OPTIONS))
+    .min(1, 'Choose at least one state you cover'),
+  crewSize: z.string().min(1, 'Crew size is required').max(40),
+  insured: z.boolean(),
+  notes: z.string().max(1000).optional().or(z.literal('')),
+});
+
+export type CrewDetailsData = z.infer<typeof crewDetailsSchema>;

@@ -73,6 +73,14 @@ export default function Footer() {
                   Licensing &amp; Credentials
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/careers"
+                  className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                >
+                  Careers
+                </Link>
+              </li>
             </ul>
           </div>
 

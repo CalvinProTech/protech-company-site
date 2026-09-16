@@ -92,3 +92,111 @@ export async function sendEstimateConfirmation({
     throw error;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Careers — applicant confirmation + internal notification
+//
+// The notification is the backstop for the Google Sheet: if the sheet write
+// fails, this email is still the record that someone applied. It goes to the
+// careers@ distribution group (CAREERS_NOTIFY_EMAIL overrides for testing).
+// ---------------------------------------------------------------------------
+
+const CAREERS_INBOX =
+  process.env.CAREERS_NOTIFY_EMAIL || 'careers@protechroof.net';
+
+type CareerNotification = {
+  applicationId: string;
+  roleTitle: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  city: string;
+  state: string;
+  smsConsent: boolean;
+  source: string;
+  utm: Record<string, string>;
+};
+
+function row(label: string, value: string): string {
+  return `
+    <tr>
+      <td style="padding: 6px 12px 6px 0; color: #737373; white-space: nowrap;">${escapeHtml(label)}</td>
+      <td style="padding: 6px 0; color: #171717; font-weight: 600;">${escapeHtml(value)}</td>
+    </tr>`;
+}
+
+export async function sendCareerApplicationNotification(
+  application: CareerNotification,
+  /** Present only on the step-2 call, once the applicant uploaded a file. */
+  resume?: { filename: string; content: Buffer; driveUrl?: string }
+) {
+  const utmPairs = Object.entries(application.utm)
+    .map(([key, value]) => `${key}=${value}`)
+    .join(' · ');
+
+  const { error } = await getResend().emails.send({
+    from: FROM_EMAIL,
+    to: CAREERS_INBOX,
+    replyTo: application.email,
+    subject: `${resume ? 'Application + resume' : 'New application'}: ${application.roleTitle} — ${application.firstName} ${application.lastName}`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; color: #333;">
+        <h2 style="color: #1e3a5f; margin-bottom: 4px;">${escapeHtml(application.roleTitle)}</h2>
+        <p style="margin-top: 0; color: #737373;">Application ${escapeHtml(application.applicationId)}</p>
+        <table style="border-collapse: collapse; font-size: 15px;">
+          ${row('Name', `${application.firstName} ${application.lastName}`)}
+          ${row('Phone', application.phone)}
+          ${row('Email', application.email)}
+          ${row('Location', `${application.city}, ${application.state}`)}
+          ${row('Texts OK', application.smsConsent ? 'Yes' : 'No')}
+          ${row('Applied from', application.source)}
+          ${utmPairs ? row('Campaign', utmPairs) : ''}
+          ${resume?.driveUrl ? row('Resume', resume.driveUrl) : ''}
+        </table>
+        ${
+          resume
+            ? '<p style="margin-top: 20px;">Resume attached.</p>'
+            : '<p style="margin-top: 20px; color: #C2410C;">No resume yet — they stopped after step 1. Worth a call anyway.</p>'
+        }
+      </div>
+    `,
+    attachments: resume
+      ? [{ filename: resume.filename, content: resume.content }]
+      : undefined,
+  });
+
+  if (error) {
+    throw error;
+  }
+}
+
+export async function sendCareerApplicationConfirmation({
+  firstName,
+  email,
+  roleTitle,
+}: {
+  firstName: string;
+  email: string;
+  roleTitle: string;
+}) {
+  const { error } = await getResend().emails.send({
+    from: FROM_EMAIL,
+    to: email,
+    subject: `We received your application — ProTech Roofing`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+        <h2 style="color: #1e3a5f;">Hi ${escapeHtml(firstName)},</h2>
+        <p>Thanks for applying to ProTech Roofing for the <strong>${escapeHtml(roleTitle)}</strong> role. Your application is in front of our team.</p>
+        <p>If it looks like a fit, someone will call you within 1–2 business days for a short phone screen. Keep an eye on your phone — we call from <strong>${SITE_CONFIG.defaultPhone}</strong>.</p>
+        <p>Questions in the meantime? Reply to this email or call the number above.</p>
+        <br />
+        <p>Best regards,<br /><strong>The ProTech Roofing Team</strong></p>
+      </div>
+    `,
+  });
+
+  if (error) {
+    throw error;
+  }
+}
