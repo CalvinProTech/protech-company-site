@@ -121,7 +121,7 @@ const projects: Project[] = [
     timeline: '2 days',
     metaTitle: 'Tampa Roof Replacement Project | ProTech Roofing',
     metaDescription:
-      'Tampa, FL roof replacement: full GAF system with Cat-4-rated underlayment and lifetime warranty. See the Bayshore-area before-and-after.',
+      'Tampa, FL roof replacement: full GAF system with Cat-4-rated underlayment and a written workmanship warranty. See the Bayshore-area before-and-after.',
   },
   {
     id: 6,

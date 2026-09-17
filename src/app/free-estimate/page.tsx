@@ -197,7 +197,7 @@ export default function FreeEstimatePage() {
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
                     <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />
-                    Lifetime workmanship warranty
+                    Written workmanship warranty
                   </li>
                   <li className="flex items-center gap-2 text-sm text-neutral-700">
                     <CheckCircle className="text-accent-500 h-4 w-4 shrink-0" />

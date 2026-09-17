@@ -172,12 +172,11 @@ export default function TermsOfServicePage() {
 
             <h2>Warranties</h2>
             <p>
-              {SITE_CONFIG.name} provides workmanship warranties on all roofing
-              projects as specified in your service agreement. Full roof
-              replacements carry a lifetime workmanship warranty, and repairs
-              carry a 5-year workmanship warranty, unless otherwise stated.
-              Workmanship warranties cover defects in installation and are
-              separate from manufacturer material warranties.
+              {SITE_CONFIG.name} provides a written workmanship warranty on
+              roofing projects, with the term and conditions stated in your
+              service agreement. Workmanship warranties cover defects in
+              installation and are separate from manufacturer material
+              warranties.
             </p>
             <p>
               Manufacturer material warranties are provided directly by the

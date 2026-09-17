@@ -86,7 +86,7 @@ export default function StateServicePageTemplate({
               conditions accelerate roof deterioration and can cause hidden
               damage that goes unnoticed for months. ProTech Roofing serves
               homeowners across {state} with professional {service.name.toLowerCase()}{' '}
-              backed by a lifetime workmanship warranty.
+              backed by a written workmanship warranty.
             </p>
             <p>
               As a licensed and insured {state} contractor, we install

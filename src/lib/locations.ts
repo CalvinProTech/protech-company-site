@@ -195,9 +195,9 @@ function buildIntro(
   );
   const closer = pick(
     [
-      `Every job is backed by our lifetime workmanship warranty, and your free inspection comes with a clear, written estimate — no pressure, no surprises.`,
-      `From the first inspection to the final magnetic nail sweep, you get transparent pricing, certified installation, and a lifetime workmanship warranty.`,
-      `Schedule a free inspection and get an honest, itemized estimate — plus financing options and a lifetime workmanship guarantee on every roof we install.`,
+      `Every job is backed by a written workmanship warranty, and your free inspection comes with a clear, line-item estimate — no pressure, no surprises.`,
+      `From the first inspection to the final magnetic nail sweep, you get transparent pricing, manufacturer-spec installation, and a written workmanship warranty.`,
+      `Schedule a free inspection and get an honest, itemized estimate — plus financing options and a written workmanship warranty on every roof we install.`,
     ],
     s >>> 6
   );

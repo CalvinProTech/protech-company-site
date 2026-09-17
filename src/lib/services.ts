@@ -32,11 +32,11 @@ const services: Service[] = [
     slug: 'roof-replacement',
     icon: 'Home',
     shortDescription:
-      'Get a roof that lasts 30+ years with premium materials, expert installation, and a lifetime workmanship warranty.',
+      'Get a roof that lasts 30+ years with premium materials, expert installation, and a written workmanship warranty.',
     longDescription:
       'A full roof replacement is the most effective way to protect your home, boost curb appeal, and increase property value. ProTech Roofing follows manufacturer-specified installation methods using premium materials from GAF, Owens Corning, and CertainTeed to deliver a roof system that performs for decades. Every replacement includes a thorough decking inspection, proper ventilation assessment, ice-and-water shield application at all vulnerable areas, and meticulous flashing work around penetrations. We handle permits, HOA approvals, and final inspections so you can focus on choosing the style and color that transforms your home.',
     benefits: [
-      'Lifetime workmanship warranty plus manufacturer material warranties up to 50 years',
+      'Written workmanship warranty plus manufacturer material warranties up to 50 years',
       "Increase your home's resale value by an average of $12,000 to $18,000",
       'Reduce energy costs with modern reflective and ventilated roofing systems',
       'Eliminate recurring repair costs from an aging, deteriorating roof',
@@ -115,10 +115,10 @@ const services: Service[] = [
       'Active water leak during or after rain',
     ],
     warrantyInfo:
-      'Every ProTech roof replacement includes a lifetime workmanship warranty and manufacturer material warranties ranging from 25 to 50 years depending on the product selected. We stand behind our work for as long as you own your home.',
+      'Every ProTech roof replacement includes a written workmanship warranty against installation defects, with its term stated in your project agreement, plus manufacturer material warranties ranging from 25 to 50 years depending on the product selected \u2014 which we register on your behalf.',
     metaTitle: 'Roof Replacement Services',
     metaDescription:
-      'Premium roof replacement with lifetime warranty. GAF, Owens Corning, and metal options. Free inspection, financing available. Get your estimate today.',
+      'Premium roof replacement with a written workmanship warranty. GAF, Owens Corning, and metal options. Free inspection, financing available. Get your estimate today.',
   },
   {
     name: 'Roof Repair',
@@ -284,7 +284,7 @@ const services: Service[] = [
       'You notice interior water damage after a recent storm',
     ],
     warrantyInfo:
-      'Storm damage restorations are backed by our lifetime workmanship warranty and manufacturer material warranties. We restore your roof to pre-storm condition or better using upgraded, impact-resistant materials.',
+      'Storm damage restorations are backed by our written workmanship warranty and manufacturer material warranties. We restore your roof to pre-storm condition or better using upgraded, impact-resistant materials.',
     metaTitle: 'Storm Damage Roof Repair & Insurance Claims | ProTech',
     metaDescription:
       'Storm damage specialists handling insurance claims from start to finish. Emergency tarping, drone inspections, and full restoration. Call for immediate help.',
@@ -562,7 +562,7 @@ const services: Service[] = [
       'You received storm damage and do not know where to start',
     ],
     warrantyInfo:
-      'Insurance claim restorations include our lifetime workmanship warranty. Materials are restored to pre-storm condition or better, and all work meets manufacturer and local code specifications.',
+      'Insurance claim restorations include our written workmanship warranty. Materials are restored to pre-storm condition or better, and all work meets manufacturer and local code specifications.',
     metaTitle: 'Roofing Insurance Claims Assistance',
     metaDescription:
       'Expert insurance claims support for storm-damaged roofs. We handle documentation, adjuster meetings, and supplement negotiation. Zero cost beyond your deductible.',

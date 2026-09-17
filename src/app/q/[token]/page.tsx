@@ -266,7 +266,7 @@ export default async function QuoteTokenPage({
                   'GAF Timberline HDZ architectural shingles (or specified material)',
                   'Ridge vent ventilation system',
                   'Full cleanup with magnetic nail sweep',
-                  'Lifetime workmanship warranty + GAF manufacturer warranty',
+                  'Written workmanship warranty + manufacturer material warranty',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" />

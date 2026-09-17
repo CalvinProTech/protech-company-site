@@ -28,7 +28,7 @@ export default function ServicesPage() {
 
       <Hero
         heading="Professional Roofing Services"
-        subtitle="From roof replacement and repair to storm damage restoration and commercial roofing, ProTech Roofing delivers expert solutions backed by a lifetime workmanship warranty."
+        subtitle="From roof replacement and repair to storm damage restoration and commercial roofing, ProTech Roofing delivers expert solutions backed by a written workmanship warranty."
         primaryCTA={{ text: 'Get a Free Estimate', href: '/free-estimate' }}
         secondaryCTA={{
           text: 'Call Now',
@@ -51,7 +51,7 @@ export default function ServicesPage() {
             <p className="mt-6 text-lg leading-relaxed text-neutral-700">
               ProTech Roofing provides roof replacement, insurance-claim help,
               and in-house financing across nine states. Every
-              project is backed by our lifetime workmanship warranty, premium
+              project is backed by our written workmanship warranty, premium
               materials from manufacturers like GAF, Owens Corning, and
               CertainTeed, and vetted local crews who treat
               your property like their own. Whether you need a full roof

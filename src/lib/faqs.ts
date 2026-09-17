@@ -48,7 +48,7 @@ export const generalFaqs: FAQItem[] = [
   {
     question: 'What warranty does ProTech Roofing provide?',
     answer:
-      'ProTech Roofing provides a lifetime workmanship warranty on all full roof replacements, meaning if any installation defect causes a problem, we fix it at no cost for as long as you own the home. This is in addition to manufacturer material warranties that range from 25 to 50 years depending on the product line. Repairs carry a 5-year workmanship warranty. All warranty details are provided in writing at project completion.',
+      'Two separate warranties. Your shingles carry the manufacturer\u2019s own limited material warranty \u2014 25 to 50 years depending on the product line \u2014 which we register for you. Our installation work is covered by a written ProTech workmanship warranty against installation defects; its term is stated in your project agreement, and you receive both documents at completion.',
   },
   {
     question: 'How much does a new roof cost?',

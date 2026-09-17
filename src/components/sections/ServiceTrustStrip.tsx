@@ -3,8 +3,8 @@ import { Shield, Award, Clock, CreditCard } from 'lucide-react';
 const trustItems = [
   {
     icon: Shield,
-    label: 'Lifetime Warranty',
-    detail: 'Full coverage on materials & labor',
+    label: 'Written Warranty',
+    detail: 'Workmanship in writing, materials by the manufacturer',
   },
   {
     icon: Award,
