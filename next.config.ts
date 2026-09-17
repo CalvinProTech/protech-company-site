@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         destination: '/careers',
         permanent: true,
       },
+      // /get-quote and /quote were orphaned duplicates of /free-estimate (zero
+      // inbound links, indexable, still promising a call "within 5 minutes").
+      // One door: the instant-estimate page every other link already uses.
+      { source: '/get-quote', destination: '/free-estimate', permanent: true },
+      { source: '/quote', destination: '/free-estimate', permanent: true },
       {
         source: '/offerings',
         destination: '/services',

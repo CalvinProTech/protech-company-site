@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { X, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants';
+import { isMenu, isPathActive } from './Header';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -130,25 +131,51 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Nav items */}
             <nav className="flex-1 overflow-y-auto px-4" aria-label="Mobile navigation">
               <ul className="space-y-1">
-                {NAV_ITEMS.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
+                {NAV_ITEMS.map((item) =>
+                  isMenu(item) ? (
+                    <li key={item.label} className="pt-3 first:pt-0">
+                      <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                        {item.label}
+                      </p>
+                      <ul>
+                        {item.children.map((child) => {
+                          const isActive = isPathActive(pathname, child.href);
+                          return (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className={cn(
+                                  'flex h-12 items-center rounded-lg px-4 text-base font-medium transition-colors',
+                                  isActive
+                                    ? 'bg-primary-50 font-bold text-accent-500'
+                                    : 'text-neutral-700 hover:bg-neutral-50'
+                                )}
+                                aria-current={isActive ? 'page' : undefined}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                  ) : (
                     <li key={item.href}>
                       <Link
                         href={item.href}
                         className={cn(
-                          'flex h-14 items-center rounded-lg px-4 text-lg font-medium transition-colors',
-                          isActive
+                          'flex h-12 items-center rounded-lg px-4 text-base font-medium transition-colors',
+                          isPathActive(pathname, item.href)
                             ? 'bg-primary-50 font-bold text-accent-500'
                             : 'text-neutral-700 hover:bg-neutral-50'
                         )}
-                        aria-current={isActive ? 'page' : undefined}
+                        aria-current={isPathActive(pathname, item.href) ? 'page' : undefined}
                       >
                         {item.label}
                       </Link>
                     </li>
-                  );
-                })}
+                  )
+                )}
               </ul>
             </nav>
 

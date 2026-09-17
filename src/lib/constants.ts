@@ -93,23 +93,6 @@ export const SITE_CONFIG = {
 // lead-api FINANCE_APP_URL — website and sales floor now agree on one door.
 export const FINANCING_APPLY_URL = 'https://www.enhancify.com/protechroof';
 
-// 2026-08-10: "Roof Cost" added. /roof-replacement-cost-calculator had ZERO
-// inbound internal links anywhere on the site — a fully orphaned page carrying
-// our single best keyword opportunity ("roof replacement cost" 22,200/mo at
-// KD 25, plus a ~52,000/mo cluster at KD 17-33). Orphan pages accumulate no
-// internal link equity and get crawled rarely. It also converts: the tool
-// captures an address, which is the top of the estimate funnel.
-export const NAV_ITEMS = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Locations', href: '/locations' },
-  { label: 'Roof Cost', href: '/roof-replacement-cost-calculator' },
-  { label: 'Financing', href: '/financing' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Contact', href: '/contact' },
-] as const;
-
 export const SERVICES = [
   { name: 'Roof Replacement', slug: 'roof-replacement', icon: 'Home' },
   { name: 'Roof Repair', slug: 'roof-repair', icon: 'Wrench' },
@@ -118,3 +101,45 @@ export const SERVICES = [
   { name: 'Gutters & Siding', slug: 'gutters-siding', icon: 'Droplets' },
   { name: 'Insurance Claims', slug: 'insurance-claims', icon: 'FileCheck' },
 ] as const;
+
+// ---------------------------------------------------------------------------
+// Primary navigation
+//
+// Five items, two of them menus, plus the phone and one CTA. The old bar had
+// eight flat links doing eight different jobs: "Home" duplicated the logo,
+// "Roof Cost" and the CTA opened the same estimate tool on two URLs, "Contact"
+// duplicated the CTA, and a two-item gallery held a top slot while Reviews,
+// Licensing and the Blog lived only in the footer. Grouping puts the trust
+// pages (Why ProTech) and the service catalog one hover away without spending
+// a slot on each. Contact and Careers stay in the footer.
+// ---------------------------------------------------------------------------
+export type NavLink = { readonly label: string; readonly href: string };
+export type NavItem =
+  | NavLink
+  | { readonly label: string; readonly children: readonly NavLink[] };
+
+export const NAV_ITEMS: readonly NavItem[] = [
+  {
+    label: 'Services',
+    children: [
+      ...SERVICES.map((service) => ({
+        label: service.name,
+        href: `/services/${service.slug}`,
+      })),
+      { label: 'Roof Cost Calculator', href: '/roof-replacement-cost-calculator' },
+    ],
+  },
+  { label: 'Service Areas', href: '/locations' },
+  { label: 'Financing', href: '/financing' },
+  {
+    label: 'Why ProTech',
+    children: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Customer Reviews', href: '/reviews' },
+      { label: 'Licensing & Credentials', href: '/certifications' },
+      { label: 'Project Gallery', href: '/gallery' },
+    ],
+  },
+  { label: 'Blog', href: '/blog' },
+];
+

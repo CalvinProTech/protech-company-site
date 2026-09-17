@@ -65,22 +65,6 @@ export default function Footer() {
                   Roof Replacement Cost
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/certifications"
-                  className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
-                >
-                  Licensing &amp; Credentials
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/careers"
-                  className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
-                >
-                  Careers
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -151,6 +135,30 @@ export default function Footer() {
                   <span>{SITE_CONFIG.email}</span>
                 </a>
               </li>
+            </ul>
+
+            <h3 className="mt-8 text-sm font-semibold uppercase tracking-wider text-neutral-400">
+              Company
+            </h3>
+            <ul className="mt-4 space-y-2">
+              {[
+                { label: 'About Us', href: '/about' },
+                { label: 'Customer Reviews', href: '/reviews' },
+                { label: 'Project Gallery', href: '/gallery' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Licensing & Credentials', href: '/certifications' },
+                { label: 'Careers', href: '/careers' },
+                { label: 'Contact', href: '/contact' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-neutral-300 transition-colors hover:text-white hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
             {/* Social icons */}

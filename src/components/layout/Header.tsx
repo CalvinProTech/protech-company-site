@@ -4,11 +4,21 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { Phone, Menu } from 'lucide-react';
+import { Phone, Menu, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants';
+import { SITE_CONFIG, NAV_ITEMS, type NavItem } from '@/lib/constants';
 import { trackPhoneClick, trackCTAClick } from '@/lib/analytics';
 import MobileMenu from './MobileMenu';
+
+export function isMenu(item: NavItem): item is Extract<NavItem, { children: unknown }> {
+  return 'children' in item;
+}
+
+/** Exact match, or a section match for hub pages (/services/* lights up Services). */
+export function isPathActive(pathname: string, href: string): boolean {
+  if (pathname === href) return true;
+  return href !== '/' && pathname.startsWith(`${href}/`);
+}
 
 export default function Header() {
   const pathname = usePathname();
@@ -69,10 +79,65 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav — flat links plus two hover/focus menus. The menus
+              open on :hover and :focus-within (CSS only), so they work with a
+              keyboard and need no client state. */}
           <nav className="hidden lg:flex lg:items-center lg:gap-1" aria-label="Main navigation">
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href;
+              if (isMenu(item)) {
+                const isActive = item.children.some((child) =>
+                  isPathActive(pathname, child.href)
+                );
+                return (
+                  <div key={item.label} className="group relative">
+                    <button
+                      type="button"
+                      className={cn(
+                        'relative flex h-11 items-center gap-1 rounded-lg px-3 text-sm font-medium transition-colors',
+                        isActive
+                          ? 'font-bold text-primary-700'
+                          : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
+                      )}
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {item.label}
+                      <ChevronDown className="h-4 w-4 opacity-60" aria-hidden="true" />
+                      {isActive && (
+                        <span
+                          className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-accent-500"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </button>
+                    <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                      <ul className="min-w-56 rounded-lg border border-neutral-200 bg-white py-2 shadow-lg">
+                        {item.children.map((child) => {
+                          const childActive = isPathActive(pathname, child.href);
+                          return (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className={cn(
+                                  'block px-4 py-2.5 text-sm transition-colors hover:bg-neutral-50 hover:text-neutral-900',
+                                  childActive
+                                    ? 'font-semibold text-primary-700'
+                                    : 'text-neutral-700'
+                                )}
+                                aria-current={childActive ? 'page' : undefined}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              }
+
+              const isActive = isPathActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
