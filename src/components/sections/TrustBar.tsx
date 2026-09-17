@@ -1,11 +1,14 @@
-import { Shield, Award, Star, MapPin } from 'lucide-react';
+import { Shield, FileCheck, Star, MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
 
 const stats = [
+  // The first tile used to claim a manufacturer program ProTech does not
+  // belong to (and /certifications explicitly disclaims). Line-item written
+  // estimates are the verifiable promise the whole site is built on.
   {
-    icon: Award,
-    value: 'Master',
-    label: 'GAF Certified Elite',
+    icon: FileCheck,
+    value: 'Line-Item',
+    label: 'Written Estimates',
   },
   {
     icon: Shield,

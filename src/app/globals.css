@@ -191,3 +191,16 @@ body {
   font-size: 0.8rem;
   color: var(--color-neutral-500);
 }
+
+/* Hero entrance. Runs without JS and never gates copy: if animations are off
+   or unsupported the element is simply visible. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-rise {
+  animation: hero-rise 500ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; }
+}

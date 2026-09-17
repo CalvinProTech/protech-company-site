@@ -16,9 +16,9 @@ const reasons = [
   },
   {
     icon: Award,
-    title: 'Premium Quality',
+    title: 'Manufacturer-Backed Materials',
     description:
-      'GAF-certified installers using only premium materials. Every roof we install comes with extended manufacturer warranties and our own workmanship guarantee.',
+      'We install GAF, Owens Corning and CertainTeed systems to the manufacturer\u2019s written specifications, so your material warranty stays valid \u2014 and we register it for you.',
   },
 ];
 
@@ -31,7 +31,7 @@ export function WhyChooseUs() {
             Why Homeowners Choose ProTech
           </h2>
           <p className="mt-4 text-lg text-neutral-600">
-            Trusted by over {SITE_CONFIG.roofsInstalled} homeowners across America
+            Trusted by homeowners across {SITE_CONFIG.statesLicensed} states
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">

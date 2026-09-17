@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
 import { Shield, Star, Award, MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
 import { trackCTAClick } from '@/lib/analytics';
@@ -47,30 +46,23 @@ export function Hero({
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0 }}
-            className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
-          >
+          {/* CSS-only entrance (see .hero-rise in globals.css). The previous
+              JS-driven version shipped the H1 at opacity:0 and relied on a
+              client animation to reveal it — on the live site it never did,
+              so every photo-hero page rendered an invisible headline. Now the
+              resting state is visible; the animation is a courtesy, not a gate. */}
+          <h1 className="hero-rise text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             {heading}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-4 text-lg text-neutral-200 sm:text-xl md:mt-6 md:text-2xl"
+          <p
+            className="hero-rise mt-4 text-lg text-neutral-200 sm:text-xl md:mt-6 md:text-2xl"
+            style={{ animationDelay: '100ms' }}
           >
             {subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-8"
-          >
+          <div className="hero-rise mt-8" style={{ animationDelay: '200ms' }}>
             {children ? (
               children
             ) : (
@@ -99,14 +91,12 @@ export function Hero({
                 )}
               </div>
             )}
-          </motion.div>
+          </div>
 
           {showTrustBadges && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-10 flex flex-wrap gap-6"
+            <div
+              style={{ animationDelay: '300ms' }}
+              className="hero-rise mt-10 flex flex-wrap gap-6"
             >
               {trustBadges.map((badge) => (
                 <div
@@ -117,7 +107,7 @@ export function Hero({
                   <span className="text-sm font-medium">{badge.label}</span>
                 </div>
               ))}
-            </motion.div>
+            </div>
           )}
         </div>
       </div>

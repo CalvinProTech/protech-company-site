@@ -188,7 +188,10 @@ function buildIntro(
       `Our local crews cover ${city} and nearby ${near}, handling everything from complete roof replacements to emergency leak repair. We use ${profile.materials} chosen for ${profile.state}'s weather and manage permits and inspections from start to finish.`,
       `From ${city} to ${near}, ProTech Roofing delivers roof replacement, repair, storm restoration, and insurance-claim help. Our installations pair ${profile.materials} with manufacturer-specified installation methods.`,
     ],
-    s >> 3
+    // >>> not >>: s is an unsigned 32-bit hash. A signed shift goes
+    // negative when the top bit is set, arr[-1] is undefined, and the word
+    // "undefined" was printed in ~half the city intros and on the homepage.
+    s >>> 3
   );
   const closer = pick(
     [
@@ -196,7 +199,7 @@ function buildIntro(
       `From the first inspection to the final magnetic nail sweep, you get transparent pricing, certified installation, and a lifetime workmanship warranty.`,
       `Schedule a free inspection and get an honest, itemized estimate — plus financing options and a lifetime workmanship guarantee on every roof we install.`,
     ],
-    s >> 6
+    s >>> 6
   );
   return `${opener} ${body} ${closer}`;
 }
