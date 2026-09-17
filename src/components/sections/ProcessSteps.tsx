@@ -1,8 +1,9 @@
-'use client';
-
-import { useRef, useEffect, useState } from 'react';
-import { motion } from 'motion/react';
 import { Phone, ClipboardCheck, HardHat, ThumbsUp } from 'lucide-react';
+
+// Server component. The steps used to be parked at opacity:0 until an
+// IntersectionObserver + motion/react revealed them — the same JS-gated
+// visibility that left hero headlines invisible. Now they render visible and
+// the stagger is a CSS keyframe (.hero-rise) that runs without JS.
 
 const steps = [
   {
@@ -36,29 +37,9 @@ const steps = [
 ];
 
 export function ProcessSteps() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-primary-900 md:text-4xl">
@@ -76,12 +57,10 @@ export function ProcessSteps() {
             <div className="absolute left-[10%] right-[10%] top-8 h-0.5 bg-primary-200" />
 
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative flex w-1/4 flex-col items-center px-4 text-center"
+                className="hero-rise relative flex w-1/4 flex-col items-center px-4 text-center"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary-700 text-white shadow-md">
                   <step.icon className="h-7 w-7" />
@@ -95,7 +74,7 @@ export function ProcessSteps() {
                 <p className="mt-2 text-sm text-neutral-600">
                   {step.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -107,12 +86,10 @@ export function ProcessSteps() {
             <div className="absolute bottom-0 left-5 top-0 w-0.5 bg-primary-200" />
 
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={step.number}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative"
+                className="hero-rise relative"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="absolute -left-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 text-white">
                   <span className="text-sm font-bold">{step.number}</span>
@@ -128,7 +105,7 @@ export function ProcessSteps() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
