@@ -44,7 +44,9 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       {/* Client interactive content */}
       <ReviewsContent testimonials={testimonials} />

@@ -59,7 +59,9 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       {/* Blog Grid */}
       <section className="bg-white py-12 md:py-16">

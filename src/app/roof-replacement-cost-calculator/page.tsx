@@ -217,7 +217,9 @@ export default function RoofReplacementCostCalculatorPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       {/* Average Cost Section — targets "average cost to replace a roof" intent */}
       <section className="bg-white py-16 md:py-24">

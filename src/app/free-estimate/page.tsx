@@ -80,7 +80,9 @@ export default function FreeEstimatePage() {
         </div>
       </section>
 
-      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       {/* Trust Signals */}
       <section className="bg-white py-12 md:py-20">

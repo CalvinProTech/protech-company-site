@@ -40,7 +40,9 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       {/* Filter + Grid (client component) */}
       <GalleryGrid projects={projects} />

@@ -57,7 +57,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
       {/* Contact Content */}
       <section className="bg-white py-12 md:py-20">
