@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
-  DollarSign,
   ClipboardCheck,
   CreditCard,
   Hammer,
@@ -68,9 +67,6 @@ export default function FinancingPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent-500/20">
-              <DollarSign className="h-8 w-8 text-accent-400" />
-            </div>
             <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
               Affordable Roofing with Flexible Financing
             </h1>
