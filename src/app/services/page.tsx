@@ -53,7 +53,7 @@ export default function ServicesPage() {
               and in-house financing across nine states. Every
               project is backed by our lifetime workmanship warranty, premium
               materials from manufacturers like GAF, Owens Corning, and
-              CertainTeed, and a team of factory-trained installers who treat
+              CertainTeed, and vetted local crews who treat
               your property like their own. Whether you need a full roof
               replacement, emergency leak repair, or a proactive inspection, we
               deliver the quality, transparency, and speed you deserve.

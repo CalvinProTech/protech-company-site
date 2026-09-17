@@ -234,7 +234,7 @@ export default function InstantPriceEstimate() {
           {showCallbackForm && !callbackSent && (
             <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
               <p className="text-sm font-medium text-primary-900">
-                We&apos;ll call you within 5 minutes
+                We&apos;ll call you within one business day
               </p>
               <div className="mt-3 space-y-3">
                 {/* Honeypot — hidden from real users, bots fill it */}
@@ -297,7 +297,7 @@ export default function InstantPriceEstimate() {
           {callbackSent && (
             <div className="rounded-xl border border-green-200 bg-green-50 p-5 text-center">
               <p className="font-semibold text-green-800">
-                ✓ We&apos;ll call you within 5 minutes!
+                ✓ We&apos;ll call you within one business day
               </p>
             </div>
           )}

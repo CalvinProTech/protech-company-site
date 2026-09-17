@@ -258,7 +258,7 @@ export default function LandingPageForm({
           We&apos;ll Call You Shortly!
         </h3>
         <p className="mt-2 text-green-700">
-          A roofing specialist will reach out within 5 minutes during business
+          A roofing specialist will reach out within one business day during business
           hours to discuss your project.
         </p>
       </div>
@@ -401,7 +401,7 @@ export default function LandingPageForm({
               Get your free quote
             </h3>
             <p className="mt-1 text-sm text-neutral-600">
-              A roofing specialist will call you within 5 minutes
+              A roofing specialist will call you within one business day
             </p>
           </div>
 

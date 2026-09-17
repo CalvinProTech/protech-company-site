@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { Shield, Star, Award, MapPin } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/constants';
@@ -11,6 +10,7 @@ interface HeroProps {
   subtitle: string;
   primaryCTA?: { text: string; href: string };
   secondaryCTA?: { text: string; href: string };
+  /** Accepted for compatibility; no longer rendered (see note in the JSX). */
   backgroundImage?: string;
   showTrustBadges?: boolean;
   children?: React.ReactNode;
@@ -28,22 +28,18 @@ export function Hero({
   subtitle,
   primaryCTA,
   secondaryCTA,
-  backgroundImage = '/images/hero/default.jpg',
+  backgroundImage: _backgroundImage,
   showTrustBadges = true,
   children,
 }: HeroProps) {
+  // House pattern (navy gradient, left-aligned) — the same wrapper /about,
+  // /financing and /careers use. The photo-and-overlay version this
+  // replaced was one of four hero systems on the site; a photo under a 60%
+  // overlay also read as flat gray on every page. backgroundImage is still
+  // accepted so the ten call sites need not change, but is not rendered.
   return (
-    <section className="relative flex min-h-[500px] items-center md:min-h-[600px]">
-      <Image
-        src={backgroundImage}
-        alt=""
-        fill
-        priority
-        className="object-cover"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-primary-900/60" />
-
+    <section className="relative flex min-h-[400px] items-center bg-primary-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           {/* CSS-only entrance (see .hero-rise in globals.css). The previous

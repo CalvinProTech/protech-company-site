@@ -118,7 +118,7 @@ const SERVICES: Record<
     bullets: [
       'Satellite-powered instant measurement',
       'Licensed & insured in 9 states',
-      'Call back within 5 minutes',
+      'Call back within one business day',
     ],
     defaultService: '',
   },

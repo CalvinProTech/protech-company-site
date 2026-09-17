@@ -3,13 +3,11 @@ import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 
 import { createPageMetadata } from '@/lib/metadata';
 import { SITE_CONFIG, LICENSED_STATES } from '@/lib/constants';
-import { formatPhoneNumber } from '@/lib/utils';
 import { getFeaturedTestimonials } from '@/lib/testimonials';
 
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import ContactForm from '@/components/forms/ContactForm';
-import { TrustBar } from '@/components/sections/TrustBar';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
 import { CTABanner } from '@/components/sections/CTABanner';
 
@@ -28,8 +26,8 @@ const breadcrumbItems = [
 ];
 
 const officeHours = [
-  { days: 'Monday - Friday', hours: '7:00 AM - 6:00 PM' },
-  { days: 'Saturday', hours: '8:00 AM - 2:00 PM' },
+  { days: 'Monday - Friday', hours: '9:00 AM - 5:00 PM ET' },
+  { days: 'Saturday', hours: '9:00 AM - 2:00 PM ET' },
   { days: 'Sunday', hours: 'Closed' },
 ];
 
@@ -42,28 +40,24 @@ export default function ContactPage() {
       {/* Structured Data */}
       <BreadcrumbSchema items={breadcrumbItems} />
 
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs items={breadcrumbItems} />
-      </div>
-
-      {/* Trust Bar */}
-      <TrustBar />
-
-      {/* Page Header */}
-      <section className="bg-primary-800 py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+      {/* Hero — house pattern: navy gradient, left-aligned, H1 + one paragraph.
+          Same wrapper as /about, /financing, /careers and the shared <Hero>. */}
+      <section className="relative flex min-h-[400px] items-center bg-primary-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
               Contact ProTech Roofing
             </h1>
-            <p className="text-primary-200 mt-4 text-lg">
+            <p className="mt-4 text-lg text-primary-200 sm:text-xl md:mt-6 md:text-2xl">
               Have a question or need help with a roofing project? Reach out by
               phone, email, or the form below. We respond within 24 hours.
             </p>
           </div>
         </div>
       </section>
+
+      <Breadcrumbs items={breadcrumbItems} />
 
       {/* Contact Content */}
       <section className="bg-white py-12 md:py-20">
@@ -103,7 +97,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-sm text-neutral-500">Phone</p>
                       <p className="font-medium">
-                        {formatPhoneNumber(SITE_CONFIG.defaultPhoneRaw)}
+                        {SITE_CONFIG.defaultPhone}
                       </p>
                     </div>
                   </a>

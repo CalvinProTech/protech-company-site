@@ -56,7 +56,7 @@ const services: Service[] = [
       {
         title: 'Professional Installation',
         description:
-          'Our factory-trained crews strip the old roof to the decking, repair any damaged wood, install underlayment and flashing, and apply your new roof system. Most residential jobs complete in 1 to 2 days.',
+          'Our vetted local crews strip the old roof to the decking, repair any damaged wood, install underlayment and flashing, and apply your new roof system. Most residential jobs complete in 1 to 2 days.',
       },
       {
         title: 'Final Walkthrough & Warranty',

@@ -60,21 +60,18 @@ export default function FreeEstimatePage() {
       {/* Structured Data */}
       <BreadcrumbSchema items={breadcrumbItems} />
 
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs items={breadcrumbItems} />
-      </div>
-
-      {/* Hero + Instant Estimate Widget */}
-      <section className="bg-primary-800 py-12 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto flex max-w-xl flex-col items-center text-center">
-            <h1 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+      {/* Hero — house pattern: navy gradient, left-aligned, H1 + one paragraph.
+          Same wrapper as /about, /financing, /careers and the shared <Hero>. */}
+      <section className="relative flex min-h-[400px] items-center bg-primary-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
               Get Your Free Roofing Estimate
             </h1>
-            <p className="text-primary-200 mt-4 text-lg">
-              Enter your address for an instant price range — powered by
-              satellite roof measurement. No obligation, no pressure.
+            <p className="mt-4 text-lg text-primary-200 sm:text-xl md:mt-6 md:text-2xl">
+              Enter your address for an instant price range — powered by satellite
+              roof measurement. No obligation, no pressure.
             </p>
             <div className="mt-8 w-full">
               <InstantPriceEstimate />
@@ -82,6 +79,8 @@ export default function FreeEstimatePage() {
           </div>
         </div>
       </section>
+
+      <Breadcrumbs items={breadcrumbItems} />
 
       {/* Trust Signals */}
       <section className="bg-white py-12 md:py-20">

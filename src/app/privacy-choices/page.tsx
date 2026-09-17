@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from '@/lib/constants';
 import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/metadata';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -157,7 +158,7 @@ export default function PrivacyChoicesPage() {
               >
                 privacy@protechroof.net
               </a>
-              {' '}or call us at (866) 308-2640. You may also write to us at our
+              {' '}or call us at {SITE_CONFIG.defaultPhone}. You may also write to us at our
               corporate office, 4950 W Kennedy Blvd Suite 210, Tampa, FL 33609.
               For more detail on how we handle your data, please review our{' '}
               <a href="/privacy-policy" className="font-medium text-primary-600 hover:underline">Privacy Policy</a>

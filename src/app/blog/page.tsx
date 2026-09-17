@@ -42,23 +42,24 @@ export default function BlogPage() {
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
 
-      {/* Page Header */}
-      <section className="bg-primary-900 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-            Roofing Blog
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-primary-200">
-            Expert tips, maintenance guides, and industry insights from our team
-            of licensed roofing professionals.
-          </p>
+      {/* Hero — house pattern: navy gradient, left-aligned, H1 + one paragraph.
+          Same wrapper as /about, /financing, /careers and the shared <Hero>. */}
+      <section className="relative flex min-h-[400px] items-center bg-primary-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+              Roofing Blog
+            </h1>
+            <p className="mt-4 text-lg text-primary-200 sm:text-xl md:mt-6 md:text-2xl">
+              Expert tips, maintenance guides, and industry insights from our team
+              of licensed roofing professionals.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Breadcrumbs */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs items={breadcrumbItems} />
-      </div>
+      <Breadcrumbs items={breadcrumbItems} />
 
       {/* Blog Grid */}
       <section className="bg-white py-12 md:py-16">
