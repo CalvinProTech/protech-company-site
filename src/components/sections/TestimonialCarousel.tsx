@@ -79,7 +79,9 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
 
         <div className="relative">
           <div className="min-h-[250px] overflow-hidden px-12 md:px-16">
-            <AnimatePresence mode="wait" custom={direction}>
+            {/* initial={false}: the first review is first-paint content; only
+                slide-to-slide changes should animate. */}
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
                 key={current}
                 custom={direction}
