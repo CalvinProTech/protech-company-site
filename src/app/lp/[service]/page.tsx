@@ -90,13 +90,13 @@ const SERVICES: Record<
     ],
   },
   'roof-repair': {
-    headline: 'Roof Repair — Fast, Reliable Service',
+    headline: 'Roof Leak? Get a Free, Honest Assessment',
     subheadline:
       'Licensed & insured pros. Same-day estimates. 5-star Google rating.',
     bullets: [
-      'Emergency and scheduled repairs',
-      'Storm damage specialists',
-      'Free inspection with every repair quote',
+      'Free inspection, photos of what we find',
+      'A straight repair-or-replace answer',
+      'Line-item estimate + financing if it is time to replace',
     ],
     defaultService: 'roof-repair',
   },
@@ -136,11 +136,11 @@ const SERVICES: Record<
     defaultService: 'roof-replacement',
   },
   'emergency-repair': {
-    headline: 'Emergency Roof Repair — Same-Day Service',
+    headline: 'Roof Leak After the Storm? Free Inspection, Straight Answer',
     subheadline:
-      'Leaks, storm damage, missing shingles — we respond fast. Licensed & insured.',
+      'Leaks, storm damage, missing shingles — we inspect free and tell you what it really needs. Licensed & insured.',
     bullets: [
-      'Same-day emergency response',
+      'Free inspection with photos of the damage',
       'Free damage assessment',
       'Storm & insurance claim specialists',
     ],

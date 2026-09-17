@@ -55,7 +55,7 @@ export default function ServicesPage() {
               materials from manufacturers like GAF, Owens Corning, and
               CertainTeed, and vetted local crews who treat
               your property like their own. Whether you need a full roof
-              replacement, emergency leak repair, or a proactive inspection, we
+              replacement, a leak you are not sure about, or a proactive inspection, we
               deliver the quality, transparency, and speed you deserve.
             </p>
           </div>

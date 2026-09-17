@@ -61,7 +61,7 @@ const cityServiceData: CityServiceData[] = [
     serviceSlug: 'roof-repair',
     metaTitle: 'Roof Repair in Tampa, FL | Fast Leak Fixes | ProTech',
     metaDescription:
-      'Same-day roof repair in Tampa. Stop leaks, fix storm damage & prevent water intrusion. 24hr emergency service. Call for a free assessment.',
+      'Roof leak in Tampa? Free inspection and a straight repair-or-replace answer from a licensed roof replacement contractor. Call for a free assessment.',
     h1: 'Fast, Reliable Roof Repair in Tampa',
     intro:
       'A small roof leak in Tampa can escalate into thousands of dollars in water damage, mold remediation, and drywall replacement within days thanks to the region\'s high humidity and frequent afternoon storms. ProTech Roofing provides fast, professional roof repair services throughout Hillsborough County, using thermal imaging and moisture detection equipment to pinpoint the exact source of leaks that are invisible to the naked eye. Whether you have wind-lifted shingles from a passing thunderstorm, cracked tile from debris impact, or deteriorating flashing around a skylight, our technicians address the root cause rather than applying temporary patches that fail in the next storm. We carry matching materials on our trucks so most repairs are completed in a single visit. Emergency tarping is available within hours for active leaks during Tampa\'s rainy season, protecting your interior from further damage while we plan the permanent repair. Every repair comes with a written workmanship warranty, and we document the work with before-and-after photos for your records and potential insurance claims.',
@@ -69,7 +69,7 @@ const cityServiceData: CityServiceData[] = [
       {
         question: 'How quickly can you repair a roof leak in Tampa?',
         answer:
-          'We offer same-day roof repair for most Tampa residents. Emergency tarping for active leaks is available within 2 to 4 hours of your call. Permanent repairs are typically completed within 24 to 48 hours depending on materials and weather conditions.',
+          'We schedule free inspections within a few business days for most Tampa-area homes. You get photos of what we find and a plain recommendation: an isolated repair you can have done locally, or a replacement estimate if the roof is at end of life.',
       },
       {
         question: 'How much does a typical roof repair cost in Tampa?',
@@ -84,7 +84,7 @@ const cityServiceData: CityServiceData[] = [
       {
         question: 'Can you fix a roof leak during Tampa\'s rainy season?',
         answer:
-          'Yes. We provide emergency tarping during active rain to stop water intrusion immediately. Once conditions allow, we complete the permanent repair. Our scheduling accounts for Tampa\'s typical afternoon storm pattern, with most exterior work completed in the morning hours.',
+          'We do not send emergency crews out in active rain, and we do not run a repair crew. If water is coming in, cover the area, catch what you can, and call us — we will get an inspection on the calendar and tell you honestly whether the roof needs a repair or a replacement.',
       },
       {
         question: 'Do you repair all types of roofs in Tampa?',
@@ -211,7 +211,7 @@ const cityServiceData: CityServiceData[] = [
     serviceSlug: 'roof-repair',
     metaTitle: 'Roof Repair in Charlotte, NC | Leak Experts | ProTech',
     metaDescription:
-      'Charlotte roof repair for leaks, storm damage & missing shingles. Same-day service with 24hr emergency response. Free assessment.',
+      'Roof leak in Charlotte? Free inspection and a straight repair-or-replace answer from a licensed roof replacement contractor. Free assessment.',
     h1: 'Professional Roof Repair in Charlotte',
     intro:
       'Charlotte\'s mix of severe thunderstorms, heavy rainfall, and occasional hurricane remnants means roof damage can happen at any time of year, and delays in repair lead to exponentially more expensive problems in North Carolina\'s humid climate. ProTech Roofing delivers fast, professional roof repair services across Mecklenburg County and the surrounding metro, from the historic homes of Dilworth to newer developments in Huntersville and Concord. Our technicians use advanced thermal imaging to detect moisture intrusion that is invisible from the surface, tracing leaks to their exact origin point — which is often far from where water stains appear on your ceiling. Charlotte\'s powerful storms frequently lift shingles, crack flashing, and drive debris into roofing materials, creating entry points for water that can lead to mold growth within days in the humid Piedmont environment. We carry a comprehensive inventory of matching materials for every major shingle, tile, and flat-roof system installed in the Charlotte area, enabling same-visit completion for most repairs without waiting for special orders. Emergency tarping is available around the clock during storm season to protect your interior from active leaks while we plan the permanent fix. Every Charlotte repair comes with a written workmanship warranty, before-and-after photo documentation, and an honest assessment of your roof\'s overall condition.',
@@ -219,7 +219,7 @@ const cityServiceData: CityServiceData[] = [
       {
         question: 'How fast can you repair a roof leak in Charlotte?',
         answer:
-          'Same-day repair is available for most Charlotte-area homes. Emergency tarping for active leaks is available within 2 to 4 hours of your call. Permanent repairs are typically completed within 24 to 48 hours depending on the scope and weather conditions.',
+          'We schedule free inspections within a few business days for most Charlotte-area homes. You get photos of what we find and a plain recommendation: an isolated repair you can have done locally, or a replacement estimate if the roof is at end of life.',
       },
       {
         question: 'How much does roof repair cost in Charlotte?',
@@ -271,7 +271,7 @@ const cityServiceData: CityServiceData[] = [
       {
         question: 'How fast can ProTech respond to Charlotte storm damage?',
         answer:
-          'Emergency tarping is available within hours of your call. After major storm events, we prioritize active leaks and structural damage. Full restoration begins as soon as insurance approval is received and materials are delivered, typically within 1 to 3 weeks.',
+          'After major storm events we prioritize inspections for homes with active leaks and structural damage. Full restoration begins as soon as insurance approval is received and materials are delivered, typically within 1 to 3 weeks.',
       },
       {
         question: 'Can I upgrade my roof after storm damage in Charlotte?',
@@ -398,7 +398,7 @@ const cityServiceData: CityServiceData[] = [
     serviceSlug: 'roof-repair',
     metaTitle: 'Roof Repair in Jacksonville, FL | Fast Leak Fix | ProTech',
     metaDescription:
-      'Same-day roof repair in Jacksonville. Stop leaks, fix storm damage & prevent water intrusion. 24hr emergency service. Free assessment.',
+      'Roof leak in Jacksonville? Free inspection and a straight repair-or-replace answer from a licensed roof replacement contractor. Free assessment.',
     h1: 'Fast, Reliable Roof Repair in Jacksonville',
     intro:
       'A roof leak in Jacksonville can cause severe secondary damage within days thanks to Florida\'s high humidity, heavy afternoon storms, and warm temperatures that create ideal conditions for rapid mold growth inside walls and attic spaces. ProTech Roofing provides fast, professional roof repair services throughout Duval County and the surrounding areas of St. Augustine, Orange Park, and Ponte Vedra Beach. Our technicians use thermal imaging and moisture detection technology to pinpoint the exact source of leaks that may originate far from where water stains appear on your ceiling, ensuring we fix the root cause rather than applying temporary patches. Jacksonville\'s combination of hurricane-season winds, UV degradation, and salt air creates a continuous cycle of shingle deterioration, flashing failure, and sealant breakdown that requires vigilant maintenance and prompt repairs. Our repair crews carry a comprehensive inventory of matching materials for every major shingle, tile, and flat-roof system installed in the Jacksonville metro, enabling same-visit completion for most repairs. Emergency tarping is available around the clock for active leaks during Florida\'s storm season, protecting your home\'s interior while we plan the permanent repair. Every repair includes a written workmanship warranty, before-and-after photo documentation, and an honest assessment of your roof\'s remaining useful life.',
@@ -406,7 +406,7 @@ const cityServiceData: CityServiceData[] = [
       {
         question: 'How quickly can you repair a roof leak in Jacksonville?',
         answer:
-          'We offer same-day roof repair for most Jacksonville-area homes. Emergency tarping for active leaks is available within 2 to 4 hours of your call. Permanent repairs are typically completed within 24 to 48 hours depending on scope and weather conditions.',
+          'We schedule free inspections within a few business days for most Jacksonville-area homes. You get photos of what we find and a plain recommendation: an isolated repair you can have done locally, or a replacement estimate if the roof is at end of life.',
       },
       {
         question: 'How much does a typical roof repair cost in Jacksonville?',
@@ -435,7 +435,7 @@ const cityServiceData: CityServiceData[] = [
     serviceSlug: 'storm-damage',
     metaTitle: 'Storm Damage Roof Repair Jacksonville, FL',
     metaDescription:
-      'Jacksonville storm damage restoration with insurance claim support. Hurricane, wind & hail damage. Emergency tarping 24/7. Call now.',
+      'Jacksonville storm damage restoration with insurance claim support. Hurricane, wind & hail damage. Free inspection. Call now.',
     h1: 'Jacksonville Storm Damage Roof Restoration',
     intro:
       'Jacksonville\'s position on Florida\'s Atlantic coast places it directly in the path of tropical storms, hurricanes, and intense thunderstorms that can damage thousands of roofs across Duval County in a single event. ProTech Roofing is Jacksonville\'s trusted storm damage restoration contractor, with an established emergency response protocol that mobilizes tarping crews within hours of major weather events to protect properties from the secondary water damage that can double restoration costs in Florida\'s humid environment. Our drone-assisted inspections capture high-resolution imagery of every wind-lifted shingle, hail dent, and debris strike, creating documentation packages that meet the requirements of every major insurance carrier operating in Florida. We prepare Xactimate-certified damage estimates in the exact format adjusters use, reducing disputes and accelerating claim settlements for Jacksonville homeowners. From Riverside to Ponte Vedra Beach, from Orange Park to the Beaches communities, our project managers coordinate every phase of the restoration — emergency tarping, insurance documentation, permitting, material procurement, crew scheduling, and final inspection — so you are never left wondering about the status of your project. We have restored hundreds of Jacksonville homes after named storms and severe weather events, consistently delivering quality craftsmanship that withstands future storms.',
@@ -463,7 +463,7 @@ const cityServiceData: CityServiceData[] = [
       {
         question: 'How long does storm damage restoration take in Jacksonville?',
         answer:
-          'Once the insurance claim is approved, most Jacksonville restorations are completed within 1 to 3 weeks. Emergency tarping is available immediately, and permanent restoration begins as soon as materials arrive and City of Jacksonville permits are secured.',
+          'Once the insurance claim is approved, most Jacksonville restorations are completed within 1 to 3 weeks. Restoration begins as soon as materials arrive and City of Jacksonville permits are secured.',
       },
     ],
   },

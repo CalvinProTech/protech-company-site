@@ -120,69 +120,74 @@ const services: Service[] = [
     metaDescription:
       'Premium roof replacement with a written workmanship warranty. GAF, Owens Corning, and metal options. Free inspection, financing available. Get your estimate today.',
   },
+  // ProTech is a replacement contractor and does not run a repair crew
+  // (Calvin, 2026-09-16). "Roof Repair" stays as a page and a menu item
+  // because that is what a homeowner with a leak searches for and calls
+  // about — the page's job is to get that call and promise an honest answer,
+  // not to describe a repair service we do not perform.
   {
     name: 'Roof Repair',
     slug: 'roof-repair',
     icon: 'Wrench',
     shortDescription:
-      'Stop leaks before they become costly water damage with fast, reliable roof repairs backed by our workmanship guarantee.',
+      'Got a leak? Get a free inspection and a straight answer on whether it needs a repair or a replacement — no pressure either way.',
     longDescription:
-      "A small roof leak can quickly escalate into thousands of dollars in water damage, mold remediation, and structural repair. ProTech Roofing provides prompt, professional repair services that address the root cause, not just the symptoms. Our technicians use thermal imaging and moisture meters to pinpoint leak sources that are invisible to the naked eye. Whether you need a few shingles replaced, flashing resealed, or a section of decking rebuilt, we restore your roof's integrity with materials that match your existing system.",
+      "A leak is the moment most homeowners first call a roofer, and the honest answer is not always \"replace it.\" ProTech Roofing is a roof replacement contractor: our crews install complete roof systems, and that is what we quote. When you call about a leak, we inspect the roof for free, show you photos of what we find, and tell you plainly whether the problem is isolated enough that a repair by any competent handyman or roofer is all it needs — or whether the roof is at the end of its life and a repair would be money thrown at a system that is about to fail. If it is the latter, you get a line-item replacement estimate with financing options. If it is the former, you get the assessment and our recommendation, and we do not charge for it.",
     benefits: [
-      '24-hour emergency response for active leaks and storm damage',
-      'Thermal imaging and moisture detection to find hidden leak sources',
-      'Repairs matched to your existing materials for a seamless appearance',
-      'Prevent costly water damage, mold, and structural deterioration',
-      'Transparent pricing with no surprise charges after work begins',
+      'Free inspection with photos of what we actually find',
+      'A straight repair-or-replace answer, including when the answer is a small repair we do not do',
+      'Line-item replacement estimate if the roof is at end of life — no pressure, no surprise numbers',
+      'Insurance-claim help if the damage is storm-related',
+      '$0-down financing options on a full replacement',
     ],
     processSteps: [
       {
-        title: 'Damage Assessment',
+        title: 'Tell us what you are seeing',
         description:
-          'We inspect your roof using thermal cameras and visual examination to identify every area of concern and document the findings with detailed photos.',
+          'A stain on the ceiling, missing shingles, water after a storm. Call or use the form and describe it — a photo helps.',
       },
       {
-        title: 'Repair Plan & Approval',
+        title: 'Free inspection',
         description:
-          'You receive a clear written scope of work explaining what needs to be fixed, why, and how much it will cost. We do not begin work until you approve the plan.',
+          'We walk the roof and the attic where we can, photograph the problem areas, and check the age and condition of the whole system, not just the spot that is leaking.',
       },
       {
-        title: 'Expert Repair',
+        title: 'An honest recommendation',
         description:
-          'Our trained technicians execute the repair using manufacturer-approved materials and techniques, ensuring the fix addresses the underlying cause rather than masking the symptom.',
+          'If the roof is sound and the damage is isolated, we say so and tell you what kind of repair to get. If the roof is failing, we explain why a repair would not hold.',
       },
       {
-        title: 'Quality Verification',
+        title: 'A written estimate — only if you need one',
         description:
-          'After completion, we perform a water test and re-inspect with thermal imaging to confirm the leak is fully resolved. You receive a written workmanship warranty on all repairs.',
+          'When replacement is the right call, you receive a line-item scope and price, with financing options. You decide on your own schedule.',
       },
     ],
     materials: [
-      'Matching architectural and 3-tab shingles',
-      'Step and counter flashing (aluminum and galvanized steel)',
-      'Rubberized ice-and-water shield membrane',
-      'Roofing sealants and adhesives (polyurethane and silicone)',
-      'Replacement decking (CDX plywood and OSB)',
+      'Inspection: attic check, roof walk, and photo documentation',
+      'Assessment covers shingles, flashing, decking, ventilation, and drainage',
+      'Replacement quotes: GAF, Owens Corning, and CertainTeed systems',
+      'Ice-and-water shield and synthetic underlayment on every replacement',
+      'All work under permit, inspected, with manufacturer warranty registered',
     ],
     faqs: [
       {
+        question: 'Does ProTech do roof repairs?',
+        answer:
+          'Not as a service. ProTech Roofing installs complete roof replacements. What we do offer, free, is an honest inspection: if your leak is an isolated problem on a roof that still has life in it, we will tell you that and you can have it repaired locally. If the roof is at end of life, we will show you why and quote a replacement.',
+      },
+      {
         question: 'How do I know if my roof needs repair or full replacement?',
         answer:
-          'If damage is isolated to a small area and the rest of your roof is in good condition, a repair is usually sufficient and more cost-effective. However, if your roof is over 20 years old, has widespread granule loss, or shows signs of sagging, a full replacement is the better investment. Our free inspection will give you an honest recommendation.',
+          'If damage is isolated to a small area and the rest of the roof is in good condition, a repair is usually the sensible choice. If the roof is over 20 years old, has widespread granule loss, curling or missing shingles in several areas, or shows sagging, a repair is temporary and a replacement is the better investment. Our free inspection gives you a recommendation with photos so you can see it yourself.',
       },
       {
-        question: 'Can you fix a roof leak in the rain?',
+        question: 'Is the inspection really free, even if you do not do the work?',
         answer:
-          'Yes, we provide emergency tarping services during active rain to prevent further water intrusion. Permanent repairs are then scheduled once conditions allow for safe, quality work. Our 24-hour response team can typically have a tarp in place within a few hours of your call.',
-      },
-      {
-        question: 'How much does a typical roof repair cost?',
-        answer:
-          'Minor repairs such as replacing a few shingles or resealing flashing typically cost between $300 and $1,000. More extensive repairs involving decking replacement or large sections can range from $1,000 to $4,000. We provide exact pricing before starting work so there are no surprises.',
+          'Yes. There is no charge for the inspection or the recommendation, whether or not we end up quoting a replacement.',
       },
     ],
     problemStatement:
-      'A small roof leak may seem minor, but left unaddressed it can escalate into thousands of dollars in water damage, mold remediation, and structural repair within weeks.',
+      'A leak forces a decision: patch it, or replace the roof. Most homeowners get that answer from whoever is selling them the fix. Get it from an inspection instead.',
     qualificationChecklist: [
       'You have an active leak or water stain on your ceiling',
       'Shingles are missing, cracked, or blown off',
@@ -197,10 +202,10 @@ const services: Service[] = [
       'Sagging or soft spots on the roof surface',
     ],
     warrantyInfo:
-      'All ProTech roof repairs include a written workmanship warranty. The duration depends on the scope of repair, and we use manufacturer-approved materials to ensure lasting results.',
-    metaTitle: 'Roof Repair Services - Fast Leak Fixes',
+      'If your inspection leads to a replacement, it comes with a written ProTech workmanship warranty plus the manufacturer material warranty, which we register for you.',
+    metaTitle: 'Roof Repair or Replace? Free Honest Assessment',
     metaDescription:
-      'Fast, reliable roof repair to stop leaks and prevent water damage. 24-hour emergency service, thermal imaging diagnostics. Schedule your free assessment now.',
+      'Got a roof leak? ProTech Roofing inspects for free and tells you straight whether it needs a repair or a replacement. Line-item estimates, financing, insurance-claim help.',
   },
   {
     name: 'Storm Damage',

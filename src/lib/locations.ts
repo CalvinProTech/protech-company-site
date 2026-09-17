@@ -185,7 +185,7 @@ function buildIntro(
   const body = pick(
     [
       `ProTech Roofing serves ${city} and the surrounding ${county} communities — including ${near} — with full roof replacements, fast leak and storm-damage repair, and complete insurance-claim support. We install ${profile.materials} suited to ${profile.state}'s climate.`,
-      `Our local crews cover ${city} and nearby ${near}, handling everything from complete roof replacements to emergency leak repair. We use ${profile.materials} chosen for ${profile.state}'s weather and manage permits and inspections from start to finish.`,
+      `Our local crews cover ${city} and nearby ${near}, from complete roof replacements to a free, honest repair-or-replace assessment when you have a leak. We use ${profile.materials} chosen for ${profile.state}'s weather and manage permits and inspections from start to finish.`,
       `From ${city} to ${near}, ProTech Roofing delivers roof replacement, repair, storm restoration, and insurance-claim help. Our installations pair ${profile.materials} with manufacturer-specified installation methods.`,
     ],
     // >>> not >>: s is an unsigned 32-bit hash. A signed shift goes
