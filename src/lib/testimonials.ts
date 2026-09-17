@@ -95,7 +95,7 @@ const placeholderTestimonials: Testimonial[] = [
     state: "NC",
     rating: 5.0,
     quote:
-      "We had been putting off our roof replacement for two years because the quotes we received were all over the place. ProTech came out, did a thorough inspection, and gave us a clear, itemized estimate that made sense. They replaced our 25-year-old roof in two days with beautiful architectural shingles. Before ProTech, we had three different leaks every time it rained. Now our home is completely dry and we have peace of mind with their lifetime warranty.",
+      "We had been putting off our roof replacement for two years because the quotes we received were all over the place. ProTech came out, did a thorough inspection, and gave us a clear, itemized estimate that made sense. They replaced our 25-year-old roof in two days with beautiful architectural shingles. Before ProTech, we had three different leaks every time it rained. Now our home is completely dry and we have the warranty paperwork in hand.",
     serviceType: "roof-replacement",
     date: "2025-08-18",
   },

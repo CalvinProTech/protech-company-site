@@ -26,7 +26,7 @@ const projects: Project[] = [
     state: 'MD',
     serviceType: 'roof-replacement',
     description:
-      'Levance\'s coastal Maryland home was due for a full replacement after years of Atlantic salt air and Nor\'easter wind exposure. Our crew tore off the existing layers, replaced sections of decking that had absorbed moisture along the valleys, and installed a hurricane-rated underlayment with reinforced flashing throughout. Completed under permit with the County and turned over with the full lifetime workmanship warranty.',
+      'Levance\'s coastal Maryland home was due for a full replacement after years of Atlantic salt air and Nor\'easter wind exposure. Our crew tore off the existing layers, replaced sections of decking that had absorbed moisture along the valleys, and installed a hurricane-rated underlayment with reinforced flashing throughout. Completed under permit with the County and turned over with the written workmanship warranty and registered manufacturer warranty.',
     beforeImage: '/images/projects/project-1-before.webp',
     afterImage: '/images/projects/project-1-after.webp',
     images: [
@@ -110,7 +110,7 @@ const projects: Project[] = [
     state: 'FL',
     serviceType: 'roof-replacement',
     description:
-      'Donald\'s Tampa home sits within reach of Gulf storm cells and required a full system upgrade with hurricane-rated components. We installed Cat-4-rated underlayment, reinforced drip edge, and a complete GAF Timberline HDZ shingle system. Permits pulled with the City of Tampa, final inspection scheduled with Hillsborough County, full lifetime workmanship warranty.',
+      'Donald\'s Tampa home sits within reach of Gulf storm cells and required a full system upgrade with hurricane-rated components. We installed Cat-4-rated underlayment, reinforced drip edge, and a complete GAF Timberline HDZ shingle system. Permits pulled with the City of Tampa, final inspection scheduled with Hillsborough County, written workmanship warranty issued at completion.',
     beforeImage: '/images/projects/project-5-before.webp',
     afterImage: '/images/projects/project-5-after.webp',
     images: [
