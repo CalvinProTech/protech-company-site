@@ -201,7 +201,11 @@ export default function InstantEstimateWidget() {
 
   return (
     <div className="w-full max-w-xl">
-      <AnimatePresence mode="wait">
+      {/* initial={false}: the address step is first-paint content and must
+          never wait on a mount animation — on the live site the mount tween
+          did not run and the box sat at opacity 0 (a translucent gray slab in
+          the hero). Step-to-step transitions still animate. */}
+      <AnimatePresence mode="wait" initial={false}>
         {/* ---- Step 1: Address Input ---- */}
         {step === 'address' && (
           <motion.div
